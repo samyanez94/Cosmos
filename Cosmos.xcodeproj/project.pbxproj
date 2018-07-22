@@ -14,6 +14,7 @@
 		2252203E2104391200221D29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2252203D2104391200221D29 /* Assets.xcassets */; };
 		225220412104391200221D29 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2252203F2104391200221D29 /* LaunchScreen.storyboard */; };
 		2252204921043C0E00221D29 /* APOD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2252204821043C0E00221D29 /* APOD.swift */; };
+		22B381082104427D00DCDC24 /* Stub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B381072104427D00DCDC24 /* Stub.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		225220402104391200221D29 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		225220422104391200221D29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2252204821043C0E00221D29 /* APOD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APOD.swift; sourceTree = "<group>"; };
+		22B381072104427D00DCDC24 /* Stub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stub.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				225220332104391100221D29 /* AppDelegate.swift */,
 				225220352104391100221D29 /* ViewController.swift */,
 				2252204821043C0E00221D29 /* APOD.swift */,
+				22B381072104427D00DCDC24 /* Stub.swift */,
 				225220372104391100221D29 /* Main.storyboard */,
 				2252203F2104391200221D29 /* LaunchScreen.storyboard */,
 				2252203D2104391200221D29 /* Assets.xcassets */,
@@ -142,6 +145,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				225220362104391100221D29 /* ViewController.swift in Sources */,
+				22B381082104427D00DCDC24 /* Stub.swift in Sources */,
 				2252204921043C0E00221D29 /* APOD.swift in Sources */,
 				2252203C2104391100221D29 /* Cosmos.xcdatamodeld in Sources */,
 				225220342104391100221D29 /* AppDelegate.swift in Sources */,
