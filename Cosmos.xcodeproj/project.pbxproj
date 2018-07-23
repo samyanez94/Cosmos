@@ -15,6 +15,9 @@
 		225220412104391200221D29 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2252203F2104391200221D29 /* LaunchScreen.storyboard */; };
 		2252204921043C0E00221D29 /* APOD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2252204821043C0E00221D29 /* APOD.swift */; };
 		22B381082104427D00DCDC24 /* Stub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B381072104427D00DCDC24 /* Stub.swift */; };
+		22B3810A2104569000DCDC24 /* BaseCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B381092104569000DCDC24 /* BaseCardCell.swift */; };
+		22B381122104583800DCDC24 /* CosmosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B381102104583800DCDC24 /* CosmosCell.swift */; };
+		22B381132104583800DCDC24 /* CosmosCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22B381112104583800DCDC24 /* CosmosCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		225220422104391200221D29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2252204821043C0E00221D29 /* APOD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APOD.swift; sourceTree = "<group>"; };
 		22B381072104427D00DCDC24 /* Stub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stub.swift; sourceTree = "<group>"; };
+		22B381092104569000DCDC24 /* BaseCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCardCell.swift; sourceTree = "<group>"; };
+		22B381102104583800DCDC24 /* CosmosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmosCell.swift; sourceTree = "<group>"; };
+		22B381112104583800DCDC24 /* CosmosCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CosmosCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +66,8 @@
 		225220322104391100221D29 /* Cosmos */ = {
 			isa = PBXGroup;
 			children = (
+				22AA95AC2105579E001B755F /* Views */,
+				22B3810B2104569700DCDC24 /* Cells */,
 				225220332104391100221D29 /* AppDelegate.swift */,
 				225220352104391100221D29 /* ViewController.swift */,
 				2252204821043C0E00221D29 /* APOD.swift */,
@@ -71,6 +79,23 @@
 				2252203A2104391100221D29 /* Cosmos.xcdatamodeld */,
 			);
 			path = Cosmos;
+			sourceTree = "<group>";
+		};
+		22AA95AC2105579E001B755F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		22B3810B2104569700DCDC24 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				22B381092104569000DCDC24 /* BaseCardCell.swift */,
+				22B381102104583800DCDC24 /* CosmosCell.swift */,
+				22B381112104583800DCDC24 /* CosmosCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,6 +159,7 @@
 				225220412104391200221D29 /* LaunchScreen.storyboard in Resources */,
 				2252203E2104391200221D29 /* Assets.xcassets in Resources */,
 				225220392104391100221D29 /* Main.storyboard in Resources */,
+				22B381132104583800DCDC24 /* CosmosCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,10 +170,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22B3810A2104569000DCDC24 /* BaseCardCell.swift in Sources */,
 				225220362104391100221D29 /* ViewController.swift in Sources */,
 				22B381082104427D00DCDC24 /* Stub.swift in Sources */,
 				2252204921043C0E00221D29 /* APOD.swift in Sources */,
 				2252203C2104391100221D29 /* Cosmos.xcdatamodeld in Sources */,
+				22B381122104583800DCDC24 /* CosmosCell.swift in Sources */,
 				225220342104391100221D29 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,29 +10,29 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    @IBOutlet var collectionView: UICollectionView!
+    /// Collection View
+    @IBOutlet var collectionView: UICollectionView! {
+        willSet {
+            let nib = UINib(nibName: "CosmosCell", bundle: nil)
+            newValue.register(nib, forCellWithReuseIdentifier: CosmosCell.identifier)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         collectionView.dataSource = self
         collectionView.delegate = self
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return Stub.apodDataSource.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCell(withReuseIdentifier: "apodCell", for: indexPath as IndexPath)
+        return collectionView.dequeueReusableCell(withReuseIdentifier: CosmosCell.identifier, for: indexPath) as! CosmosCell
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -40,7 +40,6 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         if kind == UICollectionElementKindSectionHeader {
             return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "apodHeader", for: indexPath)
         }
-        
         return UICollectionReusableView()
     }
 }
