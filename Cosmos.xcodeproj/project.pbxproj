@@ -16,9 +16,12 @@
 		2252204921043C0E00221D29 /* APOD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2252204821043C0E00221D29 /* APOD.swift */; };
 		22AA95B021055E47001B755F /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AA95AF21055E47001B755F /* Endpoint.swift */; };
 		22B381082104427D00DCDC24 /* Stub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B381072104427D00DCDC24 /* Stub.swift */; };
-		22B3810A2104569000DCDC24 /* BaseCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B381092104569000DCDC24 /* BaseCardCell.swift */; };
+		22B3810A2104569000DCDC24 /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B381092104569000DCDC24 /* BaseCell.swift */; };
 		22B381122104583800DCDC24 /* CosmosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B381102104583800DCDC24 /* CosmosCell.swift */; };
 		22B381132104583800DCDC24 /* CosmosCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22B381112104583800DCDC24 /* CosmosCell.xib */; };
+		22BC0A09210567D00086BB19 /* JSONDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BC0A08210567D00086BB19 /* JSONDownloader.swift */; };
+		22BC0A0B210568140086BB19 /* NetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BC0A0A210568140086BB19 /* NetworkingError.swift */; };
+		22BC0A0D21056A580086BB19 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BC0A0C21056A580086BB19 /* APIClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,9 +36,12 @@
 		2252204821043C0E00221D29 /* APOD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APOD.swift; sourceTree = "<group>"; };
 		22AA95AF21055E47001B755F /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		22B381072104427D00DCDC24 /* Stub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stub.swift; sourceTree = "<group>"; };
-		22B381092104569000DCDC24 /* BaseCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCardCell.swift; sourceTree = "<group>"; };
+		22B381092104569000DCDC24 /* BaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
 		22B381102104583800DCDC24 /* CosmosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmosCell.swift; sourceTree = "<group>"; };
 		22B381112104583800DCDC24 /* CosmosCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CosmosCell.xib; sourceTree = "<group>"; };
+		22BC0A08210567D00086BB19 /* JSONDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDownloader.swift; sourceTree = "<group>"; };
+		22BC0A0A210568140086BB19 /* NetworkingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingError.swift; sourceTree = "<group>"; };
+		22BC0A0C21056A580086BB19 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +100,9 @@
 			isa = PBXGroup;
 			children = (
 				22AA95AF21055E47001B755F /* Endpoint.swift */,
+				22BC0A0C21056A580086BB19 /* APIClient.swift */,
+				22BC0A08210567D00086BB19 /* JSONDownloader.swift */,
+				22BC0A0A210568140086BB19 /* NetworkingError.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -110,7 +119,7 @@
 		22B3810B2104569700DCDC24 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				22B381092104569000DCDC24 /* BaseCardCell.swift */,
+				22B381092104569000DCDC24 /* BaseCell.swift */,
 				22B381102104583800DCDC24 /* CosmosCell.swift */,
 				22B381112104583800DCDC24 /* CosmosCell.xib */,
 			);
@@ -189,12 +198,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22B3810A2104569000DCDC24 /* BaseCardCell.swift in Sources */,
+				22B3810A2104569000DCDC24 /* BaseCell.swift in Sources */,
 				225220362104391100221D29 /* ViewController.swift in Sources */,
 				22AA95B021055E47001B755F /* Endpoint.swift in Sources */,
 				22B381082104427D00DCDC24 /* Stub.swift in Sources */,
+				22BC0A0B210568140086BB19 /* NetworkingError.swift in Sources */,
+				22BC0A0D21056A580086BB19 /* APIClient.swift in Sources */,
 				2252204921043C0E00221D29 /* APOD.swift in Sources */,
 				2252203C2104391100221D29 /* Cosmos.xcdatamodeld in Sources */,
+				22BC0A09210567D00086BB19 /* JSONDownloader.swift in Sources */,
 				22B381122104583800DCDC24 /* CosmosCell.swift in Sources */,
 				225220342104391100221D29 /* AppDelegate.swift in Sources */,
 			);

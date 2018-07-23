@@ -57,6 +57,4 @@ struct CosmosEndpoint: Endpoint {
         queryItems.append(apiKeyItem)
         queryItems.append(dateKeyItem)
     }
-    
-    
 }

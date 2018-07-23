@@ -10,6 +10,9 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    /// API Client
+    let client = CosmosAPIClient()
+    
     /// Collection View
     @IBOutlet var collectionView: UICollectionView! {
         willSet {
@@ -22,6 +25,14 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         collectionView.dataSource = self
         collectionView.delegate = self
+        
+        client.downloadAPOD(fromDate: Date()) { (apod, error) in
+            if let apod = apod {
+                print(apod)
+            } else {
+                print(error)
+            }
+        }
     }
 }
 

@@ -1,5 +1,5 @@
 //
-//  BaseCardCell.swift
+//  BasCell.swift
 //  Cosmos
 //
 //  Created by Samuel Yanez on 7/21/18.
@@ -9,7 +9,7 @@
 import UIKit
 import CoreMotion
 
-class BaseCardCell: UICollectionViewCell {
+class BaseCell: UICollectionViewCell {
     
     static let height: CGFloat = 470.0
     static let margin: CGFloat = 20.0
@@ -43,10 +43,10 @@ class BaseCardCell: UICollectionViewCell {
     private func configureShadow() {
         // Shadow View
         self.shadowView?.removeFromSuperview()
-        let shadowView = UIView(frame: CGRect(x: BaseCardCell.margin,
-                                              y: BaseCardCell.margin,
-                                              width: bounds.width - (2 * BaseCardCell.margin),
-                                              height: bounds.height - (2 * BaseCardCell.margin)))
+        let shadowView = UIView(frame: CGRect(x: BaseCell.margin,
+                                              y: BaseCell.margin,
+                                              width: bounds.width - (2 * BaseCell.margin),
+                                              height: bounds.height - (2 * BaseCell.margin)))
         insertSubview(shadowView, at: 0)
         self.shadowView = shadowView
         

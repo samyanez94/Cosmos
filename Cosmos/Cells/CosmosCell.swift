@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CosmosCell: BaseCardCell {
+class CosmosCell: BaseCell {
     
     static let identifier = "com.samuelyanez.CosmosCell"
 
