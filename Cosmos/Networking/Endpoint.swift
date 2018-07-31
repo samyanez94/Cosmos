@@ -31,7 +31,9 @@ extension Endpoint {
 
 struct CosmosEndpoint: Endpoint {
 
-    private let key = "kMfnNhMKgdodjARiUj98FhQ9W0ogrnGjdnBda66n"
+    private var key: String {
+        return "kMfnNhMKgdodjARiUj98FhQ9W0ogrnGjdnBda66n"
+    }
     
     var base: String {
         return "https://api.nasa.gov"
@@ -43,18 +45,37 @@ struct CosmosEndpoint: Endpoint {
     
     var queryItems = [URLQueryItem]()
     
-    init(withDate date: Date) {
-        
-        // Format String from date
+    var formatter: DateFormatter {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.dateFormat = "yyyy-MM-dd"
-        let dateString = formatter.string(from: date)
-        
+        return formatter
+    }
+    
+    init() {
         let apiKeyItem = URLQueryItem(name: "api_key", value: key)
-        let dateKeyItem = URLQueryItem(name: "date", value: dateString)
-        
         queryItems.append(apiKeyItem)
+    }
+    
+    init(fromDate date: Date) {
+        self.init()
+        let dateString = formatter.string(from: date)
+        let dateKeyItem = URLQueryItem(name: "date", value: dateString)
         queryItems.append(dateKeyItem)
+    }
+    
+    init(fromDate from: Date, toDate to: Date) {
+        self.init()
+        let startDate = formatter.string(from: from)
+        let endDate = formatter.string(from: to)
+        let startDateKeyItem = URLQueryItem(name: "start_date", value: startDate)
+        let endDateKeyItem = URLQueryItem(name: "end_date", value: endDate)
+        queryItems.append(startDateKeyItem)
+        queryItems.append(endDateKeyItem)
+    }
+    
+    init(withCount count: Int) {
+        let countKeyItem = URLQueryItem(name: "count", value: String(count))
+        queryItems.append(countKeyItem)
     }
 }

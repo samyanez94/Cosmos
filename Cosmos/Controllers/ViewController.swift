@@ -13,6 +13,8 @@ class ViewController: UIViewController {
     /// API Client
     let client = CosmosAPIClient()
     
+    var dataSource: [APOD] = []
+    
     /// Collection View
     @IBOutlet var collectionView: UICollectionView! {
         willSet {
@@ -28,7 +30,8 @@ class ViewController: UIViewController {
         
         client.downloadAPOD(fromDate: Date()) { (apod, error) in
             if let apod = apod {
-                print(apod)
+                self.dataSource = apod
+                self.collectionView.reloadData()
             } else {
                 print(error)
             }
@@ -39,11 +42,13 @@ class ViewController: UIViewController {
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return Stub.apodDataSource.count
+        return dataSource.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCell(withReuseIdentifier: CosmosCell.identifier, for: indexPath) as! CosmosCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CosmosCell.identifier, for: indexPath) as! CosmosCell
+        cell.titleView.text = dataSource[indexPath.row].title
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {

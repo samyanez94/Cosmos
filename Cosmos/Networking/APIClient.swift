@@ -12,9 +12,10 @@ class CosmosAPIClient {
     
     let downloader = JSONDownloader()
     
-    func downloadAPOD(fromDate date: Date, completion: @escaping (APOD?, CosmosNetworkingError?) -> Void) {
+    func downloadAPOD(fromDate date: Date, completion: @escaping ([APOD]?, CosmosNetworkingError?) -> Void) {
         
-        let endpoint = CosmosEndpoint(withDate: date)
+        let fromDate = Date(timeIntervalSince1970: 1532065059)
+        let endpoint = CosmosEndpoint(fromDate: fromDate, toDate: date)
         
         performRequest(with: endpoint) { (json, error) in
             guard let json = json else {
@@ -22,18 +23,18 @@ class CosmosAPIClient {
                 return
             }
             
-            let apod = APOD(json: json)
+            let apod = json.compactMap { APOD(json: $0)}
             completion(apod, nil)
         }
     }
     
-    private func performRequest(with endpoint: Endpoint, completion: @escaping ([String: Any]?, CosmosNetworkingError?) -> Void) {
+    private func performRequest(with endpoint: Endpoint, completion: @escaping ([[String: Any]]?, CosmosNetworkingError?) -> Void) {
         
         let task = downloader.jsonTask(with: endpoint.request) { json, error in
             DispatchQueue.main.async {
                 
                 if let json = json {
-                   completion(json, nil)
+                    completion(json, nil)
                 } else {
                    completion(nil, error)
                     return

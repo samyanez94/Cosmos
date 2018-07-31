@@ -19,7 +19,7 @@ class JSONDownloader {
         self.init(configuration: .default)
     }
     
-    typealias JSON = [String: AnyObject]
+    typealias JSON = [[String: AnyObject]]
     typealias JSONTaskCompletionHandler = (JSON?, CosmosNetworkingError?) -> Void
     
     func jsonTask(with request: URLRequest, completionHandler completion: @escaping JSONTaskCompletionHandler) -> URLSessionDataTask {
@@ -33,7 +33,7 @@ class JSONDownloader {
             if httpResponse.statusCode == 200 {
                 if let data = data {
                     do {
-                        let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: AnyObject]
+                        let json = try JSONSerialization.jsonObject(with: data, options: []) as? [[String: AnyObject]]
                         completion(json, nil)
                     } catch {
                         completion(nil, .jsonConversionFailure)
