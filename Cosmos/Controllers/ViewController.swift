@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     /// API Client
     let client = CosmosAPIClient()
     
+    /// Data Source
     var dataSource: [APOD] = []
     
     /// Collection View
@@ -27,13 +28,17 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         collectionView.dataSource = self
         collectionView.delegate = self
-        
-        client.downloadAPOD(fromDate: Date()) { (apod, error) in
+        getAPOD()
+    }
+    
+    func getAPOD() {
+        client.downloadAPOD(fromDate: Date()) { [unowned self] (apod, error) in
+            
             if let apod = apod {
                 self.dataSource = apod
                 self.collectionView.reloadData()
             } else {
-                print(error)
+                print(error?.localizedDescription)
             }
         }
     }
@@ -48,6 +53,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CosmosCell.identifier, for: indexPath) as! CosmosCell
         cell.titleView.text = dataSource[indexPath.row].title
+        cell.dateView.text = dataSource[indexPath.row].prettyDate
         return cell
     }
     
@@ -56,6 +62,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         if kind == UICollectionElementKindSectionHeader {
             return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "apodHeader", for: indexPath)
         }
+        
         return UICollectionReusableView()
     }
 }

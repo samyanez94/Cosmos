@@ -15,6 +15,13 @@ struct APOD {
     let description: String
     let url: String
     let hdUrl: String
+    
+    var prettyDate: String {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.dateFormat = "EEEE, MMM d"
+        return formatter.string(from: date)
+    }
 }
 
 extension APOD {

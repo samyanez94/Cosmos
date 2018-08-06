@@ -24,6 +24,9 @@ class CosmosCell: BaseCell {
     /// Title View
     @IBOutlet var titleView: UILabel!
     
+    /// Date View
+    @IBOutlet var dateView: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         

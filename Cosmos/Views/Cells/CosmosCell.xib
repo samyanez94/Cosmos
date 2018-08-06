@@ -13,25 +13,31 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="CosmosCell" customModule="Cosmos" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="350" height="400"/>
+            <rect key="frame" x="0.0" y="0.0" width="350" height="500"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="350" height="400"/>
+                <rect key="frame" x="0.0" y="0.0" width="350" height="500"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2zo-Gb-fYf">
-                        <rect key="frame" x="20" y="20" width="310" height="360"/>
+                        <rect key="frame" x="20" y="20" width="310" height="460"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="example" translatesAutoresizingMaskIntoConstraints="NO" id="WOM-K4-vkh" userLabel="Image View">
-                                <rect key="frame" x="0.0" y="0.0" width="310" height="360"/>
+                                <rect key="frame" x="0.0" y="0.0" width="310" height="460"/>
                             </imageView>
                             <view alpha="0.94999998807907104" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y3c-HX-nGi" userLabel="Overlay View">
                                 <rect key="frame" x="0.0" y="0.0" width="310" height="100"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Planck Maps the Microwave Background" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3GC-0X-2gi" userLabel="Title View">
-                                        <rect key="frame" x="10" y="23.5" width="290" height="53"/>
+                                        <rect key="frame" x="10" y="33.5" width="290" height="53"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                         <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunday, Aug 8" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xMB-P5-PeC" userLabel="Date View">
+                                        <rect key="frame" x="10" y="10" width="99.5" height="17"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -39,8 +45,10 @@
                                 <constraints>
                                     <constraint firstItem="3GC-0X-2gi" firstAttribute="leading" secondItem="Y3c-HX-nGi" secondAttribute="leading" constant="10" id="8E6-mP-KiG"/>
                                     <constraint firstAttribute="height" constant="100" id="BNN-wy-a5a"/>
-                                    <constraint firstItem="3GC-0X-2gi" firstAttribute="centerY" secondItem="Y3c-HX-nGi" secondAttribute="centerY" id="OkA-fA-iRZ"/>
+                                    <constraint firstItem="3GC-0X-2gi" firstAttribute="centerY" secondItem="Y3c-HX-nGi" secondAttribute="centerY" constant="10" id="OkA-fA-iRZ"/>
                                     <constraint firstAttribute="trailing" secondItem="3GC-0X-2gi" secondAttribute="trailing" constant="10" id="S8I-BV-zDr"/>
+                                    <constraint firstItem="xMB-P5-PeC" firstAttribute="top" secondItem="Y3c-HX-nGi" secondAttribute="top" constant="10" id="cQ4-UA-rdM"/>
+                                    <constraint firstItem="xMB-P5-PeC" firstAttribute="leading" secondItem="Y3c-HX-nGi" secondAttribute="leading" constant="10" id="tgc-wG-zqe"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -66,6 +74,7 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <connections>
                 <outlet property="cornerView" destination="2zo-Gb-fYf" id="vVN-ao-BfP"/>
+                <outlet property="dateView" destination="xMB-P5-PeC" id="IbF-LB-dAB"/>
                 <outlet property="imageView" destination="WOM-K4-vkh" id="XbN-Jb-As7"/>
                 <outlet property="overlayView" destination="Y3c-HX-nGi" id="HnN-uo-IR9"/>
                 <outlet property="titleView" destination="3GC-0X-2gi" id="PD6-sQ-FxW"/>
