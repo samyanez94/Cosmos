@@ -22,7 +22,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2zo-Gb-fYf">
                         <rect key="frame" x="20" y="20" width="310" height="460"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="example" translatesAutoresizingMaskIntoConstraints="NO" id="WOM-K4-vkh" userLabel="Image View">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Sample" translatesAutoresizingMaskIntoConstraints="NO" id="WOM-K4-vkh" userLabel="Image View">
                                 <rect key="frame" x="0.0" y="0.0" width="310" height="460"/>
                             </imageView>
                             <view alpha="0.94999998807907104" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y3c-HX-nGi" userLabel="Overlay View">
@@ -83,6 +83,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="example" width="1080" height="504"/>
+        <image name="Sample" width="1080" height="504"/>
     </resources>
 </document>

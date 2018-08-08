@@ -33,5 +33,11 @@ class CosmosCell: BaseCell {
         cornerView.layer.cornerRadius = 14.0
         cornerView.clipsToBounds = true
     }
+    
+    func configure(with viewModel: CosmosCellViewModel) {
+        imageView.image = viewModel.image
+        titleView.text = viewModel.title
+        dateView.text = viewModel.date
+    }
 
 }

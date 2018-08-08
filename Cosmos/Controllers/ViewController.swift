@@ -10,6 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    let pendingOperations = PendingOperations()
+    
     /// API Client
     let client = CosmosAPIClient()
     
@@ -52,8 +54,15 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CosmosCell.identifier, for: indexPath) as! CosmosCell
-        cell.titleView.text = dataSource[indexPath.row].title
-        cell.dateView.text = dataSource[indexPath.row].prettyDate
+        
+        let apod = dataSource[indexPath.row]
+        let viewModel = CosmosCellViewModel(apod: apod)
+        
+        cell.configure(with: viewModel)
+        
+        if apod.imageState == .placeholder {
+            downloadArtwork(for: apod, atIndexPath: indexPath)
+        }
         return cell
     }
     
@@ -64,6 +73,27 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         }
         
         return UICollectionReusableView()
+    }
+    
+    func downloadArtwork(for apod: APOD, atIndexPath indexPath: IndexPath) {
+        if let _ = pendingOperations.downloadsInProgress[indexPath] {
+            return
+        }
+        
+        let downloader = ArtworkDownloader(apod: apod)
+        
+        downloader.completionBlock = {
+            if downloader.isCancelled {
+                return
+            }
+            DispatchQueue.main.async {
+                self.pendingOperations.downloadsInProgress.removeValue(forKey: indexPath)
+                self.collectionView.reloadItems(at: [indexPath])
+            }
+        }
+        
+        pendingOperations.downloadsInProgress[indexPath] = downloader
+        pendingOperations.downloadQueue.addOperation(downloader)
     }
 }
 

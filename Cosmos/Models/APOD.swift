@@ -7,45 +7,52 @@
 //
 
 import Foundation
+import UIKit
 
-struct APOD {
+class APOD {
     
     let title: String
     let date: Date
     let description: String
     let url: String
-    let hdUrl: String
+    var image: UIImage?
+    var imageState = APODImageState.placeholder
     
-    var prettyDate: String {
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "en_US_POSIX")
-        formatter.dateFormat = "EEEE, MMM d"
-        return formatter.string(from: date)
+    init(title: String, date: Date, description: String, url :String) {
+        self.title = title
+        self.date = date
+        self.description = description
+        self.url = url
     }
 }
 
 extension APOD {
-    init?(json: [String: Any]) {
+    convenience init?(json: [String: Any]) {
         
         struct key {
             static let title = "title"
             static let date = "date"
             static let description = "explanation"
             static let url = "url"
-            static let hdUrl = "hdurl"
         }
         
         let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.locale = Locale.current
         formatter.dateFormat = "yyyy-MM-dd"
         
         guard let title = json[key.title] as? String,
             let dateString = json[key.date] as? String,
             let date = formatter.date(from: dateString),
             let description = json[key.description] as? String,
-            let url = json[key.url] as? String,
-            let hdUrl = json[key.hdUrl] as? String else { return  nil }
+            let url = json[key.url] as? String else { return  nil }
         
-        self.init(title: title, date: date, description: description, url: url, hdUrl: hdUrl)
+        self.init(title: title, date: date, description: description, url: url)
     }
+}
+
+
+enum APODImageState {
+    case placeholder
+    case downloaded
+    case failed
 }
