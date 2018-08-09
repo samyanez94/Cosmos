@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		225220342104391100221D29 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225220332104391100221D29 /* AppDelegate.swift */; };
-		225220362104391100221D29 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225220352104391100221D29 /* ViewController.swift */; };
+		225220362104391100221D29 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225220352104391100221D29 /* DiscoverViewController.swift */; };
 		225220392104391100221D29 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 225220372104391100221D29 /* Main.storyboard */; };
 		2252203C2104391100221D29 /* Cosmos.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2252203A2104391100221D29 /* Cosmos.xcdatamodeld */; };
 		2252203E2104391200221D29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2252203D2104391200221D29 /* Assets.xcassets */; };
@@ -20,6 +20,7 @@
 		22B381132104583800DCDC24 /* CosmosCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22B381112104583800DCDC24 /* CosmosCell.xib */; };
 		22BC0A0B210568140086BB19 /* NetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BC0A0A210568140086BB19 /* NetworkingError.swift */; };
 		22BC0A0D21056A580086BB19 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BC0A0C21056A580086BB19 /* APIClient.swift */; };
+		22D47127211C0E5A0006EAD6 /* DiscoverDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D47126211C0E5A0006EAD6 /* DiscoverDataSource.swift */; };
 		22EFCA0F211AB4D800719D26 /* ArtworkDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EFCA0E211AB4D800719D26 /* ArtworkDownloader.swift */; };
 		22EFCA12211AC5A800719D26 /* CosmosCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EFCA11211AC5A800719D26 /* CosmosCellViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -27,7 +28,7 @@
 /* Begin PBXFileReference section */
 		225220302104391100221D29 /* Cosmos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cosmos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		225220332104391100221D29 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		225220352104391100221D29 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		225220352104391100221D29 /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		225220382104391100221D29 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2252203B2104391100221D29 /* Cosmos.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Cosmos.xcdatamodel; sourceTree = "<group>"; };
 		2252203D2104391200221D29 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -40,6 +41,7 @@
 		22B381112104583800DCDC24 /* CosmosCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CosmosCell.xib; sourceTree = "<group>"; };
 		22BC0A0A210568140086BB19 /* NetworkingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingError.swift; sourceTree = "<group>"; };
 		22BC0A0C21056A580086BB19 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		22D47126211C0E5A0006EAD6 /* DiscoverDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverDataSource.swift; sourceTree = "<group>"; };
 		22EFCA0E211AB4D800719D26 /* ArtworkDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkDownloader.swift; sourceTree = "<group>"; };
 		22EFCA11211AC5A800719D26 /* CosmosCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmosCellViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -58,7 +60,7 @@
 		221AC07521059C60006006B7 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				225220352104391100221D29 /* ViewController.swift */,
+				225220352104391100221D29 /* DiscoverViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -109,6 +111,7 @@
 		22A7D3E62117F7690011B097 /* Data Sources */ = {
 			isa = PBXGroup;
 			children = (
+				22D47126211C0E5A0006EAD6 /* DiscoverDataSource.swift */,
 			);
 			path = "Data Sources";
 			sourceTree = "<group>";
@@ -232,13 +235,14 @@
 			files = (
 				22B3810A2104569000DCDC24 /* BaseCell.swift in Sources */,
 				22EFCA0F211AB4D800719D26 /* ArtworkDownloader.swift in Sources */,
-				225220362104391100221D29 /* ViewController.swift in Sources */,
+				225220362104391100221D29 /* DiscoverViewController.swift in Sources */,
 				22AA95B021055E47001B755F /* Endpoint.swift in Sources */,
 				22BC0A0B210568140086BB19 /* NetworkingError.swift in Sources */,
 				22BC0A0D21056A580086BB19 /* APIClient.swift in Sources */,
 				2252204921043C0E00221D29 /* APOD.swift in Sources */,
 				2252203C2104391100221D29 /* Cosmos.xcdatamodeld in Sources */,
 				22B381122104583800DCDC24 /* CosmosCell.swift in Sources */,
+				22D47127211C0E5A0006EAD6 /* DiscoverDataSource.swift in Sources */,
 				225220342104391100221D29 /* AppDelegate.swift in Sources */,
 				22EFCA12211AC5A800719D26 /* CosmosCellViewModel.swift in Sources */,
 			);

@@ -22,7 +22,7 @@ extension CosmosCellViewModel {
         
         let formatter = DateFormatter()
         formatter.locale = Locale.current
-        formatter.dateFormat = "EEEE, MMM dd"
+        formatter.dateFormat = "EEEE, MMM d"
         
         self.date = formatter.string(from: apod.date)
         

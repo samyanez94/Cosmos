@@ -13,7 +13,7 @@
         <!--Home-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Cosmos" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="DiscoverViewController" customModule="Cosmos" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -23,28 +23,11 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Alg-og-nhd">
                                     <size key="itemSize" width="375" height="450"/>
-                                    <size key="headerReferenceSize" width="50" height="75"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells/>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="apodHeader" id="pfb-oI-JIi">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saturday, July 21" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Di3-ZL-OGa" userLabel="Date View">
-                                            <rect key="frame" x="25" y="22" width="350" height="31.5"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="Di3-ZL-OGa" firstAttribute="leading" secondItem="pfb-oI-JIi" secondAttribute="leading" constant="25" id="09F-6T-OHH"/>
-                                        <constraint firstItem="Di3-ZL-OGa" firstAttribute="centerY" secondItem="pfb-oI-JIi" secondAttribute="centerY" id="OYg-3Q-nML"/>
-                                        <constraint firstAttribute="trailing" secondItem="Di3-ZL-OGa" secondAttribute="trailing" id="ccf-uO-sYO"/>
-                                    </constraints>
-                                </collectionReusableView>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

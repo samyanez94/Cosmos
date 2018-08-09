@@ -29,7 +29,7 @@ class CosmosCell: BaseCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
         cornerView.layer.cornerRadius = 14.0
         cornerView.clipsToBounds = true
     }
