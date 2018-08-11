@@ -9,14 +9,16 @@
 import Foundation
 import UIKit
 
-struct CosmosCellViewModel {
+struct APODViewModel {
     
     let title: String
     let date: String
+    let explanation: String
+    var copyright: String?
     let image: UIImage
 }
 
-extension CosmosCellViewModel {
+extension APODViewModel {
     init(apod: APOD) {
         self.title = apod.title
         
@@ -26,6 +28,12 @@ extension CosmosCellViewModel {
         
         self.date = formatter.string(from: apod.date)
         
-        self.image = apod.image ?? #imageLiteral(resourceName: "Sample")
+        if let author = apod.copyright {
+            self.copyright = "Copyright: \(author)"
+        }
+        
+        self.explanation = apod.description
+        
+        self.image = apod.image ?? #imageLiteral(resourceName: "lunar-eclipse")
     }
 }

@@ -29,7 +29,7 @@ class DiscoverDataSource: NSObject, UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CosmosCell.identifier, for: indexPath) as! CosmosCell
         
         let apod = apods[indexPath.row]
-        let viewModel = CosmosCellViewModel(apod: apod)
+        let viewModel = APODViewModel(apod: apod)
         
         cell.configure(with: viewModel)
         

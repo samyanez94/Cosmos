@@ -12,7 +12,7 @@ class CosmosAPIClient {
     
     let downloader = JSONDownloader()
     
-    func downloadAPOD(fromDate date: Date, completion: @escaping ([APOD]?, CosmosNetworkingError?) -> Void) {
+    func downloadAPODs(fromDate date: Date, completion: @escaping ([APOD]?, CosmosNetworkingError?) -> Void) {
         
         let fromDate = Calendar.current.date(byAdding: .day, value: -10, to: date)
         

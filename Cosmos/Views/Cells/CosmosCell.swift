@@ -34,7 +34,7 @@ class CosmosCell: BaseCell {
         cornerView.clipsToBounds = true
     }
     
-    func configure(with viewModel: CosmosCellViewModel) {
+    func configure(with viewModel: APODViewModel) {
         imageView.image = viewModel.image
         titleView.text = viewModel.title
         dateView.text = viewModel.date

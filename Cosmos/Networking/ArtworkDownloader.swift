@@ -9,6 +9,12 @@
 import Foundation
 import UIKit
 
+class PendingOperations {
+    var downloadsInProgress = [IndexPath: Operation]()
+    
+    let downloadQueue = OperationQueue()
+}
+
 class ArtworkDownloader: Operation {
     let apod: APOD
     
@@ -44,10 +50,4 @@ class ArtworkDownloader: Operation {
             return
         }
     }
-}
-
-class PendingOperations {
-    var downloadsInProgress = [IndexPath: Operation]()
-    
-    let downloadQueue = OperationQueue()
 }

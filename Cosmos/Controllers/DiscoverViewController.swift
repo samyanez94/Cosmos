@@ -14,12 +14,7 @@ class DiscoverViewController: UIViewController, UICollectionViewDelegate {
     let client = CosmosAPIClient()
     
     /// Collection View
-    @IBOutlet var collectionView: UICollectionView! {
-        willSet {
-            let nib = UINib(nibName: "CosmosCell", bundle: nil)
-            newValue.register(nib, forCellWithReuseIdentifier: CosmosCell.identifier)
-        }
-    }
+    @IBOutlet var collectionView: UICollectionView!
     
     /// Data Source
     lazy var dataSource: DiscoverDataSource = {
@@ -31,19 +26,34 @@ class DiscoverViewController: UIViewController, UICollectionViewDelegate {
         
         collectionView.dataSource = dataSource
         collectionView.delegate = self
-        getAPOD()
+        donwloadBatch()
     }
     
-    func getAPOD() {
-        client.downloadAPOD(fromDate: Date()) { [unowned self] (apods, error) in
+    // Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowDetails" {
+            if let selectedIndexPath = collectionView.indexPathsForSelectedItems {
+                let selectedAPOD = dataSource.apod(at: selectedIndexPath[0])
+                let detailViewController = segue.destination as! DetailViewController
+                
+                detailViewController.apod = selectedAPOD
+            }
+        }
+    }
+    
+    // Networking
+    
+    func donwloadBatch() {
+        client.downloadAPODs(fromDate: Date()) { [unowned self] (apods, error) in
             
             if let apods = apods {
                 self.dataSource.update(with: apods)
                 self.collectionView.reloadData()
-            } else {
-                print(error?.localizedDescription)
             }
         }
     }
+    
+    
 }
 
