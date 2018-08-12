@@ -58,6 +58,10 @@ class DiscoverViewController: UIViewController, UICollectionViewDelegate {
     func fetch(from date: Date) {
         client.downloadAPODs(to: date) { [unowned self] (apods, error) in
             
+            if let error = error {
+                print(error.localizedDescription)
+            }
+        
             if let apods = apods {
                 self.dataSource.append(apods)
                 self.collectionView.reloadData()
