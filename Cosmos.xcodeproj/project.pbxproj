@@ -23,6 +23,7 @@
 		22D47127211C0E5A0006EAD6 /* DiscoverDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D47126211C0E5A0006EAD6 /* DiscoverDataSource.swift */; };
 		22EFCA0F211AB4D800719D26 /* ArtworkDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EFCA0E211AB4D800719D26 /* ArtworkDownloader.swift */; };
 		22EFCA12211AC5A800719D26 /* APODViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EFCA11211AC5A800719D26 /* APODViewModel.swift */; };
+		7A26FA7F2A6C4FE0ADB6EE62 /* Pods_Cosmos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8097B39F93EB07F695A4F8EC /* Pods_Cosmos.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,9 @@
 		22D47126211C0E5A0006EAD6 /* DiscoverDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverDataSource.swift; sourceTree = "<group>"; };
 		22EFCA0E211AB4D800719D26 /* ArtworkDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkDownloader.swift; sourceTree = "<group>"; };
 		22EFCA11211AC5A800719D26 /* APODViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODViewModel.swift; sourceTree = "<group>"; };
+		8097B39F93EB07F695A4F8EC /* Pods_Cosmos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cosmos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9EA9A31FC2AB57E627B83AE /* Pods-Cosmos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cosmos.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cosmos/Pods-Cosmos.debug.xcconfig"; sourceTree = "<group>"; };
+		E2564780BA8B4CF305DC9E80 /* Pods-Cosmos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cosmos.release.xcconfig"; path = "Pods/Target Support Files/Pods-Cosmos/Pods-Cosmos.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A26FA7F2A6C4FE0ADB6EE62 /* Pods_Cosmos.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +85,8 @@
 			children = (
 				225220322104391100221D29 /* Cosmos */,
 				225220312104391100221D29 /* Products */,
+				3FF3D6A7F5E483C2CE2C0627 /* Pods */,
+				90DDCA3C16372AB6E07293AA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -161,6 +168,23 @@
 			path = "View Models";
 			sourceTree = "<group>";
 		};
+		3FF3D6A7F5E483C2CE2C0627 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C9EA9A31FC2AB57E627B83AE /* Pods-Cosmos.debug.xcconfig */,
+				E2564780BA8B4CF305DC9E80 /* Pods-Cosmos.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		90DDCA3C16372AB6E07293AA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8097B39F93EB07F695A4F8EC /* Pods_Cosmos.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -168,9 +192,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 225220452104391200221D29 /* Build configuration list for PBXNativeTarget "Cosmos" */;
 			buildPhases = (
+				2E100CEFAC59CFA355BC497D /* [CP] Check Pods Manifest.lock */,
 				2252202C2104391100221D29 /* Sources */,
 				2252202D2104391100221D29 /* Frameworks */,
 				2252202E2104391100221D29 /* Resources */,
+				A9F1E1210C87DA43AD13BDA1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -226,6 +252,45 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2E100CEFAC59CFA355BC497D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Cosmos-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A9F1E1210C87DA43AD13BDA1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Cosmos/Pods-Cosmos-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Cosmos/Pods-Cosmos-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2252202C2104391100221D29 /* Sources */ = {
@@ -386,6 +451,7 @@
 		};
 		225220462104391200221D29 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C9EA9A31FC2AB57E627B83AE /* Pods-Cosmos.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -404,6 +470,7 @@
 		};
 		225220472104391200221D29 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E2564780BA8B4CF305DC9E80 /* Pods-Cosmos.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
