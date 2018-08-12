@@ -41,7 +41,6 @@ class BaseCell: UICollectionViewCell {
     // MARK: - Shadow
     
     private func configureShadow() {
-        // Shadow View
         self.shadowView?.removeFromSuperview()
         let shadowView = UIView(frame: CGRect(x: BaseCell.margin,
                                               y: BaseCell.margin,
@@ -50,7 +49,6 @@ class BaseCell: UICollectionViewCell {
         insertSubview(shadowView, at: 0)
         self.shadowView = shadowView
         
-        // Roll/Pitch Dynamic Shadow
         if motionManager.isDeviceMotionAvailable {
             motionManager.deviceMotionUpdateInterval = 0.02
             motionManager.startDeviceMotionUpdates(to: .main, withHandler: { (motion, error) in
