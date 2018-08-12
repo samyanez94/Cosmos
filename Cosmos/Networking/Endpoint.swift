@@ -57,14 +57,14 @@ struct CosmosEndpoint: Endpoint {
         queryItems.append(apiKeyItem)
     }
     
-    init(fromDate date: Date) {
+    init(from date: Date) {
         self.init()
         let dateString = formatter.string(from: date)
         let dateKeyItem = URLQueryItem(name: "date", value: dateString)
         queryItems.append(dateKeyItem)
     }
     
-    init(fromDate from: Date, toDate to: Date) {
+    init(from: Date, to: Date) {
         self.init()
         let startDate = formatter.string(from: from)
         let endDate = formatter.string(from: to)

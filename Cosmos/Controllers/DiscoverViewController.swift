@@ -56,7 +56,7 @@ class DiscoverViewController: UIViewController, UICollectionViewDelegate {
     
     // Networking
     func fetch(from date: Date) {
-        client.downloadAPODs(fromDate: date) { [unowned self] (apods, error) in
+        client.downloadAPODs(to: date) { [unowned self] (apods, error) in
             
             if let apods = apods {
                 self.dataSource.append(apods)
