@@ -21,12 +21,13 @@ class DiscoverViewController: UIViewController, UICollectionViewDelegate {
         return DiscoverDataSource(collectionView: collectionView, apods: [])
     }()
     
+    var date = Date()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         collectionView.dataSource = dataSource
         collectionView.delegate = self
-        donwloadBatch()
+        fetch(from: date)
     }
     
     // Navigation
@@ -42,18 +43,25 @@ class DiscoverViewController: UIViewController, UICollectionViewDelegate {
         }
     }
     
-    // Networking
+    // Collection View Delegate
     
-    func donwloadBatch() {
-        client.downloadAPODs(fromDate: Date()) { [unowned self] (apods, error) in
-            
-            if let apods = apods {
-                self.dataSource.update(with: apods)
-                self.collectionView.reloadData()
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if (dataSource.apods.count - 1 == indexPath.row) {
+            if let date = Calendar.current.date(byAdding: .day, value: -11, to: self.date) {
+                self.date = date
+                fetch(from: date)
             }
         }
     }
     
-    
+    // Networking
+    func fetch(from date: Date) {
+        client.downloadAPODs(to: date) { [unowned self] (apods, error) in
+            
+            if let apods = apods {
+                self.dataSource.append(apods)
+                self.collectionView.reloadData()
+            }
+        }
+    }
 }
-

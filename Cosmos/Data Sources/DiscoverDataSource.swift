@@ -12,44 +12,43 @@ import UIKit
 class DiscoverDataSource: NSObject, UICollectionViewDataSource {
     
     private let collectionView: UICollectionView
-    private var apods: [APOD] = []
+    private(set) var apods: [APOD] = []
+    
+    private let pendingOperations = PendingOperations()
     
     init(collectionView: UICollectionView, apods: [APOD]) {
         self.collectionView = collectionView
         self.apods = apods
     }
     
-    // MARK - Data Source
+    func apod(at indexPath: IndexPath) -> APOD {
+        return apods[indexPath.row]
+    }
+    
+    func append(_ apods: [APOD]) {
+        self.apods.append(contentsOf: apods)
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return apods.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CosmosCell.identifier, for: indexPath) as! CosmosCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CosmosCell.identifier, for: indexPath)
         
-        let apod = apods[indexPath.row]
-        let viewModel = APODViewModel(apod: apod)
-        
-        cell.configure(with: viewModel)
-        
-        if apod.imageState == .placeholder {
-            downloadArtwork(for: apod, atIndexPath: indexPath)
+        if let cell = cell as? CosmosCell {
+            let apod = apods[indexPath.row]
+            
+            cell.updateAppearence(for: APODViewModel(apod: apod))
+            
+            if apod.imageState == .placeholder {
+                downloadArtwork(for: apod, atIndexPath: indexPath)
+            }
         }
         return cell
     }
     
     // MARK - Helpers
-    
-    let pendingOperations = PendingOperations()
-    
-    func apod(at indexPath: IndexPath) -> APOD {
-        return apods[indexPath.row]
-    }
-    
-    func update(with apods: [APOD]) {
-        self.apods = apods
-    }
     
     func downloadArtwork(for apod: APOD, atIndexPath indexPath: IndexPath) {
         if let _ = pendingOperations.downloadsInProgress[indexPath] {
@@ -67,7 +66,6 @@ class DiscoverDataSource: NSObject, UICollectionViewDataSource {
                 self.collectionView.reloadItems(at: [indexPath])
             }
         }
-        
         pendingOperations.downloadsInProgress[indexPath] = downloader
         pendingOperations.downloadQueue.addOperation(downloader)
     }

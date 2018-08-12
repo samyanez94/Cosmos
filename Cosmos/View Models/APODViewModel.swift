@@ -32,7 +32,7 @@ extension APODViewModel {
             self.copyright = "Copyright: \(author)"
         }
         
-        self.explanation = apod.description
+        self.explanation = apod.explanation
         
         self.image = apod.image ?? #imageLiteral(resourceName: "lunar-eclipse")
     }

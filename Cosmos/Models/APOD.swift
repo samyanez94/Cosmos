@@ -13,7 +13,7 @@ class APOD {
     
     let title: String
     let date: Date
-    let description: String
+    let explanation: String
     let copyright: String?
     let url: String
     var image: UIImage?
@@ -22,7 +22,7 @@ class APOD {
     init(title: String, date: Date, description: String, copyright: String?, url: String) {
         self.title = title
         self.date = date
-        self.description = description
+        self.explanation = description
         self.copyright = copyright
         self.url = url
     }
@@ -53,7 +53,6 @@ extension APOD {
         self.init(title: title, date: date, description: description, copyright: copyright, url: url)
     }
 }
-
 
 enum APODImageState {
     case placeholder

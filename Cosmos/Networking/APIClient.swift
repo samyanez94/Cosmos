@@ -7,84 +7,51 @@
 //
 
 import Foundation
+import Alamofire
 
 class CosmosAPIClient {
-    
-    let downloader = JSONDownloader()
-    
-    func downloadAPODs(fromDate date: Date, completion: @escaping ([APOD]?, CosmosNetworkingError?) -> Void) {
         
-        let fromDate = Calendar.current.date(byAdding: .day, value: -10, to: date)
+    func downloadAPODs(to: Date, completion: @escaping ([APOD]?, CosmosNetworkingError?) -> Void) {
         
-        if let fromDate = fromDate {
-            let endpoint = CosmosEndpoint(fromDate: fromDate, toDate: date)
+        let from = Calendar.current.date(byAdding: .day, value: -9, to: to)
         
-            performRequest(with: endpoint) { (json, error) in
-                guard let json = json else {
-                    completion(nil, error)
-                    return
-                }
-                
-                let apod = json.compactMap { APOD(json: $0)}
-                completion(apod.reversed(), nil)
-            }
+        if let from = from {
+            downloadAPODs(from: from, to: to, completion: completion)
         }
     }
     
-    private func performRequest(with endpoint: Endpoint, completion: @escaping ([[String: Any]]?, CosmosNetworkingError?) -> Void) {
+    func downloadAPODs(from: Date, to: Date, completion: @escaping ([APOD]?, CosmosNetworkingError?) -> Void) {
         
-        let task = downloader.jsonTask(with: endpoint.request) { json, error in
-            DispatchQueue.main.async {
-                
-                if let json = json {
-                    completion(json, nil)
-                } else {
-                   completion(nil, error)
-                    return
-                }
-            }
-        }
-        task.resume()
-    }
-}
-
-class JSONDownloader {
-    let session: URLSession
-    
-    init(configuration: URLSessionConfiguration) {
-        self.session = URLSession(configuration: configuration)
-    }
-    
-    convenience init() {
-        self.init(configuration: .default)
-    }
-    
-    typealias JSON = [[String: AnyObject]]
-    typealias JSONTaskCompletionHandler = (JSON?, CosmosNetworkingError?) -> Void
-    
-    func jsonTask(with request: URLRequest, completionHandler completion: @escaping JSONTaskCompletionHandler) -> URLSessionDataTask {
-        let task = session.dataTask(with: request) { data, response, error in
+        let endpoint = CosmosEndpoint(from: from, to: to)
+        
+        request(with: endpoint) { (json, error) in
             
-            guard let httpResponse = response as? HTTPURLResponse else {
+            guard let json = json else {
+                completion(nil, error)
+                return
+            }
+            let apods = json.compactMap { APOD(json: $0) }
+            
+            completion(apods.reversed(), nil)
+        }
+    }
+    
+    private func request(with endpoint: Endpoint, completion: @escaping ([[String: Any]]?, CosmosNetworkingError?) -> Void) {
+        Alamofire.request(endpoint.request).responseJSON { response in
+            
+            guard let _ = response.response else {
                 completion(nil, .requestFailed)
                 return
             }
-            
-            if httpResponse.statusCode == 200 {
-                if let data = data {
-                    do {
-                        let json = try JSONSerialization.jsonObject(with: data, options: []) as? [[String: AnyObject]]
-                        completion(json, nil)
-                    } catch {
-                        completion(nil, .jsonConversionFailure)
-                    }
-                } else {
-                    completion(nil, .invalidData)
-                }
-            } else {
+            guard let value = response.result.value else {
                 completion(nil, .responseUnsuccessful)
+                return
             }
+            guard let json = value as? [[String: Any]] else {
+                completion(nil, .jsonConversionFailure)
+                return
+            }
+            completion(json, nil)
         }
-        return task
     }
 }
