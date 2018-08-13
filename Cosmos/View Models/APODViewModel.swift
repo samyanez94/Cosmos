@@ -16,24 +16,22 @@ struct APODViewModel {
     let explanation: String
     var copyright: String?
     let image: UIImage
+    
 }
 
 extension APODViewModel {
     init(apod: APOD) {
+        let formatter = DateFormatter(locale: .current, format: "EEEE, MMM d")
+        
         self.title = apod.title
-        
-        let formatter = DateFormatter()
-        formatter.locale = Locale.current
-        formatter.dateFormat = "EEEE, MMM d"
-        
         self.date = formatter.string(from: apod.date)
+        self.explanation = apod.explanation
+        self.image = apod.image ?? #imageLiteral(resourceName: "lunar-eclipse")
         
         if let author = apod.copyright {
             self.copyright = "Copyright: \(author)"
         }
         
-        self.explanation = apod.explanation
-        
-        self.image = apod.image ?? #imageLiteral(resourceName: "lunar-eclipse")
+
     }
 }

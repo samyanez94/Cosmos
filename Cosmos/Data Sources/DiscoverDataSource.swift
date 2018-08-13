@@ -7,15 +7,14 @@
 //
 
 import Foundation
+import AlamofireImage
 import UIKit
 
 class DiscoverDataSource: NSObject, UICollectionViewDataSource {
     
     private let collectionView: UICollectionView
     private(set) var apods: [APOD] = []
-    
-    private let pendingOperations = PendingOperations()
-    
+        
     init(collectionView: UICollectionView, apods: [APOD]) {
         self.collectionView = collectionView
         self.apods = apods
@@ -41,32 +40,12 @@ class DiscoverDataSource: NSObject, UICollectionViewDataSource {
             
             cell.updateAppearence(for: APODViewModel(apod: apod))
             
-            if apod.imageState == .placeholder {
-                downloadArtwork(for: apod, atIndexPath: indexPath)
+            if let url = URL(string: apod.url) {
+                cell.imageView.af_setImage(withURL: url, placeholderImage: #imageLiteral(resourceName: "lunar-eclipse"), imageTransition: .crossDissolve(1)) { (data) in
+                    apod.image = data.value
+                }
             }
         }
         return cell
-    }
-    
-    // MARK - Helpers
-    
-    func downloadArtwork(for apod: APOD, atIndexPath indexPath: IndexPath) {
-        if let _ = pendingOperations.downloadsInProgress[indexPath] {
-            return
-        }
-        
-        let downloader = ArtworkDownloader(apod: apod)
-        
-        downloader.completionBlock = {
-            if downloader.isCancelled {
-                return
-            }
-            DispatchQueue.main.async {
-                self.pendingOperations.downloadsInProgress.removeValue(forKey: indexPath)
-                self.collectionView.reloadItems(at: [indexPath])
-            }
-        }
-        pendingOperations.downloadsInProgress[indexPath] = downloader
-        pendingOperations.downloadQueue.addOperation(downloader)
     }
 }

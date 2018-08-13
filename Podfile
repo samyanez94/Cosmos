@@ -7,5 +7,6 @@ target 'Cosmos' do
 
   # Pods for Cosmos
     pod 'Alamofire', '~> 4.7'
+    pod 'AlamofireImage', '~> 3.3'
 
 end

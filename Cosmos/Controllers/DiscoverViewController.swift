@@ -47,7 +47,7 @@ class DiscoverViewController: UIViewController, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if (dataSource.apods.count - 1 == indexPath.row) {
-            if let date = Calendar.current.date(byAdding: .day, value: -11, to: self.date) {
+            if let date = Calendar.current.date(byAdding: .day, value: -10, to: self.date) {
                 self.date = date
                 fetch(from: date)
             }
