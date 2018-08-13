@@ -33,4 +33,6 @@ class DetailViewController: UIViewController {
         explanationView.text = viewModel.explanation
         copyrightView.text = viewModel.copyright ?? ""
     }
+    
+    
 }
