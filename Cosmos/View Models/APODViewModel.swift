@@ -26,7 +26,12 @@ extension APODViewModel {
         self.title = apod.title
         self.date = formatter.string(from: apod.date)
         self.explanation = apod.explanation
-        self.image = apod.image ?? #imageLiteral(resourceName: "lunar-eclipse")
+        
+        if apod.mediaType == .image {
+            self.image = apod.image ?? #imageLiteral(resourceName: "placeholder")
+        } else {
+            self.image = #imageLiteral(resourceName: "invalid_placeholder")
+        }
         
         if let author = apod.copyright {
             self.copyright = "Copyright: \(author)"
