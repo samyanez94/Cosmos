@@ -1,5 +1,5 @@
 //
-//  BasCell.swift
+//  BaseCell.swift
 //  Cosmos
 //
 //  Created by Samuel Yanez on 7/21/18.

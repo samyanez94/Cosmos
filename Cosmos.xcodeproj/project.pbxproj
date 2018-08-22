@@ -9,11 +9,11 @@
 /* Begin PBXBuildFile section */
 		2202F50D211ECE4700DEFDE1 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2202F50C211ECE4700DEFDE1 /* DetailViewController.swift */; };
 		222D05BC2120EDE400849CE5 /* NetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D05BB2120EDE400849CE5 /* NetworkingError.swift */; };
+		2244523B212D08A100889244 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2244523A212D08A100889244 /* Assets.xcassets */; };
 		225220342104391100221D29 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225220332104391100221D29 /* AppDelegate.swift */; };
 		225220362104391100221D29 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225220352104391100221D29 /* DiscoverViewController.swift */; };
 		225220392104391100221D29 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 225220372104391100221D29 /* Main.storyboard */; };
 		2252203C2104391100221D29 /* Cosmos.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2252203A2104391100221D29 /* Cosmos.xcdatamodeld */; };
-		2252203E2104391200221D29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2252203D2104391200221D29 /* Assets.xcassets */; };
 		225220412104391200221D29 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2252203F2104391200221D29 /* LaunchScreen.storyboard */; };
 		2252204921043C0E00221D29 /* APOD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2252204821043C0E00221D29 /* APOD.swift */; };
 		22AA95B021055E47001B755F /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AA95AF21055E47001B755F /* Endpoint.swift */; };
@@ -28,12 +28,12 @@
 /* Begin PBXFileReference section */
 		2202F50C211ECE4700DEFDE1 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		222D05BB2120EDE400849CE5 /* NetworkingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingError.swift; sourceTree = "<group>"; };
+		2244523A212D08A100889244 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		225220302104391100221D29 /* Cosmos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cosmos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		225220332104391100221D29 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		225220352104391100221D29 /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		225220382104391100221D29 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2252203B2104391100221D29 /* Cosmos.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Cosmos.xcdatamodel; sourceTree = "<group>"; };
-		2252203D2104391200221D29 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		225220402104391200221D29 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		225220422104391200221D29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2252204821043C0E00221D29 /* APOD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APOD.swift; sourceTree = "<group>"; };
@@ -107,9 +107,9 @@
 				22AA95AE21055DE7001B755F /* Models */,
 				22AA95AD21055DD9001B755F /* Networking */,
 				225220332104391100221D29 /* AppDelegate.swift */,
-				2252203D2104391200221D29 /* Assets.xcassets */,
-				225220422104391200221D29 /* Info.plist */,
 				2252203A2104391100221D29 /* Cosmos.xcdatamodeld */,
+				225220422104391200221D29 /* Info.plist */,
+				2244523A212D08A100889244 /* Assets.xcassets */,
 			);
 			path = Cosmos;
 			sourceTree = "<group>";
@@ -243,7 +243,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				225220412104391200221D29 /* LaunchScreen.storyboard in Resources */,
-				2252203E2104391200221D29 /* Assets.xcassets in Resources */,
+				2244523B212D08A100889244 /* Assets.xcassets in Resources */,
 				225220392104391100221D29 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -278,11 +278,19 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Cosmos/Pods-Cosmos-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/Cache/Cache.framework",
+				"${BUILT_PRODUCTS_DIR}/Hue/Hue.framework",
+				"${BUILT_PRODUCTS_DIR}/Imaginary/Imaginary.framework",
+				"${BUILT_PRODUCTS_DIR}/Lightbox/Lightbox.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cache.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hue.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Imaginary.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lightbox.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

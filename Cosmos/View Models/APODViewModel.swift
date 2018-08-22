@@ -10,13 +10,11 @@ import Foundation
 import UIKit
 
 struct APODViewModel {
-    
     let title: String
     let date: String
     let explanation: String
     var copyright: String?
     let image: UIImage
-    
 }
 
 extension APODViewModel {
