@@ -139,16 +139,13 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jD7-Q8-wNu" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="824"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PIA21923_fig1SeeingTitan1024" translatesAutoresizingMaskIntoConstraints="NO" id="Nkd-GL-XHS" userLabel="Image View">
+                                            <imageView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Nkd-GL-XHS" userLabel="Image View">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="273"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="Nkd-GL-XHS" secondAttribute="height" multiplier="125:91" id="owB-QY-2Pm"/>
                                                 </constraints>
-                                                <connections>
-                                                    <outletCollection property="gestureRecognizers" destination="0IQ-Ki-vVT" appends="YES" id="MXQ-jq-5wc"/>
-                                                </connections>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friday, Jul 27" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8t4-tN-YBp" userLabel="Date View">
                                                 <rect key="frame" x="8" y="281" width="359" height="17"/>
@@ -291,7 +288,6 @@
     </scenes>
     <resources>
         <image name="Info" width="25" height="25"/>
-        <image name="PIA21923_fig1SeeingTitan1024" width="993" height="1024"/>
         <image name="Rocket" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
