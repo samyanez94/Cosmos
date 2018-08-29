@@ -10,6 +10,8 @@ import Foundation
 import Alamofire
 
 class CosmosAPIClient {
+    
+    let decoder = JSONDecoder(dateDecodingStrategy: .formatted(DateFormatter(locale: .current, format: "yyyy-MM-dd")))
         
     func downloadAPODs(to: Date, completion: @escaping ([APOD]?, CosmosNetworkingError?) -> Void) {
         
@@ -24,34 +26,33 @@ class CosmosAPIClient {
         
         let endpoint = CosmosEndpoint(from: from, to: to)
         
-        request(with: endpoint) { (json, error) in
+        request(with: endpoint) { (data, error) in
             
-            guard let json = json else {
+            guard let data = data else {
                 completion(nil, error)
                 return
             }
-            let apods = json.compactMap { APOD(json: $0) }
-            
-            completion(apods.reversed(), nil)
+            do {
+                let apods = try self.decoder.decode([APOD].self, from: data)
+                completion(apods.reversed(), nil)
+            } catch {
+                completion(nil, .jsonParsingError)
+            }
         }
     }
     
-    private func request(with endpoint: Endpoint, completion: @escaping ([[String: Any]]?, CosmosNetworkingError?) -> Void) {
+    private func request(with endpoint: Endpoint, completion: @escaping (Data?, CosmosNetworkingError?) -> Void) {
         Alamofire.request(endpoint.request).responseJSON { response in
             
             guard let _ = response.response else {
                 completion(nil, .requestFailed)
                 return
             }
-            guard let value = response.result.value else {
+            guard let data = response.data else {
                 completion(nil, .responseUnsuccessful)
                 return
             }
-            guard let json = value as? [[String: Any]] else {
-                completion(nil, .jsonConversionFailure)
-                return
-            }
-            completion(json, nil)
+            completion(data, nil)
         }
     }
 }

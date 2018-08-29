@@ -42,9 +42,7 @@ class DiscoverDataSource: NSObject, UICollectionViewDataSource {
             
             if apod.mediaType == .image {
                 if let url = URL(string: apod.url) {
-                    cell.imageView.af_setImage(withURL: url, placeholderImage: #imageLiteral(resourceName: "placeholder"), imageTransition: .crossDissolve(1)) { (data) in
-                        apod.image = data.value
-                    }
+                    cell.imageView.af_setImage(withURL: url, placeholderImage: #imageLiteral(resourceName: "placeholder"), imageTransition: .crossDissolve(1))
                 }
             } else {
                 cell.imageView.image = #imageLiteral(resourceName: "invalid_placeholder")

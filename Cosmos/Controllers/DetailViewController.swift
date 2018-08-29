@@ -21,13 +21,20 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let apod = apod {
-            configure(with: APODViewModel(apod: apod))
+        guard let apod = apod else { return }
+        
+        configure(with: APODViewModel(apod: apod))
+        
+        if apod.mediaType == .image {
+            if let url = URL(string: apod.url) {
+                imageView.af_setImage(withURL: url)
+            }
+        } else {
+            imageView.image = #imageLiteral(resourceName: "invalid_placeholder")
         }
     }
     
     func configure(with viewModel: APODViewModel) {
-        imageView.image = viewModel.image
         dateView.text = viewModel.date
         titleView.text = viewModel.title
         explanationView.text = viewModel.explanation

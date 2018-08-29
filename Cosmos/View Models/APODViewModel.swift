@@ -14,7 +14,6 @@ struct APODViewModel {
     let date: String
     let explanation: String
     var copyright: String?
-    let image: UIImage
 }
 
 extension APODViewModel {
@@ -24,13 +23,7 @@ extension APODViewModel {
         self.title = apod.title
         self.date = formatter.string(from: apod.date)
         self.explanation = apod.explanation
-        
-        if apod.mediaType == .image {
-            self.image = apod.image ?? #imageLiteral(resourceName: "placeholder")
-        } else {
-            self.image = #imageLiteral(resourceName: "invalid_placeholder")
-        }
-        
+
         if let author = apod.copyright {
             self.copyright = "Copyright: \(author)"
         }

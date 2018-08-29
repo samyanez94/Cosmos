@@ -35,7 +35,6 @@ class CosmosCell: BaseCell {
     }
     
     func updateAppearence(for viewModel: APODViewModel) {
-        imageView.image = viewModel.image
         titleView.text = viewModel.title
         dateView.text = viewModel.date
     }
