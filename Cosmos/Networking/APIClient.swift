@@ -9,23 +9,30 @@
 import Foundation
 import Alamofire
 
-class CosmosAPIClient {
+protocol APIClient {
+    
+    func fetch(with completion: @escaping ([APOD]?, CosmosNetworkingError?) -> Void)
+}
+
+class CosmosAPIClient: APIClient {
     
     let decoder = JSONDecoder(dateDecodingStrategy: .formatted(DateFormatter(locale: .current, format: "yyyy-MM-dd")))
+    
+    var date: Date = Date()
+    
+    func fetch(with completion: @escaping ([APOD]?, CosmosNetworkingError?) -> Void) {
         
-    func downloadAPODs(to: Date, completion: @escaping ([APOD]?, CosmosNetworkingError?) -> Void) {
-        
+        let to = date
         let from = Calendar.current.date(byAdding: .day, value: -9, to: to)
         
         if let from = from {
-            downloadAPODs(from: from, to: to, completion: completion)
+            let endpoint = CosmosEndpoint(from: from, to: to)
+            downloadAPODs(with: endpoint, completion: completion)
+            date = from
         }
     }
     
-    func downloadAPODs(from: Date, to: Date, completion: @escaping ([APOD]?, CosmosNetworkingError?) -> Void) {
-        
-        let endpoint = CosmosEndpoint(from: from, to: to)
-        
+    private func downloadAPODs(with endpoint: Endpoint, completion: @escaping ([APOD]?, CosmosNetworkingError?) -> Void) {
         request(with: endpoint) { (data, error) in
             
             guard let data = data else {

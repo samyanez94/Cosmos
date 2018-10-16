@@ -11,7 +11,7 @@ import UIKit
 class DiscoverViewController: UIViewController, UICollectionViewDelegate {
         
     /// API Client
-    let client = CosmosAPIClient()
+    let client: APIClient = MockClient()
     
     /// Collection View
     @IBOutlet var collectionView: UICollectionView!
@@ -21,13 +21,12 @@ class DiscoverViewController: UIViewController, UICollectionViewDelegate {
         return DiscoverDataSource(collectionView: collectionView, apods: [])
     }()
     
-    var date = Date()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.dataSource = dataSource
         collectionView.delegate = self
-        fetch(from: date)
+        
+        fetch()
     }
     
     // Navigation
@@ -46,17 +45,15 @@ class DiscoverViewController: UIViewController, UICollectionViewDelegate {
     // Collection View Delegate
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if (dataSource.apods.count - 1 == indexPath.row) {
-            if let date = Calendar.current.date(byAdding: .day, value: -10, to: self.date) {
-                self.date = date
-                fetch(from: date)
-            }
+        if (dataSource.apods.count == indexPath.row + 1) {
+            fetch()
         }
     }
     
     // Networking
-    func fetch(from date: Date) {
-        client.downloadAPODs(to: date) { [unowned self] (apods, error) in
+    
+    func fetch() {
+        client.fetch { [unowned self] (apods, error) in
             
             if let error = error {
                 print(error.localizedDescription)
