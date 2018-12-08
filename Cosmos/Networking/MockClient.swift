@@ -14,7 +14,7 @@ class MockClient: APIClient {
     
     func fetch(with completion: @escaping ([APOD]?, CosmosNetworkingError?) -> Void) {
         
-        guard let url = Bundle.main.url(forResource: "sample", withExtension: "json") else {
+        guard let url = Bundle.main.url(forResource: "data", withExtension: "json") else {
             completion(nil, .invalidData)
             return
         }

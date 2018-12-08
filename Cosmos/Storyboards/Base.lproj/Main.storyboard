@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RLj-Th-8lB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RLj-Th-8lB">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="Segues with Peek and Pop" minToolsVersion="7.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Discover View Controller-->
+        <!--Discover-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="DiscoverViewController" customModule="Cosmos" customModuleProvider="target" sceneMemberID="viewController">
@@ -21,12 +19,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7gZ-3I-C86">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Alg-og-nhd">
                                     <size key="itemSize" width="375" height="450"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="50" height="50"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
@@ -44,31 +42,32 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="335" height="410"/>
                                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </imageView>
-                                                        <view alpha="0.94999998807907104" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VH7-Qi-Scl" userLabel="Overlay View">
-                                                            <rect key="frame" x="0.0" y="0.0" width="335" height="100"/>
+                                                        <view alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VH7-Qi-Scl" userLabel="Overlay View">
+                                                            <rect key="frame" x="0.0" y="0.0" width="335" height="120"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friday, Jul 27" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xa1-Gx-3a5" userLabel="Date View">
-                                                                    <rect key="frame" x="10" y="10" width="317" height="17"/>
-                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                                                    <rect key="frame" x="15" y="15" width="103.5" height="19.5"/>
+                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Central Lunar Eclipse" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0aM-Eg-prD" userLabel="Title View">
-                                                                    <rect key="frame" x="10" y="47" width="315" height="26.5"/>
-                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Central Lunar Eclipse" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" translatesAutoresizingMaskIntoConstraints="NO" id="0aM-Eg-prD" userLabel="Title View">
+                                                                    <rect key="frame" x="15" y="39.5" width="305" height="65.5"/>
+                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
-                                                                <constraint firstItem="0aM-Eg-prD" firstAttribute="leading" secondItem="VH7-Qi-Scl" secondAttribute="leading" constant="10" id="EXN-jH-HZQ"/>
-                                                                <constraint firstAttribute="trailing" secondItem="xa1-Gx-3a5" secondAttribute="trailing" constant="8" id="HGW-CP-NN4"/>
-                                                                <constraint firstItem="xa1-Gx-3a5" firstAttribute="leading" secondItem="VH7-Qi-Scl" secondAttribute="leading" constant="10" id="Wzf-sm-dxn"/>
-                                                                <constraint firstItem="0aM-Eg-prD" firstAttribute="centerY" secondItem="VH7-Qi-Scl" secondAttribute="centerY" constant="10" id="ZGb-kA-u2v"/>
-                                                                <constraint firstAttribute="height" constant="100" id="bmI-DS-k80"/>
-                                                                <constraint firstAttribute="trailing" secondItem="0aM-Eg-prD" secondAttribute="trailing" constant="10" id="pip-Mo-Ocm"/>
-                                                                <constraint firstItem="xa1-Gx-3a5" firstAttribute="top" secondItem="VH7-Qi-Scl" secondAttribute="top" constant="10" id="zas-Ve-Pil"/>
+                                                                <constraint firstAttribute="trailing" secondItem="0aM-Eg-prD" secondAttribute="trailing" constant="15" id="D5Q-8k-sxc"/>
+                                                                <constraint firstItem="0aM-Eg-prD" firstAttribute="top" secondItem="xa1-Gx-3a5" secondAttribute="bottom" constant="5" id="EA3-CZ-u02"/>
+                                                                <constraint firstItem="xa1-Gx-3a5" firstAttribute="top" secondItem="VH7-Qi-Scl" secondAttribute="top" constant="15" id="Yih-d7-dIx"/>
+                                                                <constraint firstAttribute="height" constant="120" id="bmI-DS-k80"/>
+                                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="xa1-Gx-3a5" secondAttribute="trailing" constant="20" symbolic="YES" id="dAE-tR-JoV"/>
+                                                                <constraint firstAttribute="bottom" secondItem="0aM-Eg-prD" secondAttribute="bottom" constant="15" id="dg6-QA-UJb"/>
+                                                                <constraint firstItem="0aM-Eg-prD" firstAttribute="leading" secondItem="VH7-Qi-Scl" secondAttribute="leading" constant="15" id="vOX-ov-Jpy"/>
+                                                                <constraint firstItem="xa1-Gx-3a5" firstAttribute="leading" secondItem="VH7-Qi-Scl" secondAttribute="leading" constant="15" id="zU1-g6-rPn"/>
                                                             </constraints>
                                                         </view>
                                                     </subviews>
@@ -98,16 +97,30 @@
                                             <outlet property="imageView" destination="Kt9-WC-Du9" id="w1B-CJ-PNX"/>
                                             <outlet property="overlayView" destination="VH7-Qi-Scl" id="aTR-IA-wv3"/>
                                             <outlet property="titleView" destination="0aM-Eg-prD" id="tKy-z8-JkI"/>
-                                            <segue destination="pvg-rG-IcB" kind="show" identifier="ShowDetails" id="ScT-wc-b1g">
+                                            <segue destination="pvg-rG-IcB" kind="presentation" identifier="ShowDetails" id="ScT-wc-b1g">
                                                 <segue key="commit" inheritsFrom="parent" id="RUE-iS-3Q9"/>
                                                 <segue key="preview" inheritsFrom="commit" id="6nB-gg-jNJ"/>
                                             </segue>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="com.samuelyanez.CosmosCellFooter" id="FcJ-mo-hts">
+                                    <rect key="frame" x="0.0" y="450" width="375" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="SGn-2S-Whx">
+                                            <rect key="frame" x="177.5" y="15" width="20" height="20"/>
+                                        </activityIndicatorView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="SGn-2S-Whx" firstAttribute="centerY" secondItem="FcJ-mo-hts" secondAttribute="centerY" id="Mex-uk-P0K"/>
+                                        <constraint firstItem="SGn-2S-Whx" firstAttribute="centerX" secondItem="FcJ-mo-hts" secondAttribute="centerX" id="w5L-zx-I1D"/>
+                                    </constraints>
+                                </collectionReusableView>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="7gZ-3I-C86" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="3js-Qc-MT2"/>
                             <constraint firstItem="7gZ-3I-C86" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="cRr-iZ-UCi"/>
@@ -116,6 +129,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Discover" image="Rocket" id="pqP-5p-aAr"/>
                     <navigationItem key="navigationItem" id="yaE-XS-6fz"/>
                     <connections>
                         <outlet property="collectionView" destination="7gZ-3I-C86" id="h7T-w3-aUd"/>
@@ -123,7 +137,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2199.1999999999998" y="-238.83058470764618"/>
+            <point key="canvasLocation" x="1977" y="-365"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="JAa-Sy-ryq">
@@ -134,52 +148,61 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WbU-fF-hhF">
-                                <rect key="frame" x="0.0" y="64" width="375" height="887"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="980"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jD7-Q8-wNu" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="824"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="980"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Nkd-GL-XHS" userLabel="Image View">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="273"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="429"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <gestureRecognizers/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" secondItem="Nkd-GL-XHS" secondAttribute="height" multiplier="125:91" id="owB-QY-2Pm"/>
+                                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="500" id="5eI-xM-4DI"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friday, Jul 27" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8t4-tN-YBp" userLabel="Date View">
-                                                <rect key="frame" x="8" y="281" width="359" height="17"/>
+                                                <rect key="frame" x="8" y="437" width="359" height="17"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Central Lunar Eclipse" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0le-FM-EVS" userLabel="Title View">
-                                                <rect key="frame" x="8" y="306" width="359" height="26.5"/>
+                                                <rect key="frame" x="8" y="462" width="359" height="26.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                                <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pI4-UD-5aW" userLabel="Explanation View">
-                                                <rect key="frame" x="8" y="348.5" width="359" height="426.5"/>
+                                                <rect key="frame" x="8" y="504.5" width="359" height="426.5"/>
                                                 <string key="text">Reddened by scattered sunlight, the Moon in the center is passing through the center of Earth's dark umbral shadow in this July 27 lunar eclipse sequence. Left to right the three images are from the start, maximum, and end to 103 minutes of totality from the longest lunar eclipse of the 21st century. The longest path the Moon can follow through Earth's shadow does cross the shadow's center, that's what makes such central lunar eclipses long ones. But July 27 was also the date of lunar apogee, and at the most distant part of its elliptical orbit the Moon moves slowest. For the previous lunar eclipse, last January 31, the Moon was near its orbital perigee. Passing just south of the Earth shadow central axis,  totality lasted only 76 minutes. Coming up on January 21, 2019, a third consecutive total lunar eclipse will also be off center and find the Moon near perigee. Then totality will be a mere 62 minutes long.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright: Anthony Ayiomamitis" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P7D-ZV-vbx" userLabel="Copyright View">
-                                                <rect key="frame" x="8" y="791" width="359" height="17"/>
+                                                <rect key="frame" x="8" y="947" width="359" height="17"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fa9-LQ-VnG" userLabel="Close Button">
+                                                <rect key="frame" x="325" y="10" width="40" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="8Y7-py-OMO"/>
+                                                    <constraint firstAttribute="width" constant="40" id="Wpn-WZ-sAN"/>
+                                                </constraints>
+                                                <state key="normal" image="close-lightOnDark"/>
+                                                <connections>
+                                                    <action selector="dismiss:" destination="pvg-rG-IcB" eventType="touchUpInside" id="N4I-cb-XKa"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="0le-FM-EVS" firstAttribute="top" secondItem="8t4-tN-YBp" secondAttribute="bottom" constant="8" id="0Rc-3z-a1G"/>
-                                            <constraint firstItem="8t4-tN-YBp" firstAttribute="top" secondItem="Nkd-GL-XHS" secondAttribute="bottom" constant="8" id="240-26-LEV"/>
                                             <constraint firstItem="pI4-UD-5aW" firstAttribute="leading" secondItem="jD7-Q8-wNu" secondAttribute="leading" constant="8" id="Aum-x9-eJq"/>
                                             <constraint firstAttribute="trailing" secondItem="8t4-tN-YBp" secondAttribute="trailing" constant="8" id="Fmg-dE-QV0"/>
+                                            <constraint firstItem="8t4-tN-YBp" firstAttribute="top" secondItem="Nkd-GL-XHS" secondAttribute="bottom" constant="8" id="JL0-HV-2vs"/>
                                             <constraint firstItem="0le-FM-EVS" firstAttribute="leading" secondItem="jD7-Q8-wNu" secondAttribute="leading" constant="8" id="SSn-Rc-VjG"/>
+                                            <constraint firstItem="Fa9-LQ-VnG" firstAttribute="top" secondItem="jD7-Q8-wNu" secondAttribute="top" constant="10" id="Y25-OR-gla"/>
+                                            <constraint firstAttribute="trailing" secondItem="Fa9-LQ-VnG" secondAttribute="trailing" constant="10" id="bCX-6f-5sQ"/>
                                             <constraint firstAttribute="trailing" secondItem="0le-FM-EVS" secondAttribute="trailing" constant="8" id="d2Y-r7-f3C"/>
                                             <constraint firstAttribute="trailing" secondItem="pI4-UD-5aW" secondAttribute="trailing" constant="8" id="fI9-A4-2Xy"/>
                                             <constraint firstItem="pI4-UD-5aW" firstAttribute="top" secondItem="0le-FM-EVS" secondAttribute="bottom" constant="16" id="ggl-cO-YOq"/>
@@ -229,7 +252,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3146" y="-389"/>
+            <point key="canvasLocation" x="2994" y="-366"/>
         </scene>
         <!--About-->
         <scene sceneID="Tk8-RZ-ZG2">
@@ -245,7 +268,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bon-un-qwm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1260" y="478"/>
+            <point key="canvasLocation" x="1977" y="376"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="zJv-pa-Bg5">
@@ -255,40 +278,24 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="LWc-8a-bbp">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.12549019610000001" green="0.17254901959999999" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" red="0.29019607843137252" green="0.35686274509803922" blue="0.76470588235294112" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="c0R-ZU-V0f" kind="relationship" relationship="viewControllers" id="DOl-Ry-nEl"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="KHt-yU-h6I"/>
                         <segue destination="77o-Fw-cle" kind="relationship" relationship="viewControllers" id="PxJ-pb-JkI"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dV0-VU-Quj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="32.799999999999997" y="33.733133433283363"/>
-        </scene>
-        <!--Discover-->
-        <scene sceneID="lux-IB-bCN">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="c0R-ZU-V0f" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Discover" image="Rocket" id="O78-7U-Yy9"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="eJa-bd-jfp">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="tOW-3L-meF"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WfJ-Q3-vBT" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1260" y="-238.83058470764618"/>
+            <point key="canvasLocation" x="630" y="-49"/>
         </scene>
     </scenes>
     <resources>
         <image name="Info" width="25" height="25"/>
         <image name="Rocket" width="25" height="25"/>
+        <image name="close-lightOnDark" width="51.5" height="51.5"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ScT-wc-b1g"/>

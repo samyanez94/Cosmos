@@ -16,6 +16,10 @@ class DetailViewController: UIViewController {
     @IBOutlet var explanationView: UILabel!
     @IBOutlet var copyrightView: UILabel!
     
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     var apod: APOD?
     
     override func viewDidLoad() {
@@ -32,6 +36,10 @@ class DetailViewController: UIViewController {
         } else {
             imageView.image = #imageLiteral(resourceName: "invalid_placeholder")
         }
+    }
+    
+    @IBAction func dismiss(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
     
     func configure(with viewModel: APODViewModel) {

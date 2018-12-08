@@ -1,8 +1,8 @@
 //
-//  DateFormatter+Locale.swift
+//  Extensions.swift
 //  Cosmos
 //
-//  Created by Samuel Yanez on 8/28/18.
+//  Created by Samuel Yanez on 11/25/18.
 //  Copyright © 2018 Samuel Yanez. All rights reserved.
 //
 
@@ -13,5 +13,12 @@ extension DateFormatter {
         self.init()
         self.locale = locale
         self.dateFormat = format
+    }
+}
+
+extension JSONDecoder {
+    convenience init(dateDecodingStrategy: DateDecodingStrategy) {
+        self.init()
+        self.dateDecodingStrategy = dateDecodingStrategy
     }
 }

@@ -11,7 +11,7 @@ import CoreMotion
 
 class BaseCell: UICollectionViewCell {
     
-    static let height: CGFloat = 470.0
+    static let height: CGFloat = 500.0
     static let margin: CGFloat = 20.0
     
     /// Core Motion Manager

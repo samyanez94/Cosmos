@@ -23,12 +23,13 @@ class CosmosAPIClient: APIClient {
     func fetch(with completion: @escaping ([APOD]?, CosmosNetworkingError?) -> Void) {
         
         let to = date
-        let from = Calendar.current.date(byAdding: .day, value: -9, to: to)
+        let from = Calendar.current.date(byAdding: .day, value: -10, to: date)
         
         if let from = from {
             let endpoint = CosmosEndpoint(from: from, to: to)
             downloadAPODs(with: endpoint, completion: completion)
-            date = from
+            
+            date = Calendar.current.date(byAdding: .day, value: -1, to: from)!
         }
     }
     

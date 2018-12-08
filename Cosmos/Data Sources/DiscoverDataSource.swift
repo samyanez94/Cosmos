@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import AlamofireImage
 import UIKit
+import AlamofireImage
 
 class DiscoverDataSource: NSObject, UICollectionViewDataSource {
     
@@ -32,21 +32,24 @@ class DiscoverDataSource: NSObject, UICollectionViewDataSource {
         return apods.count
     }
     
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "com.samuelyanez.CosmosCellFooter", for: indexPath)
+        return cell
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CosmosCell.identifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CosmosCell.identifier, for: indexPath) as! CosmosCell
         
-        if let cell = cell as? CosmosCell {
-            let apod = apods[indexPath.row]
-            
-            cell.updateAppearence(for: APODViewModel(apod: apod))
-            
-            if apod.mediaType == .image {
-                if let url = URL(string: apod.url) {
-                    cell.imageView.af_setImage(withURL: url, placeholderImage: #imageLiteral(resourceName: "placeholder"), imageTransition: .crossDissolve(1))
-                }
-            } else {
-                cell.imageView.image = #imageLiteral(resourceName: "invalid_placeholder")
+        let apod = apods[indexPath.row]
+        
+        cell.updateAppearence(for: APODViewModel(apod: apod))
+        
+        if apod.mediaType == .image {
+            if let url = URL(string: apod.url) {
+                cell.imageView.af_setImage(withURL: url, placeholderImage: #imageLiteral(resourceName: "placeholder"), imageTransition: .crossDissolve(1))
             }
+        } else {
+            cell.imageView.image = #imageLiteral(resourceName: "invalid_placeholder")
         }
         return cell
     }

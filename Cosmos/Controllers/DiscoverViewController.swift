@@ -11,7 +11,7 @@ import UIKit
 class DiscoverViewController: UIViewController, UICollectionViewDelegate {
         
     /// API Client
-    let client: APIClient = MockClient()
+    let client: APIClient = CosmosAPIClient()
     
     /// Collection View
     @IBOutlet var collectionView: UICollectionView!
@@ -23,10 +23,14 @@ class DiscoverViewController: UIViewController, UICollectionViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        collectionView.isHidden = true
         collectionView.dataSource = dataSource
         collectionView.delegate = self
         
-        fetch()
+        fetch() {
+            self.collectionView.isHidden = false
+        }
     }
     
     // Navigation
@@ -49,10 +53,10 @@ class DiscoverViewController: UIViewController, UICollectionViewDelegate {
             fetch()
         }
     }
-    
+        
     // Networking
     
-    func fetch() {
+    func fetch(completion: (() -> Void)? = nil) {
         client.fetch { [unowned self] (apods, error) in
             
             if let error = error {
@@ -62,6 +66,10 @@ class DiscoverViewController: UIViewController, UICollectionViewDelegate {
             if let apods = apods {
                 self.dataSource.append(apods)
                 self.collectionView.reloadData()
+                
+                if let completion = completion {
+                    completion()
+                }
             }
         }
     }
