@@ -137,12 +137,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1977" y="-365"/>
+            <point key="canvasLocation" x="1977" y="-672"/>
         </scene>
-        <!--Detail View Controller-->
+        <!--Detail-->
         <scene sceneID="JAa-Sy-ryq">
             <objects>
-                <viewController id="pvg-rG-IcB" customClass="DetailViewController" customModule="Cosmos" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="pvg-rG-IcB" userLabel="Detail" customClass="DetailViewController" customModule="Cosmos" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Mba-ya-RbV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -252,7 +252,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2994" y="-366"/>
+            <point key="canvasLocation" x="2993" y="-523"/>
         </scene>
         <!--About-->
         <scene sceneID="Tk8-RZ-ZG2">
@@ -270,10 +270,10 @@
             </objects>
             <point key="canvasLocation" x="1977" y="376"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Bar View Controller-->
         <scene sceneID="zJv-pa-Bg5">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="RLj-Th-8lB" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="RLj-Th-8lB" customClass="TabBarViewController" customModule="Cosmos" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="LWc-8a-bbp">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>

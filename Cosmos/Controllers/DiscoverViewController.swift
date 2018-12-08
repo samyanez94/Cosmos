@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DiscoverViewController: UIViewController, UICollectionViewDelegate {
+class DiscoverViewController: UIViewController {
         
     /// API Client
     let client: APIClient = CosmosAPIClient()
@@ -45,14 +45,6 @@ class DiscoverViewController: UIViewController, UICollectionViewDelegate {
             }
         }
     }
-    
-    // Collection View Delegate
-    
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if (dataSource.apods.count == indexPath.row + 1) {
-            fetch()
-        }
-    }
         
     // Networking
     
@@ -71,6 +63,19 @@ class DiscoverViewController: UIViewController, UICollectionViewDelegate {
                     completion()
                 }
             }
+        }
+    }
+    
+    func scrollToTop() {
+        self.collectionView.setContentOffset(CGPoint.zero, animated: true)
+    }
+}
+
+extension DiscoverViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if (dataSource.apods.count == indexPath.row + 1) {
+            fetch()
         }
     }
 }

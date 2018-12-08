@@ -22,6 +22,7 @@
 		22BC0A0D21056A580086BB19 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BC0A0C21056A580086BB19 /* APIClient.swift */; };
 		22C15CAD21AB642200DB287E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C15CAC21AB642200DB287E /* Extensions.swift */; };
 		22D47127211C0E5A0006EAD6 /* DiscoverDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D47126211C0E5A0006EAD6 /* DiscoverDataSource.swift */; };
+		22DABE4221BC617F004D6EBF /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DABE4121BC617F004D6EBF /* TabBarViewController.swift */; };
 		22EFCA12211AC5A800719D26 /* APODViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EFCA11211AC5A800719D26 /* APODViewModel.swift */; };
 		22FC32D4217665E8009DF4B7 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 22FC32D3217665E8009DF4B7 /* data.json */; };
 		22FC32D821767D21009DF4B7 /* MockClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FC32D721767D21009DF4B7 /* MockClient.swift */; };
@@ -46,6 +47,7 @@
 		22BC0A0C21056A580086BB19 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		22C15CAC21AB642200DB287E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		22D47126211C0E5A0006EAD6 /* DiscoverDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverDataSource.swift; sourceTree = "<group>"; };
+		22DABE4121BC617F004D6EBF /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		22EFCA11211AC5A800719D26 /* APODViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODViewModel.swift; sourceTree = "<group>"; };
 		22FC32D3217665E8009DF4B7 /* data.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
 		22FC32D721767D21009DF4B7 /* MockClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockClient.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 			children = (
 				225220352104391100221D29 /* DiscoverViewController.swift */,
 				2202F50C211ECE4700DEFDE1 /* DetailViewController.swift */,
+				22DABE4121BC617F004D6EBF /* TabBarViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -336,6 +339,7 @@
 				22C15CAD21AB642200DB287E /* Extensions.swift in Sources */,
 				22D47127211C0E5A0006EAD6 /* DiscoverDataSource.swift in Sources */,
 				225220342104391100221D29 /* AppDelegate.swift in Sources */,
+				22DABE4221BC617F004D6EBF /* TabBarViewController.swift in Sources */,
 				22EFCA12211AC5A800719D26 /* APODViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
