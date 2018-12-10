@@ -49,3 +49,24 @@ class APOD: Codable {
         self.url = url
     }
 }
+
+struct APODViewModel {
+    let title: String
+    let date: String
+    let explanation: String
+    var copyright: String?
+}
+
+extension APODViewModel {
+    init(for apod: APOD) {
+        let formatter = DateFormatter(locale: .current, format: "EEEE, MMM d")
+        
+        title = apod.title
+        date = formatter.string(from: apod.date)
+        explanation = apod.explanation
+        
+        if let author = apod.copyright {
+            copyright = "Copyright: \(author)"
+        }
+    }
+}

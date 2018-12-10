@@ -24,16 +24,16 @@ class DiscoverViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView.isHidden = true
         collectionView.dataSource = dataSource
         collectionView.delegate = self
-        
+        collectionView.isHidden = true
+
         fetch() {
             self.collectionView.isHidden = false
         }
     }
     
-    // Navigation
+    // MARK: Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowDetails" {
@@ -46,7 +46,7 @@ class DiscoverViewController: UIViewController {
         }
     }
         
-    // Networking
+    // MARK: Networking
     
     func fetch(completion: (() -> Void)? = nil) {
         client.fetch { [unowned self] (apods, error) in
@@ -70,6 +70,8 @@ class DiscoverViewController: UIViewController {
         self.collectionView.setContentOffset(CGPoint.zero, animated: true)
     }
 }
+
+// MARK: UICollectionView Delegate
 
 extension DiscoverViewController: UICollectionViewDelegate {
     

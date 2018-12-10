@@ -6,6 +6,8 @@
 //  Copyright © 2018 Samuel Yanez. All rights reserved.
 //
 
+// TODO: Is this cell really needed?
+
 import UIKit
 import CoreMotion
 

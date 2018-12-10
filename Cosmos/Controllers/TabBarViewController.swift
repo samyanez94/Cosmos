@@ -10,6 +10,7 @@ import UIKit
 
 class TabBarViewController: UITabBarController {
     
+    /// Last selected view controller.
     var previousViewController: UIViewController?
 
     override func viewDidLoad() {

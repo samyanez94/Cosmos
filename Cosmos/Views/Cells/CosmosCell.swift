@@ -15,28 +15,29 @@ class CosmosCell: BaseCell {
     /// Image View
     @IBOutlet var imageView: UIImageView!
     
-    /// Overlay View
-    @IBOutlet var overlayView: UIView!
+    /// Header View
+    @IBOutlet var headerView: UIView!
     
-    /// Corner View
-    @IBOutlet var cornerView: UIView!
+    /// Container View
+    @IBOutlet var containerView: UIView!
     
-    /// Title View
-    @IBOutlet var titleView: UILabel!
+    /// Title Label
+    @IBOutlet var titleLabel: UILabel!
     
-    /// Date View
-    @IBOutlet var dateView: UILabel!
+    /// Date Label
+    @IBOutlet var dateLabel: UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-
-        cornerView.layer.cornerRadius = 14.0
-        cornerView.clipsToBounds = true
+    override func draw(_ rect: CGRect) {
+        // Bound subviews to the visible bounds of the container view.
+        containerView.clipsToBounds = true
+        
+        // Set the corner radius
+        containerView.layer.cornerRadius = 14.0
     }
     
-    func updateAppearence(for viewModel: APODViewModel) {
-        titleView.text = viewModel.title
-        dateView.text = viewModel.date
+    func updateLabels(for viewModel: APODViewModel) {
+        titleLabel.text = viewModel.title
+        dateLabel.text = viewModel.date
     }
 
 }
