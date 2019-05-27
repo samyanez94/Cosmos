@@ -5,6 +5,5 @@ target 'Cosmos' do
   use_frameworks!
 
   # Pods
-    pod 'Alamofire', '~> 4.8'
     pod 'AlamofireImage', '~> 3.5'
 end

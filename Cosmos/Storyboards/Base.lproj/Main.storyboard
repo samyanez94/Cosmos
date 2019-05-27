@@ -96,10 +96,7 @@
                                             <outlet property="headerView" destination="VH7-Qi-Scl" id="tpw-Zb-Aoi"/>
                                             <outlet property="imageView" destination="Kt9-WC-Du9" id="w1B-CJ-PNX"/>
                                             <outlet property="titleLabel" destination="0aM-Eg-prD" id="Lc6-Se-RWg"/>
-                                            <segue destination="pvg-rG-IcB" kind="presentation" identifier="ShowDetails" id="ScT-wc-b1g">
-                                                <segue key="commit" inheritsFrom="parent" id="RUE-iS-3Q9"/>
-                                                <segue key="preview" inheritsFrom="commit" id="6nB-gg-jNJ"/>
-                                            </segue>
+                                            <segue destination="pvg-rG-IcB" kind="presentation" identifier="ShowDetails" id="ScT-wc-b1g"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -301,7 +298,4 @@
         <image name="Rocket" width="25" height="25"/>
         <image name="close-icon" width="88" height="88"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="ScT-wc-b1g"/>
-    </inferredMetricsTieBreakers>
 </document>
