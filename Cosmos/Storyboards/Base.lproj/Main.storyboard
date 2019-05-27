@@ -17,6 +17,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fBP-h8-anF" userLabel="Loading Indicator View">
+                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="NqR-N5-kDt">
+                                        <rect key="frame" x="177.5" y="289" width="20" height="20"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="NqR-N5-kDt" firstAttribute="centerX" secondItem="fBP-h8-anF" secondAttribute="centerX" id="BzI-xM-awW"/>
+                                    <constraint firstItem="NqR-N5-kDt" firstAttribute="centerY" secondItem="fBP-h8-anF" secondAttribute="centerY" id="Jcn-J7-ZOB"/>
+                                </constraints>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7YX-ug-AZK" userLabel="Error View">
+                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Well this is embarrasing. It looks like something went wrong." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SKU-Ol-47o" userLabel="Error Label">
+                                        <rect key="frame" x="62.5" y="282.5" width="250" height="33.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="250" id="KVV-fN-n1Q"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="SKU-Ol-47o" firstAttribute="centerX" secondItem="7YX-ug-AZK" secondAttribute="centerX" id="OQb-S1-9bb"/>
+                                    <constraint firstItem="SKU-Ol-47o" firstAttribute="centerY" secondItem="7YX-ug-AZK" secondAttribute="centerY" id="f6r-Xq-FMm"/>
+                                </constraints>
+                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7gZ-3I-C86">
                                 <rect key="frame" x="0.0" y="20" width="375" height="598"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -119,16 +151,26 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="7gZ-3I-C86" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="3js-Qc-MT2"/>
+                            <constraint firstItem="7YX-ug-AZK" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="5Pc-tv-UE9"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="7YX-ug-AZK" secondAttribute="bottom" id="Bhv-54-8Nf"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fBP-h8-anF" secondAttribute="trailing" id="JQY-B2-6P2"/>
+                            <constraint firstItem="fBP-h8-anF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Vea-Iu-aRV"/>
+                            <constraint firstItem="7YX-ug-AZK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Yci-Qq-etz"/>
                             <constraint firstItem="7gZ-3I-C86" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="cRr-iZ-UCi"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="7gZ-3I-C86" secondAttribute="bottom" id="kTq-Eu-i26"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7gZ-3I-C86" secondAttribute="trailing" id="o2L-s6-83v"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fBP-h8-anF" secondAttribute="bottom" id="uhH-ry-UON"/>
+                            <constraint firstItem="fBP-h8-anF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="wXb-Vn-zfh"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7YX-ug-AZK" secondAttribute="trailing" id="zCd-Eo-8tI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Discover" image="Rocket" id="pqP-5p-aAr"/>
                     <navigationItem key="navigationItem" id="yaE-XS-6fz"/>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="fBP-h8-anF" id="IYs-Er-zyB"/>
                         <outlet property="collectionView" destination="7gZ-3I-C86" id="h7T-w3-aUd"/>
+                        <outlet property="errorView" destination="7YX-ug-AZK" id="59C-XA-T8j"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

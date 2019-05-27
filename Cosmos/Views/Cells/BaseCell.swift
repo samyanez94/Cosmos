@@ -13,7 +13,7 @@ import CoreMotion
 
 class BaseCell: UICollectionViewCell {
     
-    static let height: CGFloat = 550.0
+    static let height: CGFloat = 600.0
     static let margin: CGFloat = 20.0
     
     /// Long Press Gesture Recognizer
@@ -23,7 +23,9 @@ class BaseCell: UICollectionViewCell {
     private var isPressed: Bool = false
     
     /// Shadow View
-    private weak var shadowView: UIView?
+    private lazy var shadowView: UIView = {
+        return UIView(frame: CGRect(x: BaseCell.margin, y: BaseCell.margin, width: bounds.width - (2 * BaseCell.margin), height: bounds.height - (2 * BaseCell.margin)))
+    }()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,31 +34,20 @@ class BaseCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        configureShadow()
+        addSubview(shadowView)
+        applyShadow(width: shadowView.frame.width, height: shadowView.frame.height + 20.0)
     }
     
     // MARK: - Shadow
     
-    private func configureShadow() {
-        self.shadowView?.removeFromSuperview()
-        let shadowView = UIView(frame: CGRect(x: BaseCell.margin,
-                                              y: BaseCell.margin,
-                                              width: bounds.width - (2 * BaseCell.margin),
-                                              height: bounds.height - (2 * BaseCell.margin)))
-        insertSubview(shadowView, at: 0)
-        self.shadowView = shadowView
-    }
-    
     private func applyShadow(width: CGFloat, height: CGFloat) {
-        if let shadowView = shadowView {
-            let shadowPath = UIBezierPath(roundedRect: shadowView.bounds, cornerRadius: 14.0)
-            shadowView.layer.masksToBounds = false
-            shadowView.layer.shadowRadius = 8.0
-            shadowView.layer.shadowColor = UIColor.black.cgColor
-            shadowView.layer.shadowOffset = CGSize(width: width, height: height)
-            shadowView.layer.shadowOpacity = 0.35
-            shadowView.layer.shadowPath = shadowPath.cgPath
-        }
+        let shadowPath = UIBezierPath(roundedRect: shadowView.bounds, cornerRadius: 14.0)
+        shadowView.layer.masksToBounds = false
+        shadowView.layer.shadowRadius = 8.0
+        shadowView.layer.shadowColor = UIColor.black.cgColor
+        shadowView.layer.shadowOffset = CGSize(width: width, height: height)
+        shadowView.layer.shadowOpacity = 0.35
+        shadowView.layer.shadowPath = shadowPath.cgPath
     }
     
     // MARK: - Gesture Recognizer
@@ -83,7 +74,7 @@ class BaseCell: UICollectionViewCell {
         isPressed = true
         UIView.animate(withDuration: 0.5,
                        delay: 0.0,
-                       usingSpringWithDamping: 0.8,
+                       usingSpringWithDamping: 0.5,
                        initialSpringVelocity: 0.2,
                        options: .beginFromCurrentState,
                        animations: {
@@ -98,7 +89,7 @@ class BaseCell: UICollectionViewCell {
         
         UIView.animate(withDuration: 0.5,
                        delay: 0.0,
-                       usingSpringWithDamping: 0.4,
+                       usingSpringWithDamping: 0.5,
                        initialSpringVelocity: 0.2,
                        options: .beginFromCurrentState,
                        animations: {

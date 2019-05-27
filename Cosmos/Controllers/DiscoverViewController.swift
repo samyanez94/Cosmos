@@ -21,15 +21,23 @@ class DiscoverViewController: UIViewController {
     /// Collection View
     @IBOutlet var collectionView: UICollectionView!
     
+    /// Ativity indicator
+    @IBOutlet var activityIndicatorView: UIView!
+    
+    /// Error View
+    @IBOutlet var errorView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         collectionView.dataSource = dataSource
         collectionView.delegate = self
         collectionView.isHidden = true
+        
+        activityIndicatorView.isHidden = false
 
         fetch() {
-            self.collectionView.isHidden = false
+            self.activityIndicatorView.isHidden = true
         }
     }
     
@@ -52,9 +60,13 @@ class DiscoverViewController: UIViewController {
             switch result {
             case .failure(let error):
                 print(error.localizedDescription)
+                self?.collectionView.isHidden = true
+                self?.errorView.isHidden = false
             case .success(let apods):
                 self?.dataSource.append(apods.reversed())
                 self?.collectionView.reloadData()
+                self?.collectionView.isHidden = false
+                self?.errorView.isHidden = true
             }
             if let completion = completion {
                 completion()
