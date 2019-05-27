@@ -2,65 +2,89 @@
 //  APIClient.swift
 //  Cosmos
 //
-//  Created by Samuel Yanez on 7/22/18.
-//  Copyright © 2018 Samuel Yanez. All rights reserved.
+//  Created by Samuel Yanez on 5/26/19.
+//  Copyright © 2019 Samuel Yanez. All rights reserved.
 //
 
 import Foundation
-import Alamofire
 
 protocol APIClient {
+    var session: URLSession { get }
     
-    func fetch(with completion: @escaping ([APOD]?, CosmosNetworkingError?) -> Void)
+    func fetch<T: Decodable>(with request: URLRequest, parse: @escaping (Data) -> T?, completion: @escaping (Result<T, APIError>) -> Void)
+    
+    func fetch<T: Decodable>(with request: URLRequest, parse: @escaping (Data) -> [T]?, completion: @escaping (Result<[T], APIError>) -> Void)
 }
 
-class CosmosAPIClient: APIClient {
+extension APIClient {
     
-    let decoder = JSONDecoder(dateDecodingStrategy: .formatted(DateFormatter(locale: .current, format: "yyyy-MM-dd")))
-    
-    var date: Date = Date()
-    
-    func fetch(with completion: @escaping ([APOD]?, CosmosNetworkingError?) -> Void) {
-        
-        let to = date
-        let from = Calendar.current.date(byAdding: .day, value: -10, to: date)
-        
-        if let from = from {
-            let endpoint = CosmosEndpoint(from: from, to: to)
-            downloadAPODs(with: endpoint, completion: completion)
-            
-            date = Calendar.current.date(byAdding: .day, value: -1, to: from)!
-        }
-    }
-    
-    private func downloadAPODs(with endpoint: Endpoint, completion: @escaping ([APOD]?, CosmosNetworkingError?) -> Void) {
-        request(with: endpoint) { (data, error) in
-            
-            guard let data = data else {
-                completion(nil, error)
+    func task(with request: URLRequest, completionHandler completion: @escaping (Swift.Result<Data, APIError>) -> Void) -> URLSessionDataTask {
+        return session.dataTask(with: request) { data, response, error in
+            guard let httpResponse = response as? HTTPURLResponse else {
+                completion(.failure(.requestFailed))
                 return
             }
-            do {
-                let apods = try self.decoder.decode([APOD].self, from: data)
-                completion(apods.reversed(), nil)
-            } catch {
-                completion(nil, .jsonParsingError)
+            guard httpResponse.statusCode == 200 else {
+                completion(.failure(.responseUnsuccessful))
+                return
+            }
+            if let data = data {
+                completion(.success(data))
+            } else {
+                completion(.failure(.invalidData))
             }
         }
     }
     
-    private func request(with endpoint: Endpoint, completion: @escaping (Data?, CosmosNetworkingError?) -> Void) {
-        Alamofire.request(endpoint.request).responseJSON { response in
-            
-            guard let _ = response.response else {
-                completion(nil, .requestFailed)
-                return
+    func fetch<T: Decodable>(with request: URLRequest, parse: @escaping (Data) -> T?, completion: @escaping (Result<T, APIError>) -> Void) {
+        task(with: request) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .failure(let error):
+                    completion(.failure(error))
+                case .success(let data):
+                    guard let value = parse(data) else {
+                        completion(.failure(.jsonParsingFailure))
+                        return
+                    }
+                    completion(.success(value))
+                }
             }
-            guard let data = response.data else {
-                completion(nil, .responseUnsuccessful)
-                return
+        }.resume()
+    }
+    
+    func fetch<T: Decodable>(with request: URLRequest, parse: @escaping (Data) -> [T]?, completion: @escaping (Result<[T], APIError>) -> Void) {
+        task(with: request) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .failure(let error):
+                    completion(.failure(error))
+                case .success(let data):
+                    guard let values = parse(data) else {
+                        completion(.failure(.jsonParsingFailure))
+                        return
+                    }
+                    completion(.success(values))
+                }
             }
-            completion(data, nil)
+        }.resume()
+    }
+}
+
+enum APIError: Error {
+    case requestFailed
+    case jsonConversionFailure
+    case invalidData
+    case responseUnsuccessful
+    case jsonParsingFailure
+    
+    var localizedDescription: String {
+        switch self {
+        case .requestFailed: return "Request Failed"
+        case .invalidData: return "Invalid Data"
+        case .responseUnsuccessful: return "Response Unsuccessful"
+        case .jsonParsingFailure: return "JSON Parsing Failure"
+        case .jsonConversionFailure: return "JSON Conversion Failure"
         }
     }
 }

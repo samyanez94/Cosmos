@@ -17,7 +17,7 @@ class BaseCell: UICollectionViewCell {
     static let margin: CGFloat = 20.0
     
     /// Core Motion Manager
-    private let motionManager = CMMotionManager()
+//    private let motionManager = CMMotionManager()
     
     /// Long Press Gesture Recognizer
     private var longPressGestureRecognizer: UILongPressGestureRecognizer? = nil
@@ -51,16 +51,16 @@ class BaseCell: UICollectionViewCell {
         insertSubview(shadowView, at: 0)
         self.shadowView = shadowView
         
-        if motionManager.isDeviceMotionAvailable {
-            motionManager.deviceMotionUpdateInterval = 0.02
-            motionManager.startDeviceMotionUpdates(to: .main, withHandler: { (motion, error) in
-                if let motion = motion {
-                    let pitch = motion.attitude.pitch * 10 // x-axis
-                    let roll = motion.attitude.roll * 10 // y-axis
-                    self.applyShadow(width: CGFloat(roll), height: CGFloat(pitch))
-                }
-            })
-        }
+//        if motionManager.isDeviceMotionAvailable {
+//            motionManager.deviceMotionUpdateInterval = 0.02
+//            motionManager.startDeviceMotionUpdates(to: .main, withHandler: { (motion, error) in
+//                if let motion = motion {
+//                    let pitch = motion.attitude.pitch * 10 // x-axis
+//                    let roll = motion.attitude.roll * 10 // y-axis
+//                    self.applyShadow(width: CGFloat(roll), height: CGFloat(pitch))
+//                }
+//            })
+//        }
     }
     
     private func applyShadow(width: CGFloat, height: CGFloat) {

@@ -11,6 +11,8 @@ import UIKit
 class CosmosCell: BaseCell {
     
     static let identifier = "com.samuelyanez.CosmosCell"
+    
+    static let cornerRadius: CGFloat = 14.0
 
     /// Image View
     @IBOutlet var imageView: UIImageView!
@@ -28,16 +30,13 @@ class CosmosCell: BaseCell {
     @IBOutlet var dateLabel: UILabel!
     
     override func draw(_ rect: CGRect) {
-        // Bound subviews to the visible bounds of the container view.
         containerView.clipsToBounds = true
-        
-        // Set the corner radius
-        containerView.layer.cornerRadius = 14.0
+        containerView.layer.cornerRadius = CosmosCell.cornerRadius
     }
     
-    func updateLabels(for viewModel: APODViewModel) {
-        titleLabel.text = viewModel.title
-        dateLabel.text = viewModel.date
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        imageView.image = nil
+        imageView.af_cancelImageRequest()
     }
-
 }

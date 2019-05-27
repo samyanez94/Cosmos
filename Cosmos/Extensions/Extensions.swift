@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension DateFormatter {
     convenience init(locale: Locale, format: String) {

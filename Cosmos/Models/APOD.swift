@@ -7,22 +7,11 @@
 //
 
 import Foundation
-import UIKit
-
-enum MediaType: String, Codable {
-    case image
-    case video
-    
-    init?(type: String) {
-        switch type {
-        case "image": self = .image
-        case "video": self = .video
-        default: return nil
-        }
-    }
-}
 
 class APOD: Codable {
+    var id: String {
+        return UUID().uuidString
+    }
     
     let title: String
     let date: Date
@@ -40,33 +29,16 @@ class APOD: Codable {
         case url
     }
     
-    init(title: String, date: Date, explanation: String, mediaType: MediaType, copyright: String?, url: String) {
-        self.title = title
-        self.date = date
-        self.explanation = explanation
-        self.mediaType = mediaType
-        self.copyright = copyright
-        self.url = url
-    }
-}
-
-struct APODViewModel {
-    let title: String
-    let date: String
-    let explanation: String
-    var copyright: String?
-}
-
-extension APODViewModel {
-    init(for apod: APOD) {
-        let formatter = DateFormatter(locale: .current, format: "EEEE, MMM d")
+    enum MediaType: String, Codable {
+        case image
+        case video
         
-        title = apod.title
-        date = formatter.string(from: apod.date)
-        explanation = apod.explanation
-        
-        if let author = apod.copyright {
-            copyright = "Copyright: \(author)"
+        init?(type: String) {
+            switch type {
+            case "image": self = .image
+            case "video": self = .video
+            default: return nil
+            }
         }
     }
 }

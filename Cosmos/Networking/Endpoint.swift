@@ -29,7 +29,14 @@ extension Endpoint {
     }
 }
 
-struct CosmosEndpoint: Endpoint {
+enum CosmosEndpoint {
+    case today
+    case dated(date: Date)
+    case ranged(from: Date, to: Date)
+    case randomized(count: Int)
+}
+
+extension CosmosEndpoint: Endpoint {
 
     private var key: String {
         return "kMfnNhMKgdodjARiUj98FhQ9W0ogrnGjdnBda66n"
@@ -43,39 +50,32 @@ struct CosmosEndpoint: Endpoint {
         return "/planetary/apod"
     }
     
-    var queryItems = [URLQueryItem]()
-    
     var formatter: DateFormatter {
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "en_US_POSIX")
-        formatter.dateFormat = "yyyy-MM-dd"
-        return formatter
+        return DateFormatter(locale: Locale(identifier: "en_US_POSIX"), format: "yyyy-MM-dd")
     }
-    
-    init() {
-        let apiKeyItem = URLQueryItem(name: "api_key", value: key)
-        queryItems.append(apiKeyItem)
-    }
-    
-    init(from date: Date) {
-        self.init()
-        let dateString = formatter.string(from: date)
-        let dateKeyItem = URLQueryItem(name: "date", value: dateString)
-        queryItems.append(dateKeyItem)
-    }
-    
-    init(from: Date, to: Date) {
-        self.init()
-        let startDate = formatter.string(from: from)
-        let endDate = formatter.string(from: to)
-        let startDateKeyItem = URLQueryItem(name: "start_date", value: startDate)
-        let endDateKeyItem = URLQueryItem(name: "end_date", value: endDate)
-        queryItems.append(startDateKeyItem)
-        queryItems.append(endDateKeyItem)
-    }
-    
-    init(withCount count: Int) {
-        let countKeyItem = URLQueryItem(name: "count", value: String(count))
-        queryItems.append(countKeyItem)
+
+    var queryItems: [URLQueryItem] {
+        switch self  {
+        case .today:
+            return [
+                URLQueryItem(name: "api_key", value: key)
+            ]
+        case .dated(let date):
+            return [
+                URLQueryItem(name: "api_key", value: key),
+                URLQueryItem(name: "date", value: formatter.string(from: date))
+            ]
+        case .ranged(let from, let to):
+            return [
+                URLQueryItem(name: "api_key", value: key),
+                URLQueryItem(name: "start_date", value: formatter.string(from: from)),
+                URLQueryItem(name: "end_date", value: formatter.string(from: to))
+            ]
+        case .randomized(let count):
+            return [
+                URLQueryItem(name: "api_key", value: key),
+                URLQueryItem(name: "count", value: String(count))
+            ]
+        }
     }
 }

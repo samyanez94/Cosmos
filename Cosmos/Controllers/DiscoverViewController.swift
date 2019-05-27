@@ -11,15 +11,15 @@ import UIKit
 class DiscoverViewController: UIViewController {
         
     /// API Client
-    let client: APIClient = CosmosAPIClient()
-    
-    /// Collection View
-    @IBOutlet var collectionView: UICollectionView!
+    lazy var client = CosmosClient()
     
     /// Data Source
     lazy var dataSource: DiscoverDataSource = {
-        return DiscoverDataSource(collectionView: collectionView, apods: [])
+        return DiscoverDataSource(collectionView: collectionView)
     }()
+    
+    /// Collection View
+    @IBOutlet var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,9 +38,8 @@ class DiscoverViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowDetails" {
             if let selectedIndexPath = collectionView.indexPathsForSelectedItems {
-                let selectedAPOD = dataSource.apod(at: selectedIndexPath[0])
+                let selectedAPOD = dataSource.object(at: selectedIndexPath[0])
                 let detailViewController = segue.destination as! DetailViewController
-                
                 detailViewController.apod = selectedAPOD
             }
         }
@@ -49,19 +48,16 @@ class DiscoverViewController: UIViewController {
     // MARK: Networking
     
     func fetch(completion: (() -> Void)? = nil) {
-        client.fetch { [unowned self] (apods, error) in
-            
-            if let error = error {
+        client.fetch { [weak self] result in
+            switch result {
+            case .failure(let error):
                 print(error.localizedDescription)
+            case .success(let apods):
+                self?.dataSource.append(apods.reversed())
+                self?.collectionView.reloadData()
             }
-        
-            if let apods = apods {
-                self.dataSource.append(apods)
-                self.collectionView.reloadData()
-                
-                if let completion = completion {
-                    completion()
-                }
+            if let completion = completion {
+                completion()
             }
         }
     }
