@@ -12,6 +12,8 @@ class BaseCell: UICollectionViewCell {
     
     static let height: CGFloat = 450
     
+    var feedbackGenerator: UISelectionFeedbackGenerator?
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         configureGestureRecognizer()
@@ -34,9 +36,14 @@ class BaseCell: UICollectionViewCell {
     }
     
     private func handleLongPressBegan() {
+        feedbackGenerator = UISelectionFeedbackGenerator()
+        feedbackGenerator?.prepare()
         UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.2, options: .beginFromCurrentState, animations: {
             self.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
-        }, completion: nil)
+            self.feedbackGenerator?.selectionChanged()
+        }, completion: { success in
+            self.feedbackGenerator = nil
+        })
     }
     
     private func handleLongPressEnded() {

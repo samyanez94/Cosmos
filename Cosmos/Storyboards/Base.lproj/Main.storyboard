@@ -73,7 +73,7 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="330" height="450"/>
                                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </imageView>
-                                                        <view alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VH7-Qi-Scl" userLabel="Header View">
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VH7-Qi-Scl" userLabel="Header View">
                                                             <rect key="frame" x="0.0" y="0.0" width="330" height="120"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friday, Jul 27" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xa1-Gx-3a5" userLabel="Date Label">
@@ -89,7 +89,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
-                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="trailing" secondItem="0aM-Eg-prD" secondAttribute="trailing" constant="20" id="D5Q-8k-sxc"/>
                                                                 <constraint firstItem="0aM-Eg-prD" firstAttribute="top" secondItem="xa1-Gx-3a5" secondAttribute="bottom" constant="5" id="EA3-CZ-u02"/>
@@ -128,7 +128,7 @@
                                             <outlet property="headerView" destination="VH7-Qi-Scl" id="tpw-Zb-Aoi"/>
                                             <outlet property="imageView" destination="Kt9-WC-Du9" id="w1B-CJ-PNX"/>
                                             <outlet property="titleLabel" destination="0aM-Eg-prD" id="Lc6-Se-RWg"/>
-                                            <segue destination="pvg-rG-IcB" kind="presentation" identifier="ShowDetails" id="ScT-wc-b1g"/>
+                                            <segue destination="pvg-rG-IcB" kind="presentation" identifier="ShowDetails" modalPresentationStyle="overFullScreen" id="ScT-wc-b1g"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -235,7 +235,7 @@
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="0le-FM-EVS" firstAttribute="top" secondItem="8t4-tN-YBp" secondAttribute="bottom" constant="8" id="0Rc-3z-a1G"/>
                                             <constraint firstItem="pI4-UD-5aW" firstAttribute="leading" secondItem="jD7-Q8-wNu" secondAttribute="leading" constant="8" id="Aum-x9-eJq"/>
@@ -257,6 +257,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="jD7-Q8-wNu" secondAttribute="bottom" id="Cfa-hL-mi7"/>
                                     <constraint firstItem="jD7-Q8-wNu" firstAttribute="height" secondItem="WbU-fF-hhF" secondAttribute="height" priority="250" id="L3c-kc-xqa"/>
