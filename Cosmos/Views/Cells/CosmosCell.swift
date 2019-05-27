@@ -12,8 +12,8 @@ class CosmosCell: BaseCell {
     
     static let identifier = "com.samuelyanez.CosmosCell"
     
-    static let cornerRadius: CGFloat = 14.0
-
+    static let cornerRadius: CGFloat = 20
+    
     /// Image View
     @IBOutlet var imageView: UIImageView!
     
@@ -30,13 +30,26 @@ class CosmosCell: BaseCell {
     @IBOutlet var dateLabel: UILabel!
     
     override func draw(_ rect: CGRect) {
-        containerView.clipsToBounds = true
-        containerView.layer.cornerRadius = CosmosCell.cornerRadius
+        setupShadow()
+        setupBorderRadius()
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
         imageView.image = nil
         imageView.af_cancelImageRequest()
+    }
+    
+    private func setupShadow() {
+        layer.cornerRadius = 20
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = 0.2
+        layer.shadowRadius = 10
+        layer.shadowOffset = CGSize(width: -1, height: 2)
+        layer.masksToBounds = false
+    }
+    
+    private func setupBorderRadius() {
+        containerView.layer.cornerRadius = CosmosCell.cornerRadius
     }
 }
