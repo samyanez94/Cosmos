@@ -33,20 +33,42 @@
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7YX-ug-AZK" userLabel="Error View">
                                 <rect key="frame" x="0.0" y="20" width="375" height="598"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Well this is embarrasing. It looks like something went wrong." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SKU-Ol-47o" userLabel="Error Label">
-                                        <rect key="frame" x="62.5" y="282.5" width="250" height="33.5"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="250" id="KVV-fN-n1Q"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="tM6-Og-B1d">
+                                        <rect key="frame" x="62.5" y="239" width="250" height="120.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Well this is embarrasing. It looks like something went wrong." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SKU-Ol-47o" userLabel="Error Label">
+                                                <rect key="frame" x="0.0" y="0.0" width="250" height="33.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="250" id="KVV-fN-n1Q"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" red="0.2627450980392157" green="0.2627450980392157" blue="0.2627450980392157" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="refresh-icon" translatesAutoresizingMaskIntoConstraints="NO" id="JhR-iP-lEy" userLabel="Refresh Image">
+                                                <rect key="frame" x="110" y="53.5" width="30" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="0ZF-CV-UcY"/>
+                                                    <constraint firstAttribute="width" constant="30" id="mZP-HM-w72"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please, tap here to try again." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ad-yr-SKS" userLabel="Refresh Label">
+                                                <rect key="frame" x="32.5" y="103.5" width="185" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="w6O-1H-2dq" appends="YES" id="MX7-9a-cBn"/>
+                                        </connections>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="SKU-Ol-47o" firstAttribute="centerX" secondItem="7YX-ug-AZK" secondAttribute="centerX" id="OQb-S1-9bb"/>
-                                    <constraint firstItem="SKU-Ol-47o" firstAttribute="centerY" secondItem="7YX-ug-AZK" secondAttribute="centerY" id="f6r-Xq-FMm"/>
+                                    <constraint firstItem="tM6-Og-B1d" firstAttribute="centerY" secondItem="7YX-ug-AZK" secondAttribute="centerY" id="Z8M-DN-wLh"/>
+                                    <constraint firstItem="tM6-Og-B1d" firstAttribute="centerX" secondItem="7YX-ug-AZK" secondAttribute="centerX" id="ZbH-2N-Ar1"/>
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7gZ-3I-C86">
@@ -174,6 +196,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="w6O-1H-2dq">
+                    <connections>
+                        <action selector="didTapOnRefreshButton:" destination="BYZ-38-t0r" id="dFe-ZT-Fca"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1977" y="-487"/>
         </scene>
@@ -249,7 +276,6 @@
                                             <constraint firstItem="8t4-tN-YBp" firstAttribute="leading" secondItem="jD7-Q8-wNu" secondAttribute="leading" constant="8" id="gx9-fC-Q2f"/>
                                             <constraint firstAttribute="trailing" secondItem="Nkd-GL-XHS" secondAttribute="trailing" id="ies-cw-UWN"/>
                                             <constraint firstItem="P7D-ZV-vbx" firstAttribute="leading" secondItem="jD7-Q8-wNu" secondAttribute="leading" constant="8" id="mak-J5-eKm"/>
-                                            <constraint firstItem="Nkd-GL-XHS" firstAttribute="top" secondItem="jD7-Q8-wNu" secondAttribute="top" id="mry-V6-7tU"/>
                                             <constraint firstItem="P7D-ZV-vbx" firstAttribute="top" secondItem="pI4-UD-5aW" secondAttribute="bottom" constant="16" id="naH-xG-ch9"/>
                                             <constraint firstItem="Nkd-GL-XHS" firstAttribute="leading" secondItem="jD7-Q8-wNu" secondAttribute="leading" id="pEG-Xg-pWc"/>
                                             <constraint firstAttribute="trailing" secondItem="P7D-ZV-vbx" secondAttribute="trailing" constant="8" id="qtu-Xv-nZX"/>
@@ -266,6 +292,7 @@
                                     <constraint firstItem="jD7-Q8-wNu" firstAttribute="leading" secondItem="WbU-fF-hhF" secondAttribute="leading" id="S6u-cx-kSV"/>
                                     <constraint firstItem="jD7-Q8-wNu" firstAttribute="width" secondItem="WbU-fF-hhF" secondAttribute="width" id="Tjh-Fw-Vcj"/>
                                     <constraint firstItem="Hoh-5d-IBH" firstAttribute="top" secondItem="Fa9-LQ-VnG" secondAttribute="top" id="nhf-Lm-2C3"/>
+                                    <constraint firstItem="Hoh-5d-IBH" firstAttribute="top" secondItem="Nkd-GL-XHS" secondAttribute="top" id="peZ-uD-Inp"/>
                                 </constraints>
                                 <viewLayoutGuide key="safeArea" id="Hoh-5d-IBH"/>
                             </scrollView>
@@ -296,7 +323,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2926" y="-488"/>
+            <point key="canvasLocation" x="2854" y="-337"/>
         </scene>
         <!--About-->
         <scene sceneID="Tk8-RZ-ZG2">
@@ -340,5 +367,6 @@
         <image name="Info" width="25" height="25"/>
         <image name="Rocket" width="25" height="25"/>
         <image name="close-icon" width="88" height="88"/>
+        <image name="refresh-icon" width="80" height="80"/>
     </resources>
 </document>

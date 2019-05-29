@@ -35,7 +35,6 @@ class DiscoverViewController: UIViewController {
         collectionView.isHidden = true
         
         activityIndicatorView.isHidden = false
-
         fetch() {
             self.activityIndicatorView.isHidden = true
         }
@@ -74,8 +73,16 @@ class DiscoverViewController: UIViewController {
         }
     }
     
+    @IBAction func didTapOnRefreshButton(_ sender: Any) {
+        errorView.isHidden = true
+        activityIndicatorView.isHidden = false
+        fetch() {
+            self.activityIndicatorView.isHidden = true
+        }
+    }
+    
     func scrollToTop() {
-        self.collectionView.setContentOffset(CGPoint.zero, animated: true)
+    self.collectionView.setContentOffset(CGPoint.zero, animated: true)
     }
 }
 
