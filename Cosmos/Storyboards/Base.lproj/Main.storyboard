@@ -150,7 +150,7 @@
                                             <outlet property="headerView" destination="VH7-Qi-Scl" id="tpw-Zb-Aoi"/>
                                             <outlet property="imageView" destination="Kt9-WC-Du9" id="w1B-CJ-PNX"/>
                                             <outlet property="titleLabel" destination="0aM-Eg-prD" id="Lc6-Se-RWg"/>
-                                            <segue destination="pvg-rG-IcB" kind="presentation" identifier="ShowDetails" modalPresentationStyle="overFullScreen" id="ScT-wc-b1g"/>
+                                            <segue destination="pvg-rG-IcB" kind="presentation" identifier="ShowDetails" modalPresentationStyle="fullScreen" id="ScT-wc-b1g"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -292,7 +292,7 @@
                                     <constraint firstItem="jD7-Q8-wNu" firstAttribute="leading" secondItem="WbU-fF-hhF" secondAttribute="leading" id="S6u-cx-kSV"/>
                                     <constraint firstItem="jD7-Q8-wNu" firstAttribute="width" secondItem="WbU-fF-hhF" secondAttribute="width" id="Tjh-Fw-Vcj"/>
                                     <constraint firstItem="Hoh-5d-IBH" firstAttribute="top" secondItem="Fa9-LQ-VnG" secondAttribute="top" id="nhf-Lm-2C3"/>
-                                    <constraint firstItem="Hoh-5d-IBH" firstAttribute="top" secondItem="Nkd-GL-XHS" secondAttribute="top" id="peZ-uD-Inp"/>
+                                    <constraint firstItem="jD7-Q8-wNu" firstAttribute="top" secondItem="Nkd-GL-XHS" secondAttribute="top" id="peZ-uD-Inp"/>
                                 </constraints>
                                 <viewLayoutGuide key="safeArea" id="Hoh-5d-IBH"/>
                             </scrollView>
