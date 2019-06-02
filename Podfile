@@ -6,4 +6,5 @@ target 'Cosmos' do
 
   # Pods
     pod 'AlamofireImage', '~> 3.5'
+    pod 'Lightbox', '~> 2.3'
 end
