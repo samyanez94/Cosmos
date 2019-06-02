@@ -7,9 +7,8 @@
 //
 
 import UIKit
-import AVKit
-import QuickLook
 import AlamofireImage
+import Lightbox
 
 class DetailViewController: UIViewController {
         
@@ -19,9 +18,6 @@ class DetailViewController: UIViewController {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var explanationLabel: UILabel!
     @IBOutlet var copyrightLabel: UILabel!
-    
-    // Quick look controller
-    let previewController = QLPreviewController()
     
     /// Sets the status bar to be hidden.
     override var prefersStatusBarHidden: Bool {
@@ -66,6 +62,11 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func didTapOnImage(_ sender: Any) {
-        present(previewController, animated: true)
+        if let _ = apod, let image = imageView.image {
+            let lighboxImage = LightboxImage(image: image)
+            let lightboxController = LightboxController(images: [lighboxImage])
+            lightboxController.dynamicBackground = true
+            present(lightboxController, animated: true)
+        }
     }
 }

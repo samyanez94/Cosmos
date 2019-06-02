@@ -251,7 +251,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fa9-LQ-VnG" userLabel="Close Button">
-                                                <rect key="frame" x="325" y="0.0" width="40" height="40"/>
+                                                <rect key="frame" x="318" y="0.0" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="8Y7-py-OMO"/>
                                                     <constraint firstAttribute="width" constant="40" id="Wpn-WZ-sAN"/>
@@ -269,7 +269,7 @@
                                             <constraint firstAttribute="trailing" secondItem="8t4-tN-YBp" secondAttribute="trailing" constant="8" id="Fmg-dE-QV0"/>
                                             <constraint firstItem="8t4-tN-YBp" firstAttribute="top" secondItem="Nkd-GL-XHS" secondAttribute="bottom" constant="8" id="JL0-HV-2vs"/>
                                             <constraint firstItem="0le-FM-EVS" firstAttribute="leading" secondItem="jD7-Q8-wNu" secondAttribute="leading" constant="8" id="SSn-Rc-VjG"/>
-                                            <constraint firstAttribute="trailing" secondItem="Fa9-LQ-VnG" secondAttribute="trailing" constant="10" id="bCX-6f-5sQ"/>
+                                            <constraint firstAttribute="trailing" secondItem="Fa9-LQ-VnG" secondAttribute="trailing" constant="17" id="bCX-6f-5sQ"/>
                                             <constraint firstAttribute="trailing" secondItem="0le-FM-EVS" secondAttribute="trailing" constant="8" id="d2Y-r7-f3C"/>
                                             <constraint firstAttribute="trailing" secondItem="pI4-UD-5aW" secondAttribute="trailing" constant="8" id="fI9-A4-2Xy"/>
                                             <constraint firstItem="pI4-UD-5aW" firstAttribute="top" secondItem="0le-FM-EVS" secondAttribute="bottom" constant="16" id="ggl-cO-YOq"/>
