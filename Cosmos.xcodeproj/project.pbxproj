@@ -15,7 +15,6 @@
 		2252203C2104391100221D29 /* Cosmos.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2252203A2104391100221D29 /* Cosmos.xcdatamodeld */; };
 		225220412104391200221D29 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2252203F2104391200221D29 /* LaunchScreen.storyboard */; };
 		2252204921043C0E00221D29 /* APOD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2252204821043C0E00221D29 /* APOD.swift */; };
-		22779ABD7CA1A519745E2915 /* Pods_Cosmos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 523698EF916740C4BFD9F99D /* Pods_Cosmos.framework */; };
 		22AA95B021055E47001B755F /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AA95AF21055E47001B755F /* Endpoint.swift */; };
 		22B3810A2104569000DCDC24 /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B381092104569000DCDC24 /* BaseCell.swift */; };
 		22B381122104583800DCDC24 /* CosmosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B381102104583800DCDC24 /* CosmosCell.swift */; };
@@ -25,6 +24,7 @@
 		22D47127211C0E5A0006EAD6 /* DiscoverDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D47126211C0E5A0006EAD6 /* DiscoverDataSource.swift */; };
 		22DABE4221BC617F004D6EBF /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DABE4121BC617F004D6EBF /* TabBarViewController.swift */; };
 		22DABE4421BC79D8004D6EBF /* CosmosError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DABE4321BC79D8004D6EBF /* CosmosError.swift */; };
+		22F711B722A8EC5200F71646 /* Pods_Cosmos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 523698EF916740C4BFD9F99D /* Pods_Cosmos.framework */; };
 		22FA5F09229B4EC000E27EC4 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA5F08229B4EC000E27EC4 /* APIClient.swift */; };
 /* End PBXBuildFile section */
 
@@ -59,7 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22779ABD7CA1A519745E2915 /* Pods_Cosmos.framework in Frameworks */,
+				22F711B722A8EC5200F71646 /* Pods_Cosmos.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
