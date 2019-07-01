@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -199,6 +199,7 @@
 			buildConfigurationList = 225220452104391200221D29 /* Build configuration list for PBXNativeTarget "Cosmos" */;
 			buildPhases = (
 				823ED39ECC2F9737B111F087 /* [CP] Check Pods Manifest.lock */,
+				2205F34922C995F600EB80B8 /* ShellScript */,
 				2252202C2104391100221D29 /* Sources */,
 				2252202D2104391100221D29 /* Frameworks */,
 				2252202E2104391100221D29 /* Resources */,
@@ -253,14 +254,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				225220412104391200221D29 /* LaunchScreen.storyboard in Resources */,
-				2244523B212D08A100889244 /* Assets.xcassets in Resources */,
 				225220392104391100221D29 /* Main.storyboard in Resources */,
+				2244523B212D08A100889244 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2205F34922C995F600EB80B8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
 		823ED39ECC2F9737B111F087 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

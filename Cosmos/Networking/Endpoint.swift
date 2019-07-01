@@ -55,7 +55,7 @@ extension CosmosEndpoint: Endpoint {
     }
 
     var queryItems: [URLQueryItem] {
-        switch self  {
+        switch self {
         case .today:
             return [
                 URLQueryItem(name: "api_key", value: key)

@@ -35,7 +35,7 @@ class DiscoverViewController: UIViewController {
         collectionView.isHidden = true
         
         activityIndicatorView.isHidden = false
-        fetch() {
+        fetch {
             self.activityIndicatorView.isHidden = true
         }
     }
@@ -46,8 +46,9 @@ class DiscoverViewController: UIViewController {
         if segue.identifier == "ShowDetails" {
             if let selectedIndexPath = collectionView.indexPathsForSelectedItems {
                 let selectedAPOD = dataSource.object(at: selectedIndexPath[0])
-                let detailViewController = segue.destination as! DetailViewController
-                detailViewController.apod = selectedAPOD
+                if let detailViewController = segue.destination as? DetailViewController {
+                    detailViewController.apod = selectedAPOD
+                }
             }
         }
     }
@@ -76,7 +77,7 @@ class DiscoverViewController: UIViewController {
     @IBAction func didTapOnRefreshButton(_ sender: Any) {
         errorView.isHidden = true
         activityIndicatorView.isHidden = false
-        fetch() {
+        fetch {
             self.activityIndicatorView.isHidden = true
         }
     }
@@ -91,7 +92,7 @@ class DiscoverViewController: UIViewController {
 extension DiscoverViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if (dataSource.apods.count == indexPath.row + 1) {
+        if dataSource.apods.count == indexPath.row + 1 {
             fetch()
         }
     }

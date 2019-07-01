@@ -43,23 +43,26 @@ class DiscoverDataSource: NSObject, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CosmosCell.identifier, for: indexPath) as! CosmosCell
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CosmosCell.identifier, for: indexPath) as? CosmosCell {
         
-        let apod = apods[indexPath.row]
-        
-        let viewModel = APODViewModel(with: apod)
-        
-        cell.titleLabel.text = viewModel.title
-        cell.dateLabel.text = viewModel.date
-        
-        switch apod.mediaType {
-        case .image:
-            if let url = URL(string: apod.url) {
-                cell.imageView.af_setImage(withURL: url, imageTransition: .crossDissolve(0.2))
+            let apod = apods[indexPath.row]
+            
+            let viewModel = APODViewModel(with: apod)
+            
+            cell.titleLabel.text = viewModel.title
+            cell.dateLabel.text = viewModel.date
+            
+            switch apod.mediaType {
+            case .image:
+                if let url = URL(string: apod.url) {
+                    cell.imageView.af_setImage(withURL: url, imageTransition: .crossDissolve(0.2))
+                }
+            case .video:
+                cell.imageView.image = UIImage(named: "invalid-placeholder")
             }
-        case .video:
-            cell.imageView.image = UIImage(named: "invalid-placeholder")
+            return cell
+        } else {
+            return UICollectionViewCell()
         }
-        return cell
     }
 }

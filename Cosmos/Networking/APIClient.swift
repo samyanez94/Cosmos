@@ -19,7 +19,7 @@ protocol APIClient {
 extension APIClient {
     
     func task(with request: URLRequest, completionHandler completion: @escaping (Swift.Result<Data, APIError>) -> Void) -> URLSessionDataTask {
-        return session.dataTask(with: request) { data, response, error in
+        return session.dataTask(with: request) { data, response, _ in
             guard let httpResponse = response as? HTTPURLResponse else {
                 completion(.failure(.requestFailed))
                 return

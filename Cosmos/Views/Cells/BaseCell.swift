@@ -41,7 +41,7 @@ class BaseCell: UICollectionViewCell {
         UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.2, options: .beginFromCurrentState, animations: {
             self.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
             self.feedbackGenerator?.selectionChanged()
-        }, completion: { success in
+        }, completion: { _ in
             self.feedbackGenerator = nil
         })
     }

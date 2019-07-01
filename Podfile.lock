@@ -7,10 +7,12 @@ PODS:
     - Cache (~> 5.0)
   - Lightbox (2.3.0):
     - Imaginary (~> 4.0)
+  - SwiftLint (0.33.0)
 
 DEPENDENCIES:
   - AlamofireImage (~> 3.5)
   - Lightbox (~> 2.3)
+  - SwiftLint
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -19,6 +21,7 @@ SPEC REPOS:
     - Cache
     - Imaginary
     - Lightbox
+    - SwiftLint
 
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
@@ -26,7 +29,8 @@ SPEC CHECKSUMS:
   Cache: 807c5d86d01a177f06ede9865add3aea269bbfd4
   Imaginary: dae33d06dbc2ada22f98afef5eb45cc061311a2c
   Lightbox: d317750e4132bfb871a5307cfe0a2c7d6a583c65
+  SwiftLint: fed9c66336e41fc74dc48a73678380718f0c8b0e
 
-PODFILE CHECKSUM: ab83c75933641a1b4ef3738276baaa6ea26a65ce
+PODFILE CHECKSUM: 33794e301e621c8502353763e4a42f299ee18955
 
 COCOAPODS: 1.7.3

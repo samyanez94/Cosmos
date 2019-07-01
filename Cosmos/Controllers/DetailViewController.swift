@@ -62,7 +62,7 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func didTapOnImage(_ sender: Any) {
-        if let _ = apod, let image = imageView.image {
+        if apod != nil, let image = imageView.image {
             let lighboxImage = LightboxImage(image: image)
             let lightboxController = LightboxController(images: [lighboxImage])
             lightboxController.dynamicBackground = true

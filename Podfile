@@ -7,6 +7,7 @@ target 'Cosmos' do
   use_frameworks!
 
   # Pods
+    pod 'SwiftLint'
     pod 'AlamofireImage', '~> 3.5'
     pod 'Lightbox', '~> 2.3'
 end

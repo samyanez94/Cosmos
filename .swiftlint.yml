@@ -1,0 +1,13 @@
+excluded:
+  - Pods
+
+# Rule identifiers to exclude from running
+disabled_rules:
+  - trailing_whitespace
+
+# Minimum line length
+line_length: 240
+
+# Minimum identifier length
+identifier_name:
+  min_length: 2
