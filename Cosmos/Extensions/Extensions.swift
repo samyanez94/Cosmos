@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import WebKit
 
 extension DateFormatter {
     convenience init(locale: Locale, format: String) {
@@ -21,5 +22,11 @@ extension JSONDecoder {
     convenience init(dateDecodingStrategy: DateDecodingStrategy) {
         self.init()
         self.dateDecodingStrategy = dateDecodingStrategy
+    }
+}
+
+extension WKWebView {
+    override open var safeAreaInsets: UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
 }
