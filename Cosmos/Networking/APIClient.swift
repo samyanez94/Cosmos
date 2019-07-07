@@ -72,6 +72,7 @@ extension APIClient {
 }
 
 enum APIError: Error {
+    case invalidLocation
     case requestFailed
     case jsonConversionFailure
     case invalidData
@@ -80,6 +81,7 @@ enum APIError: Error {
     
     var localizedDescription: String {
         switch self {
+        case .invalidLocation: return "Invalid Location"
         case .requestFailed: return "Request Failed"
         case .invalidData: return "Invalid Data"
         case .responseUnsuccessful: return "Response Unsuccessful"

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2202F50D211ECE4700DEFDE1 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2202F50C211ECE4700DEFDE1 /* DetailViewController.swift */; };
+		222DDF6222D285E800BE3645 /* MockClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222DDF6122D285E800BE3645 /* MockClient.swift */; };
+		222DDF6522D2869E00BE3645 /* apod-response.json in Resources */ = {isa = PBXBuildFile; fileRef = 222DDF6422D2869E00BE3645 /* apod-response.json */; };
 		2244523B212D08A100889244 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2244523A212D08A100889244 /* Assets.xcassets */; };
 		225220342104391100221D29 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225220332104391100221D29 /* AppDelegate.swift */; };
 		225220362104391100221D29 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225220352104391100221D29 /* DiscoverViewController.swift */; };
@@ -30,6 +32,8 @@
 
 /* Begin PBXFileReference section */
 		2202F50C211ECE4700DEFDE1 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		222DDF6122D285E800BE3645 /* MockClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockClient.swift; sourceTree = "<group>"; };
+		222DDF6422D2869E00BE3645 /* apod-response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "apod-response.json"; sourceTree = "<group>"; };
 		2244523A212D08A100889244 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		225220302104391100221D29 /* Cosmos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cosmos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		225220332104391100221D29 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -102,6 +106,14 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
+		222DDF6322D2863900BE3645 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				222DDF6422D2869E00BE3645 /* apod-response.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		225220272104391100221D29 = {
 			isa = PBXGroup;
 			children = (
@@ -129,6 +141,7 @@
 				221AC07521059C60006006B7 /* Controllers */,
 				22AA95AE21055DE7001B755F /* Models */,
 				22AA95AD21055DD9001B755F /* Networking */,
+				222DDF6322D2863900BE3645 /* Resources */,
 				225810A2213674E900ECBCC3 /* Extensions */,
 				225220332104391100221D29 /* AppDelegate.swift */,
 				2252203A2104391100221D29 /* Cosmos.xcdatamodeld */,
@@ -168,6 +181,7 @@
 				22AA95AF21055E47001B755F /* Endpoint.swift */,
 				22FA5F08229B4EC000E27EC4 /* APIClient.swift */,
 				22BC0A0C21056A580086BB19 /* CosmosClient.swift */,
+				222DDF6122D285E800BE3645 /* MockClient.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -255,6 +269,7 @@
 			files = (
 				225220412104391200221D29 /* LaunchScreen.storyboard in Resources */,
 				225220392104391100221D29 /* Main.storyboard in Resources */,
+				222DDF6522D2869E00BE3645 /* apod-response.json in Resources */,
 				2244523B212D08A100889244 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -325,6 +340,7 @@
 				22FA5F09229B4EC000E27EC4 /* APIClient.swift in Sources */,
 				22B3810A2104569000DCDC24 /* BaseCell.swift in Sources */,
 				22DABE4421BC79D8004D6EBF /* CosmosError.swift in Sources */,
+				222DDF6222D285E800BE3645 /* MockClient.swift in Sources */,
 				225220362104391100221D29 /* DiscoverViewController.swift in Sources */,
 				22AA95B021055E47001B755F /* Endpoint.swift in Sources */,
 				22C3174421D04CA500A26D00 /* APODViewModel.swift in Sources */,

@@ -11,7 +11,7 @@ import UIKit
 class DiscoverViewController: UIViewController {
         
     /// API Client
-    lazy var client = CosmosClient()
+    lazy var client = MockClient()
     
     /// Data Source
     lazy var dataSource: DiscoverDataSource = {

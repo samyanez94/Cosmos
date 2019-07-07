@@ -58,7 +58,11 @@ class DiscoverDataSource: NSObject, UICollectionViewDataSource {
                     cell.imageView.af_setImage(withURL: url, imageTransition: .crossDissolve(0.2))
                 }
             case .video:
-                cell.imageView.image = UIImage(named: "invalid-placeholder")
+                // TODO: Handle case where there is no thumbnail URL
+                if let thumbnailUrl = apod.thumbnailUrl, let url = URL(string: thumbnailUrl) {
+                    cell.imageView.contentMode = .scaleAspectFill
+                    cell.imageView.af_setImage(withURL: url, imageTransition: .crossDissolve(0.2))
+                }
             }
             return cell
         } else {
