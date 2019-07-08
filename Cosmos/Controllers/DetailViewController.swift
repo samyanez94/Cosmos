@@ -19,6 +19,7 @@ class DetailViewController: UIViewController {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var explanationLabel: UILabel!
     @IBOutlet var copyrightLabel: UILabel!
+    @IBOutlet var shareButton: UIButton!
     
     let activityIndicator = UIActivityIndicatorView()
     
@@ -28,6 +29,10 @@ class DetailViewController: UIViewController {
     /// Sets the status bar to be hidden.
     override var prefersStatusBarHidden: Bool {
         true
+    }
+    
+    override func viewWillLayoutSubviews() {
+        shareButton.layer.cornerRadius = 5
     }
     
     override func viewDidLoad() {
@@ -101,6 +106,8 @@ class DetailViewController: UIViewController {
             lightboxController.dynamicBackground = true
             present(lightboxController, animated: true)
         }
+    }
+    @IBAction func didTapOnShare(_ sender: Any) {
     }
 }
 
