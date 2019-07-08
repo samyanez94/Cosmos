@@ -40,6 +40,10 @@ class DiscoverViewController: UIViewController {
         }
     }
     
+    override func viewWillLayoutSubviews() {
+    collectionView.collectionViewLayout.invalidateLayout()
+    }
+    
     // MARK: Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -95,5 +99,14 @@ extension DiscoverViewController: UICollectionViewDelegate {
         if dataSource.apods.count == indexPath.row + 1 {
             fetch()
         }
+    }
+}
+
+extension DiscoverViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.bounds.size.width, height: collectionView.bounds.size.width * 1.2)
     }
 }
