@@ -20,12 +20,14 @@ class DetailViewController: UIViewController {
     @IBOutlet var explanationLabel: UILabel!
     @IBOutlet var copyrightLabel: UILabel!
     
+    let activityIndicator = UIActivityIndicatorView()
+    
     /// The current astronomical picture of the day.
     var apod: APOD?
     
     /// Sets the status bar to be hidden.
     override var prefersStatusBarHidden: Bool {
-        return true
+        true
     }
     
     override func viewDidLoad() {
@@ -53,6 +55,7 @@ class DetailViewController: UIViewController {
                 setupImageView(with: url)
             case .video:
                 setupWebView(with: url)
+                setupActivityIndicator()
             }
         }
     }
@@ -63,17 +66,30 @@ class DetailViewController: UIViewController {
         let imageView = UIImageView(frame: mediaView.frame)
         imageView.contentMode = .scaleAspectFill
         imageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        imageView.isUserInteractionEnabled = true
         imageView.af_setImage(withURL: url, imageTransition: .crossDissolve(0.2))
+        imageView.isUserInteractionEnabled = true
         imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapOnImage(_:))))
+        
         mediaView.addSubview(imageView)
     }
     
     private func setupWebView(with url: URL) {
         let webView = WKWebView(frame: mediaView.frame)
+        webView.navigationDelegate = self
         webView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         webView.load(URLRequest(url: url))
+        
         mediaView.addSubview(webView)
+    }
+    
+    private func setupActivityIndicator() {
+        activityIndicator.center = mediaView.center
+        activityIndicator.style = .gray
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.startAnimating()
+        activityIndicator.autoresizingMask = [.flexibleLeftMargin, .flexibleRightMargin, .flexibleTopMargin, .flexibleBottomMargin]
+        
+        mediaView.addSubview(activityIndicator)
     }
     
     // MARK: User Interaction
@@ -86,8 +102,17 @@ class DetailViewController: UIViewController {
             present(lightboxController, animated: true)
         }
     }
+}
+
+// MARK: Web View Navigation Delegate
+
+extension DetailViewController: WKNavigationDelegate {
     
-    @IBAction func dismiss(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        activityIndicator.stopAnimating()
+    }
+    
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        activityIndicator.stopAnimating()
     }
 }

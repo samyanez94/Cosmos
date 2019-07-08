@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Discover-->
+        <!--Discover View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="DiscoverViewController" customModule="Cosmos" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,10 +17,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fBP-h8-anF" userLabel="Loading Indicator View">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="431"/>
+                                <rect key="frame" x="0.0" y="44" width="320" height="387"/>
                                 <subviews>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="NqR-N5-kDt">
-                                        <rect key="frame" x="150" y="205.5" width="20" height="20"/>
+                                        <rect key="frame" x="150" y="183.5" width="20" height="20"/>
                                     </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -30,10 +30,10 @@
                                 </constraints>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7YX-ug-AZK" userLabel="Error View">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="431"/>
+                                <rect key="frame" x="0.0" y="44" width="320" height="387"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="tM6-Og-B1d">
-                                        <rect key="frame" x="35" y="155.5" width="250" height="120.5"/>
+                                        <rect key="frame" x="35" y="133.5" width="250" height="120.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Well this is embarrasing. It looks like something went wrong." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SKU-Ol-47o" userLabel="Error Label">
                                                 <rect key="frame" x="0.0" y="0.0" width="250" height="33.5"/>
@@ -71,7 +71,7 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7gZ-3I-C86">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="431"/>
+                                <rect key="frame" x="0.0" y="44" width="320" height="387"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="20" id="Alg-og-nhd">
                                     <size key="itemSize" width="370" height="450"/>
@@ -149,7 +149,7 @@
                                             <outlet property="headerView" destination="VH7-Qi-Scl" id="tpw-Zb-Aoi"/>
                                             <outlet property="imageView" destination="Kt9-WC-Du9" id="w1B-CJ-PNX"/>
                                             <outlet property="titleLabel" destination="0aM-Eg-prD" id="Lc6-Se-RWg"/>
-                                            <segue destination="pvg-rG-IcB" kind="presentation" identifier="ShowDetails" modalPresentationStyle="fullScreen" id="ScT-wc-b1g"/>
+                                            <segue destination="pvg-rG-IcB" kind="show" identifier="ShowDetails" id="p4k-sw-FCZ"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -186,7 +186,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Discover" image="Rocket" id="pqP-5p-aAr"/>
                     <navigationItem key="navigationItem" id="yaE-XS-6fz"/>
                     <connections>
                         <outlet property="activityIndicatorView" destination="fBP-h8-anF" id="IYs-Er-zyB"/>
@@ -201,7 +200,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1977" y="-487"/>
+            <point key="canvasLocation" x="2973.75" y="-487.5"/>
         </scene>
         <!--Detail-->
         <scene sceneID="JAa-Sy-ryq">
@@ -212,13 +211,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WbU-fF-hhF">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="907"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jD7-Q8-wNu" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="907"/>
                                         <subviews>
                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CdN-LI-FWa" userLabel="Media View">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="445"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="352"/>
                                                 <color key="backgroundColor" red="0.2196078431372549" green="0.30196078431372547" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="700" id="9Uc-1n-8ah"/>
@@ -226,37 +225,26 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friday, Jul 27" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8t4-tN-YBp" userLabel="Date Label">
-                                                <rect key="frame" x="8" y="457" width="359" height="17"/>
+                                                <rect key="frame" x="8" y="364" width="359" height="17"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Central Lunar Eclipse" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0le-FM-EVS" userLabel="Title Label">
-                                                <rect key="frame" x="8" y="482" width="359" height="26.5"/>
+                                                <rect key="frame" x="8" y="389" width="359" height="26.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pI4-UD-5aW" userLabel="Explanation Label">
-                                                <rect key="frame" x="8" y="524.5" width="359" height="426.5"/>
+                                                <rect key="frame" x="8" y="431.5" width="359" height="426.5"/>
                                                 <string key="text">Reddened by scattered sunlight, the Moon in the center is passing through the center of Earth's dark umbral shadow in this July 27 lunar eclipse sequence. Left to right the three images are from the start, maximum, and end to 103 minutes of totality from the longest lunar eclipse of the 21st century. The longest path the Moon can follow through Earth's shadow does cross the shadow's center, that's what makes such central lunar eclipses long ones. But July 27 was also the date of lunar apogee, and at the most distant part of its elliptical orbit the Moon moves slowest. For the previous lunar eclipse, last January 31, the Moon was near its orbital perigee. Passing just south of the Earth shadow central axis,  totality lasted only 76 minutes. Coming up on January 21, 2019, a third consecutive total lunar eclipse will also be off center and find the Moon near perigee. Then totality will be a mere 62 minutes long.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright: Anthony Ayiomamitis" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P7D-ZV-vbx" userLabel="Copyright Label">
-                                                <rect key="frame" x="8" y="967" width="359" height="17"/>
+                                                <rect key="frame" x="8" y="874" width="359" height="17"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fa9-LQ-VnG" userLabel="Close Button">
-                                                <rect key="frame" x="319" y="0.0" width="40" height="40"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="8Y7-py-OMO"/>
-                                                    <constraint firstAttribute="width" constant="40" id="Wpn-WZ-sAN"/>
-                                                </constraints>
-                                                <state key="normal" image="close-icon"/>
-                                                <connections>
-                                                    <action selector="dismiss:" destination="pvg-rG-IcB" eventType="touchUpInside" id="N4I-cb-XKa"/>
-                                                </connections>
-                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -268,7 +256,6 @@
                                             <constraint firstItem="8t4-tN-YBp" firstAttribute="top" secondItem="CdN-LI-FWa" secondAttribute="bottom" constant="12" id="S1m-GK-YrD"/>
                                             <constraint firstItem="0le-FM-EVS" firstAttribute="leading" secondItem="jD7-Q8-wNu" secondAttribute="leading" constant="8" id="SSn-Rc-VjG"/>
                                             <constraint firstItem="CdN-LI-FWa" firstAttribute="leading" secondItem="jD7-Q8-wNu" secondAttribute="leading" id="Yyb-Hg-v8K"/>
-                                            <constraint firstAttribute="trailing" secondItem="Fa9-LQ-VnG" secondAttribute="trailing" constant="16" id="bCX-6f-5sQ"/>
                                             <constraint firstAttribute="trailing" secondItem="0le-FM-EVS" secondAttribute="trailing" constant="8" id="d2Y-r7-f3C"/>
                                             <constraint firstAttribute="trailing" secondItem="pI4-UD-5aW" secondAttribute="trailing" constant="8" id="fI9-A4-2Xy"/>
                                             <constraint firstItem="pI4-UD-5aW" firstAttribute="top" secondItem="0le-FM-EVS" secondAttribute="bottom" constant="16" id="ggl-cO-YOq"/>
@@ -288,7 +275,6 @@
                                     <constraint firstAttribute="trailing" secondItem="jD7-Q8-wNu" secondAttribute="trailing" id="Pwu-pr-LOn"/>
                                     <constraint firstItem="jD7-Q8-wNu" firstAttribute="leading" secondItem="WbU-fF-hhF" secondAttribute="leading" id="S6u-cx-kSV"/>
                                     <constraint firstItem="jD7-Q8-wNu" firstAttribute="width" secondItem="WbU-fF-hhF" secondAttribute="width" id="Tjh-Fw-Vcj"/>
-                                    <constraint firstItem="Hoh-5d-IBH" firstAttribute="top" secondItem="Fa9-LQ-VnG" secondAttribute="top" id="nhf-Lm-2C3"/>
                                 </constraints>
                                 <viewLayoutGuide key="safeArea" id="Hoh-5d-IBH"/>
                             </scrollView>
@@ -296,7 +282,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="cFD-gC-rKw" firstAttribute="trailing" secondItem="WbU-fF-hhF" secondAttribute="trailing" id="J3V-m2-etE"/>
-                            <constraint firstItem="WbU-fF-hhF" firstAttribute="top" secondItem="Mba-ya-RbV" secondAttribute="top" id="R0D-nf-MtY"/>
+                            <constraint firstItem="WbU-fF-hhF" firstAttribute="top" secondItem="cFD-gC-rKw" secondAttribute="top" id="R0D-nf-MtY"/>
                             <constraint firstItem="WbU-fF-hhF" firstAttribute="leading" secondItem="cFD-gC-rKw" secondAttribute="leading" id="dt1-ZL-Zro"/>
                             <constraint firstItem="cFD-gC-rKw" firstAttribute="bottom" secondItem="WbU-fF-hhF" secondAttribute="bottom" id="fSU-29-6pg"/>
                         </constraints>
@@ -314,7 +300,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nHB-VJ-VP8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3044" y="-488.45577211394306"/>
+            <point key="canvasLocation" x="4122.1875" y="-488.75"/>
         </scene>
         <!--About-->
         <scene sceneID="Tk8-RZ-ZG2">
@@ -345,7 +331,7 @@
                         <color key="selectedImageTintColor" red="0.29019607843137252" green="0.35686274509803922" blue="0.76470588235294112" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="KHt-yU-h6I"/>
+                        <segue destination="jjY-6i-pPj" kind="relationship" relationship="viewControllers" id="KHt-yU-h6I"/>
                         <segue destination="77o-Fw-cle" kind="relationship" relationship="viewControllers" id="PxJ-pb-JkI"/>
                     </connections>
                 </tabBarController>
@@ -353,11 +339,29 @@
             </objects>
             <point key="canvasLocation" x="630" y="-49"/>
         </scene>
+        <!--Discover-->
+        <scene sceneID="WnA-IA-h6J">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jjY-6i-pPj" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Discover" image="Rocket" id="pqP-5p-aAr"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ngM-2d-kxD">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="tlw-Rb-KnJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kM9-Lt-pNh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1976.25" y="-487.5"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Info" width="25" height="25"/>
         <image name="Rocket" width="25" height="25"/>
-        <image name="close-icon" width="88" height="88"/>
         <image name="refresh-icon" width="80" height="80"/>
     </resources>
 </document>
