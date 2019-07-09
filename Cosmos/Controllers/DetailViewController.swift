@@ -8,6 +8,7 @@
 
 import UIKit
 import WebKit
+import Alamofire
 import AlamofireImage
 import Lightbox
 
@@ -21,6 +22,7 @@ class DetailViewController: UIViewController {
     @IBOutlet var copyrightLabel: UILabel!
     @IBOutlet var shareButton: UIButton!
     
+    let imageView = UIImageView()
     let activityIndicator = UIActivityIndicatorView()
     
     /// The current astronomical picture of the day.
@@ -36,6 +38,7 @@ class DetailViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        // TODO: Handle case where apod is nil
         if let apod = apod {
             configure(for: apod)
         }
@@ -68,7 +71,7 @@ class DetailViewController: UIViewController {
     // MARK: Media View Helpers
     
     private func setupImageView(with url: URL) {
-        let imageView = UIImageView(frame: mediaView.frame)
+        imageView.frame = mediaView.frame
         imageView.contentMode = .scaleAspectFill
         imageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         imageView.af_setImage(withURL: url, imageTransition: .crossDissolve(0.2))
@@ -108,6 +111,20 @@ class DetailViewController: UIViewController {
         }
     }
     @IBAction func didTapOnShare(_ sender: Any) {
+        guard let apod = apod else { return }
+        
+        var activityViewController: UIActivityViewController!
+        
+        switch apod.mediaType {
+        case .image:
+            if let image = imageView.image {
+                activityViewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+            }
+        case .video:
+            activityViewController = UIActivityViewController(activityItems: [apod.url], applicationActivities: nil)
+        }
+        // TODO: Handle feedback
+        present(activityViewController, animated: true, completion: nil)
     }
 }
 
