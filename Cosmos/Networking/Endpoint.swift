@@ -37,17 +37,13 @@ enum CosmosEndpoint {
 }
 
 extension CosmosEndpoint: Endpoint {
-
-    private var key: String {
-        return "kMfnNhMKgdodjARiUj98FhQ9W0ogrnGjdnBda66n"
-    }
     
     var base: String {
-        return "https://api.nasa.gov"
+        return "https://cosmos-apod-api.herokuapp.com"
     }
     
     var path: String {
-        return "/planetary/apod"
+        return "/v1/apod"
     }
     
     var formatter: DateFormatter {
@@ -57,23 +53,18 @@ extension CosmosEndpoint: Endpoint {
     var queryItems: [URLQueryItem] {
         switch self {
         case .today:
-            return [
-                URLQueryItem(name: "api_key", value: key)
-            ]
+            return []
         case .dated(let date):
             return [
-                URLQueryItem(name: "api_key", value: key),
                 URLQueryItem(name: "date", value: formatter.string(from: date))
             ]
         case .ranged(let from, let to):
             return [
-                URLQueryItem(name: "api_key", value: key),
                 URLQueryItem(name: "start_date", value: formatter.string(from: from)),
                 URLQueryItem(name: "end_date", value: formatter.string(from: to))
             ]
         case .randomized(let count):
             return [
-                URLQueryItem(name: "api_key", value: key),
                 URLQueryItem(name: "count", value: String(count))
             ]
         }
