@@ -39,11 +39,11 @@ enum CosmosEndpoint {
 extension CosmosEndpoint: Endpoint {
     
     var base: String {
-        return "https://cosmos-apod-api.herokuapp.com"
+        return "https://cosmos-api-app.herokuapp.com"
     }
     
     var path: String {
-        return "/v1/apod"
+        return "/v1/cosmos"
     }
     
     var formatter: DateFormatter {
