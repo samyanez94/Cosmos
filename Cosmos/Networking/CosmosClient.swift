@@ -32,7 +32,7 @@ class CosmosClient: APIClient {
         
         let from = Calendar.current.date(byAdding: .day, value: -pageSize, to: offset)!
         
-        let endpoint = CosmosEndpoint.ranged(from: from, to: offset)
+        let endpoint = CosmosEndpoint.ranged(from: from, to: offset, thumbnails: true)
             
         fetch(with: endpoint.request, parse: { data -> [APOD]? in
             return try? self.decoder.decode([APOD].self, from: data)

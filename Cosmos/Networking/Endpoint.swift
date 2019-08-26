@@ -30,10 +30,10 @@ extension Endpoint {
 }
 
 enum CosmosEndpoint {
-    case today
-    case dated(date: Date)
-    case ranged(from: Date, to: Date)
-    case randomized(count: Int)
+    case today(thumbnails: Bool)
+    case dated(date: Date, thumbnails: Bool)
+    case ranged(from: Date, to: Date, thumbnails: Bool)
+    case randomized(count: Int, thumbnails: Bool)
 }
 
 extension CosmosEndpoint: Endpoint {
@@ -52,20 +52,25 @@ extension CosmosEndpoint: Endpoint {
 
     var queryItems: [URLQueryItem] {
         switch self {
-        case .today:
-            return []
-        case .dated(let date):
+        case .today(let thumbnails):
             return [
-                URLQueryItem(name: "date", value: formatter.string(from: date))
+                URLQueryItem(name: "thumbnails", value: String(thumbnails))
             ]
-        case .ranged(let from, let to):
+        case .dated(let date, let thumbnails):
+            return [
+                URLQueryItem(name: "date", value: formatter.string(from: date)),
+                URLQueryItem(name: "thumbnails", value: String(thumbnails))
+            ]
+        case .ranged(let from, let to, let thumbnails):
             return [
                 URLQueryItem(name: "start_date", value: formatter.string(from: from)),
-                URLQueryItem(name: "end_date", value: formatter.string(from: to))
+                URLQueryItem(name: "end_date", value: formatter.string(from: to)),
+                URLQueryItem(name: "thumbnails", value: String(thumbnails))
             ]
-        case .randomized(let count):
+        case .randomized(let count, let thumbnails):
             return [
-                URLQueryItem(name: "count", value: String(count))
+                URLQueryItem(name: "count", value: String(count)),
+                URLQueryItem(name: "thumbnails", value: String(thumbnails))
             ]
         }
     }
