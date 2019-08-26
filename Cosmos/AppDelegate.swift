@@ -23,8 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func configureLightbox() {
         LightboxConfig.CloseButton.text = ""
-        LightboxConfig.CloseButton.image = UIImage(named: "close-icon")
-        LightboxConfig.CloseButton.size = CGSize(width: 40, height: 40)
+        LightboxConfig.CloseButton.image = UIImage(systemName: "xmark.circle.fill")?.withTintColor(.white, renderingMode: .alwaysOriginal)
+        LightboxConfig.CloseButton.size = CGSize(width: 35, height: 35)
         LightboxConfig.PageIndicator.enabled = false
     }
 }

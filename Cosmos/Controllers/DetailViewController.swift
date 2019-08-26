@@ -92,7 +92,7 @@ class DetailViewController: UIViewController {
     
     private func setupActivityIndicator() {
         activityIndicator.center = mediaView.center
-        activityIndicator.style = .gray
+        activityIndicator.style = .medium
         activityIndicator.hidesWhenStopped = true
         activityIndicator.startAnimating()
         activityIndicator.autoresizingMask = [.flexibleLeftMargin, .flexibleRightMargin, .flexibleTopMargin, .flexibleBottomMargin]
@@ -106,6 +106,7 @@ class DetailViewController: UIViewController {
         if let sender = sender, let imageView = sender.view as? UIImageView, let image = imageView.image {
             let lighboxImage = LightboxImage(image: image)
             let lightboxController = LightboxController(images: [lighboxImage])
+            lightboxController.modalPresentationStyle = .fullScreen
             lightboxController.dynamicBackground = true
             present(lightboxController, animated: true)
         }
