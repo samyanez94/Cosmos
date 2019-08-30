@@ -23,7 +23,7 @@ class TabBarViewController: UITabBarController {
 extension TabBarViewController: UITabBarControllerDelegate {
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        if let discoverViewController = viewController as? DiscoverViewController, discoverViewController == previousViewController {
+        if viewController == previousViewController, let navigationController = viewController as? UINavigationController, let discoverViewController = navigationController.topViewController as? DiscoverViewController {
                 discoverViewController.scrollToTop()
         }
         previousViewController = viewController
