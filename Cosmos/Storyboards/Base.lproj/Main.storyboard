@@ -130,6 +130,9 @@
                                                         <constraint firstAttribute="trailing" secondItem="VH7-Qi-Scl" secondAttribute="trailing" id="buB-Hi-8z9"/>
                                                         <constraint firstItem="Kt9-WC-Du9" firstAttribute="leading" secondItem="usi-kE-pWi" secondAttribute="leading" id="mhY-3J-emd"/>
                                                     </constraints>
+                                                    <connections>
+                                                        <outletCollection property="gestureRecognizers" destination="1j5-CO-e63" appends="YES" id="M9i-Bo-AXj"/>
+                                                    </connections>
                                                 </view>
                                             </subviews>
                                         </view>
@@ -146,7 +149,6 @@
                                             <outlet property="headerView" destination="VH7-Qi-Scl" id="tpw-Zb-Aoi"/>
                                             <outlet property="imageView" destination="Kt9-WC-Du9" id="w1B-CJ-PNX"/>
                                             <outlet property="titleLabel" destination="0aM-Eg-prD" id="Lc6-Se-RWg"/>
-                                            <segue destination="6xP-7z-rQ6" kind="show" identifier="ShowDetails" id="4g6-RJ-Aie"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -191,7 +193,12 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="w6O-1H-2dq"/>
+                <tapGestureRecognizer id="w6O-1H-2dq" userLabel="Reload Tap Gesture Recognizer"/>
+                <tapGestureRecognizer id="1j5-CO-e63" userLabel="Detail Tap Gesture Recognizer">
+                    <connections>
+                        <segue destination="6xP-7z-rQ6" kind="show" identifier="ShowDetails" id="uf0-L6-asM"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2972" y="-488"/>
         </scene>
