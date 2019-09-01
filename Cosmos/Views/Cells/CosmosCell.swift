@@ -8,6 +8,8 @@
 
 import UIKit
 
+// TODO: Combine Cosmos cell and base cell into one
+
 class CosmosCell: BaseCell {
     
     static let identifier = "com.samuelyanez.CosmosCell"

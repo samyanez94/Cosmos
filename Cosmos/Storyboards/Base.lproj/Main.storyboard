@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14819.2"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -80,9 +81,9 @@
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="com.samuelyanez.CosmosCell" id="I6H-y7-s1X" userLabel="Cosmos Collection View Cell" customClass="CosmosCell" customModule="Cosmos" customModuleProvider="target">
                                         <rect key="frame" x="2.6666666666666665" y="40" width="370" height="450"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="57t-wL-U2t">
                                             <rect key="frame" x="0.0" y="0.0" width="370" height="450"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="usi-kE-pWi" userLabel="Container View">
                                                     <rect key="frame" x="18.666666666666657" y="0.0" width="333" height="450"/>
@@ -101,10 +102,11 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Central Lunar Eclipse" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0aM-Eg-prD" userLabel="Title Label">
-                                                                    <rect key="frame" x="20" y="44.333333333333343" width="293" height="55.666666666666657"/>
+                                                                    <rect key="frame" x="20" y="44.333333333333336" width="293" height="65.666666666666657"/>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
+                                                                    <size key="shadowOffset" width="0.0" height="0.0"/>
                                                                 </label>
                                                             </subviews>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -114,7 +116,7 @@
                                                                 <constraint firstItem="xa1-Gx-3a5" firstAttribute="top" secondItem="VH7-Qi-Scl" secondAttribute="top" constant="20" id="Yih-d7-dIx"/>
                                                                 <constraint firstAttribute="height" constant="120" id="bmI-DS-k80"/>
                                                                 <constraint firstAttribute="trailing" secondItem="xa1-Gx-3a5" secondAttribute="trailing" constant="20" id="dAE-tR-JoV"/>
-                                                                <constraint firstAttribute="bottom" secondItem="0aM-Eg-prD" secondAttribute="bottom" constant="20" id="scu-mJ-4AC"/>
+                                                                <constraint firstAttribute="bottom" secondItem="0aM-Eg-prD" secondAttribute="bottom" constant="10" id="scu-mJ-4AC"/>
                                                                 <constraint firstItem="0aM-Eg-prD" firstAttribute="leading" secondItem="VH7-Qi-Scl" secondAttribute="leading" constant="20" id="vOX-ov-Jpy"/>
                                                                 <constraint firstItem="xa1-Gx-3a5" firstAttribute="leading" secondItem="VH7-Qi-Scl" secondAttribute="leading" constant="20" id="zU1-g6-rPn"/>
                                                             </constraints>
@@ -130,25 +132,24 @@
                                                         <constraint firstAttribute="trailing" secondItem="VH7-Qi-Scl" secondAttribute="trailing" id="buB-Hi-8z9"/>
                                                         <constraint firstItem="Kt9-WC-Du9" firstAttribute="leading" secondItem="usi-kE-pWi" secondAttribute="leading" id="mhY-3J-emd"/>
                                                     </constraints>
-                                                    <connections>
-                                                        <outletCollection property="gestureRecognizers" destination="1j5-CO-e63" appends="YES" id="M9i-Bo-AXj"/>
-                                                    </connections>
                                                 </view>
                                             </subviews>
-                                        </view>
-                                        <constraints>
-                                            <constraint firstItem="usi-kE-pWi" firstAttribute="width" secondItem="I6H-y7-s1X" secondAttribute="width" multiplier="0.9" id="CPP-H4-dU1"/>
-                                            <constraint firstItem="usi-kE-pWi" firstAttribute="centerX" secondItem="I6H-y7-s1X" secondAttribute="centerX" id="PQc-cS-3b3"/>
-                                            <constraint firstItem="usi-kE-pWi" firstAttribute="top" secondItem="I6H-y7-s1X" secondAttribute="top" id="XaY-yy-WpI"/>
-                                            <constraint firstAttribute="bottom" secondItem="usi-kE-pWi" secondAttribute="bottom" id="syU-aV-ghn"/>
-                                        </constraints>
-                                        <viewLayoutGuide key="safeArea" id="cEq-7z-CfV"/>
+                                            <gestureRecognizers/>
+                                            <constraints>
+                                                <constraint firstItem="usi-kE-pWi" firstAttribute="width" secondItem="57t-wL-U2t" secondAttribute="width" multiplier="0.9" id="CPP-H4-dU1"/>
+                                                <constraint firstItem="usi-kE-pWi" firstAttribute="centerX" secondItem="57t-wL-U2t" secondAttribute="centerX" id="PQc-cS-3b3"/>
+                                                <constraint firstItem="usi-kE-pWi" firstAttribute="top" secondItem="57t-wL-U2t" secondAttribute="top" id="XaY-yy-WpI"/>
+                                                <constraint firstAttribute="bottom" secondItem="usi-kE-pWi" secondAttribute="bottom" id="syU-aV-ghn"/>
+                                            </constraints>
+                                            <viewLayoutGuide key="safeArea" id="b9S-2C-DLQ"/>
+                                        </collectionViewCellContentView>
                                         <connections>
                                             <outlet property="containerView" destination="usi-kE-pWi" id="tBo-XN-X7J"/>
                                             <outlet property="dateLabel" destination="xa1-Gx-3a5" id="Q4v-Yf-esg"/>
                                             <outlet property="headerView" destination="VH7-Qi-Scl" id="tpw-Zb-Aoi"/>
                                             <outlet property="imageView" destination="Kt9-WC-Du9" id="w1B-CJ-PNX"/>
                                             <outlet property="titleLabel" destination="0aM-Eg-prD" id="Lc6-Se-RWg"/>
+                                            <segue destination="6xP-7z-rQ6" kind="show" identifier="ShowDetails" id="jE3-9K-LWQ"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -194,11 +195,6 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="w6O-1H-2dq" userLabel="Reload Tap Gesture Recognizer"/>
-                <tapGestureRecognizer id="1j5-CO-e63" userLabel="Detail Tap Gesture Recognizer">
-                    <connections>
-                        <segue destination="6xP-7z-rQ6" kind="show" identifier="ShowDetails" id="uf0-L6-asM"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2972" y="-488"/>
         </scene>
@@ -325,7 +321,94 @@
                     <view key="view" contentMode="scaleToFill" id="sWZ-u3-qWu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Onw-dt-lkD">
+                                <rect key="frame" x="0.0" y="44" width="375" height="685"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JNc-h8-655" userLabel="Content View">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="685"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IKG-jJ-Gmh" userLabel="About Title Label">
+                                                <rect key="frame" x="16" y="32" width="343" height="26.333333333333329"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KBe-fd-YQ2" userLabel="About Body Label">
+                                                <rect key="frame" x="16" y="74.333333333333314" width="343" height="203"/>
+                                                <string key="text">“The Cosmos is all that is or ever was or ever will be” - Carl Sagan. 
+
+This app was born from my strong desire to learn more about space and software development. I decided to build an iOS app that displays images and videos from our universe. Keeping in mind a minimal and user-friendly design. I hope you enjoy it and share it with your friends it you like it.</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Acknowledgements" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UpS-uD-Out" userLabel="Acknowledgements Title Label">
+                                                <rect key="frame" x="16" y="309.33333333333331" width="343" height="26.333333333333314"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4iq-Xa-pHO" userLabel="Acknowledgements Body Label">
+                                                <rect key="frame" x="16" y="351.66666666666669" width="343" height="122"/>
+                                                <string key="text">All the content featured in this app comes from Nasa’s APOD API, a service that has been offering daily pictures of our universe since 1995. It contains the largest collection of annotated astronomical images on the internet.</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Visit NASA's APOD official website:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RpY-xY-bvV" userLabel="Visit Title Label">
+                                                <rect key="frame" x="16" y="505.66666666666657" width="343" height="20.333333333333314"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="https://apod.nasa.gov/apod/" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lIk-Yk-gka" userLabel="Visit Body Label">
+                                                <rect key="frame" x="16" y="542" width="343" height="20.333333333333371"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="IKG-jJ-Gmh" secondAttribute="trailing" constant="16" id="1e8-F9-N0Z"/>
+                                            <constraint firstItem="4iq-Xa-pHO" firstAttribute="leading" secondItem="JNc-h8-655" secondAttribute="leading" constant="16" id="2YR-hj-zfe"/>
+                                            <constraint firstItem="lIk-Yk-gka" firstAttribute="leading" secondItem="JNc-h8-655" secondAttribute="leading" constant="16" id="3k3-Xa-mNR"/>
+                                            <constraint firstAttribute="trailing" secondItem="UpS-uD-Out" secondAttribute="trailing" constant="16" id="4dZ-GN-t8V"/>
+                                            <constraint firstItem="KBe-fd-YQ2" firstAttribute="leading" secondItem="JNc-h8-655" secondAttribute="leading" constant="16" id="F05-Ri-4oL"/>
+                                            <constraint firstItem="lIk-Yk-gka" firstAttribute="top" secondItem="RpY-xY-bvV" secondAttribute="bottom" constant="16" id="PaI-cb-ZlD"/>
+                                            <constraint firstItem="IKG-jJ-Gmh" firstAttribute="leading" secondItem="JNc-h8-655" secondAttribute="leading" constant="16" id="Q8i-87-alF"/>
+                                            <constraint firstItem="4iq-Xa-pHO" firstAttribute="top" secondItem="UpS-uD-Out" secondAttribute="bottom" constant="16" id="TqN-XJ-6yQ"/>
+                                            <constraint firstItem="RpY-xY-bvV" firstAttribute="leading" secondItem="JNc-h8-655" secondAttribute="leading" constant="16" id="VwY-ve-Onf"/>
+                                            <constraint firstItem="RpY-xY-bvV" firstAttribute="top" secondItem="4iq-Xa-pHO" secondAttribute="bottom" constant="32" id="ZOh-ID-huC"/>
+                                            <constraint firstAttribute="trailing" secondItem="lIk-Yk-gka" secondAttribute="trailing" constant="16" id="Zw4-gs-sMg"/>
+                                            <constraint firstAttribute="trailing" secondItem="RpY-xY-bvV" secondAttribute="trailing" constant="16" id="di7-Av-bEh"/>
+                                            <constraint firstItem="UpS-uD-Out" firstAttribute="leading" secondItem="JNc-h8-655" secondAttribute="leading" constant="16" id="hgD-Pu-8BL"/>
+                                            <constraint firstAttribute="trailing" secondItem="4iq-Xa-pHO" secondAttribute="trailing" constant="16" id="jb0-AU-7Ta"/>
+                                            <constraint firstAttribute="trailing" secondItem="KBe-fd-YQ2" secondAttribute="trailing" constant="16" id="lRe-Dt-BOs"/>
+                                            <constraint firstItem="IKG-jJ-Gmh" firstAttribute="top" secondItem="JNc-h8-655" secondAttribute="top" constant="32" id="m4f-E9-t71"/>
+                                            <constraint firstItem="UpS-uD-Out" firstAttribute="top" secondItem="KBe-fd-YQ2" secondAttribute="bottom" constant="32" id="o2D-43-IB0"/>
+                                            <constraint firstItem="KBe-fd-YQ2" firstAttribute="top" secondItem="IKG-jJ-Gmh" secondAttribute="bottom" constant="16" id="xlb-El-eUq"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="JNc-h8-655" secondAttribute="trailing" id="6V2-NO-WSC"/>
+                                    <constraint firstItem="JNc-h8-655" firstAttribute="width" secondItem="Onw-dt-lkD" secondAttribute="width" id="Avw-rx-fnf"/>
+                                    <constraint firstItem="JNc-h8-655" firstAttribute="top" secondItem="Onw-dt-lkD" secondAttribute="top" id="XRM-vS-nOx"/>
+                                    <constraint firstItem="JNc-h8-655" firstAttribute="leading" secondItem="Onw-dt-lkD" secondAttribute="leading" id="YFD-e5-SVq"/>
+                                    <constraint firstAttribute="bottom" secondItem="JNc-h8-655" secondAttribute="bottom" id="pua-RJ-CzF"/>
+                                    <constraint firstItem="JNc-h8-655" firstAttribute="height" secondItem="Onw-dt-lkD" secondAttribute="height" priority="250" id="yGK-eg-E9w"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="cee-Xl-vC9" firstAttribute="bottom" secondItem="Onw-dt-lkD" secondAttribute="bottom" id="GTX-hA-ZBc"/>
+                            <constraint firstItem="Onw-dt-lkD" firstAttribute="top" secondItem="cee-Xl-vC9" secondAttribute="top" id="Ho0-Pg-RC6"/>
+                            <constraint firstItem="Onw-dt-lkD" firstAttribute="leading" secondItem="cee-Xl-vC9" secondAttribute="leading" id="og5-gS-HCI"/>
+                            <constraint firstItem="cee-Xl-vC9" firstAttribute="trailing" secondItem="Onw-dt-lkD" secondAttribute="trailing" id="pTM-kW-y2I"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="cee-Xl-vC9"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="About" image="Info Icon" id="iej-dg-sQD"/>
