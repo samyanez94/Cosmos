@@ -119,10 +119,12 @@ class DetailViewController: UIViewController {
         switch apod.mediaType {
         case .image:
             if let image = imageView.image {
-                activityViewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+                let text = "Checkout this image I discovered using the Cosmos app. Available on the App Store."
+                activityViewController = UIActivityViewController(activityItems: [text, image], applicationActivities: nil)
             }
         case .video:
-            activityViewController = UIActivityViewController(activityItems: [apod.url], applicationActivities: nil)
+            let text = "Checkout this video I discovered using the Cosmos app. Available on the App Store. \(apod.url)"
+            activityViewController = UIActivityViewController(activityItems: [text], applicationActivities: nil)
         }
         // TODO: Handle feedback
         present(activityViewController, animated: true, completion: nil)
