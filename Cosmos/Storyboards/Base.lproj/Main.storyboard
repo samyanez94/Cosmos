@@ -210,39 +210,31 @@
                                 <rect key="frame" x="0.0" y="88" width="375" height="641"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cGu-DE-nh5" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="931.66666666666663"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="935.66666666666663"/>
                                         <subviews>
-                                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rMg-do-b2Y" userLabel="Media View">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
-                                                <color key="backgroundColor" red="0.21960784310000001" green="0.30196078430000001" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="700" id="QR8-gd-MIE"/>
-                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="300" id="kfQ-L7-MTO"/>
-                                                </constraints>
-                                            </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friday, Jul 27" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f7x-Wp-1wZ" userLabel="Date Label">
-                                                <rect key="frame" x="8" y="312" width="359" height="17"/>
+                                                <rect key="frame" x="8" y="316" width="359" height="17"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Central Lunar Eclipse" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6RQ-rn-5S1" userLabel="Title Label">
-                                                <rect key="frame" x="8" y="337" width="359" height="26.333333333333314"/>
+                                                <rect key="frame" x="8" y="341" width="359" height="26.333333333333314"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Uo-UD-hUs" userLabel="Explanation Label">
-                                                <rect key="frame" x="8" y="379.33333333333337" width="359" height="426.33333333333337"/>
+                                                <rect key="frame" x="8" y="383.33333333333337" width="359" height="426.33333333333337"/>
                                                 <string key="text">Reddened by scattered sunlight, the Moon in the center is passing through the center of Earth's dark umbral shadow in this July 27 lunar eclipse sequence. Left to right the three images are from the start, maximum, and end to 103 minutes of totality from the longest lunar eclipse of the 21st century. The longest path the Moon can follow through Earth's shadow does cross the shadow's center, that's what makes such central lunar eclipses long ones. But July 27 was also the date of lunar apogee, and at the most distant part of its elliptical orbit the Moon moves slowest. For the previous lunar eclipse, last January 31, the Moon was near its orbital perigee. Passing just south of the Earth shadow central axis,  totality lasted only 76 minutes. Coming up on January 21, 2019, a third consecutive total lunar eclipse will also be off center and find the Moon near perigee. Then totality will be a mere 62 minutes long.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright: Anthony Ayiomamitis" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ARO-i6-s2k" userLabel="Copyright Label">
-                                                <rect key="frame" x="8" y="821.66666666666663" width="359" height="17"/>
+                                                <rect key="frame" x="8" y="825.66666666666663" width="359" height="17"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="30F-qb-8r0" userLabel="Share Button">
-                                                <rect key="frame" x="117.66666666666669" y="854.66666666666663" width="140" height="45"/>
+                                                <rect key="frame" x="117.66666666666669" y="858.66666666666663" width="140" height="45"/>
                                                 <color key="backgroundColor" white="0.94999999999999996" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="r0A-24-6PZ"/>
@@ -257,25 +249,41 @@
                                                     <action selector="didTapOnShare:" destination="6xP-7z-rQ6" eventType="touchUpInside" id="16r-AD-xbG"/>
                                                 </connections>
                                             </button>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uqx-Xx-oTA" userLabel="Container View">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
+                                                <subviews>
+                                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rMg-do-b2Y" userLabel="Media View">
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
+                                                        <color key="backgroundColor" red="0.21960784310000001" green="0.30196078430000001" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </view>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="rMg-do-b2Y" secondAttribute="trailing" id="JKD-q1-Uwd"/>
+                                                    <constraint firstItem="rMg-do-b2Y" firstAttribute="leading" secondItem="Uqx-Xx-oTA" secondAttribute="leading" id="jF7-4L-9VC"/>
+                                                    <constraint firstAttribute="height" constant="300" id="kFA-Zg-KK7"/>
+                                                    <constraint firstAttribute="bottom" secondItem="rMg-do-b2Y" secondAttribute="bottom" id="oeB-HD-xsG"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="f7x-Wp-1wZ" firstAttribute="leading" secondItem="cGu-DE-nh5" secondAttribute="leading" constant="8" id="1ZA-d2-CAa"/>
-                                            <constraint firstAttribute="trailing" secondItem="rMg-do-b2Y" secondAttribute="trailing" id="5Is-Kt-e6e"/>
                                             <constraint firstItem="7Uo-UD-hUs" firstAttribute="leading" secondItem="cGu-DE-nh5" secondAttribute="leading" constant="8" id="9w4-hD-d0S"/>
-                                            <constraint firstItem="rMg-do-b2Y" firstAttribute="top" secondItem="cGu-DE-nh5" secondAttribute="top" id="HWI-eO-yA3"/>
+                                            <constraint firstItem="Uqx-Xx-oTA" firstAttribute="top" secondItem="cGu-DE-nh5" secondAttribute="top" id="IZw-hs-52A"/>
                                             <constraint firstItem="30F-qb-8r0" firstAttribute="centerX" secondItem="cGu-DE-nh5" secondAttribute="centerX" id="JKB-gy-bhN"/>
                                             <constraint firstAttribute="bottom" secondItem="30F-qb-8r0" secondAttribute="bottom" constant="32" id="KbO-Sf-Vei"/>
-                                            <constraint firstItem="f7x-Wp-1wZ" firstAttribute="top" secondItem="rMg-do-b2Y" secondAttribute="bottom" constant="12" id="NrY-1o-BtR"/>
                                             <constraint firstItem="ARO-i6-s2k" firstAttribute="top" secondItem="7Uo-UD-hUs" secondAttribute="bottom" constant="16" id="P7e-Uf-c4h"/>
                                             <constraint firstAttribute="trailing" secondItem="ARO-i6-s2k" secondAttribute="trailing" constant="8" id="Rr4-X2-oYY"/>
                                             <constraint firstItem="ARO-i6-s2k" firstAttribute="leading" secondItem="cGu-DE-nh5" secondAttribute="leading" constant="8" id="Two-4j-er9"/>
                                             <constraint firstAttribute="trailing" secondItem="f7x-Wp-1wZ" secondAttribute="trailing" constant="8" id="UcV-Ks-spm"/>
                                             <constraint firstItem="7Uo-UD-hUs" firstAttribute="top" secondItem="6RQ-rn-5S1" secondAttribute="bottom" constant="16" id="a49-Ow-ns1"/>
+                                            <constraint firstItem="f7x-Wp-1wZ" firstAttribute="top" secondItem="Uqx-Xx-oTA" secondAttribute="bottom" constant="16" id="eb3-7H-Gqj"/>
                                             <constraint firstAttribute="trailing" secondItem="6RQ-rn-5S1" secondAttribute="trailing" constant="8" id="faW-CQ-d8K"/>
                                             <constraint firstAttribute="trailing" secondItem="7Uo-UD-hUs" secondAttribute="trailing" constant="8" id="gnv-Qo-r1U"/>
-                                            <constraint firstItem="rMg-do-b2Y" firstAttribute="leading" secondItem="cGu-DE-nh5" secondAttribute="leading" id="hDi-BP-RMK"/>
+                                            <constraint firstItem="Uqx-Xx-oTA" firstAttribute="leading" secondItem="cGu-DE-nh5" secondAttribute="leading" id="hla-Jj-JMX"/>
                                             <constraint firstItem="6RQ-rn-5S1" firstAttribute="top" secondItem="f7x-Wp-1wZ" secondAttribute="bottom" constant="8" id="mQp-In-akY"/>
+                                            <constraint firstAttribute="trailing" secondItem="Uqx-Xx-oTA" secondAttribute="trailing" id="ufl-4g-Ts6"/>
                                             <constraint firstItem="30F-qb-8r0" firstAttribute="top" secondItem="ARO-i6-s2k" secondAttribute="bottom" constant="16" id="unx-sD-9ib"/>
                                             <constraint firstItem="6RQ-rn-5S1" firstAttribute="leading" secondItem="cGu-DE-nh5" secondAttribute="leading" constant="8" id="uru-q2-hW7"/>
                                         </constraints>
@@ -296,6 +304,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="owF-5j-ToJ" firstAttribute="trailing" secondItem="xDh-IS-ZFn" secondAttribute="trailing" id="0AP-gc-JAv"/>
+                            <constraint firstItem="xDh-IS-ZFn" firstAttribute="top" secondItem="rMg-do-b2Y" secondAttribute="top" id="b0K-EA-25O"/>
                             <constraint firstItem="owF-5j-ToJ" firstAttribute="top" secondItem="xDh-IS-ZFn" secondAttribute="top" id="nGN-JV-3vn"/>
                             <constraint firstItem="xDh-IS-ZFn" firstAttribute="bottom" secondItem="owF-5j-ToJ" secondAttribute="bottom" id="naO-jb-YbB"/>
                             <constraint firstItem="owF-5j-ToJ" firstAttribute="leading" secondItem="xDh-IS-ZFn" secondAttribute="leading" id="oDZ-Du-L30"/>
