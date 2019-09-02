@@ -10,14 +10,6 @@ import UIKit
 
 class CosmosCell: UICollectionViewCell {
     
-    static let identifier = "com.samuelyanez.CosmosCell"
-    
-    static let height: CGFloat = 450
-    
-    static let cornerRadius: CGFloat = 20
-    
-    var feedbackGenerator: UISelectionFeedbackGenerator?
-    
     /// Image View
     @IBOutlet var imageView: UIImageView!
     
@@ -32,6 +24,18 @@ class CosmosCell: UICollectionViewCell {
     
     /// Date Label
     @IBOutlet var dateLabel: UILabel!
+    
+    /// Identifier
+    static let identifier = "com.samuelyanez.CosmosCell"
+    
+    /// Height
+    static let height: CGFloat = 450
+    
+    /// Corner radius
+    static let cornerRadius: CGFloat = 20
+    
+    /// Feedback generator
+    var feedbackGenerator: UISelectionFeedbackGenerator?
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
