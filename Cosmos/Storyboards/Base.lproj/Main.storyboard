@@ -19,7 +19,7 @@
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fBP-h8-anF" userLabel="Loading Indicator View">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
                                 <subviews>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="NqR-N5-kDt">
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="NqR-N5-kDt">
                                         <rect key="frame" x="177.66666666666666" y="310.66666666666669" width="20" height="20"/>
                                         <color key="color" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                     </activityIndicatorView>
@@ -89,10 +89,6 @@
                                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="usi-kE-pWi" userLabel="Container View">
                                                     <rect key="frame" x="18.666666666666657" y="0.0" width="333" height="450"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Kt9-WC-Du9" userLabel="Image View">
-                                                            <rect key="frame" x="0.0" y="120" width="333" height="330"/>
-                                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </imageView>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VH7-Qi-Scl" userLabel="Header View">
                                                             <rect key="frame" x="0.0" y="0.0" width="333" height="120"/>
                                                             <subviews>
@@ -121,15 +117,27 @@
                                                                 <constraint firstItem="xa1-Gx-3a5" firstAttribute="leading" secondItem="VH7-Qi-Scl" secondAttribute="leading" constant="16" id="zU1-g6-rPn"/>
                                                             </constraints>
                                                         </view>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Kt9-WC-Du9" userLabel="Image View">
+                                                            <rect key="frame" x="0.0" y="120" width="333" height="330"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </imageView>
+                                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="mLT-80-Upo">
+                                                            <rect key="frame" x="0.0" y="120" width="333" height="330"/>
+                                                            <color key="color" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        </activityIndicatorView>
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstItem="Kt9-WC-Du9" firstAttribute="top" secondItem="VH7-Qi-Scl" secondAttribute="bottom" id="HEW-Wx-0RL"/>
                                                         <constraint firstItem="VH7-Qi-Scl" firstAttribute="top" secondItem="usi-kE-pWi" secondAttribute="top" id="Luv-1l-8Bt"/>
+                                                        <constraint firstAttribute="trailing" secondItem="mLT-80-Upo" secondAttribute="trailing" id="TbE-45-kXI"/>
                                                         <constraint firstItem="VH7-Qi-Scl" firstAttribute="leading" secondItem="usi-kE-pWi" secondAttribute="leading" id="Upv-s0-wi9"/>
                                                         <constraint firstAttribute="trailing" secondItem="Kt9-WC-Du9" secondAttribute="trailing" id="VCW-Di-HlZ"/>
                                                         <constraint firstAttribute="bottom" secondItem="Kt9-WC-Du9" secondAttribute="bottom" id="VTY-GW-ghJ"/>
                                                         <constraint firstAttribute="trailing" secondItem="VH7-Qi-Scl" secondAttribute="trailing" id="buB-Hi-8z9"/>
+                                                        <constraint firstItem="mLT-80-Upo" firstAttribute="top" secondItem="VH7-Qi-Scl" secondAttribute="bottom" id="exD-I4-ziC"/>
                                                         <constraint firstItem="Kt9-WC-Du9" firstAttribute="leading" secondItem="usi-kE-pWi" secondAttribute="leading" id="mhY-3J-emd"/>
+                                                        <constraint firstItem="mLT-80-Upo" firstAttribute="leading" secondItem="usi-kE-pWi" secondAttribute="leading" id="oVu-Hx-3WV"/>
+                                                        <constraint firstAttribute="bottom" secondItem="mLT-80-Upo" secondAttribute="bottom" id="sGN-7N-QAa"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -143,6 +151,7 @@
                                             <viewLayoutGuide key="safeArea" id="b9S-2C-DLQ"/>
                                         </collectionViewCellContentView>
                                         <connections>
+                                            <outlet property="activityIndicator" destination="mLT-80-Upo" id="1RT-05-EOw"/>
                                             <outlet property="containerView" destination="usi-kE-pWi" id="tBo-XN-X7J"/>
                                             <outlet property="dateLabel" destination="xa1-Gx-3a5" id="Q4v-Yf-esg"/>
                                             <outlet property="headerView" destination="VH7-Qi-Scl" id="tpw-Zb-Aoi"/>
@@ -194,9 +203,13 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="w6O-1H-2dq" userLabel="Reload Tap Gesture Recognizer"/>
+                <tapGestureRecognizer id="w6O-1H-2dq" userLabel="Reload Tap Gesture Recognizer">
+                    <connections>
+                        <action selector="didTapOnRefreshButton:" destination="BYZ-38-t0r" id="kWM-cG-eAy"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2972" y="-488"/>
+            <point key="canvasLocation" x="2972" y="-488.42364532019707"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="LjX-Ox-tLv">

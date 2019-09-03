@@ -25,6 +25,9 @@ class CosmosCell: UICollectionViewCell {
     /// Date Label
     @IBOutlet var dateLabel: UILabel!
     
+    /// Activity Indicator
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
+    
     /// Identifier
     static let identifier = "com.samuelyanez.CosmosCell"
     

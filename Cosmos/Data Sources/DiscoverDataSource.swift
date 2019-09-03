@@ -52,17 +52,27 @@ class DiscoverDataSource: NSObject, UICollectionViewDataSource {
             cell.titleLabel.text = viewModel.title
             cell.dateLabel.text = viewModel.date
             
-            switch apod.mediaType {
-            case .image:
-                if let url = URL(string: apod.url) {
-                    cell.imageView.af_setImage(withURL: url, imageTransition: .crossDissolve(0.2))
+            cell.activityIndicator.startAnimating()
+            
+            let url: URL? = {
+                switch apod.mediaType {
+                case .image:
+                    return URL(string: apod.url)
+                case .video:
+                    if let thumbnailUrl = apod.thumbnailUrl {
+                        return URL(string: thumbnailUrl)
+                    }
+                    return nil
                 }
-            case .video:
-                // TODO: Handle case where there is no thumbnail URL
-                if let thumbnailUrl = apod.thumbnailUrl, let url = URL(string: thumbnailUrl) {
-                    cell.imageView.contentMode = .scaleAspectFill
-                    cell.imageView.af_setImage(withURL: url, imageTransition: .crossDissolve(0.2))
+            }()
+            
+            // TODO: Handle case where there is no thumbnail URL
+            if let url = url {
+                cell.imageView.af_setImage(withURL: url, imageTransition: .crossDissolve(0.2)) { _ in
+                    cell.activityIndicator.stopAnimating()
                 }
+            } else {
+                print("Error: No thumbnail URL")
             }
             return cell
         } else {
