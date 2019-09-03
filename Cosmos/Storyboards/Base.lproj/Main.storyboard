@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14865.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RLj-Th-8lB">
-    <device id="retina5_9" orientation="portrait" appearance="dark"/>
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14819.2"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -348,11 +348,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Onw-dt-lkD">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="431"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Onw-dt-lkD">
+                                <rect key="frame" x="0.0" y="44" width="375" height="685"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JNc-h8-655" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="665.5"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JNc-h8-655" userLabel="Content View">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="604"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IKG-jJ-Gmh" userLabel="About Title Label">
                                                 <rect key="frame" x="16" y="32" width="343" height="26.333333333333329"/>
@@ -388,8 +388,8 @@ This app was born from my strong desire to learn more about space and software d
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3lt-bj-SNc" userLabel="Visit Button">
-                                                <rect key="frame" x="16" y="603.5" width="343" height="30"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3lt-bj-SNc" userLabel="Visit Button">
+                                                <rect key="frame" x="16" y="542" width="343" height="30"/>
                                                 <state key="normal" title="https://apod.nasa.gov/apod/">
                                                     <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
@@ -428,7 +428,6 @@ This app was born from my strong desire to learn more about space and software d
                                     <constraint firstItem="JNc-h8-655" firstAttribute="top" secondItem="Onw-dt-lkD" secondAttribute="top" id="XRM-vS-nOx"/>
                                     <constraint firstItem="JNc-h8-655" firstAttribute="leading" secondItem="Onw-dt-lkD" secondAttribute="leading" id="YFD-e5-SVq"/>
                                     <constraint firstAttribute="bottom" secondItem="JNc-h8-655" secondAttribute="bottom" id="pua-RJ-CzF"/>
-                                    <constraint firstItem="JNc-h8-655" firstAttribute="height" secondItem="Onw-dt-lkD" secondAttribute="height" priority="250" id="yGK-eg-E9w"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -445,7 +444,7 @@ This app was born from my strong desire to learn more about space and software d
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bon-un-qwm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1977" y="255"/>
+            <point key="canvasLocation" x="1976.8" y="254.92610837438426"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="zJv-pa-Bg5">
