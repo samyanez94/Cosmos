@@ -13,11 +13,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="DiscoverViewController" customModule="Cosmos" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7gZ-3I-C86">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="20" id="Alg-og-nhd">
                                     <size key="itemSize" width="370" height="450"/>
@@ -187,7 +187,7 @@
                             <constraint firstItem="fBP-h8-anF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Vea-Iu-aRV"/>
                             <constraint firstItem="7YX-ug-AZK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Yci-Qq-etz"/>
                             <constraint firstItem="7gZ-3I-C86" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="cRr-iZ-UCi"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="7gZ-3I-C86" secondAttribute="bottom" id="kTq-Eu-i26"/>
+                            <constraint firstAttribute="bottom" secondItem="7gZ-3I-C86" secondAttribute="bottom" id="kTq-Eu-i26"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7gZ-3I-C86" secondAttribute="trailing" id="o2L-s6-83v"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fBP-h8-anF" secondAttribute="bottom" id="uhH-ry-UON"/>
                             <constraint firstItem="fBP-h8-anF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="wXb-Vn-zfh"/>
@@ -216,7 +216,7 @@
             <objects>
                 <viewController id="6xP-7z-rQ6" customClass="DetailViewController" customModule="Cosmos" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="S8M-me-QMM">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="owF-5j-ToJ">
@@ -345,7 +345,7 @@
             <objects>
                 <viewController id="77o-Fw-cle" userLabel="About View Controller" customClass="AboutViewController" customModule="Cosmos" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sWZ-u3-qWu">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Onw-dt-lkD">
@@ -451,10 +451,9 @@ This app was born from my strong desire to learn more about space and software d
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="RLj-Th-8lB" customClass="TabBarViewController" customModule="Cosmos" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="LWc-8a-bbp">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="LWc-8a-bbp">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="selectedImageTintColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
