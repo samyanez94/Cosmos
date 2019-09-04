@@ -51,8 +51,7 @@ class DetailViewController: UIViewController {
         dateLabel.text = viewModel.date
         titleLabel.text = viewModel.title
         explanationLabel.text = viewModel.explanation
-        copyrightLabel.text = viewModel.copyright ?? ""
-        
+        copyrightLabel.attributedText = attributedText(withString: viewModel.copyright ?? "", blackString: "Copyright:", font: .systemFont(ofSize: 20.0))
         loadResource(for: apod)
     }
     
@@ -66,6 +65,15 @@ class DetailViewController: UIViewController {
                 setupActivityIndicator()
             }
         }
+    }
+    
+    private func attributedText(withString string: String, blackString: String, font: UIFont) -> NSAttributedString {
+        let attributedString = NSMutableAttributedString(string: string,
+                                                     attributes: [.font: font])
+        let blackFontAttribute: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.label]
+        let range = (string as NSString).range(of: blackString)
+        attributedString.addAttributes(blackFontAttribute, range: range)
+        return attributedString
     }
     
     // MARK: Media View Helpers
