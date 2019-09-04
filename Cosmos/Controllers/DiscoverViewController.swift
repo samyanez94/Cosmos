@@ -30,9 +30,7 @@ class DiscoverViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView.dataSource = dataSource
-        collectionView.delegate = self
-        collectionView.isHidden = true
+        configureCollectionView()
         
         activityIndicatorView.isHidden = false
         fetch {
@@ -43,6 +41,28 @@ class DiscoverViewController: UIViewController {
     override func viewWillLayoutSubviews() {
     collectionView.collectionViewLayout.invalidateLayout()
     }
+    
+    // MARK: Collection View
+    
+    private func configureCollectionView() {
+       collectionView.dataSource = dataSource
+        collectionView.delegate = self
+        collectionView.isHidden = true
+        collectionView.refreshControl = UIRefreshControl()
+        
+        collectionView.refreshControl?.addTarget(self, action:
+        #selector(handleRefreshControl),
+        for: .valueChanged)
+    }
+    
+    @objc func handleRefreshControl() {
+       // TODO: Uptade collection view here...
+        
+       DispatchQueue.main.async {
+          self.collectionView.refreshControl?.endRefreshing()
+       }
+    }
+
     
     // MARK: Navigation
     
