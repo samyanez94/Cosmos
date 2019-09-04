@@ -9,10 +9,6 @@
 import Foundation
 
 class APOD: Codable {
-    var id: String {
-        return UUID().uuidString
-    }
-    
     let title: String
     let date: Date
     let explanation: String
@@ -42,5 +38,11 @@ class APOD: Codable {
             default: return nil
             }
         }
+    }
+}
+
+extension APOD: Equatable {
+    static func == (lhs: APOD, rhs: APOD) -> Bool {
+        return lhs.date == rhs.date
     }
 }

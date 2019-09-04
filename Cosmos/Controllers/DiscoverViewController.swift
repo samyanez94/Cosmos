@@ -27,13 +27,19 @@ class DiscoverViewController: UIViewController {
     /// Error View
     @IBOutlet var errorView: UIView!
     
+    /// Pagination offset
+    var collectionOffset = 0
+    
+    /// Pagination page size
+    var collectionPageSize = 10
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureCollectionView()
         
         activityIndicatorView.isHidden = false
-        fetch {
+        fetch(count: collectionPageSize, offset: collectionOffset) {
             self.activityIndicatorView.isHidden = true
         }
     }
@@ -56,14 +62,11 @@ class DiscoverViewController: UIViewController {
     }
     
     @objc func handleRefreshControl() {
-       // TODO: Uptade collection view here...
-        
-       DispatchQueue.main.async {
-          self.collectionView.refreshControl?.endRefreshing()
-       }
+        fetch(count: 10) {
+            self.collectionView.refreshControl?.endRefreshing()
+        }
     }
 
-    
     // MARK: Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -79,18 +82,19 @@ class DiscoverViewController: UIViewController {
         
     // MARK: Networking
     
-    func fetch(completion: (() -> Void)? = nil) {
-        client.fetch { [weak self] result in
+    func fetch(count: Int, offset: Int = 0, completion: (() -> Void)? = nil) {
+        client.fetch(count: count, offset: offset) { [weak self, offset] result in
             switch result {
             case .failure(let error):
                 print(error.localizedDescription)
                 self?.collectionView.isHidden = true
                 self?.errorView.isHidden = false
             case .success(let apods):
-                self?.dataSource.append(apods.reversed())
+                self?.dataSource.append(apods)
                 self?.collectionView.reloadData()
                 self?.collectionView.isHidden = false
                 self?.errorView.isHidden = true
+                self?.collectionOffset = offset + 10
             }
             if let completion = completion {
                 completion()
@@ -101,7 +105,7 @@ class DiscoverViewController: UIViewController {
     @IBAction func didTapOnRefreshButton(_ sender: Any) {
         errorView.isHidden = true
         activityIndicatorView.isHidden = false
-        fetch {
+        fetch(count: collectionPageSize, offset: collectionOffset) {
             self.activityIndicatorView.isHidden = true
         }
     }
@@ -117,7 +121,7 @@ extension DiscoverViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if dataSource.apods.count == indexPath.row + 1 {
-            fetch()
+            fetch(count: collectionPageSize, offset: collectionOffset)
         }
     }
 }

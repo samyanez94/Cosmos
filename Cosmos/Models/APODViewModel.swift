@@ -15,10 +15,8 @@ struct APODViewModel {
     var copyright: String?
         
     init(with apod: APOD) {
-        let formatter = DateFormatter(locale: .current, format: "EEEE, MMM d")
-        
         title = apod.title
-        date = formatter.string(from: apod.date)
+        date = String(from: apod.date)
         explanation = apod.explanation
         
         if let author = apod.copyright {

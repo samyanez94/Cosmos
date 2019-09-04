@@ -12,10 +12,6 @@ class CosmosClient: APIClient {
 
     var session: URLSession
     
-    var pageSize = 10
-    
-    var offset: Date = Date()
-    
     let decoder = JSONDecoder(dateDecodingStrategy: .formatted(DateFormatter(locale: .current, format: "yyyy-MM-dd")))
     
     init(configuration: URLSessionConfiguration) {
@@ -26,18 +22,16 @@ class CosmosClient: APIClient {
         self.init(configuration: .default)
     }
     
-    // TODO: Figure out how to do a better paging in iOS
+    // TODO: Improve paging technique
     
-    func fetch(completion: @escaping (Swift.Result<[APOD], APIError>) -> Void) {
+    func fetch(count: Int, offset: Int = 0, completion: @escaping (Swift.Result<[APOD], APIError>) -> Void) {
+        let to = Calendar.current.date(byAdding: .day, value: -offset, to: Date())!
+        let from = Calendar.current.date(byAdding: .day, value: -count, to: to)!
         
-        let from = Calendar.current.date(byAdding: .day, value: -pageSize, to: offset)!
+        let endpoint = CosmosEndpoint.ranged(from: from, to: to, thumbnails: true)
         
-        let endpoint = CosmosEndpoint.ranged(from: from, to: offset, thumbnails: true)
-            
         fetch(with: endpoint.request, parse: { data -> [APOD]? in
-            return try? self.decoder.decode([APOD].self, from: data)
+            return try? self.decoder.decode([APOD].self, from: data).reversed()
         }, completion: completion)
-            
-        offset = Calendar.current.date(byAdding: .day, value: -1, to: from)!
     }
 }

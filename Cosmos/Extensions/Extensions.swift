@@ -25,8 +25,15 @@ extension JSONDecoder {
     }
 }
 
-//extension WKWebView {
-//    override open var safeAreaInsets: UIEdgeInsets {
-//        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-//    }
-//}
+extension String {
+    init(from date: Date) {
+        self.init()
+        if Calendar.current.compare(date, to: Date(), toGranularity: .day) == .orderedSame {
+            self.write("Today")
+        } else if Calendar.current.compare(date, to: Calendar.current.date(byAdding: .day, value: -1, to: Date())!, toGranularity: .day) == .orderedSame {
+            self.write("Yesterday")
+        } else {
+            self.write(DateFormatter(locale: .current, format: "EEEE, MMM d").string(from: date))
+        }
+    }
+}

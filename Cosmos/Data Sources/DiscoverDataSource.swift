@@ -30,7 +30,11 @@ class DiscoverDataSource: NSObject, UICollectionViewDataSource {
     }
     
     func append(_ apods: [APOD]) {
-        self.apods.append(contentsOf: apods)
+        for apod in apods {
+            if !self.apods.contains(apod) {
+                self.apods.append(apod)
+            }
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
