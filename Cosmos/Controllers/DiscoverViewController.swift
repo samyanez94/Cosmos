@@ -72,7 +72,7 @@ class DiscoverViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowDetails" {
             if let selectedIndexPath = collectionView.indexPathsForSelectedItems {
-                let selectedAPOD = dataSource.object(at: selectedIndexPath[0])
+                let selectedAPOD = dataSource.element(at: selectedIndexPath[0])
                 if let detailViewController = segue.destination as? DetailViewController {
                     detailViewController.apod = selectedAPOD
                 }
@@ -111,7 +111,7 @@ class DiscoverViewController: UIViewController {
     }
     
     func scrollToTop() {
-    self.collectionView.setContentOffset(CGPoint.zero, animated: true)
+        self.collectionView.setContentOffset(CGPoint(x: 0, y: -120), animated: true)
     }
 }
 

@@ -46,3 +46,15 @@ extension APOD: Equatable {
         return lhs.date == rhs.date
     }
 }
+
+extension APOD: Comparable {
+    static func < (lhs: APOD, rhs: APOD) -> Bool {
+        return lhs.date < rhs.date
+    }
+}
+
+extension APOD: Hashable {
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(date.hashValue)
+    }
+}

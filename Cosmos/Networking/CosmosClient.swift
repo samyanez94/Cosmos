@@ -21,9 +21,7 @@ class CosmosClient: APIClient {
     convenience init() {
         self.init(configuration: .default)
     }
-    
-    // TODO: Improve paging technique
-    
+        
     func fetch(count: Int, offset: Int = 0, completion: @escaping (Swift.Result<[APOD], APIError>) -> Void) {
         let to = Calendar.current.date(byAdding: .day, value: -offset, to: Date())!
         let from = Calendar.current.date(byAdding: .day, value: -count, to: to)!
@@ -31,7 +29,7 @@ class CosmosClient: APIClient {
         let endpoint = CosmosEndpoint.ranged(from: from, to: to, thumbnails: true)
         
         fetch(with: endpoint.request, parse: { data -> [APOD]? in
-            return try? self.decoder.decode([APOD].self, from: data).reversed()
+            return try? self.decoder.decode([APOD].self, from: data)
         }, completion: completion)
     }
 }

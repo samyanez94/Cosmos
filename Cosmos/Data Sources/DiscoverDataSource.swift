@@ -16,7 +16,7 @@ class DiscoverDataSource: NSObject, UICollectionViewDataSource {
     weak private var collectionView: UICollectionView?
     
     /// List of astronomy pictures to display by the collection view.
-    private(set) var apods: [APOD] = []
+    private(set) var apods: SortedSet<APOD> = SortedSet()
     
     /// The identifier for the footer cell
     private let footerCellIdentifier = "com.samuelyanez.CosmosCellFooter"
@@ -25,16 +25,12 @@ class DiscoverDataSource: NSObject, UICollectionViewDataSource {
         self.collectionView = collectionView
     }
     
-    func object(at indexPath: IndexPath) -> APOD {
-        return apods[indexPath.row]
+    func element(at indexPath: IndexPath) -> APOD {
+        return apods.element(at: indexPath.row)
     }
     
     func append(_ apods: [APOD]) {
-        for apod in apods {
-            if !self.apods.contains(apod) {
-                self.apods.append(apod)
-            }
-        }
+        self.apods.append(apods)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -47,40 +43,42 @@ class DiscoverDataSource: NSObject, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CosmosCell.identifier, for: indexPath) as? CosmosCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CosmosCell.identifier, for: indexPath) as! CosmosCell
         
-            let apod = apods[indexPath.row]
-            
-            let viewModel = APODViewModel(with: apod)
-            
-            cell.titleLabel.text = viewModel.title
-            cell.dateLabel.text = viewModel.date
-            
-            cell.activityIndicator.startAnimating()
-            
-            let url: URL? = {
-                switch apod.mediaType {
-                case .image:
-                    return URL(string: apod.url)
-                case .video:
-                    if let thumbnailUrl = apod.thumbnailUrl {
-                        return URL(string: thumbnailUrl)
-                    }
-                    return nil
-                }
-            }()
-            
-            // TODO: Handle case where there is no thumbnail URL
-            if let url = url {
-                cell.imageView.af_setImage(withURL: url, imageTransition: .crossDissolve(0.2)) { _ in
-                    cell.activityIndicator.stopAnimating()
-                }
-            } else {
-                print("Error: No thumbnail URL")
+        let apod = apods.element(at: indexPath.row)
+        
+        let viewModel = APODViewModel(with: apod)
+        
+        cell.titleLabel.text = viewModel.title
+        cell.dateLabel.text = viewModel.date
+        
+        cell.activityIndicator.startAnimating()
+        
+        setImageView(for: cell, apod: apod)
+        
+        return cell
+    }
+    
+    private func setImageView(for cell: CosmosCell, apod: APOD) {
+        if let url = getUrl(from: apod) {
+            cell.imageView.af_setImage(withURL: url, imageTransition: .crossDissolve(0.2)) { _ in
+                cell.activityIndicator.stopAnimating()
             }
-            return cell
+        // TODO: Handle case where there is no URL
         } else {
-            return UICollectionViewCell()
+            print("Error: No thumbnail URL")
+        }
+    }
+    
+    private func getUrl(from apod: APOD) -> URL? {
+        switch apod.mediaType {
+        case .image:
+            return URL(string: apod.url)
+        case .video:
+            if let thumbnailUrl = apod.thumbnailUrl {
+                return URL(string: thumbnailUrl)
+            }
+            return nil
         }
     }
 }
