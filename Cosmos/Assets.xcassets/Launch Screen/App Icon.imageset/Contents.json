@@ -2,50 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "App Icon Any.png",
+      "filename" : "App Icon.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "App Icon Dark.png",
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "dark"
-        }
-      ],
-      "scale" : "1x"
-    },
-    {
-      "idiom" : "universal",
-      "filename" : "App Icon Any@2x.png",
+      "filename" : "App Icon@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "App Icon Dark@2x.png",
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "dark"
-        }
-      ],
-      "scale" : "2x"
-    },
-    {
-      "idiom" : "universal",
-      "filename" : "App Icon Any@3x.png",
-      "scale" : "3x"
-    },
-    {
-      "idiom" : "universal",
-      "filename" : "App Icon Dark@3x.png",
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "dark"
-        }
-      ],
+      "filename" : "App Icon@3x.png",
       "scale" : "3x"
     }
   ],
