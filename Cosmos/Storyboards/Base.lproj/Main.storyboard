@@ -492,7 +492,7 @@ This app was born from a strong desire to learn more about space and software de
         <image name="arrow.clockwise" catalog="system" width="56" height="64"/>
         <image name="square.and.arrow.up" catalog="system" width="56" height="64"/>
         <namedColor name="Accent Color">
-            <color red="0.45098039215686275" green="0.25882352941176467" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.45100000500679016" green="0.25900000333786011" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

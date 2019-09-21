@@ -18,7 +18,7 @@ struct APODViewModel {
         title = apod.title
         date = String(from: apod.date)
         
-        explanation = apod.explanation.isEmpty ? "There is no description available for this day's media." : apod.explanation
+        explanation = apod.explanation.isEmpty ? "There is no description available for this media." : apod.explanation
         
         if let author = apod.copyright {
             copyright = "Copyright: \(author)"

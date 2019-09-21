@@ -27,6 +27,7 @@
 		22D47127211C0E5A0006EAD6 /* DiscoverDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D47126211C0E5A0006EAD6 /* DiscoverDataSource.swift */; };
 		22DABE4221BC617F004D6EBF /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DABE4121BC617F004D6EBF /* TabBarViewController.swift */; };
 		22DABE4421BC79D8004D6EBF /* CosmosError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DABE4321BC79D8004D6EBF /* CosmosError.swift */; };
+		22E794E12336E5EC007E4AA2 /* MissingThumbnailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22E794DF2336E5EC007E4AA2 /* MissingThumbnailView.xib */; };
 		22F711B722A8EC5200F71646 /* Pods_Cosmos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 523698EF916740C4BFD9F99D /* Pods_Cosmos.framework */; };
 		22FA5F09229B4EC000E27EC4 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA5F08229B4EC000E27EC4 /* APIClient.swift */; };
 /* End PBXBuildFile section */
@@ -54,6 +55,7 @@
 		22D47126211C0E5A0006EAD6 /* DiscoverDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverDataSource.swift; sourceTree = "<group>"; };
 		22DABE4121BC617F004D6EBF /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		22DABE4321BC79D8004D6EBF /* CosmosError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmosError.swift; sourceTree = "<group>"; };
+		22E794E02336E5EC007E4AA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MissingThumbnailView.xib; sourceTree = "<group>"; };
 		22FA5F08229B4EC000E27EC4 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		523698EF916740C4BFD9F99D /* Pods_Cosmos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cosmos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD9248921FA49AA81E6ADEF2 /* Pods-Cosmos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cosmos.release.xcconfig"; path = "Pods/Target Support Files/Pods-Cosmos/Pods-Cosmos.release.xcconfig"; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 			children = (
 				225220372104391100221D29 /* Main.storyboard */,
 				2252203F2104391200221D29 /* LaunchScreen.storyboard */,
+				22E794DF2336E5EC007E4AA2 /* MissingThumbnailView.xib */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 				225220392104391100221D29 /* Main.storyboard in Resources */,
 				222DDF6522D2869E00BE3645 /* apod-response.json in Resources */,
 				2244523B212D08A100889244 /* Assets.xcassets in Resources */,
+				22E794E12336E5EC007E4AA2 /* MissingThumbnailView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,6 +380,14 @@
 				225220402104391200221D29 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		22E794DF2336E5EC007E4AA2 /* MissingThumbnailView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				22E794E02336E5EC007E4AA2 /* Base */,
+			);
+			name = MissingThumbnailView.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
