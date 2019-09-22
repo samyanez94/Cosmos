@@ -22,19 +22,19 @@ class MockClient: APIClient {
         self.init(configuration: .default)
     }
     
-    func fetch(completion: @escaping (Swift.Result<[APOD], APIError>) -> Void) {
-        guard let path = Bundle.main.path(forResource: "apod-response", ofType: "json") else {
-            completion(.failure(.invalidLocation))
-            return
-        }
-        guard let data = try? Data(contentsOf: URL(fileURLWithPath: path)) else {
-            completion(.failure(.invalidData))
-            return
-        }
-        guard let apods = try? decoder.decode([APOD].self, from: data) else {
-            completion(.failure(.jsonParsingFailure))
-            return
-        }
-        completion(.success(apods))
-    }
+    func fetch(count: Int, offset: Int = 0, completion: @escaping (Swift.Result<[APOD], APIError>) -> Void) {
+         guard let path = Bundle.main.path(forResource: "apod-response", ofType: "json") else {
+             completion(.failure(.invalidLocation))
+             return
+         }
+         guard let data = try? Data(contentsOf: URL(fileURLWithPath: path)) else {
+             completion(.failure(.invalidData))
+             return
+         }
+         guard let apods = try? decoder.decode([APOD].self, from: data) else {
+             completion(.failure(.jsonParsingFailure))
+             return
+         }
+         completion(.success(apods))
+     }
 }

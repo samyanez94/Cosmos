@@ -28,6 +28,9 @@ class CosmosCell: UICollectionViewCell {
     /// Activity Indicator
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     
+    /// Missing thumbnail view
+    @IBOutlet var missingThumbnailView: MissingThumbnailView!
+    
     /// Identifier
     static let identifier = "com.samuelyanez.CosmosCell"
     
@@ -54,6 +57,8 @@ class CosmosCell: UICollectionViewCell {
         super.prepareForReuse()
         imageView.image = nil
         imageView.af_cancelImageRequest()
+        
+        missingThumbnailView.isHidden = true
     }
     
     private func setupShadow() {

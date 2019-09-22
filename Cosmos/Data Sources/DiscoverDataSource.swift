@@ -61,12 +61,15 @@ class DiscoverDataSource: NSObject, UICollectionViewDataSource {
     
     private func setImageView(for cell: CosmosCell, apod: APOD) {
         if let url = getUrl(from: apod) {
-            cell.imageView.af_setImage(withURL: url, imageTransition: .crossDissolve(0.2)) { _ in
+            cell.imageView.af_setImage(withURL: url, imageTransition: .crossDissolve(0.2)) { data in
+                if data.response?.statusCode == 404 {
+                    cell.missingThumbnailView.isHidden = false
+                }
                 cell.activityIndicator.stopAnimating()
             }
-        // TODO: Handle case where there is no URL
         } else {
-            print("Error: No thumbnail URL")
+            cell.missingThumbnailView.isHidden = false
+            cell.activityIndicator.stopAnimating()
         }
     }
     

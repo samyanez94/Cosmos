@@ -83,7 +83,7 @@ class DiscoverViewController: UIViewController {
     // MARK: Networking
     
     func fetch(count: Int, offset: Int = 0, completion: (() -> Void)? = nil) {
-        client.fetch(count: count, offset: offset) { [weak self, offset] result in
+        client.fetch(count: count, offset: offset) { [weak self] result in
             switch result {
             case .failure(let error):
                 print(error.localizedDescription)
