@@ -22,11 +22,23 @@ class DetailViewController: UIViewController {
     @IBOutlet var copyrightLabel: UILabel!
     @IBOutlet var shareButton: UIButton!
     
-    let imageView = UIImageView()
-    let activityIndicator = UIActivityIndicatorView()
+    /// Image view
+    private let imageView = UIImageView()
+    
+    /// Activity indicator
+    private let activityIndicator = UIActivityIndicatorView()
     
     /// The current astronomical picture of the day.
-    var apod: APOD?
+    var apod: APOD!
+    
+    /// The view model
+    var viewModel: APODViewModel? {
+        didSet {
+            if let viewModel = viewModel {
+                configure(with: viewModel)
+            }
+        }
+    }
     
     /// Sets the status bar to be hidden.
     override var prefersStatusBarHidden: Bool {
@@ -38,17 +50,12 @@ class DetailViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        // TODO: Handle case where apod is nil
-        if let apod = apod {
-            configure(for: apod)
-        }
+        viewModel = APODViewModel(with: apod)
         scrollView.contentInsetAdjustmentBehavior = .never
     }
     
-    private func configure(for apod: APOD) {
-        let viewModel = APODViewModel(with: apod)
-
-        dateLabel.text = viewModel.date
+    private func configure(with viewModel: APODViewModel) {
+        dateLabel.text = viewModel.preferredDate ?? viewModel.date
         titleLabel.text = viewModel.title
         explanationLabel.text = viewModel.explanation
         copyrightLabel.attributedText = attributedText(withString: viewModel.copyright ?? "", blackString: "Copyright:", font: .systemFont(ofSize: 20.0))
@@ -119,9 +126,28 @@ class DetailViewController: UIViewController {
             present(lightboxController, animated: true)
         }
     }
-    @IBAction func didTapOnShare(_ sender: Any) {
-        guard let apod = apod else { return }
+    
+    @IBAction func didTapOnDateLabel(_ sender: Any) {
+        guard let viewModel = viewModel,
+            let preferredDate = viewModel.preferredDate else {
+                return
+        }
         
+        let animation: (() -> Void) = { [unowned self] in
+            if self.dateLabel.text == preferredDate {
+                self.dateLabel.text = viewModel.date
+            } else {
+                self.dateLabel.text = preferredDate
+            }
+        }
+        UIView.transition(with: dateLabel,
+                          duration: 0.25,
+                          options: .transitionCrossDissolve,
+                          animations: animation,
+                          completion: nil)
+    }
+    
+    @IBAction func didTapOnShare(_ sender: Any) {
         var activityViewController: UIActivityViewController!
         
         switch apod.mediaType {
@@ -134,7 +160,6 @@ class DetailViewController: UIViewController {
             let text = "Checkout this video I discovered using the Cosmos app. Available on the App Store. \(apod.url)"
             activityViewController = UIActivityViewController(activityItems: [text], applicationActivities: nil)
         }
-        // TODO: Handle feedback
         present(activityViewController, animated: true, completion: nil)
     }
 }

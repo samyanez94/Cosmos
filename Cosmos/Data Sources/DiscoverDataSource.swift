@@ -50,7 +50,7 @@ class DiscoverDataSource: NSObject, UICollectionViewDataSource {
         let viewModel = APODViewModel(with: apod)
         
         cell.titleLabel.text = viewModel.title
-        cell.dateLabel.text = viewModel.date
+        cell.dateLabel.text = viewModel.preferredDate ?? viewModel.date
         
         cell.activityIndicator.startAnimating()
         
