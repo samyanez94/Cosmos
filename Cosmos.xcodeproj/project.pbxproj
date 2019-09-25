@@ -11,6 +11,7 @@
 		22288FCF231CB60100EE082E /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22288FCE231CB60100EE082E /* AboutViewController.swift */; };
 		222DDF6222D285E800BE3645 /* MockClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222DDF6122D285E800BE3645 /* MockClient.swift */; };
 		222DDF6522D2869E00BE3645 /* apod-response.json in Resources */ = {isa = PBXBuildFile; fileRef = 222DDF6422D2869E00BE3645 /* apod-response.json */; };
+		223A2BF2233B0FFA00005DFA /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223A2BF1233B0FFA00005DFA /* Environment.swift */; };
 		2244523B212D08A100889244 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2244523A212D08A100889244 /* Assets.xcassets */; };
 		225220342104391100221D29 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225220332104391100221D29 /* AppDelegate.swift */; };
 		225220362104391100221D29 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225220352104391100221D29 /* DiscoverViewController.swift */; };
@@ -38,6 +39,7 @@
 		22288FCE231CB60100EE082E /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		222DDF6122D285E800BE3645 /* MockClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockClient.swift; sourceTree = "<group>"; };
 		222DDF6422D2869E00BE3645 /* apod-response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "apod-response.json"; sourceTree = "<group>"; };
+		223A2BF1233B0FFA00005DFA /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		2244523A212D08A100889244 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		225220302104391100221D29 /* Cosmos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cosmos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		225220332104391100221D29 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				22AA95AF21055E47001B755F /* Endpoint.swift */,
+				223A2BF1233B0FFA00005DFA /* Environment.swift */,
 				22FA5F08229B4EC000E27EC4 /* APIClient.swift */,
 				22BC0A0C21056A580086BB19 /* CosmosClient.swift */,
 				222DDF6122D285E800BE3645 /* MockClient.swift */,
@@ -340,6 +343,7 @@
 			files = (
 				226E25B723245E9800908A39 /* SortedSet.swift in Sources */,
 				2202F50D211ECE4700DEFDE1 /* DetailViewController.swift in Sources */,
+				223A2BF2233B0FFA00005DFA /* Environment.swift in Sources */,
 				22FA5F09229B4EC000E27EC4 /* APIClient.swift in Sources */,
 				22DABE4421BC79D8004D6EBF /* CosmosError.swift in Sources */,
 				227B0ABC2337ED2300D1EFD2 /* MissingThumbnailView.swift in Sources */,
@@ -393,6 +397,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				API_BASE_URL = "https://cosmos-app-staging.herokuapp.com";
+				BUILD_CONFIGURATION = Debug;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -453,6 +459,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				API_BASE_URL = "https://cosmos-app-production.herokuapp.com";
+				BUILD_CONFIGURATION = Release;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

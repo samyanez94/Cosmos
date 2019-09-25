@@ -39,7 +39,7 @@ enum CosmosEndpoint {
 extension CosmosEndpoint: Endpoint {
     
     var base: String {
-        return "https://cosmos-api-app.herokuapp.com"
+        return Environment.shared.baseUrl
     }
     
     var path: String {
