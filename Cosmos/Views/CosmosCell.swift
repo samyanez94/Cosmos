@@ -74,6 +74,16 @@ class CosmosCell: UICollectionViewCell {
         containerView.layer.cornerRadius = CosmosCell.cornerRadius
     }
 }
+// MARK: - Accesibility
+
+extension CosmosCell {
+    
+    func applyAccessibility(for viewModel: APODViewModel) {
+        containerView.accessibilityTraits = UIAccessibilityTraits.button
+        containerView.accessibilityLabel = "\(viewModel.preferredDate ?? viewModel.date). \(viewModel.title)"
+        containerView.accessibilityHint = "Displays more details about this media."
+    }
+}
 
 // MARK: - Gesture Recognizer
 

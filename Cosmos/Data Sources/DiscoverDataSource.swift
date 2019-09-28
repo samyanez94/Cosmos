@@ -56,6 +56,8 @@ class DiscoverDataSource: NSObject, UICollectionViewDataSource {
         
         setImageView(for: cell, apod: apod)
         
+        cell.applyAccessibility(for: viewModel)
+        
         return cell
     }
     
