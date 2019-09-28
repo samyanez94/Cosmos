@@ -81,7 +81,7 @@ extension CosmosCell {
     func applyAccessibility(for apod: APOD) {
         containerView.accessibilityTraits = UIAccessibilityTraits.button
         containerView.accessibilityLabel = "\(apod.preferredDateString ?? apod.dateString). \(apod.title)"
-        containerView.accessibilityHint = "Displays more details about this media."
+        containerView.accessibilityHint = "Double tap to show more details about this media."
     }
 }
 

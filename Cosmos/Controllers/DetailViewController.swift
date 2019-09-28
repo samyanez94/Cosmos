@@ -21,6 +21,7 @@ class DetailViewController: UIViewController {
     @IBOutlet var explanationLabel: UILabel!
     @IBOutlet var copyrightLabel: UILabel!
     @IBOutlet var shareButton: UIButton!
+    @IBOutlet var dateLabelGestureRecognizer: UITapGestureRecognizer!
     
     /// Image view
     private let imageView = UIImageView()
@@ -47,6 +48,10 @@ class DetailViewController: UIViewController {
     
     private func configure(for apod: APOD) {
         dateLabel.text = apod.preferredDateString ?? apod.dateString
+        if apod.preferredDateString == nil {
+            dateLabelGestureRecognizer.isEnabled = false
+            dateLabelGestureRecognizer.accessibilityHint = "Double tap to switch between the absolute date and relative dates."
+        }
         titleLabel.text = apod.title
         explanationLabel.text = apod.explanation.isEmpty ? "There is no description available for this media." : apod.explanation
         if let author = apod.copyright {
@@ -82,11 +87,16 @@ class DetailViewController: UIViewController {
         imageView.frame = mediaView.frame
         imageView.contentMode = .scaleAspectFill
         imageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        imageView.af_setImage(withURL: url, imageTransition: .crossDissolve(0.2))
         imageView.isUserInteractionEnabled = true
-        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapOnImage(_:))))
+        imageView.af_setImage(withURL: url, imageTransition: .crossDissolve(0.2))
+        
+        // We cannot add accessibility attributes to Lightbox. Therefore, I'm disabling the feature when using VoiceOver.
+        if !UIAccessibility.isVoiceOverRunning {
+            imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapOnImage(_:))))
+        }
         
         mediaView.addSubview(imageView)
+        applyAccessibilityforImageView(imageView)
     }
     
     private func setupWebView(with url: URL) {
@@ -96,6 +106,7 @@ class DetailViewController: UIViewController {
         webView.load(URLRequest(url: url))
         
         mediaView.addSubview(webView)
+        applyAccesibilityforWebView(webView)
     }
     
     private func setupActivityIndicator() {
@@ -166,5 +177,22 @@ extension DetailViewController: WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         activityIndicator.stopAnimating()
+    }
+}
+
+// MARK: Accessibility
+
+extension DetailViewController {
+    
+    func applyAccessibilityforImageView(_ imageView: UIImageView) {
+        imageView.isAccessibilityElement = true
+        imageView.accessibilityLabel = apod.title
+        imageView.accessibilityTraits = .image
+    }
+    
+    func applyAccesibilityforWebView(_ webView: WKWebView) {
+        webView.isAccessibilityElement = true
+        webView.accessibilityLabel = apod.title
+        webView.accessibilityTraits = .startsMediaSession
     }
 }
