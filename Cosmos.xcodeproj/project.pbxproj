@@ -25,7 +25,6 @@
 		22B381122104583800DCDC24 /* CosmosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B381102104583800DCDC24 /* CosmosCell.swift */; };
 		22BC0A0D21056A580086BB19 /* CosmosClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BC0A0C21056A580086BB19 /* CosmosClient.swift */; };
 		22C15CAD21AB642200DB287E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C15CAC21AB642200DB287E /* Extensions.swift */; };
-		22C3174421D04CA500A26D00 /* APODViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C3174321D04CA500A26D00 /* APODViewModel.swift */; };
 		22D47127211C0E5A0006EAD6 /* DiscoverDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D47126211C0E5A0006EAD6 /* DiscoverDataSource.swift */; };
 		22DABE4221BC617F004D6EBF /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DABE4121BC617F004D6EBF /* TabBarViewController.swift */; };
 		22DABE4421BC79D8004D6EBF /* CosmosError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DABE4321BC79D8004D6EBF /* CosmosError.swift */; };
@@ -55,7 +54,6 @@
 		22B381102104583800DCDC24 /* CosmosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmosCell.swift; sourceTree = "<group>"; };
 		22BC0A0C21056A580086BB19 /* CosmosClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmosClient.swift; sourceTree = "<group>"; };
 		22C15CAC21AB642200DB287E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		22C3174321D04CA500A26D00 /* APODViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODViewModel.swift; sourceTree = "<group>"; };
 		22D47126211C0E5A0006EAD6 /* DiscoverDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverDataSource.swift; sourceTree = "<group>"; };
 		22DABE4121BC617F004D6EBF /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		22DABE4321BC79D8004D6EBF /* CosmosError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmosError.swift; sourceTree = "<group>"; };
@@ -202,7 +200,6 @@
 			isa = PBXGroup;
 			children = (
 				2252204821043C0E00221D29 /* APOD.swift */,
-				22C3174321D04CA500A26D00 /* APODViewModel.swift */,
 				22DABE4321BC79D8004D6EBF /* CosmosError.swift */,
 				226E25B623245E9800908A39 /* SortedSet.swift */,
 			);
@@ -350,7 +347,6 @@
 				222DDF6222D285E800BE3645 /* MockClient.swift in Sources */,
 				225220362104391100221D29 /* DiscoverViewController.swift in Sources */,
 				22AA95B021055E47001B755F /* Endpoint.swift in Sources */,
-				22C3174421D04CA500A26D00 /* APODViewModel.swift in Sources */,
 				22BC0A0D21056A580086BB19 /* CosmosClient.swift in Sources */,
 				2252204921043C0E00221D29 /* APOD.swift in Sources */,
 				2252203C2104391100221D29 /* Cosmos.xcdatamodeld in Sources */,

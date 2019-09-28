@@ -251,7 +251,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                                                 <subviews>
                                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rMg-do-b2Y" userLabel="Media View">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
+                                                        <rect key="frame" x="0.0" y="341" width="375" height="0.0"/>
                                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </view>
                                                 </subviews>

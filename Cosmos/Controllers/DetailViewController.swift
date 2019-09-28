@@ -31,15 +31,6 @@ class DetailViewController: UIViewController {
     /// The current astronomical picture of the day.
     var apod: APOD!
     
-    /// The view model
-    var viewModel: APODViewModel? {
-        didSet {
-            if let viewModel = viewModel {
-                configure(with: viewModel)
-            }
-        }
-    }
-    
     /// Sets the status bar to be hidden.
     override var prefersStatusBarHidden: Bool {
         true
@@ -50,15 +41,17 @@ class DetailViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        viewModel = APODViewModel(with: apod)
+        configure(for: apod)
         scrollView.contentInsetAdjustmentBehavior = .never
     }
     
-    private func configure(with viewModel: APODViewModel) {
-        dateLabel.text = viewModel.preferredDate ?? viewModel.date
-        titleLabel.text = viewModel.title
-        explanationLabel.text = viewModel.explanation
-        copyrightLabel.attributedText = attributedText(withString: viewModel.copyright ?? "", blackString: "Copyright:", font: .systemFont(ofSize: 20.0))
+    private func configure(for apod: APOD) {
+        dateLabel.text = apod.preferredDateString ?? apod.dateString
+        titleLabel.text = apod.title
+        explanationLabel.text = apod.explanation.isEmpty ? "There is no description available for this media." : apod.explanation
+        if let author = apod.copyright {
+            copyrightLabel.attributedText = attributedText(withString: "Copyright: \(author)", blackString: "Copyright:", font: .systemFont(ofSize: 20.0))
+        }
         loadResource(for: apod)
     }
     
@@ -128,14 +121,13 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func didTapOnDateLabel(_ sender: Any) {
-        guard let viewModel = viewModel,
-            let preferredDate = viewModel.preferredDate else {
-                return
+        guard let preferredDate = apod.preferredDateString else {
+            return
         }
         
         let animation: (() -> Void) = { [unowned self] in
             if self.dateLabel.text == preferredDate {
-                self.dateLabel.text = viewModel.date
+                self.dateLabel.text = self.apod.dateString
             } else {
                 self.dateLabel.text = preferredDate
             }

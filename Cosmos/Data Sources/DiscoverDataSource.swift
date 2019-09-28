@@ -46,17 +46,15 @@ class DiscoverDataSource: NSObject, UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CosmosCell.identifier, for: indexPath) as! CosmosCell
         
         let apod = apods.element(at: indexPath.row)
-        
-        let viewModel = APODViewModel(with: apod)
-        
-        cell.titleLabel.text = viewModel.title
-        cell.dateLabel.text = viewModel.preferredDate ?? viewModel.date
+                
+        cell.titleLabel.text = apod.title
+        cell.dateLabel.text = apod.preferredDateString ?? apod.dateString
         
         cell.activityIndicator.startAnimating()
         
         setImageView(for: cell, apod: apod)
         
-        cell.applyAccessibility(for: viewModel)
+        cell.applyAccessibility(for: apod)
         
         return cell
     }
