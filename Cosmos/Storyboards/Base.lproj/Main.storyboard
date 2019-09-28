@@ -164,24 +164,21 @@
                                 <rect key="frame" x="0.0" y="88" width="375" height="641"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="tM6-Og-B1d">
-                                        <rect key="frame" x="62.666666666666657" y="241" width="249.99999999999997" height="159.33333333333337"/>
+                                        <rect key="frame" x="62.666666666666657" y="239" width="249.99999999999997" height="163.33333333333337"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Well this is embarrasing. It looks like something went wrong." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SKU-Ol-47o" userLabel="Error Label">
-                                                <rect key="frame" x="0.0" y="0.0" width="250" height="71.666666666666671"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="250" id="KVV-fN-n1Q"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.clockwise" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="JhR-iP-lEy" userLabel="Refresh Icon">
-                                                <rect key="frame" x="114.33333333333334" y="90.333333333333357" width="21" height="24.333333333333329"/>
+                                                <rect key="frame" x="114.33333333333334" y="-1.3333333333333321" width="21" height="24.333333333333336"/>
                                                 <color key="tintColor" systemColor="quaternaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.17999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20" scale="medium" weight="medium"/>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please, tap here to try again." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ad-yr-SKS" userLabel="Refresh Label">
-                                                <rect key="frame" x="3" y="135.33333333333331" width="244" height="24"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SKU-Ol-47o" userLabel="Error Label">
+                                                <rect key="frame" x="0.0" y="43.666666666666693" width="250" height="119.66666666666669"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="250" id="KVV-fN-n1Q"/>
+                                                </constraints>
+                                                <string key="text">Well, this is embarrassing. It looks like something went wrong.
+
+Tap here to try again.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -194,6 +191,9 @@
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
                                 <constraints>
                                     <constraint firstItem="tM6-Og-B1d" firstAttribute="centerY" secondItem="7YX-ug-AZK" secondAttribute="centerY" id="Z8M-DN-wLh"/>
                                     <constraint firstItem="tM6-Og-B1d" firstAttribute="centerX" secondItem="7YX-ug-AZK" secondAttribute="centerX" id="ZbH-2N-Ar1"/>
@@ -221,6 +221,7 @@
                     <connections>
                         <outlet property="activityIndicatorView" destination="fBP-h8-anF" id="IYs-Er-zyB"/>
                         <outlet property="collectionView" destination="7gZ-3I-C86" id="h7T-w3-aUd"/>
+                        <outlet property="errorLabel" destination="SKU-Ol-47o" id="vPm-u0-wad"/>
                         <outlet property="errorView" destination="7YX-ug-AZK" id="59C-XA-T8j"/>
                     </connections>
                 </viewController>
@@ -397,7 +398,7 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KBe-fd-YQ2" userLabel="About Body Label">
                                                 <rect key="frame" x="16" y="76.666666666666657" width="343" height="262.66666666666674"/>
-                                                <string key="text">“The Cosmos is all that is or ever was or ever will be” - Carl Sagan. 
+                                                <string key="text">“The Cosmos is all that is, or ever was, or ever will be.” - Carl Sagan. 
 
 This app was born from a strong desire to learn more about space and software development. I decided to build an iOS app that displays images and videos from our universe. Keeping in mind a minimal and user-friendly design. I hope you enjoy it and share it with your friends if you like it.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -419,6 +420,7 @@ This app was born from a strong desire to learn more about space and software de
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3lt-bj-SNc" userLabel="Visit Button">
                                                 <rect key="frame" x="16" y="575.33333333333337" width="343" height="36"/>
+                                                <accessibility key="accessibilityConfiguration" hint="Double tap to open NASA's website."/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <state key="normal" title="https://apod.nasa.gov/apod/">
                                                     <color key="titleColor" name="Accent Color"/>

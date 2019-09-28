@@ -18,14 +18,17 @@ class DiscoverViewController: UIViewController {
         return DiscoverDataSource(collectionView: collectionView)
     }()
     
-    /// Collection View
+    /// Collection view
     @IBOutlet var collectionView: UICollectionView!
     
     /// Ativity indicator
     @IBOutlet var activityIndicatorView: UIView!
     
-    /// Error View
+    /// Error view
     @IBOutlet var errorView: UIView!
+    
+    /// Error label
+    @IBOutlet var errorLabel: UILabel!
     
     /// Pagination offset
     var collectionOffset = 0
@@ -37,6 +40,7 @@ class DiscoverViewController: UIViewController {
         super.viewDidLoad()
         
         configureCollectionView()
+        applyAccessibilityAttributes()
         
         activityIndicatorView.isHidden = false
         fetch(count: collectionPageSize, offset: collectionOffset) {
@@ -132,5 +136,17 @@ extension DiscoverViewController: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.bounds.size.width, height: collectionView.bounds.size.width * 1.2)
+    }
+}
+
+// MARK: Accessibility
+
+extension DiscoverViewController {
+    
+    func applyAccessibilityAttributes() {
+        errorView.isAccessibilityElement = true
+        errorView.accessibilityTraits = .button
+        errorView.accessibilityLabel = errorLabel.text
+        errorView.accessibilityHint = "Double tap to load the view one more time."
     }
 }
