@@ -469,7 +469,7 @@ This app was born from a strong desire to learn more about space and software de
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cee-Xl-vC9"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="About" image="Info Icon" id="iej-dg-sQD"/>
+                    <tabBarItem key="tabBarItem" title="About" image="Info Icon" largeContentSizeImage="Info Icon Large" id="iej-dg-sQD"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bon-un-qwm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -498,7 +498,7 @@ This app was born from a strong desire to learn more about space and software de
         <scene sceneID="WnA-IA-h6J">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jjY-6i-pPj" userLabel="Navigation Controller" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Discover" image="Rocket Icon" id="pqP-5p-aAr"/>
+                    <tabBarItem key="tabBarItem" title="Discover" image="Rocket Icon" largeContentSizeImage="Rocket Icon Large" id="pqP-5p-aAr"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="ngM-2d-kxD">
                         <rect key="frame" x="0.0" y="44" width="375" height="96"/>
@@ -520,7 +520,9 @@ This app was born from a strong desire to learn more about space and software de
     </scenes>
     <resources>
         <image name="Info Icon" width="25" height="25"/>
+        <image name="Info Icon Large" width="75" height="75"/>
         <image name="Rocket Icon" width="25" height="25"/>
+        <image name="Rocket Icon Large" width="75" height="75"/>
         <image name="arrow.clockwise" catalog="system" width="56" height="64"/>
         <image name="square.and.arrow.up" catalog="system" width="56" height="64"/>
         <namedColor name="Accent Color">
