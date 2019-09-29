@@ -194,5 +194,6 @@ extension DetailViewController {
         webView.isAccessibilityElement = true
         webView.accessibilityLabel = apod.title
         webView.accessibilityTraits = .startsMediaSession
+        webView.accessibilityHint = "Double tap to play media."
     }
 }
