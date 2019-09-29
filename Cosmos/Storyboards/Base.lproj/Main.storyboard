@@ -321,6 +321,7 @@ Tap here to try again.</string>
                                             <constraint firstAttribute="trailing" secondItem="ARO-i6-s2k" secondAttribute="trailing" constant="16" id="Rr4-X2-oYY"/>
                                             <constraint firstItem="ARO-i6-s2k" firstAttribute="leading" secondItem="cGu-DE-nh5" secondAttribute="leading" constant="16" id="Two-4j-er9"/>
                                             <constraint firstAttribute="trailing" secondItem="f7x-Wp-1wZ" secondAttribute="trailing" constant="16" id="UcV-Ks-spm"/>
+                                            <constraint firstItem="30F-qb-8r0" firstAttribute="top" secondItem="7Uo-UD-hUs" secondAttribute="bottom" constant="32" id="VGa-IL-DQI"/>
                                             <constraint firstItem="7Uo-UD-hUs" firstAttribute="top" secondItem="6RQ-rn-5S1" secondAttribute="bottom" constant="16" id="a49-Ow-ns1"/>
                                             <constraint firstItem="f7x-Wp-1wZ" firstAttribute="top" secondItem="Uqx-Xx-oTA" secondAttribute="bottom" constant="32" id="eb3-7H-Gqj"/>
                                             <constraint firstAttribute="trailing" secondItem="6RQ-rn-5S1" secondAttribute="trailing" constant="16" id="faW-CQ-d8K"/>
@@ -331,6 +332,11 @@ Tap here to try again.</string>
                                             <constraint firstItem="30F-qb-8r0" firstAttribute="top" secondItem="ARO-i6-s2k" secondAttribute="bottom" constant="32" id="unx-sD-9ib"/>
                                             <constraint firstItem="6RQ-rn-5S1" firstAttribute="leading" secondItem="cGu-DE-nh5" secondAttribute="leading" constant="16" id="uru-q2-hW7"/>
                                         </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="VGa-IL-DQI"/>
+                                            </mask>
+                                        </variation>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -364,6 +370,8 @@ Tap here to try again.</string>
                         <outlet property="mediaView" destination="rMg-do-b2Y" id="7T7-jg-W5M"/>
                         <outlet property="scrollView" destination="owF-5j-ToJ" id="IeF-nJ-IgQ"/>
                         <outlet property="shareButton" destination="30F-qb-8r0" id="fBY-ei-OF4"/>
+                        <outlet property="shareButtonToCopyrightLabelConstraint" destination="unx-sD-9ib" id="RM6-Bb-0eR"/>
+                        <outlet property="shareButtonToExplanationLabelConstraint" destination="VGa-IL-DQI" id="g8y-pX-s8Q"/>
                         <outlet property="titleLabel" destination="6RQ-rn-5S1" id="9e3-5Y-veo"/>
                     </connections>
                 </viewController>

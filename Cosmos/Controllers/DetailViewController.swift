@@ -23,6 +23,10 @@ class DetailViewController: UIViewController {
     @IBOutlet var shareButton: UIButton!
     @IBOutlet var dateLabelGestureRecognizer: UITapGestureRecognizer!
     
+    @IBOutlet var shareButtonToExplanationLabelConstraint: NSLayoutConstraint!
+    
+    @IBOutlet var shareButtonToCopyrightLabelConstraint: NSLayoutConstraint!
+    
     /// Image view
     private let imageView = UIImageView()
     
@@ -56,6 +60,10 @@ class DetailViewController: UIViewController {
         explanationLabel.text = apod.explanation.isEmpty ? "There is no description available for this media." : apod.explanation
         if let author = apod.copyright {
             copyrightLabel.attributedText = attributedText(withString: "Copyright: \(author)", blackString: "Copyright:", font: .systemFont(ofSize: 20.0))
+        } else {
+            copyrightLabel.isHidden = true
+            shareButtonToCopyrightLabelConstraint.isActive = false
+            shareButtonToExplanationLabelConstraint.isActive = true
         }
         loadResource(for: apod)
     }
