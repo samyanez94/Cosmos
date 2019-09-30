@@ -5,21 +5,21 @@
 	<key>UICTFontTextStyleTitle1</key>
 	<dict>
 		<key>fontSize</key>
-		<integer>18</integer>
+		<integer>28</integer>
 		<key>fontWeight</key>
 		<string>Regular</string>
 	</dict>
 	<key>UICTFontTextStyleTitle2</key>
 	<dict>
 		<key>fontSize</key>
-		<integer>18</integer>
+		<integer>22</integer>
 		<key>fontWeight</key>
 		<string>Regular</string>
 	</dict>
 	<key>UICTFontTextStyleTitle3</key>
 	<dict>
 		<key>fontSize</key>
-		<integer>18</integer>
+		<integer>20</integer>
 		<key>fontWeight</key>
 		<string>Regular</string>
 	</dict>
@@ -47,28 +47,28 @@
 	<key>UICTFontTextStyleCallout</key>
 	<dict>
 		<key>fontSize</key>
-		<integer>18</integer>
+		<integer>16</integer>
 		<key>fontWeight</key>
 		<string>Regular</string>
 	</dict>
 	<key>UICTFontTextStyleFootnote</key>
 	<dict>
 		<key>fontSize</key>
-		<integer>18</integer>
+		<integer>13</integer>
 		<key>fontWeight</key>
 		<string>Regular</string>
 	</dict>
 	<key>UICTFontTextStyleCaption1</key>
 	<dict>
 		<key>fontSize</key>
-		<integer>18</integer>
+		<integer>12</integer>
 		<key>fontWeight</key>
 		<string>Regular</string>
 	</dict>
 	<key>UICTFontTextStyleCaption2</key>
 	<dict>
 		<key>fontSize</key>
-		<integer>18</integer>
+		<integer>11</integer>
 		<key>fontWeight</key>
 		<string>Regular</string>
 	</dict>
