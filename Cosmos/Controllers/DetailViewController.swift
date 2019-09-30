@@ -64,7 +64,14 @@ class DetailViewController: UIViewController {
     }
     
     override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
         shareButton.layer.cornerRadius = 5
+        
+        if apod.copyright == nil {
+            shareButtonToCopyrightLabelConstraint.isActive = false
+            shareButtonToExplanationLabelConstraint.isActive = true
+        }
     }
     
     override func viewDidLoad() {
@@ -110,8 +117,6 @@ class DetailViewController: UIViewController {
             copyrightLabel.attributedText = attributedText(withString: "Copyright: \(author)", blackString: "Copyright:", font: scaledFont.font(forTextStyle: .body))
         } else {
             copyrightLabel.isHidden = true
-            shareButtonToCopyrightLabelConstraint.isActive = false
-            shareButtonToExplanationLabelConstraint.isActive = true
         }
     }
     
