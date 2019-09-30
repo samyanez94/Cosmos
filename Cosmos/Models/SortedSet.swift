@@ -1,5 +1,5 @@
 //
-//  OrderedSet.swift
+//  SortedSet.swift
 //  Cosmos
 //
 //  Created by Samuel Yanez on 9/7/19.

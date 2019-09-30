@@ -39,9 +39,14 @@ class DiscoverViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configureCollectionView()
+        // Accessibility
         applyAccessibilityAttributes()
+        setupDynamicFonts()
         
+        // Configure Collection View
+        configureCollectionView()
+        
+        // Load APODs
         activityIndicatorView.isHidden = false
         fetch(count: collectionPageSize, offset: collectionOffset) {
             self.activityIndicatorView.isHidden = true
@@ -55,14 +60,11 @@ class DiscoverViewController: UIViewController {
     // MARK: Collection View
     
     private func configureCollectionView() {
-       collectionView.dataSource = dataSource
+        collectionView.dataSource = dataSource
         collectionView.delegate = self
         collectionView.isHidden = true
         collectionView.refreshControl = UIRefreshControl()
-        
-        collectionView.refreshControl?.addTarget(self, action:
-        #selector(handleRefreshControl),
-        for: .valueChanged)
+        collectionView.refreshControl?.addTarget(self, action: #selector(handleRefreshControl), for: .valueChanged)
     }
     
     @objc func handleRefreshControl() {
@@ -143,10 +145,15 @@ extension DiscoverViewController: UICollectionViewDelegateFlowLayout {
 
 extension DiscoverViewController {
     
-    func applyAccessibilityAttributes() {
+    private func applyAccessibilityAttributes() {
         errorView.isAccessibilityElement = true
         errorView.accessibilityTraits = .button
         errorView.accessibilityLabel = errorLabel.text
         errorView.accessibilityHint = "Double tap to load the view one more time."
+    }
+    
+    private func setupDynamicFonts() {
+        errorLabel.font = ScaledFont.font(forTextStyle: .body, size: 20)
+        errorLabel.adjustsFontForContentSizeCategory = true
     }
 }

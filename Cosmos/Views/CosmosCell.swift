@@ -9,23 +9,23 @@
 import UIKit
 
 class CosmosCell: UICollectionViewCell {
-    
-    /// Image View
+
+    /// Image view
     @IBOutlet var imageView: UIImageView!
     
-    /// Header View
+    /// Header view
     @IBOutlet var headerView: UIView!
     
-    /// Container View
+    /// Container view
     @IBOutlet var containerView: UIView!
     
-    /// Title Label
+    /// Title label
     @IBOutlet var titleLabel: UILabel!
     
-    /// Date Label
+    /// Date label
     @IBOutlet var dateLabel: UILabel!
     
-    /// Activity Indicator
+    /// Activity indicator
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     
     /// Missing thumbnail view
@@ -78,11 +78,18 @@ class CosmosCell: UICollectionViewCell {
 
 extension CosmosCell {
     
-    func applyAccessibility(for apod: APOD) {
+    func applyAccessibilityAttributes(for apod: APOD) {
         containerView.accessibilityTraits = UIAccessibilityTraits.button
         containerView.accessibilityLabel = "\(apod.preferredDateString ?? apod.dateString). \(apod.title)"
         containerView.accessibilityHint = "Double tap to show more details about this media."
     }
+    
+    func setupDynamicFonts() {
+        dateLabel.font = ScaledFont.font(forTextStyle: .subheadline, size: 20.0, weight: .medium)
+        dateLabel.adjustsFontForContentSizeCategory = true
+        titleLabel.font = ScaledFont.font(forTextStyle: .title1, size: 24.0, weight: .bold)
+        titleLabel.adjustsFontForContentSizeCategory = true
+     }
 }
 
 // MARK: - Gesture Recognizer

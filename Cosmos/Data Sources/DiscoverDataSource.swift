@@ -15,7 +15,7 @@ class DiscoverDataSource: NSObject, UICollectionViewDataSource {
     /// Collection view.
     weak private var collectionView: UICollectionView?
     
-    /// List of astronomy pictures to display by the collection view.
+    /// List of astronomy pictures of the day.
     private(set) var apods: SortedSet<APOD> = SortedSet()
     
     /// The identifier for the footer cell
@@ -47,14 +47,17 @@ class DiscoverDataSource: NSObject, UICollectionViewDataSource {
         
         let apod = apods.element(at: indexPath.row)
                 
+        // Setup Cell
         cell.titleLabel.text = apod.title
         cell.dateLabel.text = apod.preferredDateString ?? apod.dateString
-        
         cell.activityIndicator.startAnimating()
         
-        setImageView(for: cell, apod: apod)
+        // Accessibility
+        cell.applyAccessibilityAttributes(for: apod)
+        cell.setupDynamicFonts()
         
-        cell.applyAccessibility(for: apod)
+        // Load preview
+        setImageView(for: cell, apod: apod)
         
         return cell
     }

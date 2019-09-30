@@ -9,6 +9,7 @@
 import Foundation
 
 class APOD: Codable {
+    
     let title: String
     let date: Date
     let explanation: String
