@@ -36,6 +36,11 @@ class DiscoverViewController: UIViewController {
     /// Pagination page size
     var collectionPageSize = 10
     
+    /// Utility used for dynamic types
+    private lazy var scaledFont: ScaledFont = {
+         return ScaledFont()
+     }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -153,7 +158,7 @@ extension DiscoverViewController {
     }
     
     private func setupDynamicFonts() {
-        errorLabel.font = ScaledFont.font(forTextStyle: .body, size: 20)
+        errorLabel.font = scaledFont.font(forTextStyle: .body)
         errorLabel.adjustsFontForContentSizeCategory = true
     }
 }

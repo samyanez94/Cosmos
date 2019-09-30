@@ -31,3 +31,30 @@ extension String {
         self.write(DateFormatter(locale: .current, format: "EEEE, MMM d").string(from: date))
     }
 }
+
+extension UIFont {
+    public static func fontWeight(from string: String) -> UIFont.Weight? {
+        switch string {
+        case "Ultra Light":
+            return .ultraLight
+        case "Thin":
+            return .thin
+        case "Light":
+            return .light
+        case "Regular":
+            return .regular
+        case "Medium":
+            return .medium
+        case "Semi-bold":
+            return .semibold
+        case "Bold":
+            return .bold
+        case "Heavy":
+            return .heavy
+        case "Black":
+            return .black
+        default:
+            return nil
+        }
+    }
+}

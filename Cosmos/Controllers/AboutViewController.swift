@@ -25,6 +25,11 @@ class AboutViewController: UIViewController {
     /// Visit button
     @IBOutlet var visitButton: UIButton!
     
+    /// Utility used for dynamic types
+    private lazy var scaledFont: ScaledFont = {
+         return ScaledFont()
+     }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,15 +49,15 @@ class AboutViewController: UIViewController {
 extension AboutViewController {
     
     private func applyDynamicFonts() {
-        aboutTitleLabel.font = ScaledFont.font(forTextStyle: .title1, size: 24.0, weight: .bold)
+        aboutTitleLabel.font = scaledFont.font(forTextStyle: .headline)
         aboutTitleLabel.adjustsFontForContentSizeCategory = true
-        aboutBodyLabel.font = ScaledFont.font(forTextStyle: .body, size: 20.0, weight: .regular)
+        aboutBodyLabel.font = scaledFont.font(forTextStyle: .body)
         aboutBodyLabel.adjustsFontForContentSizeCategory = true
-        acknowledgementsTitleLabel.font = ScaledFont.font(forTextStyle: .title1, size: 24.0, weight: .bold)
+        acknowledgementsTitleLabel.font = scaledFont.font(forTextStyle: .headline)
         acknowledgementsTitleLabel.adjustsFontForContentSizeCategory = true
-        acknowledgementsBodyLabel.font = ScaledFont.font(forTextStyle: .body, size: 20.0, weight: .regular)
+        acknowledgementsBodyLabel.font = scaledFont.font(forTextStyle: .body)
         acknowledgementsBodyLabel.adjustsFontForContentSizeCategory = true
-        visitButton.titleLabel?.font = ScaledFont.font(forTextStyle: .body, size: 20.0, weight: .regular)
+        visitButton.titleLabel?.font = scaledFont.font(forTextStyle: .body)
         visitButton.titleLabel?.adjustsFontForContentSizeCategory = true
      }
 }

@@ -43,6 +43,11 @@ class CosmosCell: UICollectionViewCell {
     /// Feedback generator
     var feedbackGenerator: UISelectionFeedbackGenerator?
     
+    /// Utility used for dynamic types
+    private lazy var scaledFont: ScaledFont = {
+         return ScaledFont()
+     }()
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         configureGestureRecognizer()
@@ -85,9 +90,9 @@ extension CosmosCell {
     }
     
     func setupDynamicFonts() {
-        dateLabel.font = ScaledFont.font(forTextStyle: .subheadline, size: 20.0, weight: .medium)
+        dateLabel.font = scaledFont.font(forTextStyle: .subheadline)
         dateLabel.adjustsFontForContentSizeCategory = true
-        titleLabel.font = ScaledFont.font(forTextStyle: .title1, size: 24.0, weight: .bold)
+        titleLabel.font = scaledFont.font(forTextStyle: .headline)
         titleLabel.adjustsFontForContentSizeCategory = true
      }
 }

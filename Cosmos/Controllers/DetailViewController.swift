@@ -53,6 +53,11 @@ class DetailViewController: UIViewController {
     /// The current astronomical picture of the day.
     var apod: APOD!
     
+    /// Utility used for dynamic types
+    private lazy var scaledFont: ScaledFont = {
+         return ScaledFont()
+     }()
+    
     /// Sets the status bar to be hidden.
     override var prefersStatusBarHidden: Bool {
         true
@@ -102,7 +107,7 @@ class DetailViewController: UIViewController {
     
     private func configureCopyrightLabel() {
         if let author = apod.copyright {
-            copyrightLabel.attributedText = attributedText(withString: "Copyright: \(author)", blackString: "Copyright:", font: ScaledFont.font(forTextStyle: .body, size: 20.0, weight: .regular))
+            copyrightLabel.attributedText = attributedText(withString: "Copyright: \(author)", blackString: "Copyright:", font: scaledFont.font(forTextStyle: .body))
         } else {
             copyrightLabel.isHidden = true
             shareButtonToCopyrightLabelConstraint.isActive = false
@@ -251,13 +256,13 @@ extension DetailViewController {
     }
     
     private func setupDynamicFonts() {
-        dateLabel.font = ScaledFont.font(forTextStyle: .subheadline, size: 20.0, weight: .medium)
+        dateLabel.font = scaledFont.font(forTextStyle: .subheadline)
         dateLabel.adjustsFontForContentSizeCategory = true
-        titleLabel.font = ScaledFont.font(forTextStyle: .title1, size: 24.0, weight: .bold)
+        titleLabel.font = scaledFont.font(forTextStyle: .headline)
         titleLabel.adjustsFontForContentSizeCategory = true
-        explanationLabel.font = ScaledFont.font(forTextStyle: .body, size: 20.0)
+        explanationLabel.font = scaledFont.font(forTextStyle: .body)
         explanationLabel.adjustsFontForContentSizeCategory = true
-        copyrightLabel.font = ScaledFont.font(forTextStyle: .body, size: 20.0)
+        copyrightLabel.font = scaledFont.font(forTextStyle: .body)
         copyrightLabel.adjustsFontForContentSizeCategory = true
     }
 }
