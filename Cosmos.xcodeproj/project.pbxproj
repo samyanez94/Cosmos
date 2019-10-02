@@ -28,6 +28,7 @@
 		22BC0A0D21056A580086BB19 /* CosmosClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BC0A0C21056A580086BB19 /* CosmosClient.swift */; };
 		22C15CAD21AB642200DB287E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C15CAC21AB642200DB287E /* Extensions.swift */; };
 		22CE290E23446BF400170FEE /* CosmosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CE290D23446BF400170FEE /* CosmosTests.swift */; };
+		22CE29172344700D00170FEE /* MockSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CE29162344700D00170FEE /* MockSession.swift */; };
 		22D47127211C0E5A0006EAD6 /* DiscoverDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D47126211C0E5A0006EAD6 /* DiscoverDataSource.swift */; };
 		22DABE4221BC617F004D6EBF /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DABE4121BC617F004D6EBF /* TabBarViewController.swift */; };
 		22DABE4421BC79D8004D6EBF /* CosmosError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DABE4321BC79D8004D6EBF /* CosmosError.swift */; };
@@ -72,6 +73,7 @@
 		22CE290B23446BF400170FEE /* CosmosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CosmosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		22CE290D23446BF400170FEE /* CosmosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmosTests.swift; sourceTree = "<group>"; };
 		22CE290F23446BF400170FEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22CE29162344700D00170FEE /* MockSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSession.swift; sourceTree = "<group>"; };
 		22D47126211C0E5A0006EAD6 /* DiscoverDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverDataSource.swift; sourceTree = "<group>"; };
 		22DABE4121BC617F004D6EBF /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		22DABE4321BC79D8004D6EBF /* CosmosError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmosError.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 				22FA5F08229B4EC000E27EC4 /* APIClient.swift */,
 				22BC0A0C21056A580086BB19 /* CosmosClient.swift */,
 				222DDF6122D285E800BE3645 /* MockClient.swift */,
+				22CE29162344700D00170FEE /* MockSession.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -238,10 +241,18 @@
 		22CE290C23446BF400170FEE /* CosmosTests */ = {
 			isa = PBXGroup;
 			children = (
+				22CE291523446EEC00170FEE /* Networking */,
 				22CE290D23446BF400170FEE /* CosmosTests.swift */,
 				22CE290F23446BF400170FEE /* Info.plist */,
 			);
 			path = CosmosTests;
+			sourceTree = "<group>";
+		};
+		22CE291523446EEC00170FEE /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -413,6 +424,7 @@
 				223A2BF2233B0FFA00005DFA /* Environment.swift in Sources */,
 				22FA5F09229B4EC000E27EC4 /* APIClient.swift in Sources */,
 				22DABE4421BC79D8004D6EBF /* CosmosError.swift in Sources */,
+				22CE29172344700D00170FEE /* MockSession.swift in Sources */,
 				227B0ABC2337ED2300D1EFD2 /* MissingThumbnailView.swift in Sources */,
 				222DDF6222D285E800BE3645 /* MockClient.swift in Sources */,
 				225220362104391100221D29 /* DiscoverViewController.swift in Sources */,

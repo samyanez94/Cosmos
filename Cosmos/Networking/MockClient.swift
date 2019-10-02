@@ -8,33 +8,20 @@
 
 import Foundation
 
-class MockClient: APIClient {
+class MockClient: CosmosClient {
     
-    var session: URLSession
-    
-    let decoder = JSONDecoder(dateDecodingStrategy: .formatted(DateFormatter(locale: .current, format: "yyyy-MM-dd")))
-    
-    init(configuration: URLSessionConfiguration) {
-        self.session = URLSession(configuration: configuration)
+    init(data: Data?, response: URLResponse?, error: Error?) {
+        super.init(session: MockSession(data: data, response: response, error: error))
     }
     
     convenience init() {
-        self.init(configuration: .default)
+        guard let path = Bundle.main.path(forResource: "apod-response", ofType: "json"),
+            let data = try? Data(contentsOf: URL(fileURLWithPath: path)),
+            let url = URL(string: "https://cosmos-app-staging.herokuapp.com") else {
+                self.init(data: nil, response: nil, error: nil)
+                return
+        }
+        let response = HTTPURLResponse(url: url, statusCode: 200, httpVersion: nil, headerFields: nil)
+        self.init(data: data, response: response, error: nil)
     }
-    
-    func fetch(count: Int, offset: Int = 0, completion: @escaping (Swift.Result<[APOD], APIError>) -> Void) {
-         guard let path = Bundle.main.path(forResource: "apod-response", ofType: "json") else {
-             completion(.failure(.invalidLocation))
-             return
-         }
-         guard let data = try? Data(contentsOf: URL(fileURLWithPath: path)) else {
-             completion(.failure(.invalidData))
-             return
-         }
-         guard let apods = try? decoder.decode([APOD].self, from: data) else {
-             completion(.failure(.jsonParsingFailure))
-             return
-         }
-         completion(.success(apods))
-     }
 }

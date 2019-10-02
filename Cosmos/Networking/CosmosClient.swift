@@ -14,12 +14,12 @@ class CosmosClient: APIClient {
     
     let decoder = JSONDecoder(dateDecodingStrategy: .formatted(DateFormatter(locale: .current, format: "yyyy-MM-dd")))
     
-    init(configuration: URLSessionConfiguration) {
-        self.session = URLSession(configuration: configuration)
+    init(session: URLSession) {
+        self.session = session
     }
     
     convenience init() {
-        self.init(configuration: .default)
+        self.init(session: URLSession(configuration: .default))
     }
         
     func fetch(count: Int, offset: Int = 0, completion: @escaping (Swift.Result<[APOD], APIError>) -> Void) {
