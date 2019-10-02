@@ -11,9 +11,9 @@ import Foundation
 protocol APIClient {
     var session: URLSession { get }
     
-    func fetch<T: Decodable>(with request: URLRequest, parse: @escaping (Data) -> T?, completion: @escaping (Result<T, APIError>) -> Void)
+    func fetch<T: Decodable>(with request: URLRequest, parse: @escaping (Data) -> T?, completion: ((Result<T, APIError>) -> Void)?)
     
-    func fetch<T: Decodable>(with request: URLRequest, parse: @escaping (Data) -> [T]?, completion: @escaping (Result<[T], APIError>) -> Void)
+    func fetch<T: Decodable>(with request: URLRequest, parse: @escaping (Data) -> [T]?, completion: ((Result<[T], APIError>) -> Void)?)
 }
 
 extension APIClient {
@@ -36,35 +36,35 @@ extension APIClient {
         }
     }
     
-    func fetch<T: Decodable>(with request: URLRequest, parse: @escaping (Data) -> T?, completion: @escaping (Result<T, APIError>) -> Void) {
+    func fetch<T: Decodable>(with request: URLRequest, parse: @escaping (Data) -> T?, completion: ((Result<T, APIError>) -> Void)?) {
         task(with: request) { result in
             DispatchQueue.main.async {
                 switch result {
                 case .failure(let error):
-                    completion(.failure(error))
+                    completion?(.failure(error))
                 case .success(let data):
                     guard let value = parse(data) else {
-                        completion(.failure(.jsonParsingFailure))
+                        completion?(.failure(.jsonParsingFailure))
                         return
                     }
-                    completion(.success(value))
+                    completion?(.success(value))
                 }
             }
         }.resume()
     }
     
-    func fetch<T: Decodable>(with request: URLRequest, parse: @escaping (Data) -> [T]?, completion: @escaping (Result<[T], APIError>) -> Void) {
+    func fetch<T: Decodable>(with request: URLRequest, parse: @escaping (Data) -> [T]?, completion: ((Result<[T], APIError>) -> Void)?) {
         task(with: request) { result in
             DispatchQueue.main.async {
                 switch result {
                 case .failure(let error):
-                    completion(.failure(error))
+                    completion?(.failure(error))
                 case .success(let data):
                     guard let values = parse(data) else {
-                        completion(.failure(.jsonParsingFailure))
+                        completion?(.failure(.jsonParsingFailure))
                         return
                     }
-                    completion(.success(values))
+                    completion?(.success(values))
                 }
             }
         }.resume()

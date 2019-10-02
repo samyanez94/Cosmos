@@ -37,4 +37,11 @@ class CosmosClientTest: XCTestCase {
         
         XCTAssert(apods != nil)
     }
+    
+    func testSuccessfulResponsePerformance() {
+        let client = MockClient()
+        measure {
+            client.fetch(count: 10)
+        }
+    }
 }

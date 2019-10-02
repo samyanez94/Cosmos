@@ -22,7 +22,7 @@ class CosmosClient: APIClient {
         self.init(session: URLSession(configuration: .default))
     }
         
-    func fetch(count: Int, offset: Int = 0, completion: @escaping (Swift.Result<[APOD], APIError>) -> Void) {
+    func fetch(count: Int, offset: Int = 0, completion: ((Swift.Result<[APOD], APIError>) -> Void)? = nil) {
         let to = Calendar.current.date(byAdding: .day, value: -offset, to: Date())!
         let from = Calendar.current.date(byAdding: .day, value: -count, to: to)!
         
