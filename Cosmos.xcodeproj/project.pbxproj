@@ -29,6 +29,15 @@
 		22C15CAD21AB642200DB287E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C15CAC21AB642200DB287E /* Extensions.swift */; };
 		22CE290E23446BF400170FEE /* CosmosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CE290D23446BF400170FEE /* CosmosTests.swift */; };
 		22CE29172344700D00170FEE /* MockSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CE29162344700D00170FEE /* MockSession.swift */; };
+		22CE2919234479BC00170FEE /* CosmosClientTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CE2918234479BC00170FEE /* CosmosClientTest.swift */; };
+		22CE291A234479E100170FEE /* MockSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CE29162344700D00170FEE /* MockSession.swift */; };
+		22CE291B234479E400170FEE /* MockClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222DDF6122D285E800BE3645 /* MockClient.swift */; };
+		22CE291C23447B0C00170FEE /* CosmosClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BC0A0C21056A580086BB19 /* CosmosClient.swift */; };
+		22CE291D23447BA000170FEE /* APOD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2252204821043C0E00221D29 /* APOD.swift */; };
+		22CE291E23447BCF00170FEE /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA5F08229B4EC000E27EC4 /* APIClient.swift */; };
+		22CE291F23447BD600170FEE /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223A2BF1233B0FFA00005DFA /* Environment.swift */; };
+		22CE292023447BD900170FEE /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AA95AF21055E47001B755F /* Endpoint.swift */; };
+		22CE292123447E5200170FEE /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C15CAC21AB642200DB287E /* Extensions.swift */; };
 		22D47127211C0E5A0006EAD6 /* DiscoverDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D47126211C0E5A0006EAD6 /* DiscoverDataSource.swift */; };
 		22DABE4221BC617F004D6EBF /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DABE4121BC617F004D6EBF /* TabBarViewController.swift */; };
 		22DABE4421BC79D8004D6EBF /* CosmosError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DABE4321BC79D8004D6EBF /* CosmosError.swift */; };
@@ -74,6 +83,7 @@
 		22CE290D23446BF400170FEE /* CosmosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmosTests.swift; sourceTree = "<group>"; };
 		22CE290F23446BF400170FEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22CE29162344700D00170FEE /* MockSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSession.swift; sourceTree = "<group>"; };
+		22CE2918234479BC00170FEE /* CosmosClientTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmosClientTest.swift; sourceTree = "<group>"; };
 		22D47126211C0E5A0006EAD6 /* DiscoverDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverDataSource.swift; sourceTree = "<group>"; };
 		22DABE4121BC617F004D6EBF /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		22DABE4321BC79D8004D6EBF /* CosmosError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmosError.swift; sourceTree = "<group>"; };
@@ -251,6 +261,7 @@
 		22CE291523446EEC00170FEE /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				22CE2918234479BC00170FEE /* CosmosClientTest.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -445,6 +456,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22CE291B234479E400170FEE /* MockClient.swift in Sources */,
+				22CE292023447BD900170FEE /* Endpoint.swift in Sources */,
+				22CE291F23447BD600170FEE /* Environment.swift in Sources */,
+				22CE291E23447BCF00170FEE /* APIClient.swift in Sources */,
+				22CE291D23447BA000170FEE /* APOD.swift in Sources */,
+				22CE292123447E5200170FEE /* Extensions.swift in Sources */,
+				22CE291A234479E100170FEE /* MockSession.swift in Sources */,
+				22CE2919234479BC00170FEE /* CosmosClientTest.swift in Sources */,
+				22CE291C23447B0C00170FEE /* CosmosClient.swift in Sources */,
 				22CE290E23446BF400170FEE /* CosmosTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
