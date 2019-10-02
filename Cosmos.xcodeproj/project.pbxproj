@@ -27,6 +27,7 @@
 		22B43D6223416B2800DD2A30 /* ScaledFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B43D6123416B2800DD2A30 /* ScaledFont.swift */; };
 		22BC0A0D21056A580086BB19 /* CosmosClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BC0A0C21056A580086BB19 /* CosmosClient.swift */; };
 		22C15CAD21AB642200DB287E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C15CAC21AB642200DB287E /* Extensions.swift */; };
+		22CE290E23446BF400170FEE /* CosmosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CE290D23446BF400170FEE /* CosmosTests.swift */; };
 		22D47127211C0E5A0006EAD6 /* DiscoverDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D47126211C0E5A0006EAD6 /* DiscoverDataSource.swift */; };
 		22DABE4221BC617F004D6EBF /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DABE4121BC617F004D6EBF /* TabBarViewController.swift */; };
 		22DABE4421BC79D8004D6EBF /* CosmosError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DABE4321BC79D8004D6EBF /* CosmosError.swift */; };
@@ -34,6 +35,16 @@
 		22F711B722A8EC5200F71646 /* Pods_Cosmos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 523698EF916740C4BFD9F99D /* Pods_Cosmos.framework */; };
 		22FA5F09229B4EC000E27EC4 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA5F08229B4EC000E27EC4 /* APIClient.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		22CE291023446BF400170FEE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 225220282104391100221D29 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2252202F2104391100221D29;
+			remoteInfo = Cosmos;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		2202F50C211ECE4700DEFDE1 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -58,6 +69,9 @@
 		22B43D6123416B2800DD2A30 /* ScaledFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaledFont.swift; sourceTree = "<group>"; };
 		22BC0A0C21056A580086BB19 /* CosmosClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmosClient.swift; sourceTree = "<group>"; };
 		22C15CAC21AB642200DB287E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		22CE290B23446BF400170FEE /* CosmosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CosmosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		22CE290D23446BF400170FEE /* CosmosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmosTests.swift; sourceTree = "<group>"; };
+		22CE290F23446BF400170FEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22D47126211C0E5A0006EAD6 /* DiscoverDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverDataSource.swift; sourceTree = "<group>"; };
 		22DABE4121BC617F004D6EBF /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		22DABE4321BC79D8004D6EBF /* CosmosError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmosError.swift; sourceTree = "<group>"; };
@@ -74,6 +88,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				22F711B722A8EC5200F71646 /* Pods_Cosmos.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		22CE290823446BF400170FEE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				225220322104391100221D29 /* Cosmos */,
+				22CE290C23446BF400170FEE /* CosmosTests */,
 				225220312104391100221D29 /* Products */,
 				09DE3B89D5716714C8F01DEF /* Pods */,
 				100FFF18CA2661C69B3600C3 /* Frameworks */,
@@ -139,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				225220302104391100221D29 /* Cosmos.app */,
+				22CE290B23446BF400170FEE /* CosmosTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -212,6 +235,15 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		22CE290C23446BF400170FEE /* CosmosTests */ = {
+			isa = PBXGroup;
+			children = (
+				22CE290D23446BF400170FEE /* CosmosTests.swift */,
+				22CE290F23446BF400170FEE /* Info.plist */,
+			);
+			path = CosmosTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -235,19 +267,41 @@
 			productReference = 225220302104391100221D29 /* Cosmos.app */;
 			productType = "com.apple.product-type.application";
 		};
+		22CE290A23446BF400170FEE /* CosmosTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 22CE291423446BF400170FEE /* Build configuration list for PBXNativeTarget "CosmosTests" */;
+			buildPhases = (
+				22CE290723446BF400170FEE /* Sources */,
+				22CE290823446BF400170FEE /* Frameworks */,
+				22CE290923446BF400170FEE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				22CE291123446BF400170FEE /* PBXTargetDependency */,
+			);
+			name = CosmosTests;
+			productName = CosmosTests;
+			productReference = 22CE290B23446BF400170FEE /* CosmosTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		225220282104391100221D29 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0940;
+				LastSwiftUpdateCheck = 1100;
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Samuel Yanez";
 				TargetAttributes = {
 					2252202F2104391100221D29 = {
 						CreatedOnToolsVersion = 9.4.1;
 						LastSwiftMigration = 1020;
+					};
+					22CE290A23446BF400170FEE = {
+						CreatedOnToolsVersion = 11.0;
+						TestTargetID = 2252202F2104391100221D29;
 					};
 				};
 			};
@@ -265,6 +319,7 @@
 			projectRoot = "";
 			targets = (
 				2252202F2104391100221D29 /* Cosmos */,
+				22CE290A23446BF400170FEE /* CosmosTests */,
 			);
 		};
 /* End PBXProject section */
@@ -280,6 +335,13 @@
 				22B43D60234169F900DD2A30 /* FontBook.plist in Resources */,
 				2244523B212D08A100889244 /* Assets.xcassets in Resources */,
 				22E794E12336E5EC007E4AA2 /* MissingThumbnailView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		22CE290923446BF400170FEE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,7 +429,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		22CE290723446BF400170FEE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22CE290E23446BF400170FEE /* CosmosTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		22CE291123446BF400170FEE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2252202F2104391100221D29 /* Cosmos */;
+			targetProxy = 22CE291023446BF400170FEE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		225220372104391100221D29 /* Main.storyboard */ = {
@@ -555,6 +633,49 @@
 			};
 			name = Release;
 		};
+		22CE291223446BF400170FEE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QFXSZ288GU;
+				INFOPLIST_FILE = CosmosTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = sample.com.CosmosTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cosmos.app/Cosmos";
+			};
+			name = Debug;
+		};
+		22CE291323446BF400170FEE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QFXSZ288GU;
+				INFOPLIST_FILE = CosmosTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = sample.com.CosmosTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cosmos.app/Cosmos";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -572,6 +693,15 @@
 			buildConfigurations = (
 				225220462104391200221D29 /* Debug */,
 				225220472104391200221D29 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		22CE291423446BF400170FEE /* Build configuration list for PBXNativeTarget "CosmosTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22CE291223446BF400170FEE /* Debug */,
+				22CE291323446BF400170FEE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
