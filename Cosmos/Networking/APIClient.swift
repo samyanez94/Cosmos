@@ -19,7 +19,11 @@ protocol APIClient {
 extension APIClient {
     
     func task(with request: URLRequest, completionHandler completion: @escaping (Swift.Result<Data, APIError>) -> Void) -> URLSessionDataTask {
-        return session.dataTask(with: request) { data, response, _ in
+        return session.dataTask(with: request) { data, response, error in
+            if let error = error {
+                completion(.failure(.requestFailedWithError(error.localizedDescription)))
+                return
+            }
             guard let httpResponse = response as? HTTPURLResponse else {
                 completion(.failure(.requestFailed))
                 return
@@ -72,21 +76,32 @@ extension APIClient {
 }
 
 enum APIError: Error {
-    case invalidLocation
+    case requestFailedWithError(String)
     case requestFailed
-    case jsonConversionFailure
     case invalidData
     case responseUnsuccessful
     case jsonParsingFailure
     
     var localizedDescription: String {
         switch self {
-        case .invalidLocation: return "Invalid Location"
-        case .requestFailed: return "Request Failed"
-        case .invalidData: return "Invalid Data"
-        case .responseUnsuccessful: return "Response Unsuccessful"
-        case .jsonParsingFailure: return "JSON Parsing Failure"
-        case .jsonConversionFailure: return "JSON Conversion Failure"
+        case .requestFailedWithError(let error): return "Request failed with error: \(error)"
+        case .requestFailed: return "Request failed"
+        case .invalidData: return "Invalid data"
+        case .responseUnsuccessful: return "Response unsuccessful"
+        case .jsonParsingFailure: return "JSON parsing failure"
+        }
+    }
+}
+
+extension APIError: Equatable {
+    public static func == (lhs: APIError, rhs: APIError) -> Bool {
+        switch (lhs, rhs) {
+        case(.requestFailedWithError, .requestFailedWithError): return true
+        case(.requestFailed, .requestFailed): return true
+        case(.invalidData, .invalidData): return true
+        case(.responseUnsuccessful, .responseUnsuccessful): return true
+        case(.jsonParsingFailure, .jsonParsingFailure): return true
+        default: return false
         }
     }
 }
