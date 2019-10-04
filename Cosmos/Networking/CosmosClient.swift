@@ -21,6 +21,14 @@ class CosmosClient: APIClient {
     convenience init() {
         self.init(session: URLSession(configuration: .default))
     }
+    
+    func fetch(completion: ((Swift.Result<APOD, APIError>) -> Void)? = nil) {
+        let endpoint = CosmosEndpoint.today(thumbnails: true)
+        
+        fetch(with: endpoint.request, parse: { data -> APOD? in
+            return try? self.decoder.decode(APOD.self, from: data)
+        }, completion: completion)
+    }
         
     func fetch(count: Int, offset: Int = 0, completion: ((Swift.Result<[APOD], APIError>) -> Void)? = nil) {
         let to = Calendar.current.date(byAdding: .day, value: -offset, to: Date())!

@@ -10,19 +10,27 @@ import XCTest
 
 class CosmosClientTest: XCTestCase {
     
-    // Mock error
-    enum MockError: Error {
-        case mockError
-    }
-    
     // Mock client
     var client: MockClient!
     
-    // APODs from response
+    // APOD for single response
+    var apod: APOD?
+    
+    // APODs for ranged response
     var apods: [APOD]?
     
     // Error from response
     var error: APIError?
+    
+    // URL used in the request
+    var url: URL? {
+        URL(string: "https://cosmos-app-staging.herokuapp.com")
+    }
+        
+    // Mock error
+    enum MockError: Error {
+        case mockError
+    }
     
     override func setUp() {
         super.setUp()
@@ -30,16 +38,40 @@ class CosmosClientTest: XCTestCase {
 
     override func tearDown() {
         client = nil
+        apod = nil
         apods = nil
         error = nil
         
         super.tearDown()
     }
     
-    func testSuccessfulResponse() {
+    func testSuccessfulRequest() {
+        // Given
+        client = MockClient(withResource: "apod-single-response", ofType: "json")
+                
+        let promise = expectation(description: "Fetch completed. 🚀")
+        
+        // When
+        client.fetch { result in
+            switch result {
+            case .failure(let errorFromResponse):
+                self.error = errorFromResponse
+            case .success(let apodFromResponse):
+                self.apod = apodFromResponse
+            }
+            promise.fulfill()
+        }
+        wait(for: [promise], timeout: 5)
+        
+        // Then
+        XCTAssert(error == nil, "Error should be nil.")
+        XCTAssert(apod != nil, "Response should not be nil. 😱")
+    }
+    
+    func testSuccessfulRangedRequest() {
         
         // Given
-        client = MockClient()
+        client = MockClient(withResource: "apod-ranged-response", ofType: "json")
         
         let promise = expectation(description: "Fetch completed. 🚀")
         
@@ -63,18 +95,19 @@ class CosmosClientTest: XCTestCase {
     func testFailedRequestWithError() {
         
         // Given
-        let mockError = MockError.mockError
-        client = MockClient(data: nil, response: nil, error: mockError)
+        let clientError = MockError.mockError
+        
+        client = MockClient(data: nil, response: nil, error: clientError)
         
         let promise = expectation(description: "Fetch completed. 🚀")
         
         // When
-         client.fetch(count: 10) { result in
+         client.fetch { result in
              switch result {
              case .failure(let errorFromResponse):
                 self.error = errorFromResponse
-             case .success(let apodsFromResponse):
-                self.apods = apodsFromResponse
+             case .success(let apodFromResponse):
+                self.apod = apodFromResponse
              }
              promise.fulfill()
          }
@@ -82,7 +115,7 @@ class CosmosClientTest: XCTestCase {
         
         // Then
         XCTAssertEqual(error, APIError.requestFailedWithError("Response unsuccessful"), "Request should fail.")
-        XCTAssert(apods == nil, "Response should be nil.")
+        XCTAssert(apod == nil, "Response should be nil.")
     }
     
     func testFailedRequest() {
@@ -94,7 +127,32 @@ class CosmosClientTest: XCTestCase {
         let promise = expectation(description: "Fetch completed. 🚀")
         
         // When
-         client.fetch(count: 10) { result in
+         client.fetch { result in
+             switch result {
+             case .failure(let errorFromResponse):
+                self.error = errorFromResponse
+             case .success(let apodFromResponse):
+                self.apod = apodFromResponse
+             }
+             promise.fulfill()
+         }
+         wait(for: [promise], timeout: 5)
+        
+        // Then
+        XCTAssertEqual(error, APIError.requestFailed, "Request should fail.")
+        XCTAssert(apod == nil, "Response should be nil.")
+    }
+    
+    func testFailedRangedRequest() {
+        
+        // Given
+        let response = URLResponse()
+        client = MockClient(data: nil, response: response, error: nil)
+        
+        let promise = expectation(description: "Fetch completed. 🚀")
+        
+        // When
+        client.fetch(count: 10) { result in
              switch result {
              case .failure(let errorFromResponse):
                 self.error = errorFromResponse
@@ -113,19 +171,19 @@ class CosmosClientTest: XCTestCase {
     func testUnsuccessfulResponse() throws {
         
         // Given
-        let url = try require(URL(string: "https://cosmos-app-staging.herokuapp.com"))
+        let url = try require(self.url)
         let response = HTTPURLResponse(url: url, statusCode: 400, httpVersion: nil, headerFields: nil)
         client = MockClient(data: nil, response: response, error: nil)
         
         let promise = expectation(description: "Fetch completed. 🚀")
         
         // When
-         client.fetch(count: 10) { result in
+         client.fetch { result in
              switch result {
              case .failure(let errorFromResponse):
                 self.error = errorFromResponse
-             case .success(let apodsFromResponse):
-                self.apods = apodsFromResponse
+             case .success(let apodFromResponse):
+                self.apod = apodFromResponse
              }
              promise.fulfill()
          }
@@ -133,25 +191,25 @@ class CosmosClientTest: XCTestCase {
         
         // Then
         XCTAssertEqual(error, APIError.responseUnsuccessful, "Request should fail.")
-        XCTAssert(apods == nil, "Response should be nil.")
+        XCTAssert(apod == nil, "Response should be nil.")
     }
     
     func testInvalidData() throws {
         
         // Given
-        let url = try require(URL(string: "https://cosmos-app-staging.herokuapp.com"))
+        let url = try require(self.url)
         let response = HTTPURLResponse(url: url, statusCode: 200, httpVersion: nil, headerFields: nil)
         client = MockClient(data: nil, response: response, error: nil)
         
         let promise = expectation(description: "Fetch completed. 🚀")
         
         // When
-         client.fetch(count: 10) { result in
+         client.fetch { result in
              switch result {
              case .failure(let errorFromResponse):
                 self.error = errorFromResponse
-             case .success(let apodsFromResponse):
-                self.apods = apodsFromResponse
+             case .success(let apodFromResponse):
+                self.apod = apodFromResponse
              }
              promise.fulfill()
          }
@@ -159,13 +217,40 @@ class CosmosClientTest: XCTestCase {
         
         // Then
         XCTAssertEqual(error, APIError.invalidData, "Request should fail.")
-        XCTAssert(apods == nil, "Response should be nil.")
+        XCTAssert(apod == nil, "Response should be nil.")
     }
     
     func testJsonParsingError() throws {
         
         // Given
-        let url = try require(URL(string: "https://cosmos-app-staging.herokuapp.com"))
+        let url = try require(self.url)
+        let response = HTTPURLResponse(url: url, statusCode: 200, httpVersion: nil, headerFields: nil)
+        let data = "This is not the expected data.".data(using: .utf32)
+        client = MockClient(data: data, response: response, error: nil)
+        
+        let promise = expectation(description: "Fetch completed. 🚀")
+        
+        // When
+         client.fetch { result in
+             switch result {
+             case .failure(let errorFromResponse):
+                self.error = errorFromResponse
+             case .success(let apodFromResponse):
+                self.apod = apodFromResponse
+             }
+             promise.fulfill()
+         }
+        wait(for: [promise], timeout: 5)
+        
+        // Then
+        XCTAssertEqual(error, APIError.jsonParsingFailure, "Request should fail.")
+        XCTAssert(apod == nil, "Response should be nil.")
+    }
+    
+    func testRangedJsonParsingError() throws {
+        
+        // Given
+        let url = try require(self.url)
         let response = HTTPURLResponse(url: url, statusCode: 200, httpVersion: nil, headerFields: nil)
         let data = "This is not the expected data.".data(using: .utf32)
         client = MockClient(data: data, response: response, error: nil)
@@ -190,9 +275,9 @@ class CosmosClientTest: XCTestCase {
     }
     
     func testSuccessfulResponsePerformance() {
-        let client = MockClient()
+        let client = MockClient(withResource: "apod-single-response", ofType: "json")
         measure {
-            client.fetch(count: 10)
+            client.fetch()
         }
     }
 }

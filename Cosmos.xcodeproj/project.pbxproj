@@ -10,7 +10,7 @@
 		2202F50D211ECE4700DEFDE1 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2202F50C211ECE4700DEFDE1 /* DetailViewController.swift */; };
 		22288FCF231CB60100EE082E /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22288FCE231CB60100EE082E /* AboutViewController.swift */; };
 		222DDF6222D285E800BE3645 /* MockClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222DDF6122D285E800BE3645 /* MockClient.swift */; };
-		222DDF6522D2869E00BE3645 /* apod-response.json in Resources */ = {isa = PBXBuildFile; fileRef = 222DDF6422D2869E00BE3645 /* apod-response.json */; };
+		222DDF6522D2869E00BE3645 /* apod-ranged-response.json in Resources */ = {isa = PBXBuildFile; fileRef = 222DDF6422D2869E00BE3645 /* apod-ranged-response.json */; };
 		223A2BF2233B0FFA00005DFA /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223A2BF1233B0FFA00005DFA /* Environment.swift */; };
 		2244523B212D08A100889244 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2244523A212D08A100889244 /* Assets.xcassets */; };
 		225220342104391100221D29 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225220332104391100221D29 /* AppDelegate.swift */; };
@@ -20,6 +20,8 @@
 		225220412104391200221D29 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2252203F2104391200221D29 /* LaunchScreen.storyboard */; };
 		2252204921043C0E00221D29 /* APOD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2252204821043C0E00221D29 /* APOD.swift */; };
 		226E25B723245E9800908A39 /* SortedSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E25B623245E9800908A39 /* SortedSet.swift */; };
+		227846B52346CDCE009F01B8 /* apod-single-response.json in Resources */ = {isa = PBXBuildFile; fileRef = 227846B42346CDCE009F01B8 /* apod-single-response.json */; };
+		227846B62346CDCE009F01B8 /* apod-single-response.json in Resources */ = {isa = PBXBuildFile; fileRef = 227846B42346CDCE009F01B8 /* apod-single-response.json */; };
 		227B0ABC2337ED2300D1EFD2 /* MissingThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227B0ABB2337ED2300D1EFD2 /* MissingThumbnailView.swift */; };
 		22AA95B021055E47001B755F /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AA95AF21055E47001B755F /* Endpoint.swift */; };
 		22B381122104583800DCDC24 /* CosmosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B381102104583800DCDC24 /* CosmosCell.swift */; };
@@ -60,7 +62,7 @@
 		2202F50C211ECE4700DEFDE1 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		22288FCE231CB60100EE082E /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		222DDF6122D285E800BE3645 /* MockClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockClient.swift; sourceTree = "<group>"; };
-		222DDF6422D2869E00BE3645 /* apod-response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "apod-response.json"; sourceTree = "<group>"; };
+		222DDF6422D2869E00BE3645 /* apod-ranged-response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "apod-ranged-response.json"; sourceTree = "<group>"; };
 		223A2BF1233B0FFA00005DFA /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		2244523A212D08A100889244 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		225220302104391100221D29 /* Cosmos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cosmos.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,6 +74,7 @@
 		225220422104391200221D29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2252204821043C0E00221D29 /* APOD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APOD.swift; sourceTree = "<group>"; };
 		226E25B623245E9800908A39 /* SortedSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortedSet.swift; sourceTree = "<group>"; };
+		227846B42346CDCE009F01B8 /* apod-single-response.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "apod-single-response.json"; sourceTree = "<group>"; };
 		227B0ABB2337ED2300D1EFD2 /* MissingThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissingThumbnailView.swift; sourceTree = "<group>"; };
 		22AA95AF21055E47001B755F /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		22B381102104583800DCDC24 /* CosmosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmosCell.swift; sourceTree = "<group>"; };
@@ -153,7 +156,8 @@
 		222DDF6322D2863900BE3645 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				222DDF6422D2869E00BE3645 /* apod-response.json */,
+				222DDF6422D2869E00BE3645 /* apod-ranged-response.json */,
+				227846B42346CDCE009F01B8 /* apod-single-response.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -204,6 +208,13 @@
 				22C15CAC21AB642200DB287E /* Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		227846B32346CBAD009F01B8 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		22A7D3E62117F7690011B097 /* Data Sources */ = {
@@ -261,6 +272,7 @@
 		22CE291523446EEC00170FEE /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				227846B32346CBAD009F01B8 /* New Group */,
 				22CE2918234479BC00170FEE /* CosmosClientTest.swift */,
 			);
 			path = Networking;
@@ -359,9 +371,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				227846B52346CDCE009F01B8 /* apod-single-response.json in Resources */,
 				225220412104391200221D29 /* LaunchScreen.storyboard in Resources */,
 				225220392104391100221D29 /* Main.storyboard in Resources */,
-				222DDF6522D2869E00BE3645 /* apod-response.json in Resources */,
+				222DDF6522D2869E00BE3645 /* apod-ranged-response.json in Resources */,
 				22B43D60234169F900DD2A30 /* FontBook.plist in Resources */,
 				2244523B212D08A100889244 /* Assets.xcassets in Resources */,
 				22E794E12336E5EC007E4AA2 /* MissingThumbnailView.xib in Resources */,
@@ -372,6 +385,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				227846B62346CDCE009F01B8 /* apod-single-response.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
