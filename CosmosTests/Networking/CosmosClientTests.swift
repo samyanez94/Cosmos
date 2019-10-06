@@ -10,6 +10,11 @@ import XCTest
 
 class CosmosClientTests: XCTestCase {
     
+    // Bundle for the resources
+    var bundle: Bundle {
+        Bundle(for: CosmosClientTests.self)
+    }
+    
     // Mock client
     var client: MockClient!
     
@@ -47,7 +52,7 @@ class CosmosClientTests: XCTestCase {
     
     func testSuccessfulRequest() {
         // Given
-        client = MockClient(withResource: "apod-single-response", ofType: "json")
+        client = MockClient(withResource: "apod-single-response", ofType: "json", inBundle: bundle)
                 
         let promise = expectation(description: "Fetch completed. 🚀")
         
@@ -70,7 +75,7 @@ class CosmosClientTests: XCTestCase {
     
     func testSuccessfulDatedRequest() {
         // Given
-        client = MockClient(withResource: "apod-single-response", ofType: "json")
+        client = MockClient(withResource: "apod-single-response", ofType: "json", inBundle: bundle)
         
         let promise = expectation(description: "Fetch completed. 🚀")
         
@@ -93,7 +98,7 @@ class CosmosClientTests: XCTestCase {
     
     func testSuccessfulRandomRequest() {
         // Given
-        client = MockClient(withResource: "apod-ranged-response", ofType: "json")
+        client = MockClient(withResource: "apod-ranged-response", ofType: "json", inBundle: bundle)
         
         let promise = expectation(description: "Fetch completed. 🚀")
         
@@ -116,7 +121,7 @@ class CosmosClientTests: XCTestCase {
     
     func testSuccessfulRangedRequest() {
         // Given
-        client = MockClient(withResource: "apod-ranged-response", ofType: "json")
+        client = MockClient(withResource: "apod-ranged-response", ofType: "json", inBundle: bundle)
         
         let promise = expectation(description: "Fetch completed. 🚀")
         
@@ -314,7 +319,7 @@ class CosmosClientTests: XCTestCase {
     
     func testIncorrectResourceForMockClient() {
         // Given
-        client = MockClient(withResource: "wrong-resource", ofType: ".json")
+        client = MockClient(withResource: "wrong-resource", ofType: ".json", inBundle: bundle)
         
         let promise = expectation(description: "Fetch completed. 🚀")
 
@@ -336,7 +341,7 @@ class CosmosClientTests: XCTestCase {
     }
     
     func testSuccessfulResponsePerformance() {
-        let client = MockClient(withResource: "apod-single-response", ofType: "json")
+        let client = MockClient(withResource: "apod-single-response", ofType: "json", inBundle: bundle)
         measure {
             client.fetch()
         }
