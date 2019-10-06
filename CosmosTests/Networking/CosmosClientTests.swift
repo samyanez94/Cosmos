@@ -1,5 +1,5 @@
 //
-//  CosmosClientTest.swift
+//  CosmosClientTests.swift
 //  CosmosTests
 //
 //  Created by Samuel Yanez on 10/1/19.
@@ -8,7 +8,7 @@
 
 import XCTest
 
-class CosmosClientTest: XCTestCase {
+class CosmosClientTests: XCTestCase {
     
     // Mock client
     var client: MockClient!
@@ -64,12 +64,34 @@ class CosmosClientTest: XCTestCase {
         wait(for: [promise], timeout: 5)
         
         // Then
-        XCTAssert(error == nil, "Error should be nil.")
-        XCTAssert(apod != nil, "Response should not be nil. 😱")
+        XCTAssertNil(error, "Error should be nil.")
+        XCTAssertNotNil(apod, "Response should not be nil. 😱")
     }
     
-    func testSuccessfulRangedRequest() {
+    func testSuccessfulDatedRequest() {
+        // Given
+        client = MockClient(withResource: "apod-single-response", ofType: "json")
         
+        let promise = expectation(description: "Fetch completed. 🚀")
+        
+        // When
+        client.fetch(date: Date()) { result in
+            switch result {
+            case .failure(let errorFromResponse):
+                self.error = errorFromResponse
+            case .success(let apodFromResponse):
+                self.apod = apodFromResponse
+            }
+            promise.fulfill()
+        }
+        wait(for: [promise], timeout: 5)
+        
+        // Then
+        XCTAssertNil(error, "Error should be nil.")
+        XCTAssertNotNil(apod, "Response should not be nil. 😱")
+    }
+    
+    func testSuccessfulRandomRequest() {
         // Given
         client = MockClient(withResource: "apod-ranged-response", ofType: "json")
         
@@ -88,12 +110,34 @@ class CosmosClientTest: XCTestCase {
         wait(for: [promise], timeout: 5)
         
         // Then
-        XCTAssert(error == nil, "Error should be nil.")
-        XCTAssert(apods != nil, "Response should not be nil. 😱")
+        XCTAssertNil(error, "Error should be nil.")
+        XCTAssertNotNil(apods, "Response should not be nil. 😱")
+    }
+    
+    func testSuccessfulRangedRequest() {
+        // Given
+        client = MockClient(withResource: "apod-ranged-response", ofType: "json")
+        
+        let promise = expectation(description: "Fetch completed. 🚀")
+        
+        // When
+        client.fetch(count: 10, offset: 0) { result in
+            switch result {
+            case .failure(let errorFromResponse):
+                self.error = errorFromResponse
+            case .success(let apodsFromResponse):
+                self.apods = apodsFromResponse
+            }
+            promise.fulfill()
+        }
+        wait(for: [promise], timeout: 5)
+        
+        // Then
+        XCTAssertNil(error, "Error should be nil.")
+        XCTAssertNotNil(apods, "Response should not be nil. 😱")
     }
     
     func testFailedRequestWithError() {
-        
         // Given
         let clientError = MockError.mockError
         
@@ -115,11 +159,10 @@ class CosmosClientTest: XCTestCase {
         
         // Then
         XCTAssertEqual(error, APIError.requestFailedWithError("Response unsuccessful"), "Request should fail.")
-        XCTAssert(apod == nil, "Response should be nil.")
+        XCTAssertNil(apod, "Response should be nil.")
     }
     
     func testFailedRequest() {
-        
         // Given
         let response = URLResponse()
         client = MockClient(data: nil, response: response, error: nil)
@@ -140,11 +183,10 @@ class CosmosClientTest: XCTestCase {
         
         // Then
         XCTAssertEqual(error, APIError.requestFailed, "Request should fail.")
-        XCTAssert(apod == nil, "Response should be nil.")
+        XCTAssertNil(apod, "Response should be nil.")
     }
     
     func testFailedRangedRequest() {
-        
         // Given
         let response = URLResponse()
         client = MockClient(data: nil, response: response, error: nil)
@@ -165,11 +207,10 @@ class CosmosClientTest: XCTestCase {
         
         // Then
         XCTAssertEqual(error, APIError.requestFailed, "Request should fail.")
-        XCTAssert(apods == nil, "Response should be nil.")
+        XCTAssertNil(apods, "Response should be nil.")
     }
     
     func testUnsuccessfulResponse() throws {
-        
         // Given
         let url = try require(self.url)
         let response = HTTPURLResponse(url: url, statusCode: 400, httpVersion: nil, headerFields: nil)
@@ -191,11 +232,10 @@ class CosmosClientTest: XCTestCase {
         
         // Then
         XCTAssertEqual(error, APIError.responseUnsuccessful, "Request should fail.")
-        XCTAssert(apod == nil, "Response should be nil.")
+        XCTAssertNil(apod, "Response should be nil.")
     }
     
     func testInvalidData() throws {
-        
         // Given
         let url = try require(self.url)
         let response = HTTPURLResponse(url: url, statusCode: 200, httpVersion: nil, headerFields: nil)
@@ -217,11 +257,10 @@ class CosmosClientTest: XCTestCase {
         
         // Then
         XCTAssertEqual(error, APIError.invalidData, "Request should fail.")
-        XCTAssert(apod == nil, "Response should be nil.")
+        XCTAssertNil(apod, "Response should be nil.")
     }
     
     func testJsonParsingError() throws {
-        
         // Given
         let url = try require(self.url)
         let response = HTTPURLResponse(url: url, statusCode: 200, httpVersion: nil, headerFields: nil)
@@ -244,11 +283,10 @@ class CosmosClientTest: XCTestCase {
         
         // Then
         XCTAssertEqual(error, APIError.jsonParsingFailure, "Request should fail.")
-        XCTAssert(apod == nil, "Response should be nil.")
+        XCTAssertNil(apod, "Response should be nil.")
     }
     
     func testRangedJsonParsingError() throws {
-        
         // Given
         let url = try require(self.url)
         let response = HTTPURLResponse(url: url, statusCode: 200, httpVersion: nil, headerFields: nil)
@@ -271,7 +309,30 @@ class CosmosClientTest: XCTestCase {
         
         // Then
         XCTAssertEqual(error, APIError.jsonParsingFailure, "Request should fail.")
-        XCTAssert(apods == nil, "Response should be nil.")
+        XCTAssertNil(apods, "Response should be nil.")
+    }
+    
+    func testIncorrectResourceForMockClient() {
+        // Given
+        client = MockClient(withResource: "wrong-resource", ofType: ".json")
+        
+        let promise = expectation(description: "Fetch completed. 🚀")
+
+        // When
+        client.fetch { result in
+            switch result {
+            case .failure(let errorFromResponse):
+                self.error = errorFromResponse
+            case .success(let apodFromResponse):
+                self.apod = apodFromResponse
+            }
+            promise.fulfill()
+        }
+        wait(for: [promise], timeout: 5)
+        
+        // Then
+        XCTAssertEqual(error, APIError.requestFailed, "Request should fail.")
+        XCTAssertNil(apod, "Response should be nil.")
     }
     
     func testSuccessfulResponsePerformance() {

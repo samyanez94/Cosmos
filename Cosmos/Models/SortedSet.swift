@@ -23,7 +23,13 @@ public struct SortedSet<E>: Collection where E: Hashable, E: Comparable {
         self.array = []
         self.set = Set()
     }
-
+    
+    public init(withCollection collection: [Element]) {
+        self.array = []
+        self.set = Set()
+        self.append(collection)
+    }
+    
     public var count: Int {
         array.count
     }

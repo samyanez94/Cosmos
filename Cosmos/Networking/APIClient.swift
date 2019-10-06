@@ -76,6 +76,7 @@ extension APIClient {
 }
 
 enum APIError: Error {
+    case incorrectParameters
     case requestFailedWithError(String)
     case requestFailed
     case invalidData
@@ -84,6 +85,7 @@ enum APIError: Error {
     
     var localizedDescription: String {
         switch self {
+        case .incorrectParameters: return "Incorrect parameters for request"
         case .requestFailedWithError(let error): return "Request failed with error: \(error)"
         case .requestFailed: return "Request failed"
         case .invalidData: return "Invalid data"
@@ -96,6 +98,7 @@ enum APIError: Error {
 extension APIError: Equatable {
     public static func == (lhs: APIError, rhs: APIError) -> Bool {
         switch (lhs, rhs) {
+        case(.incorrectParameters, .incorrectParameters): return true
         case(.requestFailedWithError, .requestFailedWithError): return true
         case(.requestFailed, .requestFailed): return true
         case(.invalidData, .invalidData): return true

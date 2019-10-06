@@ -105,6 +105,8 @@ class DiscoverViewController: UIViewController {
                 self?.collectionView.reloadData()
                 self?.collectionView.isHidden = false
                 self?.errorView.isHidden = true
+                
+                // Important to increase the offset for pagination
                 self?.collectionOffset = offset + 10
             }
             if let completion = completion {

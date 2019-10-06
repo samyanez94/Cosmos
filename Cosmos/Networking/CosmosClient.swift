@@ -22,6 +22,12 @@ class CosmosClient: APIClient {
         self.init(session: URLSession(configuration: .default))
     }
     
+    /**
+     Fetches today's astronomy picture of the day.
+
+     - Parameters:
+        - completion: Completion hanlder for response. The response may contain an single APOD or an error.
+     */
     func fetch(completion: ((Swift.Result<APOD, APIError>) -> Void)? = nil) {
         let endpoint = CosmosEndpoint.today(thumbnails: true)
         
@@ -29,15 +35,56 @@ class CosmosClient: APIClient {
             return try? self.decoder.decode(APOD.self, from: data)
         }, completion: completion)
     }
+    
+    /**
+     Fetches the astronomy picture of the day for a particular date.
+
+     - Parameters:
+        - date: The date for the APOD being fetched.
+        - completion: Completion hanlder for response. The response may contain an single APOD or an error.
+     */
+    func fetch(date: Date, completion: ((Swift.Result<APOD, APIError>) -> Void)? = nil) {
+        let endpoint = CosmosEndpoint.dated(date: date, thumbnails: true)
         
-    func fetch(count: Int, offset: Int = 0, completion: ((Swift.Result<[APOD], APIError>) -> Void)? = nil) {
-        let to = Calendar.current.date(byAdding: .day, value: -offset, to: Date())!
-        let from = Calendar.current.date(byAdding: .day, value: -count, to: to)!
-        
-        let endpoint = CosmosEndpoint.ranged(from: from, to: to, thumbnails: true)
+        fetch(with: endpoint.request, parse: { data -> APOD? in
+            return try? self.decoder.decode(APOD.self, from: data)
+        }, completion: completion)
+    }
+    
+    /**
+     Fetches random astronomy pictures of the day.
+
+     - Parameters:
+        - count: The number of random APODs.
+        - completion: Completion hanlder for response. The response may contain a list of APODs or an error.
+     */
+    func fetch(count: Int, completion: ((Swift.Result<[APOD], APIError>) -> Void)? = nil) {
+        let endpoint = CosmosEndpoint.randomized(count: count, thumbnails: true)
         
         fetch(with: endpoint.request, parse: { data -> [APOD]? in
             return try? self.decoder.decode([APOD].self, from: data)
         }, completion: completion)
+    }
+    
+    /**
+     Fetches a range of astronomy pictures of the day.
+
+     - Parameters:
+        - count: The number of APODs.
+        - offset: The offset days from today's date for the range of APODs.
+        - completion: Completion hanlder for response. The response may contain a list of APODs or an error.
+     */
+    func fetch(count: Int, offset: Int, completion: ((Swift.Result<[APOD], APIError>) -> Void)? = nil) {
+        if let to = Calendar.current.date(byAdding: .day, value: -offset, to: Date()),
+            let from = Calendar.current.date(byAdding: .day, value: -count, to: to) {
+        
+            let endpoint = CosmosEndpoint.ranged(from: from, to: to, thumbnails: true)
+            
+            fetch(with: endpoint.request, parse: { data -> [APOD]? in
+                return try? self.decoder.decode([APOD].self, from: data)
+            }, completion: completion)
+        } else {
+            completion?(.failure(.incorrectParameters))
+        }
     }
 }

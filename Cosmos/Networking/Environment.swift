@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Environment {
+class Environment {
     
     static let shared = Environment()
     
@@ -18,12 +18,16 @@ struct Environment {
         "Build configuration"
     }
     
+    private var infoDictionary: [String: Any]? {
+        Bundle.main.infoDictionary
+    }
+    
     private var baseUrlKey: String {
         "Cosmos base URL"
     }
     
     var description: String {
-        if let infoDictionary = Bundle.main.infoDictionary, let buildConfiguration = infoDictionary[buildConfigurationKey] as? String {
+        if let infoDictionary = infoDictionary, let buildConfiguration = infoDictionary[buildConfigurationKey] as? String {
             if buildConfiguration == "Debug" {
                 return "Stage"
             } else {
