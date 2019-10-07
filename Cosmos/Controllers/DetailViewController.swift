@@ -58,6 +58,16 @@ class DetailViewController: UIViewController {
          return ScaledFont()
      }()
     
+    /// App ID for sharing purposes
+    private var appId: String {
+        "1481310548"
+    }
+    
+    /// App Store URL
+    private var appStoreUrl: String {
+        "https://apps.apple.com/app/\(appId)"
+    }
+    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
@@ -210,11 +220,11 @@ class DetailViewController: UIViewController {
         switch apod.mediaType {
         case .image:
             if let image = imageView.image {
-                let text = "Checkout this image I discovered using the Cosmos app. Available on the App Store."
+                let text = "Checkout this image I discovered using the Cosmos app. Available on the App Store. \(appStoreUrl)"
                 activityViewController = UIActivityViewController(activityItems: [text, image], applicationActivities: nil)
             }
         case .video:
-            let text = "Checkout this video I discovered using the Cosmos app. Available on the App Store. \(apod.url)"
+            let text = "Checkout this video I discovered using the Cosmos app. Available on the App Store. \(appStoreUrl)"
             activityViewController = UIActivityViewController(activityItems: [text], applicationActivities: nil)
         }
         present(activityViewController, animated: true, completion: nil)
