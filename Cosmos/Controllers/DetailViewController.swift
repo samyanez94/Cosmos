@@ -58,11 +58,6 @@ class DetailViewController: UIViewController {
          return ScaledFont()
      }()
     
-    /// Sets the status bar to be hidden.
-    override var prefersStatusBarHidden: Bool {
-        true
-    }
-    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
