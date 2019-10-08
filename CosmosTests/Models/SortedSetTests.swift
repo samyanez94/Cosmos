@@ -27,7 +27,7 @@ class SortedSetTests: XCTestCase {
     }
     
     func testSetCount() {
-        XCTAssertEqual(6, set.count, "Set should contain 4 elements.")
+        XCTAssertEqual(4, set.count, "Set should contain 4 elements.")
     }
     
     func testSetIsEmpty() {
