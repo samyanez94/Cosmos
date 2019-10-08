@@ -217,7 +217,7 @@ class CosmosClientTests: XCTestCase {
     
     func testUnsuccessfulResponse() throws {
         // Given
-        let url = try require(self.url)
+        let url = try XCTUnwrap(self.url)
         let response = HTTPURLResponse(url: url, statusCode: 400, httpVersion: nil, headerFields: nil)
         client = MockClient(data: nil, response: response, error: nil)
         
@@ -242,7 +242,7 @@ class CosmosClientTests: XCTestCase {
     
     func testInvalidData() throws {
         // Given
-        let url = try require(self.url)
+        let url = try XCTUnwrap(self.url)
         let response = HTTPURLResponse(url: url, statusCode: 200, httpVersion: nil, headerFields: nil)
         client = MockClient(data: nil, response: response, error: nil)
         
@@ -267,7 +267,7 @@ class CosmosClientTests: XCTestCase {
     
     func testJsonParsingError() throws {
         // Given
-        let url = try require(self.url)
+        let url = try XCTUnwrap(self.url)
         let response = HTTPURLResponse(url: url, statusCode: 200, httpVersion: nil, headerFields: nil)
         let data = "This is not the expected data.".data(using: .utf32)
         client = MockClient(data: data, response: response, error: nil)
@@ -293,7 +293,7 @@ class CosmosClientTests: XCTestCase {
     
     func testRangedJsonParsingError() throws {
         // Given
-        let url = try require(self.url)
+        let url = try XCTUnwrap(self.url)
         let response = HTTPURLResponse(url: url, statusCode: 200, httpVersion: nil, headerFields: nil)
         let data = "This is not the expected data.".data(using: .utf32)
         client = MockClient(data: data, response: response, error: nil)
