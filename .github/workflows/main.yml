@@ -1,0 +1,30 @@
+name: Build & Test
+
+on: 
+  push:
+    branches:
+    - master
+
+jobs:
+  build:
+    name: Build & Test
+
+    runs-on: macOS-10.14
+    
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_11.app/Contents/Developer
+
+    steps:
+    - uses: actions/checkout@v1
+    
+    - name: Get Xcode version
+      run: xcodebuild -version
+      
+    - name: Install dependencies
+      run: pod install
+      
+    - name: Build
+      run: xcodebuild clean build-for-testing -workspace Cosmos.xcworkspace -scheme "Cosmos" -destination "name=iPhone 11,OS=13.0"
+    
+    - name: Test
+      run: xcodebuild test-without-building -workspace Cosmos.xcworkspace -scheme "Cosmos" -destination "name=iPhone 11,OS=13.0" -enableCodeCoverage=YES
