@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2202F50D211ECE4700DEFDE1 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2202F50C211ECE4700DEFDE1 /* DetailViewController.swift */; };
+		220B1F1B234D7273008BAAF6 /* CosmosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B1F1A234D7273008BAAF6 /* CosmosUITests.swift */; };
 		22288FCF231CB60100EE082E /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22288FCE231CB60100EE082E /* AboutViewController.swift */; };
 		223A2BF2233B0FFA00005DFA /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223A2BF1233B0FFA00005DFA /* Environment.swift */; };
 		2244523B212D08A100889244 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2244523A212D08A100889244 /* Assets.xcassets */; };
@@ -46,6 +47,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		220B1F1D234D7273008BAAF6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 225220282104391100221D29 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2252202F2104391100221D29;
+			remoteInfo = Cosmos;
+		};
 		22CE291023446BF400170FEE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 225220282104391100221D29 /* Project object */;
@@ -57,6 +65,9 @@
 
 /* Begin PBXFileReference section */
 		2202F50C211ECE4700DEFDE1 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		220B1F18234D7273008BAAF6 /* CosmosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CosmosUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		220B1F1A234D7273008BAAF6 /* CosmosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmosUITests.swift; sourceTree = "<group>"; };
+		220B1F1C234D7273008BAAF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22288FCE231CB60100EE082E /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		222DDF6122D285E800BE3645 /* MockClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockClient.swift; sourceTree = "<group>"; };
 		222DDF6422D2869E00BE3645 /* apod-ranged-response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "apod-ranged-response.json"; sourceTree = "<group>"; };
@@ -94,6 +105,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		220B1F15234D7273008BAAF6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2252202D2104391100221D29 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -127,6 +145,15 @@
 				523698EF916740C4BFD9F99D /* Pods_Cosmos.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		220B1F19234D7273008BAAF6 /* CosmosUITests */ = {
+			isa = PBXGroup;
+			children = (
+				220B1F1A234D7273008BAAF6 /* CosmosUITests.swift */,
+				220B1F1C234D7273008BAAF6 /* Info.plist */,
+			);
+			path = CosmosUITests;
 			sourceTree = "<group>";
 		};
 		221AC07521059C60006006B7 /* Controllers */ = {
@@ -163,6 +190,7 @@
 			children = (
 				225220322104391100221D29 /* Cosmos */,
 				22CE290C23446BF400170FEE /* CosmosTests */,
+				220B1F19234D7273008BAAF6 /* CosmosUITests */,
 				225220312104391100221D29 /* Products */,
 				09DE3B89D5716714C8F01DEF /* Pods */,
 				100FFF18CA2661C69B3600C3 /* Frameworks */,
@@ -174,6 +202,7 @@
 			children = (
 				225220302104391100221D29 /* Cosmos.app */,
 				22CE290B23446BF400170FEE /* CosmosTests.xctest */,
+				220B1F18234D7273008BAAF6 /* CosmosUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -284,6 +313,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		220B1F17234D7273008BAAF6 /* CosmosUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 220B1F21234D7273008BAAF6 /* Build configuration list for PBXNativeTarget "CosmosUITests" */;
+			buildPhases = (
+				220B1F14234D7273008BAAF6 /* Sources */,
+				220B1F15234D7273008BAAF6 /* Frameworks */,
+				220B1F16234D7273008BAAF6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				220B1F1E234D7273008BAAF6 /* PBXTargetDependency */,
+			);
+			name = CosmosUITests;
+			productName = CosmosUITests;
+			productReference = 220B1F18234D7273008BAAF6 /* CosmosUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		2252202F2104391100221D29 /* Cosmos */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 225220452104391200221D29 /* Build configuration list for PBXNativeTarget "Cosmos" */;
@@ -332,6 +379,10 @@
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Samuel Yanez";
 				TargetAttributes = {
+					220B1F17234D7273008BAAF6 = {
+						CreatedOnToolsVersion = 11.0;
+						TestTargetID = 2252202F2104391100221D29;
+					};
 					2252202F2104391100221D29 = {
 						CreatedOnToolsVersion = 9.4.1;
 						LastSwiftMigration = 1020;
@@ -357,11 +408,19 @@
 			targets = (
 				2252202F2104391100221D29 /* Cosmos */,
 				22CE290A23446BF400170FEE /* CosmosTests */,
+				220B1F17234D7273008BAAF6 /* CosmosUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		220B1F16234D7273008BAAF6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2252202E2104391100221D29 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -441,6 +500,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		220B1F14234D7273008BAAF6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				220B1F1B234D7273008BAAF6 /* CosmosUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2252202C2104391100221D29 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -486,6 +553,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		220B1F1E234D7273008BAAF6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2252202F2104391100221D29 /* Cosmos */;
+			targetProxy = 220B1F1D234D7273008BAAF6 /* PBXContainerItemProxy */;
+		};
 		22CE291123446BF400170FEE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2252202F2104391100221D29 /* Cosmos */;
@@ -521,6 +593,47 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		220B1F1F234D7273008BAAF6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QFXSZ288GU;
+				INFOPLIST_FILE = CosmosUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = sample.com.CosmosUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Cosmos;
+			};
+			name = Debug;
+		};
+		220B1F20234D7273008BAAF6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QFXSZ288GU;
+				INFOPLIST_FILE = CosmosUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = sample.com.CosmosUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Cosmos;
+			};
+			name = Release;
+		};
 		225220432104391200221D29 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -727,6 +840,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		220B1F21234D7273008BAAF6 /* Build configuration list for PBXNativeTarget "CosmosUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				220B1F1F234D7273008BAAF6 /* Debug */,
+				220B1F20234D7273008BAAF6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2252202B2104391100221D29 /* Build configuration list for PBXProject "Cosmos" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
