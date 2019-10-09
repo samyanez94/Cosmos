@@ -2,21 +2,21 @@
 
 Samuel Yanez built the Cosmos app as a free app. This service is provided by Samuel Yanez at no cost and is intended for use as is.
 
-This page is used to inform visitors regarding my policies with the collection, use, and disclosure of Personal Information if anyone decided to use my service.
+This page is used to inform visitors regarding my policies with the collection, use, and disclosure of personal information if anyone decided to use my service.
 
-If you choose to use my service, then you agree to the collection and use of information in relation to this policy. The Personal Information that I collect is used for providing and improving the service. I will not use or share your information with anyone except as described in this Privacy Policy.
+If you choose to use my service, then you agree to the collection and use of information in relation to this policy. The personal information that I collect is used for providing and improving the service. I will not use or share your information with anyone except as described in this privacy policy.
 
-The terms used in this Privacy Policy have the same meanings as in our Terms and Conditions, which is accessible at Cosmos unless otherwise defined in this Privacy Policy.
+The terms used in this privacy policy have the same meanings as in our terms and conditions, which is accessible at Cosmos unless otherwise defined in this privacy policy.
 
 ## Information Collection and Use
 
 For a better experience, while using our service, I may require you to provide us with certain personally identifiable information. The information that I request will be retained on your device and is not collected by me in any way.
 
-The app does use third party services that may collect information used to identify you.
+The app does not use any third party services that may collect information used to identify you.
 
 ## Log Data
 
-I want to inform you that whenever you use my service, in a case of an error in the app I collect data and information (through third party products) on your phone called log date. This log data may include information such as your device Internet Protocol (“IP”) address, device name, operating system version, the configuration of the app when utilizing my service, the time and date of your use of the service, and other statistics.
+I want to inform you that whenever you use my service, in a case of an error in the app I collect data and information on your phone called log data. This log data may include information such as your device Internet Protocol (“IP”) address, device name, operating system version, the configuration of the app when utilizing my service, the time and date of your use of the service, and other statistics.
 
 ## Cookies
 
@@ -48,7 +48,7 @@ These services do not address anyone under the age of 13. I do not knowingly col
 
 ## Changes to This Privacy Policy
 
-I may update our Privacy Policy from time to time. Thus, you are advised to review this page periodically for any changes. I will notify you of any changes by posting the new Privacy Policy on this page. These changes are effective immediately after they are posted on this page.
+I may update our privacy policy from time to time. Thus, you are advised to review this page periodically for any changes. I will notify you of any changes by posting the new privacy policy on this page. These changes are effective immediately after they are posted on this page.
 
 ## Contact Us
 
