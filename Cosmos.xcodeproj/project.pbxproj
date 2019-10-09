@@ -8,7 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		2202F50D211ECE4700DEFDE1 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2202F50C211ECE4700DEFDE1 /* DetailViewController.swift */; };
-		220B1F1B234D7273008BAAF6 /* CosmosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B1F1A234D7273008BAAF6 /* CosmosUITests.swift */; };
+		220B1F1B234D7273008BAAF6 /* AboutSectionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B1F1A234D7273008BAAF6 /* AboutSectionUITests.swift */; };
+		220B1F24234D7EBB008BAAF6 /* AccessibilityIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B1F23234D7EBB008BAAF6 /* AccessibilityIdentifiers.swift */; };
+		220B1F25234D7EBB008BAAF6 /* AccessibilityIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B1F23234D7EBB008BAAF6 /* AccessibilityIdentifiers.swift */; };
+		220B1F26234D7EBB008BAAF6 /* AccessibilityIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B1F23234D7EBB008BAAF6 /* AccessibilityIdentifiers.swift */; };
 		22288FCF231CB60100EE082E /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22288FCE231CB60100EE082E /* AboutViewController.swift */; };
 		223A2BF2233B0FFA00005DFA /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223A2BF1233B0FFA00005DFA /* Environment.swift */; };
 		2244523B212D08A100889244 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2244523A212D08A100889244 /* Assets.xcassets */; };
@@ -66,8 +69,9 @@
 /* Begin PBXFileReference section */
 		2202F50C211ECE4700DEFDE1 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		220B1F18234D7273008BAAF6 /* CosmosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CosmosUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		220B1F1A234D7273008BAAF6 /* CosmosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmosUITests.swift; sourceTree = "<group>"; };
+		220B1F1A234D7273008BAAF6 /* AboutSectionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutSectionUITests.swift; sourceTree = "<group>"; };
 		220B1F1C234D7273008BAAF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		220B1F23234D7EBB008BAAF6 /* AccessibilityIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityIdentifiers.swift; sourceTree = "<group>"; };
 		22288FCE231CB60100EE082E /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		222DDF6122D285E800BE3645 /* MockClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockClient.swift; sourceTree = "<group>"; };
 		222DDF6422D2869E00BE3645 /* apod-ranged-response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "apod-ranged-response.json"; sourceTree = "<group>"; };
@@ -150,10 +154,18 @@
 		220B1F19234D7273008BAAF6 /* CosmosUITests */ = {
 			isa = PBXGroup;
 			children = (
-				220B1F1A234D7273008BAAF6 /* CosmosUITests.swift */,
+				220B1F1A234D7273008BAAF6 /* AboutSectionUITests.swift */,
 				220B1F1C234D7273008BAAF6 /* Info.plist */,
 			);
 			path = CosmosUITests;
+			sourceTree = "<group>";
+		};
+		220B1F22234D7E90008BAAF6 /* Accessibility */ = {
+			isa = PBXGroup;
+			children = (
+				220B1F23234D7EBB008BAAF6 /* AccessibilityIdentifiers.swift */,
+			);
+			path = Accessibility;
 			sourceTree = "<group>";
 		};
 		221AC07521059C60006006B7 /* Controllers */ = {
@@ -216,6 +228,7 @@
 				221AC07521059C60006006B7 /* Controllers */,
 				22AA95AE21055DE7001B755F /* Models */,
 				22AA95AD21055DD9001B755F /* Networking */,
+				220B1F22234D7E90008BAAF6 /* Accessibility */,
 				225810A2213674E900ECBCC3 /* Extensions */,
 				225220332104391100221D29 /* AppDelegate.swift */,
 				2252203A2104391100221D29 /* Cosmos.xcdatamodeld */,
@@ -504,7 +517,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				220B1F1B234D7273008BAAF6 /* CosmosUITests.swift in Sources */,
+				220B1F1B234D7273008BAAF6 /* AboutSectionUITests.swift in Sources */,
+				220B1F26234D7EBB008BAAF6 /* AccessibilityIdentifiers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -521,6 +535,7 @@
 				225220362104391100221D29 /* DiscoverViewController.swift in Sources */,
 				22AA95B021055E47001B755F /* Endpoint.swift in Sources */,
 				22BC0A0D21056A580086BB19 /* CosmosClient.swift in Sources */,
+				220B1F24234D7EBB008BAAF6 /* AccessibilityIdentifiers.swift in Sources */,
 				2252204921043C0E00221D29 /* APOD.swift in Sources */,
 				2252203C2104391100221D29 /* Cosmos.xcdatamodeld in Sources */,
 				22B381122104583800DCDC24 /* CosmosCell.swift in Sources */,
@@ -539,6 +554,7 @@
 				22CE291B234479E400170FEE /* MockClient.swift in Sources */,
 				22CE292023447BD900170FEE /* Endpoint.swift in Sources */,
 				22CE291F23447BD600170FEE /* Environment.swift in Sources */,
+				220B1F25234D7EBB008BAAF6 /* AccessibilityIdentifiers.swift in Sources */,
 				22CE291E23447BCF00170FEE /* APIClient.swift in Sources */,
 				22CE291D23447BA000170FEE /* APOD.swift in Sources */,
 				22CE292123447E5200170FEE /* Extensions.swift in Sources */,

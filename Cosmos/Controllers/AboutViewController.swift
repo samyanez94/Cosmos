@@ -11,19 +11,39 @@ import UIKit
 class AboutViewController: UIViewController {
     
     /// About title
-    @IBOutlet var aboutTitleLabel: UILabel!
+    @IBOutlet var aboutTitleLabel: UILabel! {
+        didSet {
+            aboutTitleLabel.accessibilityIdentifier = AboutAccessibilityIdentifier.Label.aboutTitleLabel
+        }
+    }
     
     /// About body
-    @IBOutlet var aboutBodyLabel: UILabel!
+    @IBOutlet var aboutBodyLabel: UILabel! {
+        didSet {
+            aboutBodyLabel.accessibilityIdentifier = AboutAccessibilityIdentifier.Label.aboutBodyLabel
+        }
+    }
     
     /// Acknowledgements title
-    @IBOutlet var acknowledgementsTitleLabel: UILabel!
+    @IBOutlet var acknowledgementsTitleLabel: UILabel! {
+        didSet {
+            acknowledgementsTitleLabel.accessibilityIdentifier = AboutAccessibilityIdentifier.Label.acknowledgementsTitleLabel
+        }
+    }
     
     /// Acknowledgements body
-    @IBOutlet var acknowledgementsBodyLabel: UILabel!
+    @IBOutlet var acknowledgementsBodyLabel: UILabel! {
+        didSet {
+            acknowledgementsBodyLabel.accessibilityIdentifier = AboutAccessibilityIdentifier.Label.acknowledgementsBodyLabel
+        }
+    }
     
     /// Visit button
-    @IBOutlet var visitButton: UIButton!
+    @IBOutlet var visitButton: UIButton! {
+        didSet {
+            visitButton.accessibilityIdentifier = AboutAccessibilityIdentifier.Button.visitButton
+        }
+    }
     
     /// Utility used for dynamic types
     private lazy var scaledFont: ScaledFont = {
