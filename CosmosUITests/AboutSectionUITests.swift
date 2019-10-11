@@ -17,8 +17,13 @@ class AboutSectionUITests: XCTestCase {
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
         
-        // UI tests must launch the application that they test.
+        // Proxy for application that can be launched and terminated.
         app = XCUIApplication()
+        
+        // App launch arguments allow us to mock the client response.
+        app.launchArguments.append(Configuration.UITestArgument)
+        
+        // UI tests must launch the application that they test.
         app.launch()
     }
     
