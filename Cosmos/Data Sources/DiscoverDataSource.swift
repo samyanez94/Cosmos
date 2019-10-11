@@ -54,7 +54,6 @@ class DiscoverDataSource: NSObject, UICollectionViewDataSource {
         
         // Accessibility
         cell.applyAccessibilityAttributes(for: apod)
-        cell.setupDynamicFonts()
         
         // Load preview
         setImageView(for: cell, apod: apod)

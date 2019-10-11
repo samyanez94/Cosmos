@@ -17,13 +17,27 @@ class CosmosCell: UICollectionViewCell {
     @IBOutlet var headerView: UIView!
     
     /// Container view
-    @IBOutlet var containerView: UIView!
+    @IBOutlet var containerView: UIView! {
+        didSet {
+            containerView.layer.cornerRadius = CosmosCell.cornerRadius
+        }
+    }
     
     /// Title label
-    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var titleLabel: UILabel! {
+        didSet {
+            titleLabel.font = scaledFont.font(forTextStyle: .headline)
+            titleLabel.adjustsFontForContentSizeCategory = true
+        }
+    }
     
     /// Date label
-    @IBOutlet var dateLabel: UILabel!
+    @IBOutlet var dateLabel: UILabel! {
+        didSet {
+            dateLabel.font = scaledFont.font(forTextStyle: .subheadline)
+            dateLabel.adjustsFontForContentSizeCategory = true
+        }
+    }
     
     /// Activity indicator
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
@@ -55,7 +69,6 @@ class CosmosCell: UICollectionViewCell {
     
     override func draw(_ rect: CGRect) {
         setupShadow()
-        setupBorderRadius()
     }
     
     override func prepareForReuse() {
@@ -74,27 +87,16 @@ class CosmosCell: UICollectionViewCell {
         layer.shadowOffset = CGSize(width: -1, height: 2)
         layer.masksToBounds = false
     }
-    
-    private func setupBorderRadius() {
-        containerView.layer.cornerRadius = CosmosCell.cornerRadius
-    }
 }
 // MARK: - Accesibility
 
 extension CosmosCell {
     
     func applyAccessibilityAttributes(for apod: APOD) {
-        containerView.accessibilityTraits = UIAccessibilityTraits.button
         containerView.accessibilityLabel = "\(apod.preferredDateString ?? apod.dateString). \(apod.title)"
+        containerView.accessibilityTraits = UIAccessibilityTraits.button
         containerView.accessibilityHint = "Double tap to show more details about this media."
     }
-    
-    func setupDynamicFonts() {
-        dateLabel.font = scaledFont.font(forTextStyle: .subheadline)
-        dateLabel.adjustsFontForContentSizeCategory = true
-        titleLabel.font = scaledFont.font(forTextStyle: .headline)
-        titleLabel.adjustsFontForContentSizeCategory = true
-     }
 }
 
 // MARK: - Gesture Recognizer
