@@ -83,4 +83,8 @@ class SortedSetTests: XCTestCase {
         XCTAssertEqual("Puma", set.element(at: 2), "Elements should match.")
     }
     
+    func testSubscript() {
+        XCTAssertEqual(set[0], "Sheep", "Elements should match.")
+    }
+    
 }

@@ -13,7 +13,7 @@ class AboutViewController: UIViewController {
     /// About title
     @IBOutlet private var aboutTitleLabel: UILabel! {
         didSet {
-            aboutTitleLabel.accessibilityIdentifier = AboutAccessibilityIdentifier.Label.aboutTitleLabel
+            aboutTitleLabel.accessibilityIdentifier = AboutViewAccessibilityIdentifier.Label.aboutTitleLabel
             aboutTitleLabel.font = scaledFont.font(forTextStyle: .headline)
             aboutTitleLabel.adjustsFontForContentSizeCategory = true
         }
@@ -22,7 +22,7 @@ class AboutViewController: UIViewController {
     /// About body
     @IBOutlet private var aboutBodyLabel: UILabel! {
         didSet {
-            aboutBodyLabel.accessibilityIdentifier = AboutAccessibilityIdentifier.Label.aboutBodyLabel
+            aboutBodyLabel.accessibilityIdentifier = AboutViewAccessibilityIdentifier.Label.aboutBodyLabel
             aboutBodyLabel.font = scaledFont.font(forTextStyle: .body)
             aboutBodyLabel.adjustsFontForContentSizeCategory = true
         }
@@ -31,7 +31,7 @@ class AboutViewController: UIViewController {
     /// Acknowledgements title
     @IBOutlet private var acknowledgementsTitleLabel: UILabel! {
         didSet {
-            acknowledgementsTitleLabel.accessibilityIdentifier = AboutAccessibilityIdentifier.Label.acknowledgementsTitleLabel
+            acknowledgementsTitleLabel.accessibilityIdentifier = AboutViewAccessibilityIdentifier.Label.acknowledgementsTitleLabel
             acknowledgementsTitleLabel.font = scaledFont.font(forTextStyle: .headline)
             acknowledgementsTitleLabel.adjustsFontForContentSizeCategory = true
         }
@@ -40,7 +40,7 @@ class AboutViewController: UIViewController {
     /// Acknowledgements body
     @IBOutlet private var acknowledgementsBodyLabel: UILabel! {
         didSet {
-            acknowledgementsBodyLabel.accessibilityIdentifier = AboutAccessibilityIdentifier.Label.acknowledgementsBodyLabel
+            acknowledgementsBodyLabel.accessibilityIdentifier = AboutViewAccessibilityIdentifier.Label.acknowledgementsBodyLabel
             acknowledgementsBodyLabel.font = scaledFont.font(forTextStyle: .body)
             acknowledgementsBodyLabel.adjustsFontForContentSizeCategory = true
         }
@@ -49,7 +49,7 @@ class AboutViewController: UIViewController {
     /// Visit button
     @IBOutlet private var visitButton: UIButton! {
         didSet {
-            visitButton.accessibilityIdentifier = AboutAccessibilityIdentifier.Button.visitButton
+            visitButton.accessibilityIdentifier = AboutViewAccessibilityIdentifier.Button.visitButton
             visitButton.titleLabel?.font = scaledFont.font(forTextStyle: .body)
             visitButton.titleLabel?.adjustsFontForContentSizeCategory = true
         }

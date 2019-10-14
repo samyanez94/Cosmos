@@ -8,15 +8,32 @@
 
 import Foundation
 
-enum AboutAccessibilityIdentifier {
-    enum Label {
-        static let aboutTitleLabel = "About title label identifier"
-        static let aboutBodyLabel = "About body label identifier"
-        static let acknowledgementsTitleLabel = "Acknowledgements title label identifier"
-        static let acknowledgementsBodyLabel = "Acknowledgements body label identifier"
+enum DetailViewAccessibilityIdentifier {
+    enum Image {
+        static let imageView = "DetailImageViewIdentifier"
     }
-    
+    enum WebView {
+        static let webView = "DetailWebViewIdentifier"
+    }
+    enum Label {
+        static let dateLabel = "DetailDateLabelIdentifier"
+        static let titleLabel = "DetailTitleLabelIdentifier"
+        static let explanationLabel = "DetailExplanationLabelIdentifier"
+        static let copyrightLabel = "DetailCopyrightLabelIdentifier"
+    }
     enum Button {
-        static let visitButton = "Visit button identifier"
+        static let shareButton = "DetailShareButtonIdentifier"
+    }
+}
+
+enum AboutViewAccessibilityIdentifier {
+    enum Label {
+        static let aboutTitleLabel = "AboutTitleLabelIdentifier"
+        static let aboutBodyLabel = "AboutBodyLabelIdentifier"
+        static let acknowledgementsTitleLabel = "AcknowledgementsTitleLabelIdentifier"
+        static let acknowledgementsBodyLabel = "AcknowledgementsBodyLabelIdentifier"
+    }
+    enum Button {
+        static let visitButton = "VisitButtonIdentifier"
     }
 }

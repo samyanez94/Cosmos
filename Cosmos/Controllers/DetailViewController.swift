@@ -27,6 +27,7 @@ class DetailViewController: UIViewController {
     /// Date label
     @IBOutlet var dateLabel: UILabel! {
         didSet {
+            dateLabel.accessibilityIdentifier = DetailViewAccessibilityIdentifier.Label.dateLabel
             dateLabel.font = scaledFont.font(forTextStyle: .subheadline)
             dateLabel.adjustsFontForContentSizeCategory = true
         }
@@ -35,6 +36,7 @@ class DetailViewController: UIViewController {
     /// Title label
     @IBOutlet var titleLabel: UILabel! {
         didSet {
+            titleLabel.accessibilityIdentifier = DetailViewAccessibilityIdentifier.Label.titleLabel
             titleLabel.font = scaledFont.font(forTextStyle: .headline)
             titleLabel.adjustsFontForContentSizeCategory = true
         }
@@ -43,6 +45,7 @@ class DetailViewController: UIViewController {
     /// Explanation label
     @IBOutlet var explanationLabel: UILabel! {
         didSet {
+            explanationLabel.accessibilityIdentifier = DetailViewAccessibilityIdentifier.Label.explanationLabel
             explanationLabel.font = scaledFont.font(forTextStyle: .body)
             explanationLabel.adjustsFontForContentSizeCategory = true
         }
@@ -51,6 +54,7 @@ class DetailViewController: UIViewController {
     /// Copyright label
     @IBOutlet var copyrightLabel: UILabel! {
         didSet {
+            copyrightLabel.accessibilityLabel = DetailViewAccessibilityIdentifier.Label.copyrightLabel
             copyrightLabel.font = scaledFont.font(forTextStyle: .body)
             copyrightLabel.adjustsFontForContentSizeCategory = true
         }
@@ -59,6 +63,7 @@ class DetailViewController: UIViewController {
     /// Share button
     @IBOutlet var shareButton: UIButton! {
         didSet {
+            shareButton.accessibilityLabel = DetailViewAccessibilityIdentifier.Button.shareButton
             shareButton.layer.cornerRadius = 5
         }
     }
@@ -73,7 +78,7 @@ class DetailViewController: UIViewController {
     @IBOutlet var shareButtonToCopyrightLabelConstraint: NSLayoutConstraint!
     
     /// Image view
-    private let imageView = UIImageView()
+    private lazy var imageView = UIImageView()
     
     /// Activity indicator
     private let activityIndicator = UIActivityIndicatorView()
@@ -273,6 +278,7 @@ extension DetailViewController {
         imageView.isAccessibilityElement = true
         imageView.accessibilityLabel = apod.title
         imageView.accessibilityTraits = .image
+        imageView.accessibilityIdentifier = DetailViewAccessibilityIdentifier.Image.imageView
     }
     
     private func applyAccesibilityAttributesforWebView(_ webView: WKWebView) {
@@ -280,5 +286,7 @@ extension DetailViewController {
         webView.accessibilityLabel = apod.title
         webView.accessibilityTraits = .startsMediaSession
         webView.accessibilityHint = "Double tap to play media."
+        webView.accessibilityIdentifier = DetailViewAccessibilityIdentifier.WebView.webView
+
     }
 }
