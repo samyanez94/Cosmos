@@ -11,19 +11,49 @@ import UIKit
 class AboutViewController: UIViewController {
     
     /// About title
-    @IBOutlet var aboutTitleLabel: UILabel!
+    @IBOutlet private var aboutTitleLabel: UILabel! {
+        didSet {
+            aboutTitleLabel.accessibilityIdentifier = AboutViewAccessibilityIdentifier.Label.aboutTitleLabel
+            aboutTitleLabel.font = scaledFont.font(forTextStyle: .headline)
+            aboutTitleLabel.adjustsFontForContentSizeCategory = true
+        }
+    }
     
     /// About body
-    @IBOutlet var aboutBodyLabel: UILabel!
+    @IBOutlet private var aboutBodyLabel: UILabel! {
+        didSet {
+            aboutBodyLabel.accessibilityIdentifier = AboutViewAccessibilityIdentifier.Label.aboutBodyLabel
+            aboutBodyLabel.font = scaledFont.font(forTextStyle: .body)
+            aboutBodyLabel.adjustsFontForContentSizeCategory = true
+        }
+    }
     
     /// Acknowledgements title
-    @IBOutlet var acknowledgementsTitleLabel: UILabel!
+    @IBOutlet private var acknowledgementsTitleLabel: UILabel! {
+        didSet {
+            acknowledgementsTitleLabel.accessibilityIdentifier = AboutViewAccessibilityIdentifier.Label.acknowledgementsTitleLabel
+            acknowledgementsTitleLabel.font = scaledFont.font(forTextStyle: .headline)
+            acknowledgementsTitleLabel.adjustsFontForContentSizeCategory = true
+        }
+    }
     
     /// Acknowledgements body
-    @IBOutlet var acknowledgementsBodyLabel: UILabel!
+    @IBOutlet private var acknowledgementsBodyLabel: UILabel! {
+        didSet {
+            acknowledgementsBodyLabel.accessibilityIdentifier = AboutViewAccessibilityIdentifier.Label.acknowledgementsBodyLabel
+            acknowledgementsBodyLabel.font = scaledFont.font(forTextStyle: .body)
+            acknowledgementsBodyLabel.adjustsFontForContentSizeCategory = true
+        }
+    }
     
     /// Visit button
-    @IBOutlet var visitButton: UIButton!
+    @IBOutlet private var visitButton: UIButton! {
+        didSet {
+            visitButton.accessibilityIdentifier = AboutViewAccessibilityIdentifier.Button.visitButton
+            visitButton.titleLabel?.font = scaledFont.font(forTextStyle: .body)
+            visitButton.titleLabel?.adjustsFontForContentSizeCategory = true
+        }
+    }
     
     /// Utility used for dynamic types
     private lazy var scaledFont: ScaledFont = {
@@ -32,9 +62,6 @@ class AboutViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Accessibility
-        applyDynamicFonts()
     }
     
     @IBAction func didTapOnAboutButton(_ sender: Any) {
@@ -42,22 +69,4 @@ class AboutViewController: UIViewController {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }
-}
-
-// MARK: Accessibility
-
-extension AboutViewController {
-    
-    private func applyDynamicFonts() {
-        aboutTitleLabel.font = scaledFont.font(forTextStyle: .headline)
-        aboutTitleLabel.adjustsFontForContentSizeCategory = true
-        aboutBodyLabel.font = scaledFont.font(forTextStyle: .body)
-        aboutBodyLabel.adjustsFontForContentSizeCategory = true
-        acknowledgementsTitleLabel.font = scaledFont.font(forTextStyle: .headline)
-        acknowledgementsTitleLabel.adjustsFontForContentSizeCategory = true
-        acknowledgementsBodyLabel.font = scaledFont.font(forTextStyle: .body)
-        acknowledgementsBodyLabel.adjustsFontForContentSizeCategory = true
-        visitButton.titleLabel?.font = scaledFont.font(forTextStyle: .body)
-        visitButton.titleLabel?.adjustsFontForContentSizeCategory = true
-     }
 }

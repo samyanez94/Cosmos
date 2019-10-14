@@ -15,25 +15,58 @@ import Lightbox
 class DetailViewController: UIViewController {
         
     /// Scroll view
-    @IBOutlet var scrollView: UIScrollView!
+    @IBOutlet var scrollView: UIScrollView! {
+        didSet {
+            scrollView.contentInsetAdjustmentBehavior = .never
+        }
+    }
     
     /// Media view
     @IBOutlet var mediaView: UIView!
     
     /// Date label
-    @IBOutlet var dateLabel: UILabel!
+    @IBOutlet var dateLabel: UILabel! {
+        didSet {
+            dateLabel.accessibilityIdentifier = DetailViewAccessibilityIdentifier.Label.dateLabel
+            dateLabel.font = scaledFont.font(forTextStyle: .subheadline)
+            dateLabel.adjustsFontForContentSizeCategory = true
+        }
+    }
     
     /// Title label
-    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var titleLabel: UILabel! {
+        didSet {
+            titleLabel.accessibilityIdentifier = DetailViewAccessibilityIdentifier.Label.titleLabel
+            titleLabel.font = scaledFont.font(forTextStyle: .headline)
+            titleLabel.adjustsFontForContentSizeCategory = true
+        }
+    }
     
     /// Explanation label
-    @IBOutlet var explanationLabel: UILabel!
+    @IBOutlet var explanationLabel: UILabel! {
+        didSet {
+            explanationLabel.accessibilityIdentifier = DetailViewAccessibilityIdentifier.Label.explanationLabel
+            explanationLabel.font = scaledFont.font(forTextStyle: .body)
+            explanationLabel.adjustsFontForContentSizeCategory = true
+        }
+    }
     
     /// Copyright label
-    @IBOutlet var copyrightLabel: UILabel!
+    @IBOutlet var copyrightLabel: UILabel! {
+        didSet {
+            copyrightLabel.accessibilityLabel = DetailViewAccessibilityIdentifier.Label.copyrightLabel
+            copyrightLabel.font = scaledFont.font(forTextStyle: .body)
+            copyrightLabel.adjustsFontForContentSizeCategory = true
+        }
+    }
     
     /// Share button
-    @IBOutlet var shareButton: UIButton!
+    @IBOutlet var shareButton: UIButton! {
+        didSet {
+            shareButton.accessibilityLabel = DetailViewAccessibilityIdentifier.Button.shareButton
+            shareButton.layer.cornerRadius = 5
+        }
+    }
     
     /// Date label gesture recognizer
     @IBOutlet var dateLabelGestureRecognizer: UITapGestureRecognizer!
@@ -45,7 +78,7 @@ class DetailViewController: UIViewController {
     @IBOutlet var shareButtonToCopyrightLabelConstraint: NSLayoutConstraint!
     
     /// Image view
-    private let imageView = UIImageView()
+    private lazy var imageView = UIImageView()
     
     /// Activity indicator
     private let activityIndicator = UIActivityIndicatorView()
@@ -70,9 +103,7 @@ class DetailViewController: UIViewController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        
-        shareButton.layer.cornerRadius = 5
-        
+                
         if apod.copyright == nil {
             shareButtonToCopyrightLabelConstraint.isActive = false
             shareButtonToExplanationLabelConstraint.isActive = true
@@ -82,13 +113,8 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Accessibility
-        setupDynamicFonts()
-        
         // Configure the view
         configure(for: apod)
-        
-        scrollView.contentInsetAdjustmentBehavior = .never
     }
     
     // MARK: Configuration
@@ -248,14 +274,11 @@ extension DetailViewController: WKNavigationDelegate {
 
 extension DetailViewController {
     
-    private func applyAccessibilityAttributes() {
-        dateLabel.accessibilityHint = "Double tap to switch between the absolute date and relative dates."
-    }
-    
     private func applyAccessibilityAttributesforImageView(_ imageView: UIImageView) {
         imageView.isAccessibilityElement = true
         imageView.accessibilityLabel = apod.title
         imageView.accessibilityTraits = .image
+        imageView.accessibilityIdentifier = DetailViewAccessibilityIdentifier.Image.imageView
     }
     
     private func applyAccesibilityAttributesforWebView(_ webView: WKWebView) {
@@ -263,16 +286,7 @@ extension DetailViewController {
         webView.accessibilityLabel = apod.title
         webView.accessibilityTraits = .startsMediaSession
         webView.accessibilityHint = "Double tap to play media."
-    }
-    
-    private func setupDynamicFonts() {
-        dateLabel.font = scaledFont.font(forTextStyle: .subheadline)
-        dateLabel.adjustsFontForContentSizeCategory = true
-        titleLabel.font = scaledFont.font(forTextStyle: .headline)
-        titleLabel.adjustsFontForContentSizeCategory = true
-        explanationLabel.font = scaledFont.font(forTextStyle: .body)
-        explanationLabel.adjustsFontForContentSizeCategory = true
-        copyrightLabel.font = scaledFont.font(forTextStyle: .body)
-        copyrightLabel.adjustsFontForContentSizeCategory = true
+        webView.accessibilityIdentifier = DetailViewAccessibilityIdentifier.WebView.webView
+
     }
 }

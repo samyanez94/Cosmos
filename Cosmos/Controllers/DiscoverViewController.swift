@@ -11,7 +11,7 @@ import UIKit
 class DiscoverViewController: UIViewController {
         
     /// API Client
-    lazy var client = CosmosClient()
+    lazy var client =  Configuration.isUITest ? MockClient() : CosmosClient()
     
     /// Data Source
     lazy var dataSource: DiscoverDataSource = {
@@ -19,16 +19,40 @@ class DiscoverViewController: UIViewController {
     }()
     
     /// Collection view
-    @IBOutlet var collectionView: UICollectionView!
+    @IBOutlet var collectionView: UICollectionView! {
+        didSet {
+            collectionView.delegate = self
+            collectionView.dataSource = dataSource
+            collectionView.isHidden = true
+            collectionView.refreshControl = UIRefreshControl()
+            collectionView.refreshControl?.addTarget(self, action: #selector(handleRefreshControl), for: .valueChanged)
+        }
+    }
     
     /// Ativity indicator
-    @IBOutlet var activityIndicatorView: UIView!
+    @IBOutlet var activityIndicatorView: UIView! {
+        didSet {
+            activityIndicatorView.isHidden = false
+        }
+    }
     
     /// Error view
-    @IBOutlet var errorView: UIView!
+    @IBOutlet var errorView: UIView! {
+        didSet {
+            errorView.isAccessibilityElement = true
+            errorView.accessibilityLabel = errorLabel.text
+            errorView.accessibilityTraits = .button
+            errorView.accessibilityHint = "Double tap to load the view one more time."
+        }
+    }
     
     /// Error label
-    @IBOutlet var errorLabel: UILabel!
+    @IBOutlet var errorLabel: UILabel! {
+        didSet {
+            errorLabel.font = scaledFont.font(forTextStyle: .body)
+            errorLabel.adjustsFontForContentSizeCategory = true
+        }
+    }
     
     /// Pagination offset
     var collectionOffset = 0
@@ -43,34 +67,17 @@ class DiscoverViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Accessibility
-        applyAccessibilityAttributes()
-        setupDynamicFonts()
-        
-        // Configure Collection View
-        configureCollectionView()
-        
-        // Load APODs
-        activityIndicatorView.isHidden = false
+                
         fetch(count: collectionPageSize, offset: collectionOffset) {
             self.activityIndicatorView.isHidden = true
         }
     }
     
     override func viewWillLayoutSubviews() {
-    collectionView.collectionViewLayout.invalidateLayout()
+        collectionView.collectionViewLayout.invalidateLayout()
     }
     
     // MARK: Collection View
-    
-    private func configureCollectionView() {
-        collectionView.dataSource = dataSource
-        collectionView.delegate = self
-        collectionView.isHidden = true
-        collectionView.refreshControl = UIRefreshControl()
-        collectionView.refreshControl?.addTarget(self, action: #selector(handleRefreshControl), for: .valueChanged)
-    }
     
     @objc func handleRefreshControl() {
         fetch(count: 10) {
@@ -141,26 +148,7 @@ extension DiscoverViewController: UICollectionViewDelegate {
 
 extension DiscoverViewController: UICollectionViewDelegateFlowLayout {
     
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.bounds.size.width, height: collectionView.bounds.size.width * 1.2)
-    }
-}
-
-// MARK: Accessibility
-
-extension DiscoverViewController {
-    
-    private func applyAccessibilityAttributes() {
-        errorView.isAccessibilityElement = true
-        errorView.accessibilityTraits = .button
-        errorView.accessibilityLabel = errorLabel.text
-        errorView.accessibilityHint = "Double tap to load the view one more time."
-    }
-    
-    private func setupDynamicFonts() {
-        errorLabel.font = scaledFont.font(forTextStyle: .body)
-        errorLabel.adjustsFontForContentSizeCategory = true
     }
 }
