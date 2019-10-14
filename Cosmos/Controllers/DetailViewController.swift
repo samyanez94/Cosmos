@@ -246,13 +246,28 @@ class DetailViewController: UIViewController {
         switch apod.mediaType {
         case .image:
             if let image = imageView.image {
-                let text = "Checkout this image I discovered using the Cosmos app. Available on the App Store. \(appStoreUrl)"
-                activityViewController = UIActivityViewController(activityItems: [text, image], applicationActivities: nil)
+                let text = """
+                Checkout this image I discovered using the Cosmos app.
+                
+                The Cosmos app is available on the App Store. \(appStoreUrl)
+                """
+                
+                activityViewController = UIActivityViewController(activityItems: [image, text], applicationActivities: nil)
             }
         case .video:
-            let text = "Checkout this video I discovered using the Cosmos app. Available on the App Store. \(appStoreUrl)"
+            let text = """
+            Checkout this video I discovered using the Cosmos app: \(apod.url).
+
+            The Cosmos app is available on the App Store. \(appStoreUrl)
+            """
             activityViewController = UIActivityViewController(activityItems: [text], applicationActivities: nil)
         }
+        
+        activityViewController.excludedActivityTypes  = [
+            UIActivity.ActivityType.postToFacebook,
+            UIActivity.ActivityType("net.whatsapp.WhatsApp.ShareExtension")
+        ]
+        
         present(activityViewController, animated: true, completion: nil)
     }
 }
