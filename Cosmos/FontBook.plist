@@ -54,7 +54,7 @@
 	<key>UICTFontTextStyleFootnote</key>
 	<dict>
 		<key>fontSize</key>
-		<integer>13</integer>
+		<integer>16</integer>
 		<key>fontWeight</key>
 		<string>Regular</string>
 	</dict>

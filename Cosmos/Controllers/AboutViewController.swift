@@ -55,6 +55,17 @@ class AboutViewController: UIViewController {
         }
     }
     
+    @IBOutlet private var versionLabel: UILabel! {
+        didSet {
+            if let versionNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String {
+                versionLabel.text = "Version \(versionNumber)"
+                versionLabel.accessibilityIdentifier = AboutViewAccessibilityIdentifier.Label.versionLabel
+                versionLabel.font = scaledFont.font(forTextStyle: .body)
+                versionLabel.adjustsFontForContentSizeCategory = true
+            }
+        }
+    }
+    
     /// Utility used for dynamic types
     private lazy var scaledFont: ScaledFont = {
          return ScaledFont()

@@ -32,6 +32,7 @@ enum AboutViewAccessibilityIdentifier {
         static let aboutBodyLabel = "AboutBodyLabelIdentifier"
         static let acknowledgementsTitleLabel = "AcknowledgementsTitleLabelIdentifier"
         static let acknowledgementsBodyLabel = "AcknowledgementsBodyLabelIdentifier"
+        static let versionLabel = "VersionLabelIdentifier"
     }
     enum Button {
         static let visitButton = "VisitButtonIdentifier"

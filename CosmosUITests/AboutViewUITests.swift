@@ -36,13 +36,15 @@ class AboutViewUITests: XCTestCase {
         let acknowledgementsTitleLabel = app.staticTexts[AboutViewAccessibilityIdentifier.Label.acknowledgementsTitleLabel]
         let acknowledgementsBodyLabel = app.staticTexts[AboutViewAccessibilityIdentifier.Label.acknowledgementsBodyLabel]
         let visitButton = app.buttons[AboutViewAccessibilityIdentifier.Button.visitButton]
+        let versionLabel = app.staticTexts[AboutViewAccessibilityIdentifier.Label.versionLabel]
         
         // Assert that elements exists.
-        XCTAssertTrue(aboutTitleLabel.exists, "About title label should exitst.")
-        XCTAssertTrue(aboutBodyLabel.exists, "About body label should exitst.")
-        XCTAssertTrue(acknowledgementsTitleLabel.exists, "Acknowledgements title label should exitst.")
-        XCTAssertTrue(acknowledgementsBodyLabel.exists, "Acknowledgements body label should exitst.")
-        XCTAssertTrue(visitButton.exists, "Visit button should exitst.")
+        XCTAssertTrue(aboutTitleLabel.exists, "About title label should exist.")
+        XCTAssertTrue(aboutBodyLabel.exists, "About body label should exist.")
+        XCTAssertTrue(acknowledgementsTitleLabel.exists, "Acknowledgements title label should exist.")
+        XCTAssertTrue(acknowledgementsBodyLabel.exists, "Acknowledgements body label should exist.")
+        XCTAssertTrue(visitButton.exists, "Visit button should exist.")
+        XCTAssert(versionLabel.exists, "Version label should exist")
         
         // Check element is hittable.
         XCTAssert(visitButton.isHittable, "Visit button should be hittable.")
