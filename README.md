@@ -14,6 +14,8 @@ Building this app taught me about:
 * App Store Connect
 * The app submition proccess
 
+Content feature in the app comes from [NASA's APOD API](https://api.nasa.gov), a service that has been offering daily pictures of our universe since 1995. It contains the largest collection of annotated astronomical images on the internet. 
+
 ## Contributing
 
 Building this app has been a rewarding experience. Please, feel free to contribute by looking at the pending issues on the Issues tab on GitHub. I try to keep it updated with new features and bugs 🐛.
