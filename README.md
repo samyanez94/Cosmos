@@ -11,7 +11,8 @@ Building this app taught me about:
 * Accessibility
 * UIActivityViewController
 * Testing
-* The app submition proccess and App Store Connect
+* App Store Connect
+* The app submition proccess
 
 ## Contributing
 
