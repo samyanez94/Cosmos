@@ -42,9 +42,8 @@ class APODViewModel {
     var copyright: NSAttributedString? {
         if let author = apod.copyright {
             return NSMutableAttributedString(string: "Copyright: \(author)", blackString: "Copyright:", font: scaledFont.font(forTextStyle: .body))
-        } else {
-            return nil
         }
+        return nil
     }
     
     /// Utility used for dynamic types

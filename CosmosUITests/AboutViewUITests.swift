@@ -49,4 +49,12 @@ class AboutViewUITests: XCTestCase {
         // Check element is hittable.
         XCTAssert(visitButton.isHittable, "Visit button should be hittable.")
     }
+    
+    func testTapOnVisitButton() {
+        app.tabBars.buttons["About"].tap()
+        
+        app.swipeUp()
+        
+        app.buttons[AboutViewAccessibilityIdentifier.Button.visitButton].tap()
+    }
 }

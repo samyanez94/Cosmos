@@ -12,8 +12,6 @@ class Environment {
     
     static let shared = Environment()
     
-    private init() { }
-    
     private var buildConfigurationKey: String {
         "Build configuration"
     }

@@ -31,14 +31,6 @@ class APOD: Codable {
     enum MediaType: String, Codable {
         case image
         case video
-        
-        init?(type: String) {
-            switch type {
-            case "image": self = .image
-            case "video": self = .video
-            default: return nil
-            }
-        }
     }
 }
 

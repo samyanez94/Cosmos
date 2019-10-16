@@ -58,6 +58,38 @@ class DetailViewUITest: XCTestCase {
         XCTAssert(shareButton.isHittable, "Share button should be hittable.")
     }
     
+    func testElementsExistForVideo() {
+        // Swipe up once.
+        app.swipeUp()
+        
+        // Tap on the third cell.
+         app.collectionViews.children(matching: .cell).element(boundBy: 2).tap()
+        
+        // Elements are found using their accessibility identifiers.
+        let webView = app.webViews[DetailViewAccessibilityIdentifier.WebView.webView]
+        let dateLabel = app.staticTexts[DetailViewAccessibilityIdentifier.Label.dateLabel]
+        let titleLabel = app.staticTexts[DetailViewAccessibilityIdentifier.Label.titleLabel]
+        let explanationLabel = app.staticTexts[DetailViewAccessibilityIdentifier.Label.explanationLabel]
+        
+        // Assert elements exists.
+        XCTAssert(webView.exists, "Web view should exist.")
+        XCTAssert(dateLabel.exists, "Date label should exist.")
+        XCTAssert(titleLabel.exists, "Title label should exist.")
+        XCTAssert(explanationLabel.exists, "Explanation label should exist.")
+        
+        // Swipe up to reveal more elements.
+        app.swipeUp()
+        
+        // Elements are found using their accessibility identifiers.
+        let shareButton = app.buttons[DetailViewAccessibilityIdentifier.Button.shareButton]
+        
+        // Assert that elements exists.
+        XCTAssert(shareButton.exists, "Share button should exist.")
+        
+        // Check element is hittable.
+        XCTAssert(shareButton.isHittable, "Share button should be hittable.")
+    }
+    
     func testTapOnImage() {
         // Tap on the first cell.
         app.collectionViews.children(matching: .cell).element(boundBy: 0).tap()

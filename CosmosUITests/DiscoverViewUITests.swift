@@ -37,7 +37,13 @@ class DiscoverViewUITests: XCTestCase {
         XCTAssertTrue(cell.isHittable, "Cell should be hittable.")
     }
     
-    func testLongPressOnCosmosCell() {
+    func testTapOnTapBar() {
+        app.swipeUp()
+        
+        app.tabBars.buttons["Discover"].tap()
+    }
+    
+    func testLongPressOnCell() {
         let cell = app.collectionViews.children(matching: .cell).element(boundBy: 0)
         
         // Test long press on cell.

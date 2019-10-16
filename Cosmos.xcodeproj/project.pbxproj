@@ -52,6 +52,7 @@
 		22BC0A0D21056A580086BB19 /* CosmosClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BC0A0C21056A580086BB19 /* CosmosClient.swift */; };
 		22C15CAD21AB642200DB287E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C15CAC21AB642200DB287E /* Extensions.swift */; };
 		22C5485823568A7A002A52B4 /* APODViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C5485723568A7A002A52B4 /* APODViewModel.swift */; };
+		22C5485D2356E824002A52B4 /* EnvironmentTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C5485C2356E824002A52B4 /* EnvironmentTest.swift */; };
 		22C834192349630200B876A6 /* SortedSetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C834182349630200B876A6 /* SortedSetTests.swift */; };
 		22C8341A2349638B00B876A6 /* SortedSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E25B623245E9800908A39 /* SortedSet.swift */; };
 		22C8341D2349707600B876A6 /* apod-ranged-response.json in Resources */ = {isa = PBXBuildFile; fileRef = 222DDF6422D2869E00BE3645 /* apod-ranged-response.json */; };
@@ -119,6 +120,7 @@
 		22BC0A0C21056A580086BB19 /* CosmosClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmosClient.swift; sourceTree = "<group>"; };
 		22C15CAC21AB642200DB287E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		22C5485723568A7A002A52B4 /* APODViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODViewModel.swift; sourceTree = "<group>"; };
+		22C5485C2356E824002A52B4 /* EnvironmentTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentTest.swift; sourceTree = "<group>"; };
 		22C834182349630200B876A6 /* SortedSetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortedSetTests.swift; sourceTree = "<group>"; };
 		22CE290B23446BF400170FEE /* CosmosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CosmosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		22CE290F23446BF400170FEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 				22AA95AC2105579E001B755F /* Views */,
 				22A7D3E62117F7690011B097 /* Data Sources */,
 				221AC07521059C60006006B7 /* Controllers */,
+				22C548592356E4D3002A52B4 /* View Models */,
 				22AA95AE21055DE7001B755F /* Models */,
 				22AA95AD21055DD9001B755F /* Networking */,
 				220B1F22234D7E90008BAAF6 /* Accessibility */,
@@ -310,11 +313,18 @@
 			isa = PBXGroup;
 			children = (
 				2252204821043C0E00221D29 /* APOD.swift */,
-				22C5485723568A7A002A52B4 /* APODViewModel.swift */,
 				226E25B623245E9800908A39 /* SortedSet.swift */,
 				22B43D6123416B2800DD2A30 /* ScaledFont.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		22C548592356E4D3002A52B4 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				22C5485723568A7A002A52B4 /* APODViewModel.swift */,
+			);
+			path = "View Models";
 			sourceTree = "<group>";
 		};
 		22C83417234962EB00B876A6 /* Models */ = {
@@ -348,6 +358,7 @@
 			isa = PBXGroup;
 			children = (
 				22CE2918234479BC00170FEE /* CosmosClientTests.swift */,
+				22C5485C2356E824002A52B4 /* EnvironmentTest.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -604,6 +615,7 @@
 				22CE292023447BD900170FEE /* Endpoint.swift in Sources */,
 				22CE291F23447BD600170FEE /* Environment.swift in Sources */,
 				220B1F25234D7EBB008BAAF6 /* AccessibilityIdentifiers.swift in Sources */,
+				22C5485D2356E824002A52B4 /* EnvironmentTest.swift in Sources */,
 				22CE291E23447BCF00170FEE /* APIClient.swift in Sources */,
 				22CE291D23447BA000170FEE /* APOD.swift in Sources */,
 				22CE292123447E5200170FEE /* Extensions.swift in Sources */,
