@@ -27,6 +27,7 @@ class DetailViewController: UIViewController {
     /// Date label
     @IBOutlet var dateLabel: UILabel! {
         didSet {
+            dateLabel.text = viewModel.preferredDate ?? viewModel.date
             dateLabel.accessibilityIdentifier = DetailViewAccessibilityIdentifier.Label.dateLabel
             dateLabel.font = scaledFont.font(forTextStyle: .subheadline)
             dateLabel.adjustsFontForContentSizeCategory = true
@@ -36,6 +37,7 @@ class DetailViewController: UIViewController {
     /// Title label
     @IBOutlet var titleLabel: UILabel! {
         didSet {
+            titleLabel.text = viewModel.title
             titleLabel.accessibilityIdentifier = DetailViewAccessibilityIdentifier.Label.titleLabel
             titleLabel.font = scaledFont.font(forTextStyle: .headline)
             titleLabel.adjustsFontForContentSizeCategory = true
@@ -45,6 +47,7 @@ class DetailViewController: UIViewController {
     /// Explanation label
     @IBOutlet var explanationLabel: UILabel! {
         didSet {
+            explanationLabel.text = viewModel.explanation
             explanationLabel.accessibilityIdentifier = DetailViewAccessibilityIdentifier.Label.explanationLabel
             explanationLabel.font = scaledFont.font(forTextStyle: .body)
             explanationLabel.adjustsFontForContentSizeCategory = true
@@ -54,6 +57,12 @@ class DetailViewController: UIViewController {
     /// Copyright label
     @IBOutlet var copyrightLabel: UILabel! {
         didSet {
+            guard let copyright = viewModel.copyright else {
+                copyrightLabel.isHidden = true
+                return
+            }
+            
+            copyrightLabel.attributedText = copyright
             copyrightLabel.accessibilityLabel = DetailViewAccessibilityIdentifier.Label.copyrightLabel
             copyrightLabel.font = scaledFont.font(forTextStyle: .body)
             copyrightLabel.adjustsFontForContentSizeCategory = true
@@ -81,10 +90,17 @@ class DetailViewController: UIViewController {
     private lazy var imageView = UIImageView()
     
     /// Activity indicator
-    private let activityIndicator = UIActivityIndicatorView()
+    private lazy var activityIndicator = UIActivityIndicatorView()
     
     /// The current astronomical picture of the day.
-    var apod: APOD!
+    var apod: APOD! {
+        didSet {
+            viewModel = APODViewModel(apod: apod)
+        }
+    }
+    
+    /// View model
+    var viewModel: APODViewModel!
     
     /// Utility used for dynamic types
     private lazy var scaledFont: ScaledFont = {
@@ -108,55 +124,17 @@ class DetailViewController: UIViewController {
             shareButtonToCopyrightLabelConstraint.isActive = false
             shareButtonToExplanationLabelConstraint.isActive = true
         }
+        
+        if viewModel.preferredDate == nil {
+            dateLabelGestureRecognizer.isEnabled = false
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Configure the view
-        configure(for: apod)
-    }
-    
-    // MARK: Configuration
-    
-    private func configure(for apod: APOD) {
-        configureDateLabel()
-        configureTitleLabel()
-        configureExplanationLabel()
-        configureCopyrightLabel()
-
+        // Load resources
         loadResource(for: apod)
-    }
-    
-    private func configureDateLabel() {
-        dateLabel.text = apod.preferredDateString ?? apod.dateString
-        if apod.preferredDateString == nil {
-            dateLabelGestureRecognizer.isEnabled = false
-        }
-    }
-    
-    private func configureTitleLabel() {
-        titleLabel.text = apod.title
-    }
-    
-    private func configureExplanationLabel() {
-        explanationLabel.text = apod.explanation.isEmpty ? "There is no description available for this media." : apod.explanation
-    }
-    
-    private func configureCopyrightLabel() {
-        if let author = apod.copyright {
-            copyrightLabel.attributedText = attributedText(withString: "Copyright: \(author)", blackString: "Copyright:", font: scaledFont.font(forTextStyle: .body))
-        } else {
-            copyrightLabel.isHidden = true
-        }
-    }
-    
-    private func attributedText(withString string: String, blackString: String, font: UIFont) -> NSAttributedString {
-        let attributedString = NSMutableAttributedString(string: string, attributes: [.font: font])
-        let blackFontAttribute: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.label]
-        let range = (string as NSString).range(of: blackString)
-        attributedString.addAttributes(blackFontAttribute, range: range)
-        return attributedString
     }
     
     // MARK: Media view
@@ -180,7 +158,7 @@ class DetailViewController: UIViewController {
         imageView.isUserInteractionEnabled = true
         imageView.af_setImage(withURL: url, imageTransition: .crossDissolve(0.2))
         
-        // We cannot add accessibility attributes to Lightbox. Therefore, I'm disabling the feature when using VoiceOver.
+        // I cannot add accessibility attributes to Lightbox. Therefore, I'm disabling the feature when using VoiceOver.
         if !UIAccessibility.isVoiceOverRunning {
             imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapOnImage(_:))))
         }
@@ -222,13 +200,13 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func didTapOnDateLabel(_ sender: Any) {
-        guard let preferredDate = apod.preferredDateString else {
+        guard let preferredDate = viewModel.preferredDate else {
             return
         }
         
         let animation: (() -> Void) = { [unowned self] in
             if self.dateLabel.text == preferredDate {
-                self.dateLabel.text = self.apod.dateString
+                self.dateLabel.text = self.viewModel.date
             } else {
                 self.dateLabel.text = preferredDate
             }

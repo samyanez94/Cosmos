@@ -92,8 +92,8 @@ class CosmosCell: UICollectionViewCell {
 
 extension CosmosCell {
     
-    func applyAccessibilityAttributes(for apod: APOD) {
-        containerView.accessibilityLabel = "\(apod.preferredDateString ?? apod.dateString). \(apod.title)"
+    func applyAccessibilityAttributes(for viewModel: APODViewModel) {
+        containerView.accessibilityLabel = "\(viewModel.preferredDate ?? viewModel.date). \(viewModel.title)"
         containerView.accessibilityTraits = UIAccessibilityTraits.button
         containerView.accessibilityHint = "Double tap to show more details about this media."
     }

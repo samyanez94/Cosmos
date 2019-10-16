@@ -18,14 +18,6 @@ class APOD: Codable {
     let url: String
     let thumbnailUrl: String?
     
-    var dateString: String {
-        String(from: date)
-    }
-    
-    var preferredDateString: String? {
-        preferredDate()
-    }
-    
     enum CodingKeys: String, CodingKey {
         case title
         case date
@@ -46,16 +38,6 @@ class APOD: Codable {
             case "video": self = .video
             default: return nil
             }
-        }
-    }
-    
-    private func preferredDate() -> String? {
-        if Calendar.current.compare(date, to: Date(), toGranularity: .day) == .orderedSame {
-            return "Today"
-        } else if Calendar.current.compare(date, to: Calendar.current.date(byAdding: .day, value: -1, to: Date())!, toGranularity: .day) == .orderedSame {
-            return "Yesterday"
-        } else {
-            return nil
         }
     }
 }
