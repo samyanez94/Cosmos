@@ -1,6 +1,7 @@
 excluded:
   - Pods
   - Cosmos/Data Sources/DiscoverDataSource.swift
+  - Cosmos/Data Sources/FavoritesDataSource.swift
 
 # Rule identifiers to exclude from running
 disabled_rules:

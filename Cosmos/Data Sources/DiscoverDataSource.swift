@@ -43,7 +43,7 @@ class DiscoverDataSource: NSObject, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CosmosCell.identifier, for: indexPath) as! CosmosCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DiscoverCell.identifier, for: indexPath) as! DiscoverCell
         
         let apod = apods.element(at: indexPath.row)
         
@@ -64,7 +64,7 @@ class DiscoverDataSource: NSObject, UICollectionViewDataSource {
         return cell
     }
     
-    private func setImageView(for cell: CosmosCell, apod: APOD) {
+    private func setImageView(for cell: DiscoverCell, apod: APOD) {
         if let url = getUrl(from: apod) {
             cell.imageView.af_setImage(withURL: url, imageTransition: .crossDissolve(0.2)) { data in
                 if data.response?.statusCode == 404 {

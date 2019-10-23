@@ -1,5 +1,5 @@
 //
-//  CosmosCell.swift
+//  DiscoverCell.swift
 //  Cosmos
 //
 //  Created by Samuel Yanez on 7/21/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CosmosCell: UICollectionViewCell {
+class DiscoverCell: UICollectionViewCell {
 
     /// Image view
     @IBOutlet var imageView: UIImageView!
@@ -19,7 +19,7 @@ class CosmosCell: UICollectionViewCell {
     /// Container view
     @IBOutlet var containerView: UIView! {
         didSet {
-            containerView.layer.cornerRadius = CosmosCell.cornerRadius
+            containerView.layer.cornerRadius = DiscoverCell.cornerRadius
         }
     }
     
@@ -46,7 +46,7 @@ class CosmosCell: UICollectionViewCell {
     @IBOutlet var missingThumbnailView: MissingThumbnailView!
     
     /// Identifier
-    static let identifier = "com.samuelyanez.CosmosCell"
+    static let identifier = "com.samuelyanez.DiscoverCell"
     
     /// Height
     static let height: CGFloat = 450
@@ -90,7 +90,7 @@ class CosmosCell: UICollectionViewCell {
 }
 // MARK: - Accesibility
 
-extension CosmosCell {
+extension DiscoverCell {
     
     func applyAccessibilityAttributes(for viewModel: APODViewModel) {
         containerView.accessibilityLabel = "\(viewModel.preferredDate ?? viewModel.date). \(viewModel.title)"
@@ -101,7 +101,7 @@ extension CosmosCell {
 
 // MARK: - Gesture Recognizer
 
-extension CosmosCell {
+extension DiscoverCell {
         
     private func configureGestureRecognizer() {
         let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPressGesture(gestureRecognizer:)))

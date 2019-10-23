@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Discover-->
+        <!--Discover View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="DiscoverViewController" customModule="Cosmos" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" userLabel="Discover View Controller" customClass="DiscoverViewController" customModule="Cosmos" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -27,7 +27,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="20" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="com.samuelyanez.CosmosCell" id="I6H-y7-s1X" userLabel="Cosmos Collection View Cell" customClass="CosmosCell" customModule="Cosmos" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="com.samuelyanez.DiscoverCell" id="I6H-y7-s1X" userLabel="Discover Collection View Cell" customClass="DiscoverCell" customModule="Cosmos" customModuleProvider="target">
                                         <rect key="frame" x="2.6666666666666665" y="20" width="370" height="450"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="57t-wL-U2t">
@@ -46,7 +46,7 @@
                                                                         <bool key="isElement" value="NO"/>
                                                                     </accessibility>
                                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                                                                    <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Central Lunar Eclipse" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0aM-Eg-prD" userLabel="Title Label">
@@ -168,7 +168,7 @@
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.clockwise" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="JhR-iP-lEy" userLabel="Refresh Icon">
                                                 <rect key="frame" x="114.33333333333334" y="-1.3333333333333321" width="21" height="24.333333333333336"/>
-                                                <color key="tintColor" systemColor="quaternaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.17999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="tintColor" systemColor="quaternaryLabelColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.17999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20" scale="medium" weight="medium"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SKU-Ol-47o" userLabel="Error Label">
@@ -180,7 +180,7 @@
 
 Tap here to try again.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -268,7 +268,7 @@ Tap here to try again.</string>
                                                 <rect key="frame" x="16" y="332" width="343" height="24"/>
                                                 <gestureRecognizers/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                                                <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                                 <connections>
                                                     <outletCollection property="gestureRecognizers" destination="1rd-EG-4ha" appends="YES" id="3Tm-5u-7PA"/>
@@ -283,18 +283,18 @@ Tap here to try again.</string>
                                                 <rect key="frame" x="16" y="408.66666666666674" width="343" height="573"/>
                                                 <string key="text">Reddened by scattered sunlight, the Moon in the center is passing through the center of Earth's dark umbral shadow in this July 27 lunar eclipse sequence. Left to right the three images are from the start, maximum, and end to 103 minutes of totality from the longest lunar eclipse of the 21st century. The longest path the Moon can follow through Earth's shadow does cross the shadow's center, that's what makes such central lunar eclipses long ones. But July 27 was also the date of lunar apogee, and at the most distant part of its elliptical orbit the Moon moves slowest. For the previous lunar eclipse, last January 31, the Moon was near its orbital perigee. Passing just south of the Earth shadow central axis,  totality lasted only 76 minutes. Coming up on January 21, 2019, a third consecutive total lunar eclipse will also be off center and find the Moon near perigee. Then totality will be a mere 62 minutes long.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright: Anthony Ayiomamitis" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ARO-i6-s2k" userLabel="Copyright Label">
                                                 <rect key="frame" x="16" y="997.66666666666674" width="343" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="30F-qb-8r0" userLabel="Share Button">
                                                 <rect key="frame" x="107.66666666666669" y="1053.6666666666667" width="160" height="45"/>
-                                                <color key="backgroundColor" systemColor="secondarySystemFillColor" red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" systemColor="secondarySystemFillColor" red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="r0A-24-6PZ"/>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="160" id="w8M-X4-BYC"/>
@@ -393,41 +393,35 @@ Tap here to try again.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Onw-dt-lkD">
-                                <rect key="frame" x="0.0" y="44" width="375" height="685"/>
+                                <rect key="frame" x="0.0" y="140" width="375" height="589"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JNc-h8-655" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="699.33333333333337"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="638.66666666666663"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IKG-jJ-Gmh" userLabel="About Title Label">
-                                                <rect key="frame" x="16" y="32" width="343" height="28.666666666666671"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KBe-fd-YQ2" userLabel="About Body Label">
-                                                <rect key="frame" x="16" y="76.666666666666657" width="343" height="262.66666666666674"/>
+                                                <rect key="frame" x="16" y="16" width="343" height="262.66666666666669"/>
                                                 <string key="text">“The Cosmos is all that is, or ever was, or ever will be.” - Carl Sagan. 
 
 This app was born from a strong desire to learn more about space and software development. I decided to build an iOS app that displays images and videos from our universe. Keeping in mind a minimal and user-friendly design. I hope you enjoy it and share it with your friends if you like it.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Acknowledgements" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UpS-uD-Out" userLabel="Acknowledgements Title Label">
-                                                <rect key="frame" x="16" y="371.33333333333331" width="343" height="28.666666666666686"/>
+                                                <rect key="frame" x="16" y="310.66666666666669" width="343" height="28.666666666666686"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4iq-Xa-pHO" userLabel="Acknowledgements Body Label">
-                                                <rect key="frame" x="16" y="416" width="343" height="143.33333333333337"/>
+                                                <rect key="frame" x="16" y="355.33333333333331" width="343" height="143.33333333333331"/>
                                                 <string key="text">All content featured in this app comes from NASA’s APOD API, a service that has been offering daily pictures of our universe since 1995. It contains the largest collection of annotated astronomical images on the internet.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3lt-bj-SNc" userLabel="Visit Button">
-                                                <rect key="frame" x="16" y="575.33333333333337" width="343" height="36"/>
+                                                <rect key="frame" x="16" y="514.66666666666663" width="343" height="36"/>
                                                 <accessibility key="accessibilityConfiguration" hint="Double tap to open NASA's website."/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <state key="normal" title="https://apod.nasa.gov/apod/">
@@ -438,21 +432,20 @@ This app was born from a strong desire to learn more about space and software de
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version 1.2.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LgY-bM-WJr" userLabel="Version Label">
-                                                <rect key="frame" x="16" y="643.33333333333337" width="343" height="24"/>
+                                                <rect key="frame" x="16" y="582.66666666666663" width="343" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="IKG-jJ-Gmh" secondAttribute="trailing" constant="16" id="1e8-F9-N0Z"/>
                                             <constraint firstItem="4iq-Xa-pHO" firstAttribute="leading" secondItem="JNc-h8-655" secondAttribute="leading" constant="16" id="2YR-hj-zfe"/>
                                             <constraint firstAttribute="trailing" secondItem="UpS-uD-Out" secondAttribute="trailing" constant="16" id="4dZ-GN-t8V"/>
                                             <constraint firstItem="KBe-fd-YQ2" firstAttribute="leading" secondItem="JNc-h8-655" secondAttribute="leading" constant="16" id="F05-Ri-4oL"/>
                                             <constraint firstItem="LgY-bM-WJr" firstAttribute="leading" secondItem="JNc-h8-655" secondAttribute="leading" constant="16" id="HxS-cq-hAW"/>
-                                            <constraint firstItem="IKG-jJ-Gmh" firstAttribute="leading" secondItem="JNc-h8-655" secondAttribute="leading" constant="16" id="Q8i-87-alF"/>
                                             <constraint firstItem="4iq-Xa-pHO" firstAttribute="top" secondItem="UpS-uD-Out" secondAttribute="bottom" constant="16" id="TqN-XJ-6yQ"/>
+                                            <constraint firstItem="KBe-fd-YQ2" firstAttribute="top" secondItem="JNc-h8-655" secondAttribute="top" constant="16" id="ZXo-89-Ltb"/>
                                             <constraint firstAttribute="trailing" secondItem="3lt-bj-SNc" secondAttribute="trailing" constant="16" id="aFF-fj-R0M"/>
                                             <constraint firstItem="3lt-bj-SNc" firstAttribute="top" secondItem="4iq-Xa-pHO" secondAttribute="bottom" constant="16" id="hOx-qh-ZCo"/>
                                             <constraint firstItem="UpS-uD-Out" firstAttribute="leading" secondItem="JNc-h8-655" secondAttribute="leading" constant="16" id="hgD-Pu-8BL"/>
@@ -460,11 +453,9 @@ This app was born from a strong desire to learn more about space and software de
                                             <constraint firstAttribute="trailing" secondItem="KBe-fd-YQ2" secondAttribute="trailing" constant="16" id="lRe-Dt-BOs"/>
                                             <constraint firstAttribute="trailing" secondItem="LgY-bM-WJr" secondAttribute="trailing" constant="16" id="lYj-ka-ItS"/>
                                             <constraint firstItem="LgY-bM-WJr" firstAttribute="top" secondItem="3lt-bj-SNc" secondAttribute="bottom" constant="32" id="m0r-aH-1aS"/>
-                                            <constraint firstItem="IKG-jJ-Gmh" firstAttribute="top" secondItem="JNc-h8-655" secondAttribute="top" constant="32" id="m4f-E9-t71"/>
                                             <constraint firstItem="3lt-bj-SNc" firstAttribute="leading" secondItem="JNc-h8-655" secondAttribute="leading" constant="16" id="msn-k9-QPx"/>
                                             <constraint firstItem="UpS-uD-Out" firstAttribute="top" secondItem="KBe-fd-YQ2" secondAttribute="bottom" constant="32" id="o2D-43-IB0"/>
                                             <constraint firstAttribute="bottom" secondItem="LgY-bM-WJr" secondAttribute="bottom" constant="32" id="vQq-lx-gZy"/>
-                                            <constraint firstItem="KBe-fd-YQ2" firstAttribute="top" secondItem="IKG-jJ-Gmh" secondAttribute="bottom" constant="16" id="xlb-El-eUq"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -486,10 +477,9 @@ This app was born from a strong desire to learn more about space and software de
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cee-Xl-vC9"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="About" image="Info Icon" largeContentSizeImage="Info Icon Large" id="iej-dg-sQD"/>
+                    <navigationItem key="navigationItem" title="About" id="QAn-Lt-0BR"/>
                     <connections>
                         <outlet property="aboutBodyLabel" destination="KBe-fd-YQ2" id="top-XD-Jnb"/>
-                        <outlet property="aboutTitleLabel" destination="IKG-jJ-Gmh" id="ozq-bH-yOT"/>
                         <outlet property="acknowledgementsBodyLabel" destination="4iq-Xa-pHO" id="bq4-id-zQw"/>
                         <outlet property="acknowledgementsTitleLabel" destination="UpS-uD-Out" id="5Hi-f5-b1Y"/>
                         <outlet property="versionLabel" destination="LgY-bM-WJr" id="tWG-8W-Nud"/>
@@ -498,7 +488,7 @@ This app was born from a strong desire to learn more about space and software de
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bon-un-qwm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1976.8" y="254.92610837438426"/>
+            <point key="canvasLocation" x="2972" y="250"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="zJv-pa-Bg5">
@@ -510,19 +500,25 @@ This app was born from a strong desire to learn more about space and software de
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="selectedImageTintColor" name="Accent Color"/>
                     </tabBar>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="selectedIndex">
+                            <integer key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
+                        <segue destination="nzD-cG-IEZ" kind="relationship" relationship="viewControllers" id="xJd-so-b4P"/>
                         <segue destination="jjY-6i-pPj" kind="relationship" relationship="viewControllers" id="KHt-yU-h6I"/>
-                        <segue destination="77o-Fw-cle" kind="relationship" relationship="viewControllers" id="PxJ-pb-JkI"/>
+                        <segue destination="R7b-yg-6iP" kind="relationship" relationship="viewControllers" id="PxJ-pb-JkI"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dV0-VU-Quj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="630" y="-49"/>
+            <point key="canvasLocation" x="665" y="-488"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Discover Navigation Controller-->
         <scene sceneID="WnA-IA-h6J">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jjY-6i-pPj" userLabel="Navigation Controller" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jjY-6i-pPj" userLabel="Discover Navigation Controller" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Discover" image="Rocket Icon" largeContentSizeImage="Rocket Icon Large" id="pqP-5p-aAr"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="ngM-2d-kxD">
@@ -542,8 +538,106 @@ This app was born from a strong desire to learn more about space and software de
             </objects>
             <point key="canvasLocation" x="1976.25" y="-487.5"/>
         </scene>
+        <!--Favorites View Controller-->
+        <scene sceneID="Im5-8u-fPc">
+            <objects>
+                <viewController id="xNl-lU-YCh" userLabel="Favorites View Controller" customClass="FavoritesViewController" customModule="Cosmos" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xun-hu-JvK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MH3-Fd-mFy">
+                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="com.samuelyanez.FavoritesCell" textLabel="jXo-ty-kNw" detailTextLabel="ajU-g5-aHG" rowHeight="120" style="IBUITableViewCellStyleSubtitle" id="osd-f1-yb6" userLabel="Favorites Table View Cell" customClass="FavoritesCell" customModule="Cosmos" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="120"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="osd-f1-yb6" id="8mD-1p-xNb">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jXo-ty-kNw">
+                                                    <rect key="frame" x="15" y="40" width="33.333333333333336" height="20.333333333333332"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ajU-g5-aHG">
+                                                    <rect key="frame" x="14.999999999999996" y="63.333333333333336" width="43.666666666666664" height="14.333333333333334"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="ot2-gx-31u" firstAttribute="trailing" secondItem="MH3-Fd-mFy" secondAttribute="trailing" id="cNZ-1E-q0q"/>
+                            <constraint firstItem="MH3-Fd-mFy" firstAttribute="top" secondItem="ot2-gx-31u" secondAttribute="top" id="hp5-dy-MxQ"/>
+                            <constraint firstItem="MH3-Fd-mFy" firstAttribute="leading" secondItem="ot2-gx-31u" secondAttribute="leading" id="rrZ-lg-a2W"/>
+                            <constraint firstItem="ot2-gx-31u" firstAttribute="bottom" secondItem="MH3-Fd-mFy" secondAttribute="bottom" id="tba-rC-5z0"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ot2-gx-31u"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Favorites" id="kHz-qF-jwc"/>
+                    <connections>
+                        <outlet property="tableView" destination="MH3-Fd-mFy" id="ba5-9h-C0a"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pmc-e2-zon" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2972" y="-1214.039408866995"/>
+        </scene>
+        <!--Favorites Navigation Controller-->
+        <scene sceneID="gZX-1A-Uxy">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nzD-cG-IEZ" userLabel="Favorites Navigation Controller" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Favorites" image="Heart Icon" largeContentSizeImage="Heart Icon Large" id="siB-qJ-2t6"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="rtb-r3-CmO">
+                        <rect key="frame" x="0.0" y="44" width="375" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" name="Accent Color"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="xNl-lU-YCh" kind="relationship" relationship="rootViewController" id="Qd1-z9-4Pd"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5un-A3-YRJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1975" y="-1214"/>
+        </scene>
+        <!--About Navigation Controller-->
+        <scene sceneID="S2E-JU-Be1">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="R7b-yg-6iP" userLabel="About Navigation Controller" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="About" image="Info Icon" largeContentSizeImage="Info Icon Large" id="iej-dg-sQD"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="9VE-23-l3J">
+                        <rect key="frame" x="0.0" y="44" width="375" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="77o-Fw-cle" kind="relationship" relationship="rootViewController" id="sxk-bi-oqW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VLL-1m-hU7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1975" y="250"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="Heart Icon" width="25" height="23"/>
+        <image name="Heart Icon Large" width="75" height="69"/>
         <image name="Info Icon" width="25" height="25"/>
         <image name="Info Icon Large" width="75" height="75"/>
         <image name="Rocket Icon" width="25" height="25"/>
