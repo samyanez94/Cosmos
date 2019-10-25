@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		2202F50D211ECE4700DEFDE1 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2202F50C211ECE4700DEFDE1 /* DetailViewController.swift */; };
+		2207E602236278BD009F9CD5 /* FavoritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2207E601236278BD009F9CD5 /* FavoritesManager.swift */; };
+		2207E603236278BD009F9CD5 /* FavoritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2207E601236278BD009F9CD5 /* FavoritesManager.swift */; };
+		2207E604236278BD009F9CD5 /* FavoritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2207E601236278BD009F9CD5 /* FavoritesManager.swift */; };
 		220B1F1B234D7273008BAAF6 /* AboutViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B1F1A234D7273008BAAF6 /* AboutViewUITests.swift */; };
 		220B1F24234D7EBB008BAAF6 /* AccessibilityIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B1F23234D7EBB008BAAF6 /* AccessibilityIdentifiers.swift */; };
 		220B1F25234D7EBB008BAAF6 /* AccessibilityIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B1F23234D7EBB008BAAF6 /* AccessibilityIdentifiers.swift */; };
@@ -93,6 +96,7 @@
 
 /* Begin PBXFileReference section */
 		2202F50C211ECE4700DEFDE1 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		2207E601236278BD009F9CD5 /* FavoritesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesManager.swift; sourceTree = "<group>"; };
 		220B1F18234D7273008BAAF6 /* CosmosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CosmosUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		220B1F1A234D7273008BAAF6 /* AboutViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewUITests.swift; sourceTree = "<group>"; };
 		220B1F1C234D7273008BAAF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -184,6 +188,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		2207E60023627895009F9CD5 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				2207E601236278BD009F9CD5 /* FavoritesManager.swift */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
 		220B1F19234D7273008BAAF6 /* CosmosUITests */ = {
 			isa = PBXGroup;
 			children = (
@@ -265,6 +277,7 @@
 				22C548592356E4D3002A52B4 /* View Models */,
 				22AA95AE21055DE7001B755F /* Models */,
 				22AA95AD21055DD9001B755F /* Networking */,
+				2207E60023627895009F9CD5 /* Favorites */,
 				220B1F22234D7E90008BAAF6 /* Accessibility */,
 				225810A2213674E900ECBCC3 /* Extensions */,
 				225220332104391100221D29 /* AppDelegate.swift */,
@@ -571,6 +584,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22B276EC2353DB180009844E /* DiscoverViewUITests.swift in Sources */,
+				2207E604236278BD009F9CD5 /* FavoritesManager.swift in Sources */,
 				22A4DD6523500C0A0004881B /* Endpoint.swift in Sources */,
 				22A4DD6623500C0D0004881B /* Environment.swift in Sources */,
 				22A4DD6123500BEF0004881B /* MockClient.swift in Sources */,
@@ -602,6 +616,7 @@
 				227B0ABC2337ED2300D1EFD2 /* MissingThumbnailView.swift in Sources */,
 				225220362104391100221D29 /* DiscoverViewController.swift in Sources */,
 				22A4DD6B23500C9D0004881B /* Configuration.swift in Sources */,
+				2207E602236278BD009F9CD5 /* FavoritesManager.swift in Sources */,
 				22AA95B021055E47001B755F /* Endpoint.swift in Sources */,
 				22BC0A0D21056A580086BB19 /* CosmosClient.swift in Sources */,
 				220B1F24234D7EBB008BAAF6 /* AccessibilityIdentifiers.swift in Sources */,
@@ -624,6 +639,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22A4DD6223500BF00004881B /* MockClient.swift in Sources */,
+				2207E603236278BD009F9CD5 /* FavoritesManager.swift in Sources */,
 				22CE292023447BD900170FEE /* Endpoint.swift in Sources */,
 				22CE291F23447BD600170FEE /* Environment.swift in Sources */,
 				220B1F25234D7EBB008BAAF6 /* AccessibilityIdentifiers.swift in Sources */,
