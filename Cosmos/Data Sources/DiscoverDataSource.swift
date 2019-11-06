@@ -26,7 +26,7 @@ class DiscoverDataSource: NSObject, UICollectionViewDataSource {
     }
     
     func element(at indexPath: IndexPath) -> APOD {
-        return apods.element(at: indexPath.row)
+        apods.element(at: indexPath.row)
     }
     
     func append(_ apods: [APOD]) {
@@ -43,7 +43,7 @@ class DiscoverDataSource: NSObject, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DiscoverCell.identifier, for: indexPath) as! DiscoverCell
+        let cell: DiscoverCell = DiscoverCell.dequeue(from: collectionView, for: indexPath)
         
         let apod = apods.element(at: indexPath.row)
         
@@ -64,8 +64,9 @@ class DiscoverDataSource: NSObject, UICollectionViewDataSource {
         return cell
     }
     
+    //TODO: Try to refactor or move this logic
     private func setImageView(for cell: DiscoverCell, apod: APOD) {
-        if let url = getUrl(from: apod) {
+        if let url = apod.thumbnailUrl {
             cell.imageView.af_setImage(withURL: url, imageTransition: .crossDissolve(0.2)) { data in
                 if data.response?.statusCode == 404 {
                     cell.missingThumbnailView.isHidden = false
@@ -75,18 +76,6 @@ class DiscoverDataSource: NSObject, UICollectionViewDataSource {
         } else {
             cell.missingThumbnailView.isHidden = false
             cell.activityIndicator.stopAnimating()
-        }
-    }
-    
-    private func getUrl(from apod: APOD) -> URL? {
-        switch apod.mediaType {
-        case .image:
-            return URL(string: apod.url)
-        case .video:
-            if let thumbnailUrl = apod.thumbnailUrl {
-                return URL(string: thumbnailUrl)
-            }
-            return nil
         }
     }
 }

@@ -15,8 +15,8 @@ class APOD: Codable {
     let explanation: String
     let mediaType: MediaType
     let copyright: String?
-    let url: String
-    let thumbnailUrl: String?
+    let urlString: String
+    let thumbnailUrlString: String?
     
     enum CodingKeys: String, CodingKey {
         case title
@@ -24,13 +24,24 @@ class APOD: Codable {
         case explanation
         case mediaType = "media_type"
         case copyright
-        case url
-        case thumbnailUrl = "thumbnail_url"
+        case urlString = "url"
+        case thumbnailUrlString = "thumbnail_url"
     }
     
     enum MediaType: String, Codable {
         case image
         case video
+    }
+}
+
+extension APOD {
+    var thumbnailUrl: URL? {
+        switch mediaType {
+        case .image:
+            return URL(string: urlString)
+        case .video:
+            return URL(string: thumbnailUrlString)
+        }
     }
 }
 

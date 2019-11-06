@@ -11,11 +11,11 @@ import Foundation
 protocol FavoritesManager {
     func getFavorites() -> [Date]
     
-    func isFavorite(apod: APOD) -> Bool
+    func isFavorite(_ apod: APOD) -> Bool
     
-    func addToFavorites(apod: APOD)
+    func addToFavorites(_ apod: APOD)
     
-    func removeFromFavorites(apod: APOD)
+    func removeFromFavorites(_ apod: APOD)
 }
 
 struct CosmosFavoritesManager: FavoritesManager {
@@ -25,17 +25,17 @@ struct CosmosFavoritesManager: FavoritesManager {
         UserDefaults.standard.array(forKey: favoritesUserDefaultsKey) as? [Date] ?? []
     }
     
-    func isFavorite(apod: APOD) -> Bool {
+    func isFavorite(_ apod: APOD) -> Bool {
         getFavorites().contains(apod.date)
     }
     
-    func addToFavorites(apod: APOD) {
+    func addToFavorites(_ apod: APOD) {
         var favorites = getFavorites()
         favorites.append(apod.date)
         UserDefaults.standard.set(favorites, forKey: favoritesUserDefaultsKey)
     }
     
-    func removeFromFavorites(apod: APOD) {
+    func removeFromFavorites(_ apod: APOD) {
         var favorites = getFavorites()
         favorites.removeAll { $0 == apod.date }
         UserDefaults.standard.set(favorites, forKey: favoritesUserDefaultsKey)

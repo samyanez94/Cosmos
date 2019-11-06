@@ -19,7 +19,7 @@ class DiscoverCell: UICollectionViewCell {
     /// Container view
     @IBOutlet var containerView: UIView! {
         didSet {
-            containerView.layer.cornerRadius = DiscoverCell.cornerRadius
+            containerView.roundCorners(radius: 20)                
         }
     }
     
@@ -45,15 +45,6 @@ class DiscoverCell: UICollectionViewCell {
     /// Missing thumbnail view
     @IBOutlet var missingThumbnailView: MissingThumbnailView!
     
-    /// Identifier
-    static let identifier = "com.samuelyanez.DiscoverCell"
-    
-    /// Height
-    static let height: CGFloat = 450
-    
-    /// Corner radius
-    static let cornerRadius: CGFloat = 20
-    
     /// Feedback generator
     var feedbackGenerator: UISelectionFeedbackGenerator?
     
@@ -68,24 +59,20 @@ class DiscoverCell: UICollectionViewCell {
     }
     
     override func draw(_ rect: CGRect) {
-        setupShadow()
+        setShadow(opacity: 0.2, radius: 20)
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        
+        // Set image to nil.
         imageView.image = nil
+        
+        // Cancel any active image requests.
         imageView.af_cancelImageRequest()
         
+        // Hide the missing thumbanil view.
         missingThumbnailView.isHidden = true
-    }
-    
-    private func setupShadow() {
-        layer.cornerRadius = 20
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOpacity = 0.2
-        layer.shadowRadius = 10
-        layer.shadowOffset = CGSize(width: -1, height: 2)
-        layer.masksToBounds = false
     }
 }
 // MARK: - Accesibility

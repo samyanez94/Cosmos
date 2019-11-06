@@ -46,7 +46,6 @@
 		22A4DD6623500C0D0004881B /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223A2BF1233B0FFA00005DFA /* Environment.swift */; };
 		22A4DD6723500C1B0004881B /* APOD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2252204821043C0E00221D29 /* APOD.swift */; };
 		22A4DD6823500C1D0004881B /* SortedSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E25B623245E9800908A39 /* SortedSet.swift */; };
-		22A4DD6923500C350004881B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C15CAC21AB642200DB287E /* Extensions.swift */; };
 		22A4DD6B23500C9D0004881B /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A4DD6A23500C9D0004881B /* Configuration.swift */; };
 		22A4DD6C23500CA30004881B /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A4DD6A23500C9D0004881B /* Configuration.swift */; };
 		22A4DD6D23500CA40004881B /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A4DD6A23500C9D0004881B /* Configuration.swift */; };
@@ -56,7 +55,6 @@
 		22B43D60234169F900DD2A30 /* FontBook.plist in Resources */ = {isa = PBXBuildFile; fileRef = 22B43D5F234169F900DD2A30 /* FontBook.plist */; };
 		22B43D6223416B2800DD2A30 /* ScaledFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B43D6123416B2800DD2A30 /* ScaledFont.swift */; };
 		22BC0A0D21056A580086BB19 /* CosmosClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BC0A0C21056A580086BB19 /* CosmosClient.swift */; };
-		22C15CAD21AB642200DB287E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C15CAC21AB642200DB287E /* Extensions.swift */; };
 		22C5485823568A7A002A52B4 /* APODViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C5485723568A7A002A52B4 /* APODViewModel.swift */; };
 		22C5485D2356E824002A52B4 /* EnvironmentTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C5485C2356E824002A52B4 /* EnvironmentTest.swift */; };
 		22C834192349630200B876A6 /* SortedSetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C834182349630200B876A6 /* SortedSetTests.swift */; };
@@ -69,9 +67,17 @@
 		22CE291E23447BCF00170FEE /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA5F08229B4EC000E27EC4 /* APIClient.swift */; };
 		22CE291F23447BD600170FEE /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223A2BF1233B0FFA00005DFA /* Environment.swift */; };
 		22CE292023447BD900170FEE /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AA95AF21055E47001B755F /* Endpoint.swift */; };
-		22CE292123447E5200170FEE /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C15CAC21AB642200DB287E /* Extensions.swift */; };
 		22D47127211C0E5A0006EAD6 /* DiscoverDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D47126211C0E5A0006EAD6 /* DiscoverDataSource.swift */; };
 		22DABE4221BC617F004D6EBF /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DABE4121BC617F004D6EBF /* TabBarViewController.swift */; };
+		22E315C323726CC7008EDF34 /* DateFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E315C223726CC7008EDF34 /* DateFormatter+Extensions.swift */; };
+		22E315C523726CFF008EDF34 /* JSONDecoder+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E315C423726CFF008EDF34 /* JSONDecoder+Extensions.swift */; };
+		22E315C723726D22008EDF34 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E315C623726D22008EDF34 /* String+Extensions.swift */; };
+		22E315C923726D40008EDF34 /* NSMutableAttributedString+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E315C823726D40008EDF34 /* NSMutableAttributedString+Extensions.swift */; };
+		22E315CB23726D5F008EDF34 /* UITableViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E315CA23726D5F008EDF34 /* UITableViewCell+Extensions.swift */; };
+		22E315CD23726D71008EDF34 /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E315CC23726D71008EDF34 /* UIFont+Extensions.swift */; };
+		22E315CF23726F84008EDF34 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E315CE23726F84008EDF34 /* UIView+Extensions.swift */; };
+		22E315D12372777F008EDF34 /* UICollectionViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E315D02372777F008EDF34 /* UICollectionViewCell+Extensions.swift */; };
+		22E315D52372807D008EDF34 /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E315D42372807D008EDF34 /* URL+Extensions.swift */; };
 		22E794E12336E5EC007E4AA2 /* MissingThumbnailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22E794DF2336E5EC007E4AA2 /* MissingThumbnailView.xib */; };
 		22F711B722A8EC5200F71646 /* Pods_Cosmos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 523698EF916740C4BFD9F99D /* Pods_Cosmos.framework */; };
 		22FA5F09229B4EC000E27EC4 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA5F08229B4EC000E27EC4 /* APIClient.swift */; };
@@ -128,7 +134,6 @@
 		22B43D5F234169F900DD2A30 /* FontBook.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FontBook.plist; sourceTree = "<group>"; };
 		22B43D6123416B2800DD2A30 /* ScaledFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaledFont.swift; sourceTree = "<group>"; };
 		22BC0A0C21056A580086BB19 /* CosmosClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmosClient.swift; sourceTree = "<group>"; };
-		22C15CAC21AB642200DB287E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		22C5485723568A7A002A52B4 /* APODViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODViewModel.swift; sourceTree = "<group>"; };
 		22C5485C2356E824002A52B4 /* EnvironmentTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentTest.swift; sourceTree = "<group>"; };
 		22C834182349630200B876A6 /* SortedSetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortedSetTests.swift; sourceTree = "<group>"; };
@@ -138,6 +143,15 @@
 		22CE2918234479BC00170FEE /* CosmosClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmosClientTests.swift; sourceTree = "<group>"; };
 		22D47126211C0E5A0006EAD6 /* DiscoverDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverDataSource.swift; sourceTree = "<group>"; };
 		22DABE4121BC617F004D6EBF /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		22E315C223726CC7008EDF34 /* DateFormatter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extensions.swift"; sourceTree = "<group>"; };
+		22E315C423726CFF008EDF34 /* JSONDecoder+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+Extensions.swift"; sourceTree = "<group>"; };
+		22E315C623726D22008EDF34 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		22E315C823726D40008EDF34 /* NSMutableAttributedString+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+Extensions.swift"; sourceTree = "<group>"; };
+		22E315CA23726D5F008EDF34 /* UITableViewCell+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extensions.swift"; sourceTree = "<group>"; };
+		22E315CC23726D71008EDF34 /* UIFont+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
+		22E315CE23726F84008EDF34 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		22E315D02372777F008EDF34 /* UICollectionViewCell+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extensions.swift"; sourceTree = "<group>"; };
+		22E315D42372807D008EDF34 /* URL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
 		22E794E02336E5EC007E4AA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MissingThumbnailView.xib; sourceTree = "<group>"; };
 		22FA5F08229B4EC000E27EC4 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		523698EF916740C4BFD9F99D /* Pods_Cosmos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cosmos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -292,7 +306,15 @@
 		225810A2213674E900ECBCC3 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				22C15CAC21AB642200DB287E /* Extensions.swift */,
+				22E315C223726CC7008EDF34 /* DateFormatter+Extensions.swift */,
+				22E315C423726CFF008EDF34 /* JSONDecoder+Extensions.swift */,
+				22E315C823726D40008EDF34 /* NSMutableAttributedString+Extensions.swift */,
+				22E315C623726D22008EDF34 /* String+Extensions.swift */,
+				22E315D02372777F008EDF34 /* UICollectionViewCell+Extensions.swift */,
+				22E315CC23726D71008EDF34 /* UIFont+Extensions.swift */,
+				22E315CA23726D5F008EDF34 /* UITableViewCell+Extensions.swift */,
+				22E315CE23726F84008EDF34 /* UIView+Extensions.swift */,
+				22E315D42372807D008EDF34 /* URL+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -595,7 +617,6 @@
 				220B1F26234D7EBB008BAAF6 /* AccessibilityIdentifiers.swift in Sources */,
 				22A4DD6823500C1D0004881B /* SortedSet.swift in Sources */,
 				22A4DD6723500C1B0004881B /* APOD.swift in Sources */,
-				22A4DD6923500C350004881B /* Extensions.swift in Sources */,
 				22A4DD6423500C070004881B /* APIClient.swift in Sources */,
 				2217BE982353E31F0079F817 /* DetailViewUITest.swift in Sources */,
 			);
@@ -606,27 +627,35 @@
 			buildActionMask = 2147483647;
 			files = (
 				22C5485823568A7A002A52B4 /* APODViewModel.swift in Sources */,
+				22E315D12372777F008EDF34 /* UICollectionViewCell+Extensions.swift in Sources */,
 				22A4DD6023500B710004881B /* MockClient.swift in Sources */,
+				22E315CD23726D71008EDF34 /* UIFont+Extensions.swift in Sources */,
 				226E25B723245E9800908A39 /* SortedSet.swift in Sources */,
 				22B43D6223416B2800DD2A30 /* ScaledFont.swift in Sources */,
 				2202F50D211ECE4700DEFDE1 /* DetailViewController.swift in Sources */,
+				22E315CF23726F84008EDF34 /* UIView+Extensions.swift in Sources */,
 				223A2BF2233B0FFA00005DFA /* Environment.swift in Sources */,
 				22FA5F09229B4EC000E27EC4 /* APIClient.swift in Sources */,
 				22A4DD5C235009850004881B /* MockSession.swift in Sources */,
 				227B0ABC2337ED2300D1EFD2 /* MissingThumbnailView.swift in Sources */,
 				225220362104391100221D29 /* DiscoverViewController.swift in Sources */,
+				22E315CB23726D5F008EDF34 /* UITableViewCell+Extensions.swift in Sources */,
 				22A4DD6B23500C9D0004881B /* Configuration.swift in Sources */,
 				2207E602236278BD009F9CD5 /* FavoritesManager.swift in Sources */,
 				22AA95B021055E47001B755F /* Endpoint.swift in Sources */,
+				22E315D52372807D008EDF34 /* URL+Extensions.swift in Sources */,
 				22BC0A0D21056A580086BB19 /* CosmosClient.swift in Sources */,
 				220B1F24234D7EBB008BAAF6 /* AccessibilityIdentifiers.swift in Sources */,
 				2252204921043C0E00221D29 /* APOD.swift in Sources */,
 				222120DA2360152B009D24AB /* FavoritesDataSource.swift in Sources */,
+				22E315C323726CC7008EDF34 /* DateFormatter+Extensions.swift in Sources */,
 				2252203C2104391100221D29 /* Cosmos.xcdatamodeld in Sources */,
 				22B381122104583800DCDC24 /* DiscoverCell.swift in Sources */,
 				222120D8236013DB009D24AB /* FavoritesCell.swift in Sources */,
-				22C15CAD21AB642200DB287E /* Extensions.swift in Sources */,
+				22E315C523726CFF008EDF34 /* JSONDecoder+Extensions.swift in Sources */,
 				22D47127211C0E5A0006EAD6 /* DiscoverDataSource.swift in Sources */,
+				22E315C923726D40008EDF34 /* NSMutableAttributedString+Extensions.swift in Sources */,
+				22E315C723726D22008EDF34 /* String+Extensions.swift in Sources */,
 				225220342104391100221D29 /* AppDelegate.swift in Sources */,
 				222120D623601163009D24AB /* FavoritesViewController.swift in Sources */,
 				22288FCF231CB60100EE082E /* AboutViewController.swift in Sources */,
@@ -646,7 +675,6 @@
 				22C5485D2356E824002A52B4 /* EnvironmentTest.swift in Sources */,
 				22CE291E23447BCF00170FEE /* APIClient.swift in Sources */,
 				22CE291D23447BA000170FEE /* APOD.swift in Sources */,
-				22CE292123447E5200170FEE /* Extensions.swift in Sources */,
 				22A4DD6C23500CA30004881B /* Configuration.swift in Sources */,
 				22CE291A234479E100170FEE /* MockSession.swift in Sources */,
 				22C8341A2349638B00B876A6 /* SortedSet.swift in Sources */,

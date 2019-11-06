@@ -9,18 +9,11 @@
 import UIKit
 
 class MissingThumbnailView: UIView {
-    
-    @IBOutlet var view: UIView!
-    
+        
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        commonInit()
-    }
-    
-    private func commonInit() {
-        Bundle.main.loadNibNamed("MissingThumbnailView", owner: self, options: nil)
+        let view = MissingThumbnailView.loadFromDefaultNib()
+        view.frame = bounds
         addSubview(view)
-        view.frame = self.bounds
-        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
     }
 }

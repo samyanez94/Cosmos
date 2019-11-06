@@ -143,7 +143,7 @@ extension DiscoverViewController: UICollectionViewDelegate {
         if dataSource.apods.count == indexPath.row + 1 {
             fetch(count: collectionPageSize, offset: collectionOffset)
         }
-    }
+    }    
 }
 
 extension DiscoverViewController: UICollectionViewDelegateFlowLayout {

@@ -9,11 +9,17 @@
 import UIKit
 
 class FavoritesCell: UITableViewCell {
-    
-    /// Identifier
-    static let identifier = "com.samuelyanez.FavoritesCell"
 
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    @IBOutlet var thumbnailImageView: UIImageView! {
+        didSet {
+            thumbnailImageView.roundCorners(radius: 5)
+            thumbnailImageView.setShadow(opacity: 0.2, radius: 5)
+        }
     }
+    @IBOutlet var dateLabel: UILabel!
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var explanationLabel: UILabel!
+    
+    /// Cell height
+    static let height: CGFloat = 140
 }
