@@ -89,7 +89,6 @@ extension FavoritesViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let removeAction = UIContextualAction(style: .destructive, title: "Remove", handler: { _, _, completionHandler  in
-            // TODO: This could use some work...
             self.favoritesManager.removeFromFavorites(self.dataSource.element(at: indexPath))
             self.dataSource.removeElement(at: indexPath)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
