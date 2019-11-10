@@ -15,19 +15,23 @@ class FavoritesDataSource: NSObject, UITableViewDataSource {
     weak private var tableView: UITableView?
     
     /// List of astronomy pictures of the day.
-    private(set) var apods: SortedSet<APOD> = SortedSet()
+    var apods: SortedSet<APOD> = SortedSet()
     
     init(tableView: UITableView) {
         self.tableView = tableView
+    }
+    
+    func set(withCollection collection: [APOD]) {
+        apods = SortedSet(withCollection: collection)
     }
     
     func element(at indexPath: IndexPath) -> APOD {
         return apods.element(at: indexPath.row)
     }
     
-    func append(_ apod: APOD) {
-         apods.append(apod)
-     }
+    func append(_ apods: [APOD]) {
+        self.apods.append(apods)
+    }
     
     func remove(_ apod: APOD) {
         apods.remove(apod)

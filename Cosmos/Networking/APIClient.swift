@@ -14,6 +14,8 @@ protocol APIClient {
     func fetch<T: Decodable>(with request: URLRequest, parse: @escaping (Data) -> T?, completion: ((Result<T, APIError>) -> Void)?)
     
     func fetch<T: Decodable>(with request: URLRequest, parse: @escaping (Data) -> [T]?, completion: ((Result<[T], APIError>) -> Void)?)
+    
+    func fetch<T: Decodable>(with requests: [URLRequest], parse: @escaping (Data) -> T?, completion: ((Swift.Result<[T], APIError>) -> Void)?)
 }
 
 extension APIClient {
@@ -72,6 +74,33 @@ extension APIClient {
                 }
             }
         }.resume()
+    }
+    
+    func fetch<T: Decodable>(with requests: [URLRequest], parse: @escaping (Data) -> T?, completion: ((Result<[T], APIError>) -> Void)?) {
+        let group = DispatchGroup()
+        
+        var values: [T] = []
+        var errors: [APIError] = []
+        
+        for request in requests {
+            group.enter()
+            task(with: request) { result in
+                switch result {
+                case .failure(let error):
+                    errors.append(error)
+                case .success(let data):
+                    if let value = parse(data) {
+                        values.append(value)
+                    } else {
+                        errors.append(.jsonParsingFailure)
+                    }
+                }
+                group.leave()
+            }.resume()
+        }
+        group.notify(queue: .main) {
+            completion?(.success(values))
+        }
     }
 }
 

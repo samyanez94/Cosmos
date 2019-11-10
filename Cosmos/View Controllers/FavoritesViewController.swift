@@ -35,19 +35,16 @@ class FavoritesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        for date in favoritesManager.getFavorites() {
-            fetch(date: date)
-        }
+        fetch(favorites: favoritesManager.getFavorites())
     }
+    
     
     // MARK: Table View
     
     @objc func handleRefreshControl() {
-         for date in favoritesManager.getFavorites() {
-            fetch(date: date) {
-                self.tableView.refreshControl?.endRefreshing()
-            }
-         }
+        fetch(favorites: favoritesManager.getFavorites()) {
+            self.tableView.refreshControl?.endRefreshing()
+        }
      }
     
     // MARK: Navigation
@@ -66,18 +63,16 @@ class FavoritesViewController: UIViewController {
     
     // MARK: Networking
     
-    func fetch(date: Date, completion: (() -> Void)? = nil) {
-        client.fetch(date: date) { [weak self] result in
+    func fetch(favorites: [Date], completion: (() -> Void)? = nil) {
+        client.fetch(dates: favorites) { [weak self] result in
             switch result {
             case .failure(let error):
                 print(error.localizedDescription)
-            case .success(let apod):
-                self?.dataSource.append(apod)
-                self?.tableView.reloadData()
+            case .success(let apods):
+                self?.dataSource.set(withCollection: apods)
+                self?.tableView.reloadSections(IndexSet(integer: 0), with: .fade)
             }
-            if let completion = completion {
-                completion()
-            }
+            completion?()
         }
     }
 }
