@@ -11,11 +11,11 @@ import Foundation
 protocol APIClient {
     var session: URLSession { get }
     
-    func fetch<T: Decodable>(with request: URLRequest, parse: @escaping (Data) -> T?, completion: ((Result<T, APIError>) -> Void)?)
+    func fetch<T: Decodable>(with request: URLRequest, parse: @escaping (Data) -> T?, queue: DispatchQueue, completion: ((Result<T, APIError>) -> Void)?)
     
-    func fetch<T: Decodable>(with request: URLRequest, parse: @escaping (Data) -> [T]?, completion: ((Result<[T], APIError>) -> Void)?)
+    func fetch<T: Decodable>(with request: URLRequest, parse: @escaping (Data) -> [T]?, queue: DispatchQueue, completion: ((Result<[T], APIError>) -> Void)?)
     
-    func fetch<T: Decodable>(with requests: [URLRequest], parse: @escaping (Data) -> T?, completion: ((Swift.Result<[T], APIError>) -> Void)?)
+    func fetch<T: Decodable>(with requests: [URLRequest], parse: @escaping (Data) -> T?, runQueue: DispatchQueue, completionQueue: DispatchQueue, group: DispatchGroup, completion: ((Swift.Result<[T], APIError>) -> Void)?)
 }
 
 extension APIClient {
@@ -42,9 +42,9 @@ extension APIClient {
         }
     }
     
-    func fetch<T: Decodable>(with request: URLRequest, parse: @escaping (Data) -> T?, completion: ((Result<T, APIError>) -> Void)?) {
+    func fetch<T: Decodable>(with request: URLRequest, parse: @escaping (Data) -> T?, queue: DispatchQueue = .main, completion: ((Result<T, APIError>) -> Void)?) {
         task(with: request) { result in
-            DispatchQueue.main.async {
+            queue.async {
                 switch result {
                 case .failure(let error):
                     completion?(.failure(error))
@@ -59,9 +59,9 @@ extension APIClient {
         }.resume()
     }
     
-    func fetch<T: Decodable>(with request: URLRequest, parse: @escaping (Data) -> [T]?, completion: ((Result<[T], APIError>) -> Void)?) {
+    func fetch<T: Decodable>(with request: URLRequest, parse: @escaping (Data) -> [T]?, queue: DispatchQueue = .main, completion: ((Result<[T], APIError>) -> Void)?) {
         task(with: request) { result in
-            DispatchQueue.main.async {
+            queue.async {
                 switch result {
                 case .failure(let error):
                     completion?(.failure(error))
@@ -76,29 +76,18 @@ extension APIClient {
         }.resume()
     }
     
-    func fetch<T: Decodable>(with requests: [URLRequest], parse: @escaping (Data) -> T?, completion: ((Result<[T], APIError>) -> Void)?) {
-        let group = DispatchGroup()
-        
+    func fetch<T: Decodable>(with requests: [URLRequest], parse: @escaping (Data) -> T?, runQueue: DispatchQueue = .global(qos: .userInitiated), completionQueue: DispatchQueue = .main, group: DispatchGroup = DispatchGroup(), completion: ((Result<[T], APIError>) -> Void)?) {
         var values: [T] = []
-        var errors: [APIError] = []
-        
-        for request in requests {
+        DispatchQueue.concurrentPerform(iterations: requests.count) { index in
             group.enter()
-            task(with: request) { result in
-                switch result {
-                case .failure(let error):
-                    errors.append(error)
-                case .success(let data):
-                    if let value = parse(data) {
-                        values.append(value)
-                    } else {
-                        errors.append(.jsonParsingFailure)
-                    }
+            fetch(with: requests[index], parse: parse, queue: runQueue) { result in
+                if case .success(let value) = result {
+                    values.append(value)
                 }
                 group.leave()
-            }.resume()
+            }
         }
-        group.notify(queue: .main) {
+        group.notify(queue: completionQueue) {
             completion?(.success(values))
         }
     }

@@ -31,18 +31,20 @@ class FavoritesViewController: UIViewController {
     private lazy var favoritesManager: FavoritesManager = {
         CosmosFavoritesManager()
     }()
+    
+    /// Pagination offset
+    var pageOffset = 10
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        fetch(favorites: favoritesManager.getFavorites())
+        fetch(favorites: Array(favoritesManager.getFavorites().prefix(pageOffset)))
     }
-    
     
     // MARK: Table View
     
     @objc func handleRefreshControl() {
-        fetch(favorites: favoritesManager.getFavorites()) {
+        fetch(favorites: Array(favoritesManager.getFavorites().prefix(pageOffset))) {
             self.tableView.refreshControl?.endRefreshing()
         }
      }
