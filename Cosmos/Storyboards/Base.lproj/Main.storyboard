@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RLj-Th-8lB">
-    <device id="retina5_9" orientation="portrait" appearance="dark"/>
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -425,10 +425,10 @@ Tap here to try again.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Onw-dt-lkD">
-                                <rect key="frame" x="0.0" y="140" width="375" height="589"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JNc-h8-655" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="638.66666666666663"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="670.66666666666663"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KBe-fd-YQ2" userLabel="About Body Label">
                                                 <rect key="frame" x="16" y="16" width="343" height="262.66666666666669"/>
@@ -475,6 +475,7 @@ This app was born from a strong desire to learn more about space and software de
                                             <constraint firstItem="4iq-Xa-pHO" firstAttribute="leading" secondItem="JNc-h8-655" secondAttribute="leading" constant="16" id="2YR-hj-zfe"/>
                                             <constraint firstAttribute="trailing" secondItem="UpS-uD-Out" secondAttribute="trailing" constant="16" id="4dZ-GN-t8V"/>
                                             <constraint firstItem="KBe-fd-YQ2" firstAttribute="leading" secondItem="JNc-h8-655" secondAttribute="leading" constant="16" id="F05-Ri-4oL"/>
+                                            <constraint firstAttribute="bottom" secondItem="LgY-bM-WJr" secondAttribute="bottom" constant="64" id="Hwb-oD-Sda"/>
                                             <constraint firstItem="LgY-bM-WJr" firstAttribute="leading" secondItem="JNc-h8-655" secondAttribute="leading" constant="16" id="HxS-cq-hAW"/>
                                             <constraint firstItem="4iq-Xa-pHO" firstAttribute="top" secondItem="UpS-uD-Out" secondAttribute="bottom" constant="16" id="TqN-XJ-6yQ"/>
                                             <constraint firstItem="KBe-fd-YQ2" firstAttribute="top" secondItem="JNc-h8-655" secondAttribute="top" constant="16" id="ZXo-89-Ltb"/>
@@ -487,7 +488,6 @@ This app was born from a strong desire to learn more about space and software de
                                             <constraint firstItem="LgY-bM-WJr" firstAttribute="top" secondItem="3lt-bj-SNc" secondAttribute="bottom" constant="32" id="m0r-aH-1aS"/>
                                             <constraint firstItem="3lt-bj-SNc" firstAttribute="leading" secondItem="JNc-h8-655" secondAttribute="leading" constant="16" id="msn-k9-QPx"/>
                                             <constraint firstItem="UpS-uD-Out" firstAttribute="top" secondItem="KBe-fd-YQ2" secondAttribute="bottom" constant="32" id="o2D-43-IB0"/>
-                                            <constraint firstAttribute="bottom" secondItem="LgY-bM-WJr" secondAttribute="bottom" constant="32" id="vQq-lx-gZy"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -502,9 +502,9 @@ This app was born from a strong desire to learn more about space and software de
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="cee-Xl-vC9" firstAttribute="bottom" secondItem="Onw-dt-lkD" secondAttribute="bottom" id="GTX-hA-ZBc"/>
-                            <constraint firstItem="Onw-dt-lkD" firstAttribute="top" secondItem="cee-Xl-vC9" secondAttribute="top" id="Ho0-Pg-RC6"/>
-                            <constraint firstItem="Onw-dt-lkD" firstAttribute="leading" secondItem="cee-Xl-vC9" secondAttribute="leading" id="og5-gS-HCI"/>
+                            <constraint firstAttribute="bottom" secondItem="Onw-dt-lkD" secondAttribute="bottom" id="GTX-hA-ZBc"/>
+                            <constraint firstAttribute="top" secondItem="Onw-dt-lkD" secondAttribute="top" id="Ho0-Pg-RC6"/>
+                            <constraint firstItem="cee-Xl-vC9" firstAttribute="leading" secondItem="Onw-dt-lkD" secondAttribute="leading" id="og5-gS-HCI"/>
                             <constraint firstItem="cee-Xl-vC9" firstAttribute="trailing" secondItem="Onw-dt-lkD" secondAttribute="trailing" id="pTM-kW-y2I"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cee-Xl-vC9"/>
@@ -700,6 +700,7 @@ This app was born from a strong desire to learn more about space and software de
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="9VE-23-l3J">
                         <rect key="frame" x="0.0" y="44" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" name="Accent Color"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
