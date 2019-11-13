@@ -9,14 +9,6 @@
 import UIKit
 
 class DiscoverViewController: UIViewController {
-        
-    /// API Client
-    lazy var client =  Configuration.isUITest ? MockClient() : CosmosClient()
-    
-    /// Data Source
-    lazy var dataSource: DiscoverDataSource = {
-        return DiscoverDataSource(collectionView: collectionView)
-    }()
     
     /// Collection view
     @IBOutlet var collectionView: UICollectionView! {
@@ -53,6 +45,14 @@ class DiscoverViewController: UIViewController {
             errorLabel.adjustsFontForContentSizeCategory = true
         }
     }
+    
+    /// API Client
+    lazy var client =  Configuration.isUITest ? MockClient() : CosmosClient()
+    
+    /// Data Source
+    lazy var dataSource: DiscoverDataSource = {
+        return DiscoverDataSource(collectionView: collectionView)
+    }()
     
     /// Pagination offset
     var collectionOffset = 0
@@ -103,8 +103,7 @@ class DiscoverViewController: UIViewController {
     func fetch(count: Int, offset: Int = 0, completion: (() -> Void)? = nil) {
         client.fetch(count: count, offset: offset) { [weak self] result in
             switch result {
-            case .failure(let error):
-                print(error.localizedDescription)
+            case .failure( _):
                 self?.collectionView.isHidden = true
                 self?.errorView.isHidden = false
             case .success(let apods):

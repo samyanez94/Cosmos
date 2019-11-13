@@ -44,7 +44,7 @@ extension APIClient {
     
     func fetch<T: Decodable>(with request: URLRequest, parse: @escaping (Data) -> T?, queue: DispatchQueue = .main, completion: ((Result<T, APIError>) -> Void)?) {
         task(with: request) { result in
-            queue.async {
+            queue.async(flags: .barrier) {
                 switch result {
                 case .failure(let error):
                     completion?(.failure(error))
@@ -61,7 +61,7 @@ extension APIClient {
     
     func fetch<T: Decodable>(with request: URLRequest, parse: @escaping (Data) -> [T]?, queue: DispatchQueue = .main, completion: ((Result<[T], APIError>) -> Void)?) {
         task(with: request) { result in
-            queue.async {
+            queue.async(flags: .barrier) {
                 switch result {
                 case .failure(let error):
                     completion?(.failure(error))
@@ -78,17 +78,25 @@ extension APIClient {
     
     func fetch<T: Decodable>(with requests: [URLRequest], parse: @escaping (Data) -> T?, runQueue: DispatchQueue = .global(qos: .userInitiated), completionQueue: DispatchQueue = .main, group: DispatchGroup = DispatchGroup(), completion: ((Result<[T], APIError>) -> Void)?) {
         var values: [T] = []
+        var error: APIError?
         DispatchQueue.concurrentPerform(iterations: requests.count) { index in
             group.enter()
             fetch(with: requests[index], parse: parse, queue: runQueue) { result in
-                if case .success(let value) = result {
+                switch result {
+                case .failure(let responseError):
+                    error = responseError
+                case .success(let value):
                     values.append(value)
                 }
                 group.leave()
             }
         }
         group.notify(queue: completionQueue) {
-            completion?(.success(values))
+            if let error = error {
+                completion?(.failure(error))
+            } else {
+                completion?(.success(values))
+            }
         }
     }
 }

@@ -19,6 +19,31 @@ class FavoritesViewController: UIViewController {
         }
     }
     
+    /// Ativity indicator
+     @IBOutlet var activityIndicatorView: UIView! {
+         didSet {
+             activityIndicatorView.isHidden = false
+         }
+     }
+    
+    /// Error view
+     @IBOutlet var errorView: UIView! {
+         didSet {
+             errorView.isAccessibilityElement = true
+             errorView.accessibilityLabel = errorLabel.text
+             errorView.accessibilityTraits = .button
+             errorView.accessibilityHint = "Double tap to load the view one more time."
+         }
+     }
+    
+    /// Error label
+    @IBOutlet var errorLabel: UILabel! {
+        didSet {
+            errorLabel.font = scaledFont.font(forTextStyle: .body)
+            errorLabel.adjustsFontForContentSizeCategory = true
+        }
+    }
+    
     /// API Client
     lazy var client =  Configuration.isUITest ? MockClient() : CosmosClient()
     
@@ -32,19 +57,23 @@ class FavoritesViewController: UIViewController {
         CosmosFavoritesManager()
     }()
     
-    /// Pagination offset
-    var pageOffset = 10
+    /// Utility used for dynamic types
+    private lazy var scaledFont: ScaledFont = {
+         return ScaledFont()
+     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        fetch(favorites: Array(favoritesManager.getFavorites().prefix(pageOffset)))
+        fetch(favorites: Array(favoritesManager.getFavorites())) {
+            self.activityIndicatorView.isHidden = true
+        }
     }
     
     // MARK: Table View
     
     @objc func handleRefreshControl() {
-        fetch(favorites: Array(favoritesManager.getFavorites().prefix(pageOffset))) {
+        fetch(favorites: Array(favoritesManager.getFavorites())) {
             self.tableView.refreshControl?.endRefreshing()
         }
      }
@@ -68,14 +97,28 @@ class FavoritesViewController: UIViewController {
     func fetch(favorites: [Date], completion: (() -> Void)? = nil) {
         client.fetch(dates: favorites) { [weak self] result in
             switch result {
-            case .failure(let error):
-                print(error.localizedDescription)
+            case .failure( _):
+                self?.tableView.isHidden = true
+                self?.errorView.isHidden = false
             case .success(let apods):
                 self?.dataSource.set(withCollection: apods)
+                self?.tableView.isHidden = false
                 self?.tableView.reloadSections(IndexSet(integer: 0), with: .fade)
             }
             completion?()
         }
+    }
+    
+    @IBAction func didTapOnRefreshButton(_ sender: Any) {
+        errorView.isHidden = true
+        activityIndicatorView.isHidden = false
+        fetch(favorites: Array(favoritesManager.getFavorites())) {
+            self.activityIndicatorView.isHidden = true
+        }
+    }
+    
+    func scrollToTop() {
+        self.tableView.setContentOffset(CGPoint(x: 0, y: -120), animated: true)
     }
 }
 
