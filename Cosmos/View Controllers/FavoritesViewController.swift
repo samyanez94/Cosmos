@@ -97,7 +97,7 @@ class FavoritesViewController: UIViewController {
     func fetch(favorites: [Date], completion: (() -> Void)? = nil) {
         client.fetch(dates: favorites) { [weak self] result in
             switch result {
-            case .failure( _):
+            case .failure:
                 self?.tableView.isHidden = true
                 self?.errorView.isHidden = false
             case .success(let apods):
@@ -129,12 +129,13 @@ extension FavoritesViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let removeAction = UIContextualAction(style: .destructive, title: "Remove", handler: { _, _, completionHandler  in
+            // TODO: Consider developing a notification system for changes to the favorites manager
+            
             self.favoritesManager.removeFromFavorites(self.dataSource.element(at: indexPath))
             self.dataSource.removeElement(at: indexPath)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
             completionHandler(true)
         })
-
         return UISwipeActionsConfiguration(actions: [removeAction])
     }
 }

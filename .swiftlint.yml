@@ -6,9 +6,13 @@ excluded:
 # Rule identifiers to exclude from running
 disabled_rules:
   - trailing_whitespace
+  - todo
 
 # Minimum line length
 line_length: 240
+
+# Minimum parameter count
+function_parameter_count: 6
 
 # Minimum identifier length
 identifier_name:

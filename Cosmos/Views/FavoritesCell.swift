@@ -22,4 +22,14 @@ class FavoritesCell: UITableViewCell {
     
     /// Cell height
     static let height: CGFloat = 140
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        // Set image to nil.
+        thumbnailImageView.image = nil
+        
+        // Cancel any active image requests.
+        thumbnailImageView.af_cancelImageRequest()
+    }
 }

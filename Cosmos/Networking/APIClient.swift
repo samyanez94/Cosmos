@@ -19,7 +19,6 @@ protocol APIClient {
 }
 
 extension APIClient {
-    
     func task(with request: URLRequest, completionHandler completion: @escaping (Swift.Result<Data, APIError>) -> Void) -> URLSessionDataTask {
         return session.dataTask(with: request) { data, response, error in
             if let error = error {
@@ -76,7 +75,14 @@ extension APIClient {
         }.resume()
     }
     
-    func fetch<T: Decodable>(with requests: [URLRequest], parse: @escaping (Data) -> T?, runQueue: DispatchQueue = .global(qos: .userInitiated), completionQueue: DispatchQueue = .main, group: DispatchGroup = DispatchGroup(), completion: ((Result<[T], APIError>) -> Void)?) {
+    func fetch<T: Decodable>(
+        with requests: [URLRequest],
+        parse: @escaping (Data) -> T?,
+        runQueue: DispatchQueue = .global(qos: .userInitiated),
+        completionQueue: DispatchQueue = .main,
+        group: DispatchGroup = DispatchGroup(),
+        completion: ((Result<[T], APIError>) -> Void)?
+    ) {
         var values: [T] = []
         var error: APIError?
         DispatchQueue.concurrentPerform(iterations: requests.count) { index in

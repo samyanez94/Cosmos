@@ -99,6 +99,8 @@ class DetailViewController: UIViewController {
     /// Activity indicator
     private lazy var activityIndicator = UIActivityIndicatorView()
     
+    // TODO: Consider makig the APOD as an optional property...
+    
     /// The current astronomical picture of the day.
     var apod: APOD! {
         didSet {
@@ -114,6 +116,8 @@ class DetailViewController: UIViewController {
          return ScaledFont()
      }()
     
+    // TODO: Consider moving share logic to a separate utility...
+    
     /// App ID for sharing purposes
     private var appId: String {
         "1481310548"
@@ -123,6 +127,9 @@ class DetailViewController: UIViewController {
     private var appStoreUrl: String {
         "https://apps.apple.com/app/\(appId)"
     }
+    
+    /// Feedback generator
+     var feedbackGenerator = UISelectionFeedbackGenerator()
     
     /// Favorites manager
     private let favoritesManager = CosmosFavoritesManager()
@@ -163,16 +170,17 @@ class DetailViewController: UIViewController {
         imageView.isUserInteractionEnabled = true
         imageView.af_setImage(withURL: url, imageTransition: .crossDissolve(0.2))
         
-        // I cannot add accessibility attributes to Lightbox. Therefore, I'm disabling the feature when using VoiceOver.
+        // Cannot add accessibility attributes to Lightbox. Therefore, I'm disabling the feature when using VoiceOver.
         if !UIAccessibility.isVoiceOverRunning {
             imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapOnImage(_:))))
         }
-        
         mediaView.addSubview(imageView)
         applyAccessibilityAttributesforImageView(imageView)
     }
     
     private func setupWebView(with url: URL) {
+        // TODO: Consider creating an extention to UIView that adds a view to a container...
+        
         let webView = WKWebView(frame: mediaView.frame)
         webView.navigationDelegate = self
         webView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -188,7 +196,6 @@ class DetailViewController: UIViewController {
         activityIndicator.hidesWhenStopped = true
         activityIndicator.startAnimating()
         activityIndicator.autoresizingMask = [.flexibleLeftMargin, .flexibleRightMargin, .flexibleTopMargin, .flexibleBottomMargin]
-        
         mediaView.addSubview(activityIndicator)
     }
     
@@ -196,6 +203,8 @@ class DetailViewController: UIViewController {
     
     @objc func didTapOnImage(_ sender: UITapGestureRecognizer? = nil) {
         if let sender = sender, let imageView = sender.view as? UIImageView, let image = imageView.image {
+            // TODO: Consider creating an extension to LightboxController...
+            
             let lighboxImage = LightboxImage(image: image)
             let lightboxController = LightboxController(images: [lighboxImage])
             lightboxController.modalPresentationStyle = .fullScreen
@@ -224,6 +233,8 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func didTapOnFavorites(_ sender: Any) {
+        feedbackGenerator.prepare()
+        
         let isFavorite = favoritesManager.isFavorite(apod)
         
         if isFavorite {
@@ -234,14 +245,16 @@ class DetailViewController: UIViewController {
         
         let animation: (() -> Void) = { [unowned self] in
             self.favoritesButton.image = isFavorite ? UIImage(systemName: "heart") : UIImage(systemName: "heart.fill")
+            self.feedbackGenerator.selectionChanged()
         }
-        
         UIView.transition(with: favoritesButton,
                           duration: 0.25,
                           options: .transitionCrossDissolve,
                           animations: animation,
                           completion: nil)
     }
+    
+    // TODO: Consider moving sharing logic somewhere else and localizing strings...
     
     @IBAction func didTapOnShare(_ sender: Any) {
         var activityViewController: UIActivityViewController!
@@ -285,7 +298,6 @@ class DetailViewController: UIViewController {
 // MARK: Web View Navigation Delegate
 
 extension DetailViewController: WKNavigationDelegate {
-    
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         activityIndicator.stopAnimating()
     }
@@ -298,7 +310,6 @@ extension DetailViewController: WKNavigationDelegate {
 // MARK: Accessibility
 
 extension DetailViewController {
-    
     private func applyAccessibilityAttributesforImageView(_ imageView: UIImageView) {
         imageView.isAccessibilityElement = true
         imageView.accessibilityLabel = apod.title

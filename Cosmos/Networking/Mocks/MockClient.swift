@@ -21,7 +21,7 @@ class MockClient: CosmosClient {
                 self.init(data: nil, response: nil, error: nil)
                 return
         }
-        // TODO: Consider creating a mock response as well
+        // TODO: Consider mocking the response as well.
         let response = HTTPURLResponse(url: url, statusCode: 200, httpVersion: nil, headerFields: nil)
         self.init(data: data, response: response, error: nil)
     }

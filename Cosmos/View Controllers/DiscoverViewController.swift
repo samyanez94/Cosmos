@@ -46,6 +46,8 @@ class DiscoverViewController: UIViewController {
         }
     }
     
+    // TODO: Consider using dependency injection here...
+    
     /// API Client
     lazy var client =  Configuration.isUITest ? MockClient() : CosmosClient()
     
@@ -53,6 +55,8 @@ class DiscoverViewController: UIViewController {
     lazy var dataSource: DiscoverDataSource = {
         return DiscoverDataSource(collectionView: collectionView)
     }()
+    
+    // TODO: Consider moving pagination logic somewhere else...
     
     /// Pagination offset
     var collectionOffset = 0
@@ -103,7 +107,7 @@ class DiscoverViewController: UIViewController {
     func fetch(count: Int, offset: Int = 0, completion: (() -> Void)? = nil) {
         client.fetch(count: count, offset: offset) { [weak self] result in
             switch result {
-            case .failure( _):
+            case .failure:
                 self?.collectionView.isHidden = true
                 self?.errorView.isHidden = false
             case .success(let apods):
@@ -137,7 +141,6 @@ class DiscoverViewController: UIViewController {
 // MARK: UICollectionView Delegate
 
 extension DiscoverViewController: UICollectionViewDelegate {
-    
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if dataSource.apods.count == indexPath.row + 1 {
             fetch(count: collectionPageSize, offset: collectionOffset)
@@ -146,7 +149,6 @@ extension DiscoverViewController: UICollectionViewDelegate {
 }
 
 extension DiscoverViewController: UICollectionViewDelegateFlowLayout {
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.bounds.size.width, height: collectionView.bounds.size.width * 1.2)
     }
