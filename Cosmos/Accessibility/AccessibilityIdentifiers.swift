@@ -22,7 +22,9 @@ enum DetailViewAccessibilityIdentifier {
         static let copyrightLabel = "DetailCopyrightLabelIdentifier"
     }
     enum Button {
+        static let favoritesButton = "FavoriteButtonIdentifier"
         static let shareButton = "DetailShareButtonIdentifier"
+        static let saveToPhotosButton = "SaveToPhotosButtonIdentifier"
     }
 }
 

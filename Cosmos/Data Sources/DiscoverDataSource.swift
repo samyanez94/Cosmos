@@ -64,7 +64,7 @@ class DiscoverDataSource: NSObject, UICollectionViewDataSource {
         return cell
     }
     
-    //TODO: Try to refactor or move this logic
+    // TODO: Try to refactor or move this logic
     private func setImageView(for cell: DiscoverCell, apod: APOD) {
         if let url = apod.thumbnailUrl {
             cell.imageView.af_setImage(withURL: url, imageTransition: .crossDissolve(0.2)) { data in

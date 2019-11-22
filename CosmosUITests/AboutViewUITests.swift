@@ -13,7 +13,6 @@ class AboutViewUITests: XCTestCase {
     var app: XCUIApplication!
 
     override func setUp() {
-        
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
         
@@ -28,10 +27,10 @@ class AboutViewUITests: XCTestCase {
     }
     
     func testElementsExist() {
+        // Navigate to the correct view.
         app.tabBars.buttons["About"].tap()
         
         // Elements are found using their accessibility identifiers.
-        let aboutTitleLabel = app.staticTexts[AboutViewAccessibilityIdentifier.Label.aboutTitleLabel]
         let aboutBodyLabel = app.staticTexts[AboutViewAccessibilityIdentifier.Label.aboutBodyLabel]
         let acknowledgementsTitleLabel = app.staticTexts[AboutViewAccessibilityIdentifier.Label.acknowledgementsTitleLabel]
         let acknowledgementsBodyLabel = app.staticTexts[AboutViewAccessibilityIdentifier.Label.acknowledgementsBodyLabel]
@@ -39,7 +38,6 @@ class AboutViewUITests: XCTestCase {
         let versionLabel = app.staticTexts[AboutViewAccessibilityIdentifier.Label.versionLabel]
         
         // Assert that elements exists.
-        XCTAssertTrue(aboutTitleLabel.exists, "About title label should exist.")
         XCTAssertTrue(aboutBodyLabel.exists, "About body label should exist.")
         XCTAssertTrue(acknowledgementsTitleLabel.exists, "Acknowledgements title label should exist.")
         XCTAssertTrue(acknowledgementsBodyLabel.exists, "Acknowledgements body label should exist.")
@@ -51,10 +49,13 @@ class AboutViewUITests: XCTestCase {
     }
     
     func testTapOnVisitButton() {
+        // Navigate to the correct view.
         app.tabBars.buttons["About"].tap()
         
+        // Swipe to reveal element.
         app.swipeUp()
         
+        // Test tap on element.
         app.buttons[AboutViewAccessibilityIdentifier.Button.visitButton].tap()
     }
 }

@@ -30,11 +30,16 @@ class DetailViewController: UIViewController {
             if favoritesManager.isFavorite(apod) {
                 favoritesButton.image = UIImage(systemName: "heart.fill")
             }
+            favoritesButton.accessibilityIdentifier = DetailViewAccessibilityIdentifier.Button.favoritesButton
         }
     }
     
     /// Share button
-    @IBOutlet var shareButton: UIImageView!
+    @IBOutlet var shareButton: UIImageView! {
+        didSet {
+            shareButton.accessibilityIdentifier = DetailViewAccessibilityIdentifier.Button.shareButton
+        }
+    }
     
     /// Save button
     @IBOutlet var saveButton: UIImageView! {
@@ -42,6 +47,7 @@ class DetailViewController: UIViewController {
             if apod.mediaType == .video {
                 saveButton.isHidden = true
             }
+            saveButton.accessibilityIdentifier = DetailViewAccessibilityIdentifier.Button.saveToPhotosButton
         }
     }
     
@@ -99,7 +105,7 @@ class DetailViewController: UIViewController {
     /// Activity indicator
     private lazy var activityIndicator = UIActivityIndicatorView()
     
-    // TODO: Consider makig the APOD as an optional property...
+    // TODO: This guy should be an optional property...
     
     /// The current astronomical picture of the day.
     var apod: APOD! {
