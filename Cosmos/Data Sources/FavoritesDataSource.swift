@@ -66,7 +66,13 @@ class FavoritesDataSource: NSObject, UITableViewDataSource {
     
     private func setImageView(for cell: FavoritesCell, apod: APOD) {
         if let url = apod.thumbnailUrl {
-            cell.thumbnailImageView.af_setImage(withURL: url, imageTransition: .crossDissolve(0.2))
+            cell.thumbnailImageView.af_setImage(withURL: url, imageTransition: .crossDissolve(0.2)) { data in
+                if data.response?.statusCode == 404 {
+                    cell.thumbnailImageView.image = DiscoverCell.placeholderImage
+                }
+            }
+        } else {
+            cell.thumbnailImageView.image = DiscoverCell.placeholderImage
         }
     }
 }

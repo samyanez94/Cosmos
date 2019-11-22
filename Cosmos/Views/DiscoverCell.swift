@@ -41,12 +41,12 @@ class DiscoverCell: UICollectionViewCell {
     
     /// Activity indicator
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
-    
-    /// Missing thumbnail view
-    @IBOutlet var missingThumbnailView: MissingThumbnailView!
-    
+        
     /// Feedback generator
     var feedbackGenerator: UISelectionFeedbackGenerator?
+    
+    /// Placeholder image
+    static let placeholderImage = UIImage(named: "Missing Image Placeholder")
     
     /// Utility used for dynamic types
     private lazy var scaledFont: ScaledFont = {
@@ -70,9 +70,6 @@ class DiscoverCell: UICollectionViewCell {
         
         // Cancel any active image requests.
         imageView.af_cancelImageRequest()
-        
-        // Hide the missing thumbanil view.
-        missingThumbnailView.isHidden = true
     }
 }
 // MARK: - Accesibility

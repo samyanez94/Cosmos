@@ -69,13 +69,13 @@ class DiscoverDataSource: NSObject, UICollectionViewDataSource {
         if let url = apod.thumbnailUrl {
             cell.imageView.af_setImage(withURL: url, imageTransition: .crossDissolve(0.2)) { data in
                 if data.response?.statusCode == 404 {
-                    cell.missingThumbnailView.isHidden = false
+                    cell.imageView.image = DiscoverCell.placeholderImage
                 }
                 cell.activityIndicator.stopAnimating()
             }
         } else {
-            cell.missingThumbnailView.isHidden = false
             cell.activityIndicator.stopAnimating()
+            cell.imageView.image = DiscoverCell.placeholderImage
         }
     }
 }

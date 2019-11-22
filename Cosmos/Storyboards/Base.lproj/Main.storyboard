@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7gZ-3I-C86">
+                            <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7gZ-3I-C86" userLabel="Discover Collection View">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="20" id="Alg-og-nhd">
@@ -77,10 +77,6 @@
                                                             <rect key="frame" x="0.0" y="120" width="333" height="330"/>
                                                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         </imageView>
-                                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Llf-Ph-0kg" userLabel="Error View" customClass="MissingThumbnailView" customModule="Cosmos" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="120" width="333" height="330"/>
-                                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                                        </view>
                                                         <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="mLT-80-Upo">
                                                             <rect key="frame" x="0.0" y="120" width="333" height="330"/>
                                                             <color key="color" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -91,11 +87,8 @@
                                                         <bool key="isElement" value="YES"/>
                                                     </accessibility>
                                                     <constraints>
-                                                        <constraint firstItem="Llf-Ph-0kg" firstAttribute="top" secondItem="VH7-Qi-Scl" secondAttribute="bottom" id="BkA-kq-zBW"/>
-                                                        <constraint firstAttribute="bottom" secondItem="Llf-Ph-0kg" secondAttribute="bottom" id="Bkq-Vk-MDo"/>
                                                         <constraint firstItem="Kt9-WC-Du9" firstAttribute="top" secondItem="VH7-Qi-Scl" secondAttribute="bottom" id="HEW-Wx-0RL"/>
                                                         <constraint firstItem="VH7-Qi-Scl" firstAttribute="top" secondItem="usi-kE-pWi" secondAttribute="top" id="Luv-1l-8Bt"/>
-                                                        <constraint firstAttribute="trailing" secondItem="Llf-Ph-0kg" secondAttribute="trailing" id="QBe-Ze-xcg"/>
                                                         <constraint firstAttribute="trailing" secondItem="mLT-80-Upo" secondAttribute="trailing" id="TbE-45-kXI"/>
                                                         <constraint firstItem="VH7-Qi-Scl" firstAttribute="leading" secondItem="usi-kE-pWi" secondAttribute="leading" id="Upv-s0-wi9"/>
                                                         <constraint firstAttribute="trailing" secondItem="Kt9-WC-Du9" secondAttribute="trailing" id="VCW-Di-HlZ"/>
@@ -105,7 +98,6 @@
                                                         <constraint firstItem="Kt9-WC-Du9" firstAttribute="leading" secondItem="usi-kE-pWi" secondAttribute="leading" id="mhY-3J-emd"/>
                                                         <constraint firstItem="mLT-80-Upo" firstAttribute="leading" secondItem="usi-kE-pWi" secondAttribute="leading" id="oVu-Hx-3WV"/>
                                                         <constraint firstAttribute="bottom" secondItem="mLT-80-Upo" secondAttribute="bottom" id="sGN-7N-QAa"/>
-                                                        <constraint firstItem="Llf-Ph-0kg" firstAttribute="leading" secondItem="usi-kE-pWi" secondAttribute="leading" id="vHe-jg-0Oc"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -124,7 +116,6 @@
                                             <outlet property="dateLabel" destination="xa1-Gx-3a5" id="Q4v-Yf-esg"/>
                                             <outlet property="headerView" destination="VH7-Qi-Scl" id="tpw-Zb-Aoi"/>
                                             <outlet property="imageView" destination="Kt9-WC-Du9" id="w1B-CJ-PNX"/>
-                                            <outlet property="missingThumbnailView" destination="Llf-Ph-0kg" id="ZbO-9H-8hJ"/>
                                             <outlet property="titleLabel" destination="0aM-Eg-prD" id="Lc6-Se-RWg"/>
                                             <segue destination="6xP-7z-rQ6" kind="show" identifier="ShowDetails" id="jE3-9K-LWQ"/>
                                         </connections>
