@@ -94,9 +94,9 @@ class DiscoverViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowDetails" {
             if let selectedIndexPath = collectionView.indexPathsForSelectedItems {
-                let selectedApod = dataSource.element(at: selectedIndexPath[0])
+                let apod = dataSource.element(at: selectedIndexPath[0])
                 if let detailViewController = segue.destination as? DetailViewController {
-                    detailViewController.apod = selectedApod
+                    detailViewController.viewModel = APODViewModel(apod: apod)
                 }
             }
         }

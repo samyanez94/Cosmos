@@ -8,25 +8,25 @@
 
 import Foundation
 
-protocol FavoritesManager {
+protocol FavoritesManaging {
     func getFavorites() -> [Date]
     
-    func isFavorite(_ apod: APOD) -> Bool
+    func isFavorite(_ apod: APOD, completion: ((Bool) -> Void))
     
     func addToFavorites(_ apod: APOD)
     
     func removeFromFavorites(_ apod: APOD)
 }
 
-struct CosmosFavoritesManager: FavoritesManager {
+struct CosmosFavoritesManager: FavoritesManaging {
     private let favoritesUserDefaultsKey = "FAVORITE_APODS"
     
     func getFavorites() -> [Date] {
         UserDefaults.standard.array(forKey: favoritesUserDefaultsKey) as? [Date] ?? []
     }
     
-    func isFavorite(_ apod: APOD) -> Bool {
-        getFavorites().contains(apod.date)
+    func isFavorite(_ apod: APOD, completion: ((Bool) -> Void)) {
+        completion(getFavorites().contains(apod.date))
     }
     
     func addToFavorites(_ apod: APOD) {

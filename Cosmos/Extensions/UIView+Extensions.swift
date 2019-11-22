@@ -52,3 +52,11 @@ extension UIView {
         layer.masksToBounds = false
     }
 }
+
+extension UIView {
+    func pinSubView(_ view: UIView) {
+        view.frame = frame
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        addSubview(view)
+    }
+}

@@ -53,7 +53,7 @@ class FavoritesViewController: UIViewController {
     }()
     
     /// Favorites manager
-    private lazy var favoritesManager: FavoritesManager = {
+    private lazy var favoritesManager: FavoritesManaging = {
         CosmosFavoritesManager()
     }()
     
@@ -83,11 +83,11 @@ class FavoritesViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowDetails" {
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
-                tableView.deselectRow(at: selectedIndexPath, animated: true)
                 let apod = dataSource.element(at: selectedIndexPath)
                 if let detailViewController = segue.destination as? DetailViewController {
-                    detailViewController.apod = apod
+                    detailViewController.viewModel = APODViewModel(apod: apod)
                 }
+                tableView.deselectRow(at: selectedIndexPath, animated: true)
             }
         }
     }
