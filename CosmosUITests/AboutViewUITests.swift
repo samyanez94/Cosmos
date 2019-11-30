@@ -44,6 +44,9 @@ class AboutViewUITests: XCTestCase {
         XCTAssertTrue(visitButton.exists, "Visit button should exist.")
         XCTAssert(versionLabel.exists, "Version label should exist")
         
+        // Swipe to reveal element.
+        app.swipeUp()
+        
         // Check element is hittable.
         XCTAssert(visitButton.isHittable, "Visit button should be hittable.")
     }

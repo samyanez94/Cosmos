@@ -24,6 +24,18 @@ class DetailViewUITest: XCTestCase {
         
         // UI tests must launch the application that they test.
         app.launch()
+        
+        // Add UI interruption handler.
+        addUIInterruptionMonitor(withDescription: "Save to Photos Permission Dialog") { alert -> Bool in
+          if alert.labelContains(text: "“Cosmos” Would Like to Add to your Photos") {
+            alert.buttons["OK"].tap()
+            return true
+          }
+          return false
+        }
+        
+        // Irrelevant tap to trigger the interruption handler.
+        app.tabBars.buttons["Discover"].tap()
     }
     
     func testElementsExist() {
@@ -47,11 +59,6 @@ class DetailViewUITest: XCTestCase {
         XCTAssert(dateLabel.exists, "Date label should exist.")
         XCTAssert(titleLabel.exists, "Title label should exist.")
         XCTAssert(explanationLabel.exists, "Explanation label should exist.")
-        
-        // Check elements are hittable.
-        XCTAssert(favoritesButton.isHittable, "Favorites button should be hittable.")
-        XCTAssert(shareButton.isHittable, "Share button should be hittable.")
-        XCTAssert(saveToPhotosButton.isHittable, "Save to photos button should be hittable.")
         
         // Swipe up to reveal more elements.
         app.swipeUp()
@@ -138,4 +145,11 @@ class DetailViewUITest: XCTestCase {
         // Tap on share.
         saveToPhotosButton.tap()
     }
+}
+
+extension XCUIElement {
+  func labelContains(text: String) -> Bool {
+    let predicate = NSPredicate(format: "label CONTAINS %@", text)
+    return staticTexts.matching(predicate).firstMatch.exists
+  }
 }
