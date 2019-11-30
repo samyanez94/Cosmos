@@ -9,23 +9,22 @@
 import Foundation
 
 class APOD: Codable {
-    
     let title: String
     let date: Date
     let explanation: String
     let mediaType: MediaType
+    let urlString: String
     let copyright: String?
-    let url: String
-    let thumbnailUrl: String?
+    let thumbnailUrlString: String?
     
     enum CodingKeys: String, CodingKey {
         case title
         case date
         case explanation
         case mediaType = "media_type"
+        case urlString = "url"
         case copyright
-        case url
-        case thumbnailUrl = "thumbnail_url"
+        case thumbnailUrlString = "thumbnail_url"
     }
     
     enum MediaType: String, Codable {
@@ -34,15 +33,30 @@ class APOD: Codable {
     }
 }
 
+extension APOD {
+    var url: URL? {
+        URL(string: urlString)
+    }
+    
+    var thumbnailUrl: URL? {
+        switch mediaType {
+        case .image:
+            return URL(string: urlString)
+        case .video:
+            return URL(string: thumbnailUrlString)
+        }
+    }
+}
+
 extension APOD: Equatable {
     static func == (lhs: APOD, rhs: APOD) -> Bool {
-        return lhs.date == rhs.date
+        lhs.date == rhs.date
     }
 }
 
 extension APOD: Comparable {
     static func < (lhs: APOD, rhs: APOD) -> Bool {
-        return lhs.date < rhs.date
+        lhs.date < rhs.date
     }
 }
 

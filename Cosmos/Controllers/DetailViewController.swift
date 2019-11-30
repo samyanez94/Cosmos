@@ -15,19 +15,39 @@ import Lightbox
 class DetailViewController: UIViewController {
         
     /// Scroll view
-    @IBOutlet var scrollView: UIScrollView! {
+    @IBOutlet private var scrollView: UIScrollView! {
         didSet {
             scrollView.contentInsetAdjustmentBehavior = .never
         }
     }
     
     /// Media view
-    @IBOutlet var mediaView: UIView!
+    @IBOutlet private var mediaContainerView: UIView!
+    
+    /// Favorites button
+    @IBOutlet private var favoritesButton: UIImageView! {
+        didSet {
+            favoritesButton.accessibilityIdentifier = DetailViewAccessibilityIdentifier.Button.favoritesButton
+        }
+    }
+    
+    /// Share button
+    @IBOutlet private var shareButton: UIImageView! {
+        didSet {
+            shareButton.accessibilityIdentifier = DetailViewAccessibilityIdentifier.Button.shareButton
+        }
+    }
+    
+    /// Save button
+    @IBOutlet private var saveButton: UIImageView! {
+        didSet {
+            saveButton.accessibilityIdentifier = DetailViewAccessibilityIdentifier.Button.saveToPhotosButton
+        }
+    }
     
     /// Date label
-    @IBOutlet var dateLabel: UILabel! {
+    @IBOutlet private var dateLabel: UILabel! {
         didSet {
-            dateLabel.text = viewModel.preferredDate ?? viewModel.date
             dateLabel.accessibilityIdentifier = DetailViewAccessibilityIdentifier.Label.dateLabel
             dateLabel.font = scaledFont.font(forTextStyle: .subheadline)
             dateLabel.adjustsFontForContentSizeCategory = true
@@ -35,9 +55,8 @@ class DetailViewController: UIViewController {
     }
     
     /// Title label
-    @IBOutlet var titleLabel: UILabel! {
+    @IBOutlet private var titleLabel: UILabel! {
         didSet {
-            titleLabel.text = viewModel.title
             titleLabel.accessibilityIdentifier = DetailViewAccessibilityIdentifier.Label.titleLabel
             titleLabel.font = scaledFont.font(forTextStyle: .headline)
             titleLabel.adjustsFontForContentSizeCategory = true
@@ -45,9 +64,8 @@ class DetailViewController: UIViewController {
     }
     
     /// Explanation label
-    @IBOutlet var explanationLabel: UILabel! {
+    @IBOutlet private var explanationLabel: UILabel! {
         didSet {
-            explanationLabel.text = viewModel.explanation
             explanationLabel.accessibilityIdentifier = DetailViewAccessibilityIdentifier.Label.explanationLabel
             explanationLabel.font = scaledFont.font(forTextStyle: .body)
             explanationLabel.adjustsFontForContentSizeCategory = true
@@ -55,158 +73,151 @@ class DetailViewController: UIViewController {
     }
     
     /// Copyright label
-    @IBOutlet var copyrightLabel: UILabel! {
+    @IBOutlet private var copyrightLabel: UILabel! {
         didSet {
-            guard let copyright = viewModel.copyright else {
-                copyrightLabel.isHidden = true
-                return
-            }
-            
-            copyrightLabel.attributedText = copyright
             copyrightLabel.accessibilityLabel = DetailViewAccessibilityIdentifier.Label.copyrightLabel
             copyrightLabel.font = scaledFont.font(forTextStyle: .body)
             copyrightLabel.adjustsFontForContentSizeCategory = true
         }
     }
     
-    /// Share button
-    @IBOutlet var shareButton: UIButton! {
-        didSet {
-            shareButton.accessibilityLabel = DetailViewAccessibilityIdentifier.Button.shareButton
-            shareButton.layer.cornerRadius = 5
-        }
-    }
-    
     /// Date label gesture recognizer
-    @IBOutlet var dateLabelGestureRecognizer: UITapGestureRecognizer!
-    
-    /// Share button to explanation label constraint
-    @IBOutlet var shareButtonToExplanationLabelConstraint: NSLayoutConstraint!
-    
-    /// Share button to copyright label constraint
-    @IBOutlet var shareButtonToCopyrightLabelConstraint: NSLayoutConstraint!
+    @IBOutlet private var dateLabelGestureRecognizer: UITapGestureRecognizer!
     
     /// Image view
     private lazy var imageView = UIImageView()
     
-    /// Activity indicator
-    private lazy var activityIndicator = UIActivityIndicatorView()
-    
-    /// The current astronomical picture of the day.
-    var apod: APOD! {
-        didSet {
-            viewModel = APODViewModel(apod: apod)
-        }
-    }
+    /// Web view
+    private lazy var webView = WKWebView()
     
     /// View model
-    var viewModel: APODViewModel!
+    var viewModel: APODViewModel?
+        
+    /// Feedback generator
+    private var feedbackGenerator = UISelectionFeedbackGenerator()
+    
+    /// Favorites manager
+    private let favoritesManager = CosmosFavoritesManager()
+    
+    /// Share manager
+    private let shareManager = ShareManager()
     
     /// Utility used for dynamic types
     private lazy var scaledFont: ScaledFont = {
          return ScaledFont()
      }()
     
-    /// App ID for sharing purposes
-    private var appId: String {
-        "1481310548"
-    }
-    
-    /// App Store URL
-    private var appStoreUrl: String {
-        "https://apps.apple.com/app/\(appId)"
-    }
-    
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-                
-        if apod.copyright == nil {
-            shareButtonToCopyrightLabelConstraint.isActive = false
-            shareButtonToExplanationLabelConstraint.isActive = true
-        }
-        
-        if viewModel.preferredDate == nil {
-            dateLabelGestureRecognizer.isEnabled = false
-        }
-    }
+    // MARK: View lifecycle
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Load resources
-        loadResource(for: apod)
+        if let viewModel = viewModel {
+            updateView(for: viewModel)
+        }
     }
     
-    // MARK: Media view
+    // MARK: View Updates
     
-    private func loadResource(for apod: APOD) {
-        if let url = URL(string: apod.url) {
-            switch apod.mediaType {
+    private func updateView(for viewModel: APODViewModel) {
+        updateViews(for: viewModel)
+        updateLabels(for: viewModel)
+        updateFavoritesButton(for: viewModel)
+        updateMediaView(for: viewModel)
+        updateFavoritesButton(for: viewModel)
+    }
+    
+    private func updateViews(for viewModel: APODViewModel) {
+        dateLabelGestureRecognizer.isEnabled = viewModel.preferredDate.isNotNil
+        copyrightLabel.isHidden = viewModel.copyright.isNil
+        saveButton.isHidden = viewModel.mediaType == .video
+    }
+    
+    private func updateLabels(for viewModel: APODViewModel) {
+        dateLabel.text = viewModel.preferredDate ?? viewModel.date
+        titleLabel.text = viewModel.title
+        explanationLabel.text = viewModel.explanation
+        copyrightLabel.text = viewModel.copyright
+    }
+    
+    private func updateMediaView(for viewModel: APODViewModel) {
+        if let url = viewModel.url {
+            switch viewModel.mediaType {
             case .image:
                 setupImageView(with: url)
             case .video:
                 setupWebView(with: url)
-                setupActivityIndicator()
             }
         }
     }
+    
+    private func updateFavoritesButton(for viewModel: APODViewModel) {
+        favoritesManager.isFavorite(viewModel.apod) { isFavorite in
+            animateFavoritesButtonTransition(isFavorite: isFavorite)
+        }
+    }
+    
+    private func animateFavoritesButtonTransition(isFavorite: Bool) {
+        let animation: (() -> Void) = { [unowned self] in
+            self.favoritesButton.image = isFavorite ? UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
+        }
+        UIView.transition(with: favoritesButton,
+                          duration: 0.25,
+                          options: .transitionCrossDissolve,
+                          animations: animation,
+                          completion: nil)
+    }
+    
+    // MARK: Media Updates
         
     private func setupImageView(with url: URL) {
-        imageView.frame = mediaView.frame
-        imageView.contentMode = .scaleAspectFill
-        imageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        // Observe user interaction events.
         imageView.isUserInteractionEnabled = true
+        
+        // Image need to scale to allways fill the size of the view.
+        imageView.contentMode = .scaleAspectFill
+        
+        // Pin view to container.
+        mediaContainerView.pinSubView(imageView)
+        
+        // Fetch image
         imageView.af_setImage(withURL: url, imageTransition: .crossDissolve(0.2))
         
-        // I cannot add accessibility attributes to Lightbox. Therefore, I'm disabling the feature when using VoiceOver.
+        // Accessibility
+        applyAccessibilityAttributesforImageView(imageView)
+        
+        // Cannot add accessibility attributes to Lightbox. Therefore, we disable the feature when using VoiceOver.
         if !UIAccessibility.isVoiceOverRunning {
             imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapOnImage(_:))))
         }
-        
-        mediaView.addSubview(imageView)
-        applyAccessibilityAttributesforImageView(imageView)
     }
     
     private func setupWebView(with url: URL) {
-        let webView = WKWebView(frame: mediaView.frame)
-        webView.navigationDelegate = self
-        webView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        // Pin view to container.
+        mediaContainerView.pinSubView(webView)
+        
+        // Load URL.
         webView.load(URLRequest(url: url))
         
-        mediaView.addSubview(webView)
+        // Accessibility
         applyAccesibilityAttributesforWebView(webView)
-    }
-    
-    private func setupActivityIndicator() {
-        activityIndicator.center = mediaView.center
-        activityIndicator.style = .medium
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.startAnimating()
-        activityIndicator.autoresizingMask = [.flexibleLeftMargin, .flexibleRightMargin, .flexibleTopMargin, .flexibleBottomMargin]
-        
-        mediaView.addSubview(activityIndicator)
     }
     
     // MARK: User interaction
     
     @objc func didTapOnImage(_ sender: UITapGestureRecognizer? = nil) {
         if let sender = sender, let imageView = sender.view as? UIImageView, let image = imageView.image {
-            let lighboxImage = LightboxImage(image: image)
-            let lightboxController = LightboxController(images: [lighboxImage])
-            lightboxController.modalPresentationStyle = .fullScreen
-            lightboxController.dynamicBackground = true
+            let lightboxController = LightboxController(image: image)
             present(lightboxController, animated: true)
         }
     }
     
     @IBAction func didTapOnDateLabel(_ sender: Any) {
-        guard let preferredDate = viewModel.preferredDate else {
+        guard let viewModel = viewModel,
+            let preferredDate = viewModel.preferredDate else {
             return
         }
-        
         let animation: (() -> Void) = { [unowned self] in
             if self.dateLabel.text == preferredDate {
-                self.dateLabel.text = self.viewModel.date
+                self.dateLabel.text = viewModel.date
             } else {
                 self.dateLabel.text = preferredDate
             }
@@ -218,68 +229,58 @@ class DetailViewController: UIViewController {
                           completion: nil)
     }
     
-    @IBAction func didTapOnShare(_ sender: Any) {
-        var activityViewController: UIActivityViewController!
-        
-        switch apod.mediaType {
-        case .image:
-            if let image = imageView.image {
-                let text = """
-                Checkout this image I discovered using the Cosmos app.
-                
-                The Cosmos app is available on the App Store. \(appStoreUrl)
-                """
-                
-                activityViewController = UIActivityViewController(activityItems: [image, text], applicationActivities: nil)
+    @IBAction func didTapOnFavorites(_ sender: Any) {
+        guard let viewModel = viewModel else { return }
+        feedbackGenerator.prepare()
+        favoritesManager.isFavorite(viewModel.apod) { isFavorite in
+            guard let viewModel = self.viewModel else { return }
+            if isFavorite {
+                self.favoritesManager.removeFromFavorites(viewModel.apod)
+            } else {
+                self.favoritesManager.addToFavorites(viewModel.apod)
             }
-        case .video:
-            let text = """
-            Checkout this video I discovered using the Cosmos app: \(apod.url).
-
-            The Cosmos app is available on the App Store. \(appStoreUrl)
-            """
-            activityViewController = UIActivityViewController(activityItems: [text], applicationActivities: nil)
+            feedbackGenerator.selectionChanged()
+            self.animateFavoritesButtonTransition(isFavorite: !isFavorite)
         }
-        
-        activityViewController.excludedActivityTypes  = [
-            UIActivity.ActivityType.postToFacebook,
-            UIActivity.ActivityType("net.whatsapp.WhatsApp.ShareExtension")
-        ]
-        
-        present(activityViewController, animated: true, completion: nil)
     }
-}
-
-// MARK: Web View Navigation Delegate
-
-extension DetailViewController: WKNavigationDelegate {
-    
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        activityIndicator.stopAnimating()
+        
+    @IBAction func didTapOnShare(_ sender: Any) {
+        guard let viewModel = viewModel else { return }
+        let activityViewController: UIActivityViewController = {
+            switch viewModel.mediaType {
+            case .image:
+                return shareManager.activityViewController(with: .image(imageView.image))
+            case .video:
+                return shareManager.activityViewController(with: .video(viewModel.apod.urlString))
+            }
+        }()
+        present(activityViewController, animated: true)
     }
     
-    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-        activityIndicator.stopAnimating()
+    @IBAction func didTapOnSave(_ sender: Any) {
+        if let image = imageView.image {
+            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+        }
     }
 }
 
 // MARK: Accessibility
 
 extension DetailViewController {
-    
     private func applyAccessibilityAttributesforImageView(_ imageView: UIImageView) {
+        guard let viewModel = viewModel else { return }
         imageView.isAccessibilityElement = true
-        imageView.accessibilityLabel = apod.title
+        imageView.accessibilityLabel = viewModel.title
         imageView.accessibilityTraits = .image
         imageView.accessibilityIdentifier = DetailViewAccessibilityIdentifier.Image.imageView
     }
     
     private func applyAccesibilityAttributesforWebView(_ webView: WKWebView) {
+        guard let viewModel = viewModel else { return }
         webView.isAccessibilityElement = true
-        webView.accessibilityLabel = apod.title
+        webView.accessibilityLabel = viewModel.title
         webView.accessibilityTraits = .startsMediaSession
         webView.accessibilityHint = "Double tap to play media."
         webView.accessibilityIdentifier = DetailViewAccessibilityIdentifier.WebView.webView
-
     }
 }

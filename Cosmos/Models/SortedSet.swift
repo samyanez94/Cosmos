@@ -61,6 +61,13 @@ public struct SortedSet<E>: Collection where E: Hashable, E: Comparable {
             append(element)
         }
     }
+    
+    public mutating func remove(_ element: Element) {
+        set.remove(element)
+        array.removeAll { arrayElement -> Bool in
+            arrayElement == element
+        }
+    }
 }
 
 extension SortedSet: Equatable {

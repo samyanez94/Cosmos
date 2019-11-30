@@ -8,50 +8,50 @@
 
 import Foundation
 
-class APODViewModel {
+struct APODViewModel {
     
-    private let apod: APOD
+    let apod: APOD
     
-    /// Title
-    var title: String {
-        apod.title
-    }
-    
-    /// Date
-    var date: String {
-        String(from: apod.date)
-    }
-    
-    /// Explanation
-    var explanation: String {
-        apod.explanation.isEmpty ? "There is no description available for this media." : apod.explanation
-    }
-    
-    /// Preferred Date
-    var preferredDate: String? {
-        if Calendar.current.compare(apod.date, to: Date(), toGranularity: .day) == .orderedSame {
-            return "Today"
-        } else if Calendar.current.compare(apod.date, to: Calendar.current.date(byAdding: .day, value: -1, to: Date())!, toGranularity: .day) == .orderedSame {
-            return "Yesterday"
-        } else {
-            return nil
-        }
-    }
-    
-    /// Copyright
-    var copyright: NSAttributedString? {
-        if let author = apod.copyright {
-            return NSMutableAttributedString(string: "Copyright: \(author)", blackString: "Copyright:", font: scaledFont.font(forTextStyle: .body))
-        }
-        return nil
-    }
-    
-    /// Utility used for dynamic types
-    private lazy var scaledFont: ScaledFont = {
-         return ScaledFont()
-     }()
-    
-    public init(apod: APOD) {
+    init(apod: APOD) {
         self.apod = apod
     }
+}
+
+extension APODViewModel {
+    var title: String {
+         apod.title
+     }
+     
+     var date: String {
+         String(from: apod.date)
+     }
+         
+     var explanation: String {
+         apod.explanation.isEmpty ? "There is no description available for this media." : apod.explanation
+     }
+     
+     var mediaType: APOD.MediaType {
+         apod.mediaType
+     }
+     
+     var preferredDate: String? {
+         if apod.date.isToday() {
+             return "Today"
+         } else if apod.date.isYesterday() {
+             return "Yesterday"
+         } else {
+             return nil
+         }
+     }
+     
+     var copyright: String? {
+         if let author = apod.copyright {
+             return "Copyright: \(author)"
+         }
+         return nil
+     }
+     
+     var url: URL? {
+         apod.url
+     }
 }

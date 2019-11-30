@@ -9,7 +9,6 @@
 import UIKit
 
 public final class ScaledFont {
-    
     private struct FontDescription: Decodable {
         let fontSize: CGFloat
         let fontWeight: String

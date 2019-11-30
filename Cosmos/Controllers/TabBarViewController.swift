@@ -10,7 +10,7 @@ import UIKit
 
 class TabBarViewController: UITabBarController {
     
-    /// Last selected view controller.
+    /// Previous selected view controller
     var previousViewController: UIViewController?
 
     override func viewDidLoad() {
@@ -21,7 +21,6 @@ class TabBarViewController: UITabBarController {
 }
 
 extension TabBarViewController: UITabBarControllerDelegate {
-    
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         if viewController == previousViewController, let navigationController = viewController as? UINavigationController, let discoverViewController = navigationController.topViewController as? DiscoverViewController {
                 discoverViewController.scrollToTop()

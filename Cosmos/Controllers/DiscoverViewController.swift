@@ -9,14 +9,6 @@
 import UIKit
 
 class DiscoverViewController: UIViewController {
-        
-    /// API Client
-    lazy var client =  Configuration.isUITest ? MockClient() : CosmosClient()
-    
-    /// Data Source
-    lazy var dataSource: DiscoverDataSource = {
-        return DiscoverDataSource(collectionView: collectionView)
-    }()
     
     /// Collection view
     @IBOutlet var collectionView: UICollectionView! {
@@ -54,6 +46,18 @@ class DiscoverViewController: UIViewController {
         }
     }
     
+    // TODO: Consider using dependency injection here...
+    
+    /// API Client
+    lazy var client =  Configuration.isUITest ? MockClient() : CosmosClient()
+    
+    /// Data Source
+    lazy var dataSource: DiscoverDataSource = {
+        return DiscoverDataSource(collectionView: collectionView)
+    }()
+    
+    // TODO: Consider moving pagination logic somewhere else...
+    
     /// Pagination offset
     var collectionOffset = 0
     
@@ -90,9 +94,9 @@ class DiscoverViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowDetails" {
             if let selectedIndexPath = collectionView.indexPathsForSelectedItems {
-                let selectedApod = dataSource.element(at: selectedIndexPath[0])
+                let apod = dataSource.element(at: selectedIndexPath[0])
                 if let detailViewController = segue.destination as? DetailViewController {
-                    detailViewController.apod = selectedApod
+                    detailViewController.viewModel = APODViewModel(apod: apod)
                 }
             }
         }
@@ -103,8 +107,7 @@ class DiscoverViewController: UIViewController {
     func fetch(count: Int, offset: Int = 0, completion: (() -> Void)? = nil) {
         client.fetch(count: count, offset: offset) { [weak self] result in
             switch result {
-            case .failure(let error):
-                print(error.localizedDescription)
+            case .failure:
                 self?.collectionView.isHidden = true
                 self?.errorView.isHidden = false
             case .success(let apods):
@@ -138,16 +141,14 @@ class DiscoverViewController: UIViewController {
 // MARK: UICollectionView Delegate
 
 extension DiscoverViewController: UICollectionViewDelegate {
-    
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if dataSource.apods.count == indexPath.row + 1 {
             fetch(count: collectionPageSize, offset: collectionOffset)
         }
-    }
+    }    
 }
 
 extension DiscoverViewController: UICollectionViewDelegateFlowLayout {
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.bounds.size.width, height: collectionView.bounds.size.width * 1.2)
     }

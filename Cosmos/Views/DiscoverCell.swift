@@ -1,5 +1,5 @@
 //
-//  CosmosCell.swift
+//  DiscoverCell.swift
 //  Cosmos
 //
 //  Created by Samuel Yanez on 7/21/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CosmosCell: UICollectionViewCell {
+class DiscoverCell: UICollectionViewCell {
 
     /// Image view
     @IBOutlet var imageView: UIImageView!
@@ -19,7 +19,7 @@ class CosmosCell: UICollectionViewCell {
     /// Container view
     @IBOutlet var containerView: UIView! {
         didSet {
-            containerView.layer.cornerRadius = CosmosCell.cornerRadius
+            containerView.roundCorners(radius: 20)                
         }
     }
     
@@ -41,21 +41,12 @@ class CosmosCell: UICollectionViewCell {
     
     /// Activity indicator
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
-    
-    /// Missing thumbnail view
-    @IBOutlet var missingThumbnailView: MissingThumbnailView!
-    
-    /// Identifier
-    static let identifier = "com.samuelyanez.CosmosCell"
-    
-    /// Height
-    static let height: CGFloat = 450
-    
-    /// Corner radius
-    static let cornerRadius: CGFloat = 20
-    
+        
     /// Feedback generator
-    var feedbackGenerator: UISelectionFeedbackGenerator?
+    private var feedbackGenerator: UISelectionFeedbackGenerator?
+    
+    /// Placeholder image
+    static let placeholderImage = UIImage(named: "Missing Image Placeholder")
     
     /// Utility used for dynamic types
     private lazy var scaledFont: ScaledFont = {
@@ -68,29 +59,20 @@ class CosmosCell: UICollectionViewCell {
     }
     
     override func draw(_ rect: CGRect) {
-        setupShadow()
+        setShadow(opacity: 0.2, radius: 20)
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        imageView.image = nil
-        imageView.af_cancelImageRequest()
         
-        missingThumbnailView.isHidden = true
-    }
-    
-    private func setupShadow() {
-        layer.cornerRadius = 20
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOpacity = 0.2
-        layer.shadowRadius = 10
-        layer.shadowOffset = CGSize(width: -1, height: 2)
-        layer.masksToBounds = false
+        imageView.image = nil
+        
+        imageView.af_cancelImageRequest()
     }
 }
 // MARK: - Accesibility
 
-extension CosmosCell {
+extension DiscoverCell {
     
     func applyAccessibilityAttributes(for viewModel: APODViewModel) {
         containerView.accessibilityLabel = "\(viewModel.preferredDate ?? viewModel.date). \(viewModel.title)"
@@ -101,7 +83,7 @@ extension CosmosCell {
 
 // MARK: - Gesture Recognizer
 
-extension CosmosCell {
+extension DiscoverCell {
         
     private func configureGestureRecognizer() {
         let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPressGesture(gestureRecognizer:)))
