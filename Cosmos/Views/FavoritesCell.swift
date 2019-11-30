@@ -13,7 +13,6 @@ class FavoritesCell: UITableViewCell {
     @IBOutlet var thumbnailImageView: UIImageView! {
         didSet {
             thumbnailImageView.roundCorners(radius: 5)
-            thumbnailImageView.setShadow(opacity: 0.2, radius: 5)
         }
     }
     @IBOutlet var dateLabel: UILabel!
@@ -26,10 +25,8 @@ class FavoritesCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         
-        // Set image to nil.
         thumbnailImageView.image = nil
         
-        // Cancel any active image requests.
         thumbnailImageView.af_cancelImageRequest()
     }
 }

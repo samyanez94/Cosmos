@@ -43,7 +43,7 @@ class DiscoverCell: UICollectionViewCell {
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
         
     /// Feedback generator
-    var feedbackGenerator: UISelectionFeedbackGenerator?
+    private var feedbackGenerator: UISelectionFeedbackGenerator?
     
     /// Placeholder image
     static let placeholderImage = UIImage(named: "Missing Image Placeholder")
@@ -65,10 +65,8 @@ class DiscoverCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         
-        // Set image to nil.
         imageView.image = nil
         
-        // Cancel any active image requests.
         imageView.af_cancelImageRequest()
     }
 }
