@@ -54,7 +54,7 @@ class FavoritesViewController: UIViewController {
     
     /// Favorites manager
     private lazy var favoritesManager: FavoritesManaging = {
-        CosmosFavoritesManager()
+        UserDefaultsFavoritesManager()
     }()
     
     /// Utility used for dynamic types
@@ -65,16 +65,20 @@ class FavoritesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        fetch(favorites: Array(favoritesManager.getFavorites())) {
-            self.activityIndicatorView.isHidden = true
+        favoritesManager.getFavorites { [weak self] dates in
+            self?.fetch(favorites: dates) {
+                self?.activityIndicatorView.isHidden = true
+            }
         }
     }
     
     // MARK: Table View
     
     @objc func handleRefreshControl() {
-        fetch(favorites: Array(favoritesManager.getFavorites())) {
-            self.tableView.refreshControl?.endRefreshing()
+        favoritesManager.getFavorites { [weak self] dates in
+            self?.fetch(favorites: dates) {
+                self?.tableView.refreshControl?.endRefreshing()
+            }
         }
      }
     
@@ -112,8 +116,10 @@ class FavoritesViewController: UIViewController {
     @IBAction func didTapOnRefreshButton(_ sender: Any) {
         errorView.isHidden = true
         activityIndicatorView.isHidden = false
-        fetch(favorites: Array(favoritesManager.getFavorites())) {
-            self.activityIndicatorView.isHidden = true
+        favoritesManager.getFavorites { [weak self] dates in
+            self?.fetch(favorites: dates) {
+                self?.activityIndicatorView.isHidden = true
+            }
         }
     }
     
@@ -131,7 +137,7 @@ extension FavoritesViewController: UITableViewDelegate {
         let removeAction = UIContextualAction(style: .destructive, title: "Remove", handler: { _, _, completionHandler  in
             // TODO: Consider developing a notification system for changes to the favorites manager
             
-            self.favoritesManager.removeFromFavorites(self.dataSource.element(at: indexPath))
+            self.favoritesManager.removeFromFavorites(self.dataSource.element(at: indexPath).date)
             self.dataSource.removeElement(at: indexPath)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
             completionHandler(true)

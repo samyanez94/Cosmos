@@ -9,35 +9,32 @@
 import Foundation
 
 protocol FavoritesManaging {
-    func getFavorites() -> [Date]
+    func getFavorites(completion: (([Date]) -> Void))
     
-    func isFavorite(_ apod: APOD, completion: ((Bool) -> Void))
+    func isFavorite(_ date: Date, completion: ((Bool) -> Void))
     
-    func addToFavorites(_ apod: APOD)
+    func addToFavorites(_ date: Date)
     
-    func removeFromFavorites(_ apod: APOD)
+    func removeFromFavorites(_ date: Date)
 }
 
-struct CosmosFavoritesManager: FavoritesManaging {
-    private let favoritesUserDefaultsKey = "FAVORITE_APODS"
+class UserDefaultsFavoritesManager: FavoritesManaging {
+    @Storage(key: "favorites", defaultValue: [])
+    var favorites: [Date]
     
-    func getFavorites() -> [Date] {
-        UserDefaults.standard.array(forKey: favoritesUserDefaultsKey) as? [Date] ?? []
+    func getFavorites(completion: (([Date]) -> Void)) {
+        completion(favorites)
     }
     
-    func isFavorite(_ apod: APOD, completion: ((Bool) -> Void)) {
-        completion(getFavorites().contains(apod.date))
+    func isFavorite(_ date: Date, completion: ((Bool) -> Void)) {
+        completion(favorites.contains(date))
     }
     
-    func addToFavorites(_ apod: APOD) {
-        var favorites = getFavorites()
-        favorites.append(apod.date)
-        UserDefaults.standard.set(favorites, forKey: favoritesUserDefaultsKey)
+    func addToFavorites(_ date: Date) {
+        favorites.append(date)
     }
     
-    func removeFromFavorites(_ apod: APOD) {
-        var favorites = getFavorites()
-        favorites.removeAll { $0 == apod.date }
-        UserDefaults.standard.set(favorites, forKey: favoritesUserDefaultsKey)
+    func removeFromFavorites(_ date: Date) {
+        favorites.removeAll { $0 == date }
     }
 }

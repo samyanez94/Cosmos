@@ -97,7 +97,7 @@ class DetailViewController: UIViewController {
     private var feedbackGenerator = UISelectionFeedbackGenerator()
     
     /// Favorites manager
-    private let favoritesManager = CosmosFavoritesManager()
+    private let favoritesManager = UserDefaultsFavoritesManager()
     
     /// Share manager
     private let shareManager = ShareManager()
@@ -150,7 +150,7 @@ class DetailViewController: UIViewController {
     }
     
     private func updateFavoritesButton(for viewModel: APODViewModel) {
-        favoritesManager.isFavorite(viewModel.apod) { isFavorite in
+        favoritesManager.isFavorite(viewModel.apod.date) { isFavorite in
             animateFavoritesButtonTransition(isFavorite: isFavorite)
         }
     }
@@ -232,13 +232,14 @@ class DetailViewController: UIViewController {
     @IBAction func didTapOnFavorites(_ sender: Any) {
         guard let viewModel = viewModel else { return }
         feedbackGenerator.prepare()
-        favoritesManager.isFavorite(viewModel.apod) { isFavorite in
+        favoritesManager.isFavorite(viewModel.apod.date) { isFavorite in
             guard let viewModel = self.viewModel else { return }
             if isFavorite {
-                self.favoritesManager.removeFromFavorites(viewModel.apod)
+                self.favoritesManager.removeFromFavorites(viewModel.apod.date)
             } else {
-                self.favoritesManager.addToFavorites(viewModel.apod)
+                self.favoritesManager.addToFavorites(viewModel.apod.date)
             }
+            print(viewModel.apod.date.description)
             feedbackGenerator.selectionChanged()
             self.animateFavoritesButtonTransition(isFavorite: !isFavorite)
         }
