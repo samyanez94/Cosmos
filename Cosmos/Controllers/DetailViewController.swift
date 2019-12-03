@@ -49,7 +49,7 @@ class DetailViewController: UIViewController {
     @IBOutlet private var dateLabel: UILabel! {
         didSet {
             dateLabel.accessibilityIdentifier = DetailViewAccessibilityIdentifier.Label.dateLabel
-            dateLabel.font = scaledFont.font(forTextStyle: .subheadline)
+            dateLabel.font = DynamicFont.shared.font(forTextStyle: .subheadline)
             dateLabel.adjustsFontForContentSizeCategory = true
         }
     }
@@ -58,7 +58,7 @@ class DetailViewController: UIViewController {
     @IBOutlet private var titleLabel: UILabel! {
         didSet {
             titleLabel.accessibilityIdentifier = DetailViewAccessibilityIdentifier.Label.titleLabel
-            titleLabel.font = scaledFont.font(forTextStyle: .headline)
+            titleLabel.font = DynamicFont.shared.font(forTextStyle: .headline)
             titleLabel.adjustsFontForContentSizeCategory = true
         }
     }
@@ -67,7 +67,7 @@ class DetailViewController: UIViewController {
     @IBOutlet private var explanationLabel: UILabel! {
         didSet {
             explanationLabel.accessibilityIdentifier = DetailViewAccessibilityIdentifier.Label.explanationLabel
-            explanationLabel.font = scaledFont.font(forTextStyle: .body)
+            explanationLabel.font = DynamicFont.shared.font(forTextStyle: .body)
             explanationLabel.adjustsFontForContentSizeCategory = true
         }
     }
@@ -76,7 +76,7 @@ class DetailViewController: UIViewController {
     @IBOutlet private var copyrightLabel: UILabel! {
         didSet {
             copyrightLabel.accessibilityLabel = DetailViewAccessibilityIdentifier.Label.copyrightLabel
-            copyrightLabel.font = scaledFont.font(forTextStyle: .body)
+            copyrightLabel.font = DynamicFont.shared.font(forTextStyle: .body)
             copyrightLabel.adjustsFontForContentSizeCategory = true
         }
     }
@@ -101,11 +101,6 @@ class DetailViewController: UIViewController {
     
     /// Share manager
     private let shareManager = ShareManager()
-    
-    /// Utility used for dynamic types
-    private lazy var scaledFont: ScaledFont = {
-         return ScaledFont()
-     }()
     
     // MARK: View lifecycle
     

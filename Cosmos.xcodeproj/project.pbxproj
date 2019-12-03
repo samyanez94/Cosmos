@@ -87,8 +87,8 @@
 		22AA95B021055E47001B755F /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AA95AF21055E47001B755F /* Endpoint.swift */; };
 		22B276EC2353DB180009844E /* DiscoverViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B276EB2353DB180009844E /* DiscoverViewUITests.swift */; };
 		22B381122104583800DCDC24 /* DiscoverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B381102104583800DCDC24 /* DiscoverCell.swift */; };
-		22B43D60234169F900DD2A30 /* FontBook.plist in Resources */ = {isa = PBXBuildFile; fileRef = 22B43D5F234169F900DD2A30 /* FontBook.plist */; };
-		22B43D6223416B2800DD2A30 /* ScaledFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B43D6123416B2800DD2A30 /* ScaledFont.swift */; };
+		22B43D60234169F900DD2A30 /* DynamicFonts.plist in Resources */ = {isa = PBXBuildFile; fileRef = 22B43D5F234169F900DD2A30 /* DynamicFonts.plist */; };
+		22B43D6223416B2800DD2A30 /* DynamicFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B43D6123416B2800DD2A30 /* DynamicFont.swift */; };
 		22BC0A0D21056A580086BB19 /* CosmosClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BC0A0C21056A580086BB19 /* CosmosClient.swift */; };
 		22C5485823568A7A002A52B4 /* APODViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C5485723568A7A002A52B4 /* APODViewModel.swift */; };
 		22C5485D2356E824002A52B4 /* EnvironmentTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C5485C2356E824002A52B4 /* EnvironmentTest.swift */; };
@@ -173,8 +173,8 @@
 		22AA95AF21055E47001B755F /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		22B276EB2353DB180009844E /* DiscoverViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewUITests.swift; sourceTree = "<group>"; };
 		22B381102104583800DCDC24 /* DiscoverCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverCell.swift; sourceTree = "<group>"; };
-		22B43D5F234169F900DD2A30 /* FontBook.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FontBook.plist; sourceTree = "<group>"; };
-		22B43D6123416B2800DD2A30 /* ScaledFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaledFont.swift; sourceTree = "<group>"; };
+		22B43D5F234169F900DD2A30 /* DynamicFonts.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DynamicFonts.plist; sourceTree = "<group>"; };
+		22B43D6123416B2800DD2A30 /* DynamicFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicFont.swift; sourceTree = "<group>"; };
 		22BC0A0C21056A580086BB19 /* CosmosClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmosClient.swift; sourceTree = "<group>"; };
 		22C5485723568A7A002A52B4 /* APODViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODViewModel.swift; sourceTree = "<group>"; };
 		22C5485C2356E824002A52B4 /* EnvironmentTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentTest.swift; sourceTree = "<group>"; };
@@ -261,6 +261,15 @@
 				2200E52D23960F3500897286 /* Localizable.swift */,
 			);
 			path = Localization;
+			sourceTree = "<group>";
+		};
+		2200E54C23963F7400897286 /* Dynamic Typing */ = {
+			isa = PBXGroup;
+			children = (
+				22B43D6123416B2800DD2A30 /* DynamicFont.swift */,
+				22B43D5F234169F900DD2A30 /* DynamicFonts.plist */,
+			);
+			path = "Dynamic Typing";
 			sourceTree = "<group>";
 		};
 		2207E60023627895009F9CD5 /* Favorites */ = {
@@ -356,6 +365,7 @@
 				220B1F22234D7E90008BAAF6 /* Accessibility */,
 				221AC07521059C60006006B7 /* Controllers */,
 				22A7D3E62117F7690011B097 /* Data Sources */,
+				2200E54C23963F7400897286 /* Dynamic Typing */,
 				225810A2213674E900ECBCC3 /* Extensions */,
 				2207E60023627895009F9CD5 /* Favorites */,
 				2200E52C23960EFD00897286 /* Localization */,
@@ -368,7 +378,6 @@
 				22AA95AC2105579E001B755F /* Views */,
 				225220332104391100221D29 /* AppDelegate.swift */,
 				2244523A212D08A100889244 /* Assets.xcassets */,
-				22B43D5F234169F900DD2A30 /* FontBook.plist */,
 				225220422104391200221D29 /* Info.plist */,
 			);
 			path = Cosmos;
@@ -437,7 +446,6 @@
 			isa = PBXGroup;
 			children = (
 				2252204821043C0E00221D29 /* APOD.swift */,
-				22B43D6123416B2800DD2A30 /* ScaledFont.swift */,
 				226E25B623245E9800908A39 /* SortedSet.swift */,
 			);
 			path = Models;
@@ -609,7 +617,7 @@
 				225220412104391200221D29 /* LaunchScreen.storyboard in Resources */,
 				2200E53F2396220500897286 /* DiscoverViewStrings.plist in Resources */,
 				225220392104391100221D29 /* Main.storyboard in Resources */,
-				22B43D60234169F900DD2A30 /* FontBook.plist in Resources */,
+				22B43D60234169F900DD2A30 /* DynamicFonts.plist in Resources */,
 				2200E5432396220D00897286 /* FavoritesViewStrings.plist in Resources */,
 				2200E53B239621FE00897286 /* DetailViewStrings.plist in Resources */,
 				22A4DD5D235009890004881B /* apod-ranged-response.json in Resources */,
@@ -727,7 +735,7 @@
 				22A4DD6023500B710004881B /* MockClient.swift in Sources */,
 				22E315CD23726D71008EDF34 /* UIFont+Extensions.swift in Sources */,
 				226E25B723245E9800908A39 /* SortedSet.swift in Sources */,
-				22B43D6223416B2800DD2A30 /* ScaledFont.swift in Sources */,
+				22B43D6223416B2800DD2A30 /* DynamicFont.swift in Sources */,
 				2202F50D211ECE4700DEFDE1 /* DetailViewController.swift in Sources */,
 				220EE6FF23924080006B16EB /* Storage.swift in Sources */,
 				22E315CF23726F84008EDF34 /* UIView+Extensions.swift in Sources */,

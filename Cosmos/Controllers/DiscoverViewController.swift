@@ -41,7 +41,7 @@ class DiscoverViewController: UIViewController {
     /// Error label
     @IBOutlet var errorLabel: UILabel! {
         didSet {
-            errorLabel.font = scaledFont.font(forTextStyle: .body)
+            errorLabel.font = DynamicFont.shared.font(forTextStyle: .body)
             errorLabel.adjustsFontForContentSizeCategory = true
             errorLabel.text = DiscoverViewStrings.errorMessage.localized
         }
@@ -64,11 +64,6 @@ class DiscoverViewController: UIViewController {
     
     /// Pagination page size
     var collectionPageSize = 10
-    
-    /// Utility used for dynamic types
-    private lazy var scaledFont: ScaledFont = {
-         return ScaledFont()
-     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()

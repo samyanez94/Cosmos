@@ -39,7 +39,7 @@ class FavoritesViewController: UIViewController {
     /// Error label
     @IBOutlet var errorLabel: UILabel! {
         didSet {
-            errorLabel.font = scaledFont.font(forTextStyle: .body)
+            errorLabel.font = DynamicFont.shared.font(forTextStyle: .body)
             errorLabel.adjustsFontForContentSizeCategory = true
             errorLabel.text = FavoritesViewStrings.errorMessage.localized
         }
@@ -57,11 +57,6 @@ class FavoritesViewController: UIViewController {
     private lazy var favoritesManager: FavoritesManaging = {
         UserDefaultsFavoritesManager()
     }()
-    
-    /// Utility used for dynamic types
-    private lazy var scaledFont: ScaledFont = {
-         return ScaledFont()
-     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()

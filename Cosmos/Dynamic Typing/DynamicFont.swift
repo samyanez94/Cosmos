@@ -1,5 +1,5 @@
 //
-//  ScaledFont.swift
+//  DynamicFont.swift
 //  Cosmos
 //
 //  Created by Samuel Yanez on 9/7/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-public final class ScaledFont {
+public final class DynamicFont {
     private struct FontDescription: Decodable {
         let fontSize: CGFloat
         let fontWeight: String
@@ -18,8 +18,10 @@ public final class ScaledFont {
     
     private var styleDictionary: StyleDictionary?
     
-    public init() {
-        if let url = Bundle.main.url(forResource: "FontBook", withExtension: "plist"),
+    static let shared = DynamicFont()
+    
+    private init() {
+        if let url = Bundle.main.url(forResource: "DynamicFonts", withExtension: "plist"),
             let data = try? Data(contentsOf: url) {
             let decoder = PropertyListDecoder()
             styleDictionary = try? decoder.decode(StyleDictionary.self, from: data)
@@ -31,7 +33,6 @@ public final class ScaledFont {
             let weight = UIFont.fontWeight(from: fontDescription.fontWeight) else {
                 return UIFont.preferredFont(forTextStyle: textStyle)
         }
-        
         let font = UIFont.systemFont(ofSize: fontDescription.fontSize, weight: weight)
         let fontMetrics = UIFontMetrics(forTextStyle: textStyle)
         return fontMetrics.scaledFont(for: font)

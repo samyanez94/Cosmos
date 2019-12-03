@@ -26,7 +26,7 @@ class DiscoverCell: UICollectionViewCell {
     /// Title label
     @IBOutlet var titleLabel: UILabel! {
         didSet {
-            titleLabel.font = scaledFont.font(forTextStyle: .headline)
+            titleLabel.font = DynamicFont.shared.font(forTextStyle: .headline)
             titleLabel.adjustsFontForContentSizeCategory = true
         }
     }
@@ -34,7 +34,7 @@ class DiscoverCell: UICollectionViewCell {
     /// Date label
     @IBOutlet var dateLabel: UILabel! {
         didSet {
-            dateLabel.font = scaledFont.font(forTextStyle: .subheadline)
+            dateLabel.font = DynamicFont.shared.font(forTextStyle: .subheadline)
             dateLabel.adjustsFontForContentSizeCategory = true
         }
     }
@@ -47,11 +47,6 @@ class DiscoverCell: UICollectionViewCell {
     
     /// Placeholder image
     static let placeholderImage = UIImage(named: "Missing Image Placeholder")
-    
-    /// Utility used for dynamic types
-    private lazy var scaledFont: ScaledFont = {
-         return ScaledFont()
-     }()
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
