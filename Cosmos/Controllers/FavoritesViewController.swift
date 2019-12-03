@@ -30,9 +30,9 @@ class FavoritesViewController: UIViewController {
      @IBOutlet var errorView: UIView! {
          didSet {
              errorView.isAccessibilityElement = true
-             errorView.accessibilityLabel = errorLabel.text
+             errorView.accessibilityLabel = FavoritesViewStrings.errorMessage.localized
              errorView.accessibilityTraits = .button
-             errorView.accessibilityHint = "Double tap to load the view one more time."
+             errorView.accessibilityHint = "Tap to load the view one more time."
          }
      }
     
@@ -41,6 +41,7 @@ class FavoritesViewController: UIViewController {
         didSet {
             errorLabel.font = scaledFont.font(forTextStyle: .body)
             errorLabel.adjustsFontForContentSizeCategory = true
+            errorLabel.text = FavoritesViewStrings.errorMessage.localized
         }
     }
     
@@ -64,6 +65,8 @@ class FavoritesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        title = FavoritesViewStrings.title.localized
         
         favoritesManager.getFavorites { [weak self] dates in
             self?.fetch(favorites: dates) {
@@ -134,7 +137,7 @@ extension FavoritesViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let removeAction = UIContextualAction(style: .destructive, title: "Remove", handler: { _, _, completionHandler  in
+        let removeAction = UIContextualAction(style: .destructive, title: FavoritesViewStrings.remove.localized, handler: { _, _, completionHandler  in
             // TODO: Consider developing a notification system for changes to the favorites manager
             
             self.favoritesManager.removeFromFavorites(self.dataSource.element(at: indexPath).date)

@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2200E52E23960F3500897286 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2200E52D23960F3500897286 /* Localizable.swift */; };
+		2200E53123961C6200897286 /* AboutViewStrings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2200E53323961C6200897286 /* AboutViewStrings.plist */; };
+		2200E53B239621FE00897286 /* DetailViewStrings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2200E53D239621FE00897286 /* DetailViewStrings.plist */; };
+		2200E53F2396220500897286 /* DiscoverViewStrings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2200E5412396220500897286 /* DiscoverViewStrings.plist */; };
+		2200E5432396220D00897286 /* FavoritesViewStrings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2200E5452396220D00897286 /* FavoritesViewStrings.plist */; };
+		2200E5472396270F00897286 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220EE6FE23924080006B16EB /* Storage.swift */; };
+		2200E5482396271000897286 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220EE6FE23924080006B16EB /* Storage.swift */; };
+		2200E5492396271600897286 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2200E52D23960F3500897286 /* Localizable.swift */; };
+		2200E54A2396271700897286 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2200E52D23960F3500897286 /* Localizable.swift */; };
 		2202F50D211ECE4700DEFDE1 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2202F50C211ECE4700DEFDE1 /* DetailViewController.swift */; };
 		2207E602236278BD009F9CD5 /* FavoritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2207E601236278BD009F9CD5 /* FavoritesManager.swift */; };
 		2207E603236278BD009F9CD5 /* FavoritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2207E601236278BD009F9CD5 /* FavoritesManager.swift */; };
@@ -126,6 +135,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2200E52D23960F3500897286 /* Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
+		2200E53223961C6200897286 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/AboutViewStrings.plist; sourceTree = "<group>"; };
+		2200E53E2396220100897286 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/DetailViewStrings.plist; sourceTree = "<group>"; };
+		2200E5422396220800897286 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/DiscoverViewStrings.plist; sourceTree = "<group>"; };
+		2200E5462396221000897286 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/FavoritesViewStrings.plist; sourceTree = "<group>"; };
 		2202F50C211ECE4700DEFDE1 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		2207E601236278BD009F9CD5 /* FavoritesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesManager.swift; sourceTree = "<group>"; };
 		220B1F18234D7273008BAAF6 /* CosmosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CosmosUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -229,6 +243,26 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		2200E51523960C1B00897286 /* Strings */ = {
+			isa = PBXGroup;
+			children = (
+				2200E53323961C6200897286 /* AboutViewStrings.plist */,
+				2200E53D239621FE00897286 /* DetailViewStrings.plist */,
+				2200E5412396220500897286 /* DiscoverViewStrings.plist */,
+				2200E5452396220D00897286 /* FavoritesViewStrings.plist */,
+			);
+			path = Strings;
+			sourceTree = "<group>";
+		};
+		2200E52C23960EFD00897286 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				2200E51523960C1B00897286 /* Strings */,
+				2200E52D23960F3500897286 /* Localizable.swift */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 		2207E60023627895009F9CD5 /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
@@ -319,14 +353,15 @@
 		225220322104391100221D29 /* Cosmos */ = {
 			isa = PBXGroup;
 			children = (
-				220EE6FD23924064006B16EB /* Property Wrappers */,
 				220B1F22234D7E90008BAAF6 /* Accessibility */,
 				221AC07521059C60006006B7 /* Controllers */,
 				22A7D3E62117F7690011B097 /* Data Sources */,
 				225810A2213674E900ECBCC3 /* Extensions */,
 				2207E60023627895009F9CD5 /* Favorites */,
+				2200E52C23960EFD00897286 /* Localization */,
 				22AA95AE21055DE7001B755F /* Models */,
 				22AA95AD21055DD9001B755F /* Networking */,
+				220EE6FD23924064006B16EB /* Property Wrappers */,
 				2281F2912387969D001D52D3 /* Sharing */,
 				221AC07621059C7C006006B7 /* Storyboards */,
 				22C548592356E4D3002A52B4 /* View Models */,
@@ -569,10 +604,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2200E53123961C6200897286 /* AboutViewStrings.plist in Resources */,
 				22A4DD5E2350098B0004881B /* apod-single-response.json in Resources */,
 				225220412104391200221D29 /* LaunchScreen.storyboard in Resources */,
+				2200E53F2396220500897286 /* DiscoverViewStrings.plist in Resources */,
 				225220392104391100221D29 /* Main.storyboard in Resources */,
 				22B43D60234169F900DD2A30 /* FontBook.plist in Resources */,
+				2200E5432396220D00897286 /* FavoritesViewStrings.plist in Resources */,
+				2200E53B239621FE00897286 /* DetailViewStrings.plist in Resources */,
 				22A4DD5D235009890004881B /* apod-ranged-response.json in Resources */,
 				2244523B212D08A100889244 /* Assets.xcassets in Resources */,
 			);
@@ -656,6 +695,7 @@
 				22A4DD6523500C0A0004881B /* Endpoint.swift in Sources */,
 				22A4DD6623500C0D0004881B /* Environment.swift in Sources */,
 				2281F28923877326001D52D3 /* UICollectionViewCell+Extensions.swift in Sources */,
+				2200E54A2396271700897286 /* Localizable.swift in Sources */,
 				22A4DD6123500BEF0004881B /* MockClient.swift in Sources */,
 				220B1F1B234D7273008BAAF6 /* AboutViewUITests.swift in Sources */,
 				2281F28523877314001D52D3 /* UIView+Extensions.swift in Sources */,
@@ -674,6 +714,7 @@
 				2281F28723877321001D52D3 /* UIFont+Extensions.swift in Sources */,
 				2281F28C2387732C001D52D3 /* DateFormatter+Extensions.swift in Sources */,
 				2281F2862387731F001D52D3 /* UITableViewCell+Extensions.swift in Sources */,
+				2200E5482396271000897286 /* Storage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -713,6 +754,7 @@
 				22D47127211C0E5A0006EAD6 /* DiscoverDataSource.swift in Sources */,
 				22E315C923726D40008EDF34 /* NSMutableAttributedString+Extensions.swift in Sources */,
 				22E315C723726D22008EDF34 /* String+Extensions.swift in Sources */,
+				2200E52E23960F3500897286 /* Localizable.swift in Sources */,
 				225220342104391100221D29 /* AppDelegate.swift in Sources */,
 				222120D623601163009D24AB /* FavoritesViewController.swift in Sources */,
 				22288FCF231CB60100EE082E /* AboutViewController.swift in Sources */,
@@ -739,6 +781,7 @@
 				2281F27F2387724A001D52D3 /* UIFont+Extensions.swift in Sources */,
 				2281F28223877250001D52D3 /* URL+Extensions.swift in Sources */,
 				22CE291D23447BA000170FEE /* APOD.swift in Sources */,
+				2200E5472396270F00897286 /* Storage.swift in Sources */,
 				2281F28F238791EB001D52D3 /* Optional+Extensions.swift in Sources */,
 				2281F28B2387732B001D52D3 /* DateFormatter+Extensions.swift in Sources */,
 				22A4DD6C23500CA30004881B /* Configuration.swift in Sources */,
@@ -746,6 +789,7 @@
 				22CE291A234479E100170FEE /* MockSession.swift in Sources */,
 				2281F27D23877244001D52D3 /* String+Extensions.swift in Sources */,
 				22C8341A2349638B00B876A6 /* SortedSet.swift in Sources */,
+				2200E5492396271600897286 /* Localizable.swift in Sources */,
 				22C834192349630200B876A6 /* SortedSetTests.swift in Sources */,
 				22CE2919234479BC00170FEE /* CosmosClientTests.swift in Sources */,
 				2281F2802387724C001D52D3 /* UITableViewCell+Extensions.swift in Sources */,
@@ -770,6 +814,38 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		2200E53323961C6200897286 /* AboutViewStrings.plist */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2200E53223961C6200897286 /* en */,
+			);
+			name = AboutViewStrings.plist;
+			sourceTree = "<group>";
+		};
+		2200E53D239621FE00897286 /* DetailViewStrings.plist */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2200E53E2396220100897286 /* en */,
+			);
+			name = DetailViewStrings.plist;
+			sourceTree = "<group>";
+		};
+		2200E5412396220500897286 /* DiscoverViewStrings.plist */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2200E5422396220800897286 /* en */,
+			);
+			name = DiscoverViewStrings.plist;
+			sourceTree = "<group>";
+		};
+		2200E5452396220D00897286 /* FavoritesViewStrings.plist */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2200E5462396221000897286 /* en */,
+			);
+			name = FavoritesViewStrings.plist;
+			sourceTree = "<group>";
+		};
 		225220372104391100221D29 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

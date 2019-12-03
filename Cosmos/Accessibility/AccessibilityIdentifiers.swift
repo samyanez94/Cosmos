@@ -31,6 +31,7 @@ enum DetailViewAccessibilityIdentifier {
 enum AboutViewAccessibilityIdentifier {
     enum Label {
         static let aboutTitleLabel = "AboutTitleLabelIdentifier"
+        static let aboutBodyQuoteLabel = "AboutBodyQuoteLabelIdentifier"
         static let aboutBodyLabel = "AboutBodyLabelIdentifier"
         static let acknowledgementsTitleLabel = "AcknowledgementsTitleLabelIdentifier"
         static let acknowledgementsBodyLabel = "AcknowledgementsBodyLabelIdentifier"

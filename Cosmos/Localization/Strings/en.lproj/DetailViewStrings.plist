@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Title</key>
+	<dict>
+		<key>value</key>
+		<string>About</string>
+		<key>comment</key>
+		<string></string>
+	</dict>
+	<key>Missing Explanation</key>
+	<dict>
+		<key>value</key>
+		<string>There is no description available for this media.</string>
+		<key>comment</key>
+		<string></string>
+	</dict>
+	<key>Today</key>
+	<dict>
+		<key>value</key>
+		<string>Today</string>
+		<key>comment</key>
+		<string></string>
+	</dict>
+	<key>Yesterday</key>
+	<dict>
+		<key>value</key>
+		<string>Yesterday</string>
+		<key>comment</key>
+		<string></string>
+	</dict>
+	<key>Copyright</key>
+	<dict>
+		<key>value</key>
+		<string>Copyright: %@</string>
+		<key>comment</key>
+		<string></string>
+	</dict>
+</dict>
+</plist>

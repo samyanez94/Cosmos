@@ -32,9 +32,9 @@ class DiscoverViewController: UIViewController {
     @IBOutlet var errorView: UIView! {
         didSet {
             errorView.isAccessibilityElement = true
-            errorView.accessibilityLabel = errorLabel.text
+            errorView.accessibilityLabel = DiscoverViewStrings.errorMessage.localized
             errorView.accessibilityTraits = .button
-            errorView.accessibilityHint = "Double tap to load the view one more time."
+            errorView.accessibilityHint = "Tap to load the view one more time."
         }
     }
     
@@ -43,6 +43,7 @@ class DiscoverViewController: UIViewController {
         didSet {
             errorLabel.font = scaledFont.font(forTextStyle: .body)
             errorLabel.adjustsFontForContentSizeCategory = true
+            errorLabel.text = DiscoverViewStrings.errorMessage.localized
         }
     }
     
@@ -71,6 +72,8 @@ class DiscoverViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        title = DiscoverViewStrings.title.localized
                 
         fetch(count: collectionPageSize, offset: collectionOffset) {
             self.activityIndicatorView.isHidden = true

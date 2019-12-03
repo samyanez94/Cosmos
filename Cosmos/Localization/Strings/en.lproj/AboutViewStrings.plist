@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Title</key>
+	<dict>
+		<key>value</key>
+		<string>About</string>
+		<key>comment</key>
+		<string></string>
+	</dict>
+	<key>About Body Quote</key>
+	<dict>
+		<key>value</key>
+		<string>“The Cosmos is all that is, or ever was, or ever will be.” - Carl Sagan.</string>
+		<key>comment</key>
+		<string></string>
+	</dict>
+	<key>About Body</key>
+	<dict>
+		<key>value</key>
+		<string>This app was born from a strong desire to learn more about space and software development. I decided to build an iOS app that displays images and videos from our universe. Keeping in mind a minimal and user-friendly design. I hope you enjoy it and share it with your friends if you like it.</string>
+		<key>comment</key>
+		<string></string>
+	</dict>
+	<key>Acknowledgements Title</key>
+	<dict>
+		<key>value</key>
+		<string>Acknowledgements</string>
+		<key>comment</key>
+		<string></string>
+	</dict>
+	<key>Acknowledgements Body</key>
+	<dict>
+		<key>value</key>
+		<string>All content featured in this app comes from NASA’s APOD API, a service that has been offering daily pictures of our universe since 1995. It contains the largest collection of annotated astronomical images on the internet.</string>
+		<key>comment</key>
+		<string></string>
+	</dict>
+	<key>Version</key>
+	<dict>
+		<key>value</key>
+		<string>Version %@</string>
+		<key>comment</key>
+		<string></string>
+	</dict>
+</dict>
+</plist>

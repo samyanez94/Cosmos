@@ -110,6 +110,10 @@ class DetailViewController: UIViewController {
     // MARK: View lifecycle
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        title = DetailViewStrings.title.localized
+        
         if let viewModel = viewModel {
             updateView(for: viewModel)
         }

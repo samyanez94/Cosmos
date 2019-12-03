@@ -31,6 +31,7 @@ class AboutViewUITests: XCTestCase {
         app.tabBars.buttons["About"].tap()
         
         // Elements are found using their accessibility identifiers.
+        let aboutBodyQuote = app.staticTexts[AboutViewAccessibilityIdentifier.Label.aboutBodyQuoteLabel]
         let aboutBodyLabel = app.staticTexts[AboutViewAccessibilityIdentifier.Label.aboutBodyLabel]
         let acknowledgementsTitleLabel = app.staticTexts[AboutViewAccessibilityIdentifier.Label.acknowledgementsTitleLabel]
         let acknowledgementsBodyLabel = app.staticTexts[AboutViewAccessibilityIdentifier.Label.acknowledgementsBodyLabel]
@@ -38,6 +39,7 @@ class AboutViewUITests: XCTestCase {
         let versionLabel = app.staticTexts[AboutViewAccessibilityIdentifier.Label.versionLabel]
         
         // Assert that elements exists.
+        XCTAssertTrue(aboutBodyQuote.exists, "About body quote label should exist.")
         XCTAssertTrue(aboutBodyLabel.exists, "About body label should exist.")
         XCTAssertTrue(acknowledgementsTitleLabel.exists, "Acknowledgements title label should exist.")
         XCTAssertTrue(acknowledgementsBodyLabel.exists, "Acknowledgements body label should exist.")

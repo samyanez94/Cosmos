@@ -10,12 +10,13 @@ import UIKit
 
 class AboutViewController: UIViewController {
     
-    /// About title
-    @IBOutlet private var aboutTitleLabel: UILabel! {
+    /// About quote
+    @IBOutlet private var aboutBodyQuoteLabel: UILabel! {
         didSet {
-            aboutTitleLabel.accessibilityIdentifier = AboutViewAccessibilityIdentifier.Label.aboutTitleLabel
-            aboutTitleLabel.font = scaledFont.font(forTextStyle: .headline)
-            aboutTitleLabel.adjustsFontForContentSizeCategory = true
+            aboutBodyQuoteLabel.accessibilityIdentifier = AboutViewAccessibilityIdentifier.Label.aboutBodyQuoteLabel
+            aboutBodyQuoteLabel.font = scaledFont.font(forTextStyle: .body)
+            aboutBodyQuoteLabel.adjustsFontForContentSizeCategory = true
+            aboutBodyQuoteLabel.text = AboutViewStrings.aboutBodyQuote.localized
         }
     }
     
@@ -25,6 +26,7 @@ class AboutViewController: UIViewController {
             aboutBodyLabel.accessibilityIdentifier = AboutViewAccessibilityIdentifier.Label.aboutBodyLabel
             aboutBodyLabel.font = scaledFont.font(forTextStyle: .body)
             aboutBodyLabel.adjustsFontForContentSizeCategory = true
+            aboutBodyLabel.text = AboutViewStrings.aboutBody.localized
         }
     }
     
@@ -34,6 +36,7 @@ class AboutViewController: UIViewController {
             acknowledgementsTitleLabel.accessibilityIdentifier = AboutViewAccessibilityIdentifier.Label.acknowledgementsTitleLabel
             acknowledgementsTitleLabel.font = scaledFont.font(forTextStyle: .headline)
             acknowledgementsTitleLabel.adjustsFontForContentSizeCategory = true
+            acknowledgementsTitleLabel.text = AboutViewStrings.acknowledgementsTitle.localized
         }
     }
     
@@ -43,6 +46,7 @@ class AboutViewController: UIViewController {
             acknowledgementsBodyLabel.accessibilityIdentifier = AboutViewAccessibilityIdentifier.Label.acknowledgementsBodyLabel
             acknowledgementsBodyLabel.font = scaledFont.font(forTextStyle: .body)
             acknowledgementsBodyLabel.adjustsFontForContentSizeCategory = true
+            acknowledgementsBodyLabel.text = AboutViewStrings.acknowledgementsBody.localized
         }
     }
     
@@ -58,10 +62,10 @@ class AboutViewController: UIViewController {
     @IBOutlet private var versionLabel: UILabel! {
         didSet {
             if let versionNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String {
-                versionLabel.text = "Version \(versionNumber)"
                 versionLabel.accessibilityIdentifier = AboutViewAccessibilityIdentifier.Label.versionLabel
                 versionLabel.font = scaledFont.font(forTextStyle: .body)
                 versionLabel.adjustsFontForContentSizeCategory = true
+                versionLabel.text = String(format: AboutViewStrings.version.localized, versionNumber)
             }
         }
     }
@@ -73,6 +77,8 @@ class AboutViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        title = AboutViewStrings.title.localized
     }
     
     @IBAction func didTapOnAboutButton(_ sender: Any) {

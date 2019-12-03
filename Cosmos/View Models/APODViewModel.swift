@@ -27,7 +27,7 @@ extension APODViewModel {
      }
          
      var explanation: String {
-         apod.explanation.isEmpty ? "There is no description available for this media." : apod.explanation
+        apod.explanation.isEmpty ? DetailViewStrings.missingExplanation.localized : apod.explanation
      }
      
      var mediaType: APOD.MediaType {
@@ -36,9 +36,9 @@ extension APODViewModel {
      
      var preferredDate: String? {
          if apod.date.isToday() {
-             return "Today"
+            return DetailViewStrings.today.localized
          } else if apod.date.isYesterday() {
-             return "Yesterday"
+            return DetailViewStrings.yesterday.localized
          } else {
              return nil
          }
@@ -46,7 +46,7 @@ extension APODViewModel {
      
      var copyright: String? {
          if let author = apod.copyright {
-             return "Copyright: \(author)"
+            return String(format: DetailViewStrings.copyright.localized, author)
          }
          return nil
      }
