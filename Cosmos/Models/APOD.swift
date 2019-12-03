@@ -43,7 +43,11 @@ extension APOD {
         case .image:
             return URL(string: urlString)
         case .video:
-            return URL(string: thumbnailUrlString)
+            if let thumbnailUrlString = thumbnailUrlString {
+                return URL(string: thumbnailUrlString)
+            } else {
+                return nil
+            }
         }
     }
 }
