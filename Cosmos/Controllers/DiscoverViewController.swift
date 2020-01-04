@@ -22,11 +22,7 @@ class DiscoverViewController: UIViewController {
     }
     
     /// Ativity indicator
-    @IBOutlet var activityIndicatorView: UIView! {
-        didSet {
-            activityIndicatorView.isHidden = false
-        }
-    }
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
     
     /// Error view
     @IBOutlet var errorView: UIView! {
@@ -71,7 +67,7 @@ class DiscoverViewController: UIViewController {
         title = DiscoverViewStrings.title.localized
                 
         fetch(count: collectionPageSize, offset: collectionOffset) {
-            self.activityIndicatorView.isHidden = true
+            self.activityIndicator.stopAnimating()
         }
     }
     
@@ -82,7 +78,7 @@ class DiscoverViewController: UIViewController {
     // MARK: Collection View
     
     @objc func handleRefreshControl() {
-        fetch(count: 10) {
+        fetch(count: collectionPageSize) {
             self.collectionView.refreshControl?.endRefreshing()
         }
     }
@@ -104,18 +100,19 @@ class DiscoverViewController: UIViewController {
     
     func fetch(count: Int, offset: Int = 0, completion: (() -> Void)? = nil) {
         client.fetch(count: count, offset: offset) { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .failure:
-                self?.collectionView.isHidden = true
-                self?.errorView.isHidden = false
+                self.collectionView.isHidden = true
+                self.errorView.isHidden = false
             case .success(let apods):
-                self?.dataSource.append(apods)
-                self?.collectionView.reloadData()
-                self?.collectionView.isHidden = false
-                self?.errorView.isHidden = true
+                self.dataSource.append(apods)
+                self.collectionView.reloadData()
+                self.collectionView.isHidden = false
+                self.errorView.isHidden = true
                 
                 // Important to increase the offset for pagination
-                self?.collectionOffset = offset + 10
+                self.collectionOffset = offset + self.collectionPageSize
             }
             if let completion = completion {
                 completion()
@@ -125,9 +122,9 @@ class DiscoverViewController: UIViewController {
     
     @IBAction func didTapOnRefreshButton(_ sender: Any) {
         errorView.isHidden = true
-        activityIndicatorView.isHidden = false
+        activityIndicator.startAnimating()
         fetch(count: collectionPageSize, offset: collectionOffset) {
-            self.activityIndicatorView.isHidden = true
+            self.activityIndicator.stopAnimating()
         }
     }
     

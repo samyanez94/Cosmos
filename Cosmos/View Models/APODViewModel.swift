@@ -44,9 +44,9 @@ extension APODViewModel {
          }
      }
      
-     var copyright: String? {
+     var copyright: NSMutableAttributedString? {
          if let author = apod.copyright {
-            return String(format: DetailViewStrings.copyright.localized, author)
+            return NSMutableAttributedString(string: String(format: DetailViewStrings.copyright.localized, author), blackString: "Copyright", font: .systemFont(ofSize: 20))
          }
          return nil
      }

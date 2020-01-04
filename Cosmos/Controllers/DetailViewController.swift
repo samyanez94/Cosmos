@@ -134,7 +134,7 @@ class DetailViewController: UIViewController {
         dateLabel.text = viewModel.preferredDate ?? viewModel.date
         titleLabel.text = viewModel.title
         explanationLabel.text = viewModel.explanation
-        copyrightLabel.text = viewModel.copyright
+        copyrightLabel.attributedText = viewModel.copyright
     }
     
     private func updateMediaView(for viewModel: APODViewModel) {

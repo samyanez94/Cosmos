@@ -30,7 +30,7 @@ struct ShareManager {
         .postToFacebook
     ]
     
-    // TODO: Localize strings...
+    // TODO: Localize these strings...
     
     func activityViewController(with media: Sharing.Media) -> UIActivityViewController {
         let activityViewController: UIActivityViewController = {
