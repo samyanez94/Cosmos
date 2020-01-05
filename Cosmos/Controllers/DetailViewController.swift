@@ -11,6 +11,7 @@ import WebKit
 import Alamofire
 import AlamofireImage
 import Lightbox
+import Toast_Swift
 
 class DetailViewController: UIViewController {
         
@@ -259,8 +260,12 @@ class DetailViewController: UIViewController {
     
     @IBAction func didTapOnSave(_ sender: Any) {
         if let image = imageView.image {
-            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+            UIImageWriteToSavedPhotosAlbum(image, self, #selector(saveCompletionHandler), nil)
         }
+    }
+    
+    @objc func saveCompletionHandler(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        view.makeToast("Image saved to your photos", duration: 3.0, position: .bottom)
     }
 }
 

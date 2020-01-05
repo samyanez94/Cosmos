@@ -10,4 +10,5 @@ target 'Cosmos' do
     pod 'SwiftLint'
     pod 'AlamofireImage', '~> 3.5'
     pod 'Lightbox', '~> 2.3'
+    pod 'Toast-Swift', '~> 5.0.1'
 end

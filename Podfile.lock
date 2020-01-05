@@ -8,11 +8,13 @@ PODS:
   - Lightbox (2.3.0):
     - Imaginary (~> 4.0)
   - SwiftLint (0.33.0)
+  - Toast-Swift (5.0.1)
 
 DEPENDENCIES:
   - AlamofireImage (~> 3.5)
   - Lightbox (~> 2.3)
   - SwiftLint
+  - Toast-Swift (~> 5.0.1)
 
 SPEC REPOS:
   trunk:
@@ -22,6 +24,7 @@ SPEC REPOS:
     - Imaginary
     - Lightbox
     - SwiftLint
+    - Toast-Swift
 
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
@@ -30,7 +33,8 @@ SPEC CHECKSUMS:
   Imaginary: dae33d06dbc2ada22f98afef5eb45cc061311a2c
   Lightbox: d317750e4132bfb871a5307cfe0a2c7d6a583c65
   SwiftLint: fed9c66336e41fc74dc48a73678380718f0c8b0e
+  Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: 33794e301e621c8502353763e4a42f299ee18955
+PODFILE CHECKSUM: 2a1fc36a089b70bc289b0b2ffb8111554d3b8f08
 
 COCOAPODS: 1.8.4
