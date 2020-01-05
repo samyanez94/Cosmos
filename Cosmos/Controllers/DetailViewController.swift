@@ -107,11 +107,17 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        title = DetailViewStrings.title.localized
-        
+                
         if let viewModel = viewModel {
             updateView(for: viewModel)
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let viewModel = viewModel {
+            updateFavoritesButton(for: viewModel)
         }
     }
     
