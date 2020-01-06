@@ -237,14 +237,9 @@ class DetailViewController: UIViewController {
     
     @IBAction func didTapOnFavorites(_ sender: Any) {
         guard let viewModel = viewModel else { return }
-        feedbackGenerator.prepare()
         favoritesManager.isFavorite(viewModel.apod.date) { isFavorite in
             guard let viewModel = self.viewModel else { return }
-            if isFavorite {
-                self.favoritesManager.removeFromFavorites(viewModel.apod.date)
-            } else {
-                self.favoritesManager.addToFavorites(viewModel.apod.date)
-            }
+            isFavorite ? self.favoritesManager.removeFromFavorites(viewModel.apod.date) : self.favoritesManager.addToFavorites(viewModel.apod.date)
             print(viewModel.apod.date.description)
             feedbackGenerator.selectionChanged()
             self.animateFavoritesButtonTransition(isFavorite: !isFavorite)
@@ -267,6 +262,7 @@ class DetailViewController: UIViewController {
     @IBAction func didTapOnSave(_ sender: Any) {
         if let image = imageView.image {
             UIImageWriteToSavedPhotosAlbum(image, self, #selector(saveCompletionHandler), nil)
+            feedbackGenerator.selectionChanged()
         }
     }
     
