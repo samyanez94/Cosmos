@@ -30,12 +30,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         LightboxConfig.PageIndicator.enabled = false
     }
     
+    // TODO: Remove pod by implementing native toast
+    
     private func configureToasts() {
         var style = ToastStyle()
         style.backgroundColor = UIColor(named: "Accent Color") ?? .black
-        style.messageFont = .systemFont(ofSize: 16)
-        style.verticalPadding = 12.0
-        style.horizontalPadding = 12.0
+        style.messageFont = .boldSystemFont(ofSize: 16)
+        style.verticalPadding = 14.0
+        style.horizontalPadding = 16.0
         ToastManager.shared.style = style
         ToastManager.shared.isQueueEnabled = true
     }

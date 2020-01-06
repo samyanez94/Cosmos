@@ -46,6 +46,8 @@ class DetailViewController: UIViewController {
         }
     }
     
+    @IBOutlet var saveButtonGestureRecognizer: UITapGestureRecognizer!
+    
     /// Date label
     @IBOutlet private var dateLabel: UILabel! {
         didSet {
@@ -261,13 +263,15 @@ class DetailViewController: UIViewController {
     
     @IBAction func didTapOnSave(_ sender: Any) {
         if let image = imageView.image {
+            saveButtonGestureRecognizer.isEnabled = false
             UIImageWriteToSavedPhotosAlbum(image, self, #selector(saveCompletionHandler), nil)
             feedbackGenerator.selectionChanged()
         }
     }
     
-    @objc func saveCompletionHandler(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
-        view.makeToast("Image saved to your photos", duration: 3.0, position: .bottom)
+    @objc func saveCompletionHandler(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {        view.makeToast(DetailViewStrings.saveToPhotosMessage.localized, duration: 2.0, position: .bottom) { _ in
+            self.saveButtonGestureRecognizer.isEnabled = true
+        }
     }
 }
 

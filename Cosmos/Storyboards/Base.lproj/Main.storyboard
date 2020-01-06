@@ -367,6 +367,7 @@ Tap here to try again.</string>
                         <outlet property="favoritesButton" destination="sFP-RP-ymO" id="2pU-Vn-y2A"/>
                         <outlet property="mediaContainerView" destination="rMg-do-b2Y" id="qNI-he-MUZ"/>
                         <outlet property="saveButton" destination="wnd-0P-ZAr" id="CaP-6M-LoI"/>
+                        <outlet property="saveButtonGestureRecognizer" destination="059-Q4-43j" id="Ret-yx-Pu1"/>
                         <outlet property="scrollView" destination="owF-5j-ToJ" id="IeF-nJ-IgQ"/>
                         <outlet property="shareButton" destination="uyW-YK-7wG" id="guz-ja-7WE"/>
                         <outlet property="titleLabel" destination="6RQ-rn-5S1" id="9e3-5Y-veo"/>
@@ -444,7 +445,7 @@ Tap here to try again.</string>
                                                     <color key="titleColor" name="Accent Color"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="didTapOnAboutButton:" destination="77o-Fw-cle" eventType="touchUpInside" id="Kra-Xf-ukX"/>
+                                                    <action selector="didTapOnAboutButton" destination="77o-Fw-cle" eventType="touchUpInside" id="Ccy-g2-aQw"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version 1.2.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LgY-bM-WJr" userLabel="Version Label">

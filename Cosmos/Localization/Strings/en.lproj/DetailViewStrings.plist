@@ -37,5 +37,12 @@
 		<key>comment</key>
 		<string></string>
 	</dict>
+	<key>Save to Photos</key>
+	<dict>
+		<key>value</key>
+		<string>Image saved to Photos</string>
+		<key>comment</key>
+		<string></string>
+	</dict>
 </dict>
 </plist>

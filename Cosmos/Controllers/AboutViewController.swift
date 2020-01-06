@@ -60,6 +60,7 @@ class AboutViewController: UIViewController {
         }
     }
     
+    /// Version label
     @IBOutlet private var versionLabel: UILabel! {
         didSet {
             if let versionNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String {
@@ -77,8 +78,8 @@ class AboutViewController: UIViewController {
         title = AboutViewStrings.title.localized
     }
     
-    @IBAction func didTapOnAboutButton(_ sender: Any) {
-        if let url = URL(string: "https://apod.nasa.gov/apod/") {
+    @IBAction func didTapOnAboutButton() {
+       if let url = URL(string: "https://apod.nasa.gov/apod/") {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }
