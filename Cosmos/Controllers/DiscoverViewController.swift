@@ -43,10 +43,8 @@ class DiscoverViewController: UIViewController {
         }
     }
     
-    // TODO: Consider using dependency injection here...
-    
     /// API Client
-    lazy var client =  Configuration.isUITest ? MockClient() : CosmosClient()
+    lazy var client = CosmosClient()
     
     /// Data Source
     lazy var dataSource: DiscoverDataSource = {
