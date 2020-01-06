@@ -37,6 +37,13 @@
 		<key>comment</key>
 		<string></string>
 	</dict>
+	<key>Visit Button</key>
+	<dict>
+		<key>value</key>
+		<string>Visit NASA&apos;s APOD official website</string>
+		<key>comment</key>
+		<string></string>
+	</dict>
 	<key>Version</key>
 	<dict>
 		<key>value</key>
