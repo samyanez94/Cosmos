@@ -37,10 +37,17 @@
 		<key>comment</key>
 		<string></string>
 	</dict>
-	<key>Save to Photos</key>
+	<key>Save to Photos Succeeded</key>
 	<dict>
 		<key>value</key>
 		<string>Image saved to Photos</string>
+		<key>comment</key>
+		<string></string>
+	</dict>
+	<key>Save to Photos Failed</key>
+	<dict>
+		<key>value</key>
+		<string>Oops! Something went wrong</string>
 		<key>comment</key>
 		<string></string>
 	</dict>

@@ -64,7 +64,8 @@ enum DetailViewStrings: Localizable {
     case today
     case yesterday
     case copyright
-    case saveToPhotosMessage
+    case saveToPhotosSucceededMessage
+    case saveToPhotosFailedMessage
     
     var key: String {
         switch self {
@@ -73,7 +74,8 @@ enum DetailViewStrings: Localizable {
         case .today: return "Today"
         case .yesterday: return "Yesterday"
         case .copyright: return "Copyright"
-        case .saveToPhotosMessage: return "Save to Photos"
+        case .saveToPhotosSucceededMessage: return "Save to Photos Succeeded"
+        case .saveToPhotosFailedMessage: return "Save to Photos Failed"
         }
     }
 }

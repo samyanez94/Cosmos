@@ -6,6 +6,7 @@
 //  Copyright © 2018 Samuel Yanez. All rights reserved.
 //
 
+import Photos
 import UIKit
 import WebKit
 import Alamofire
@@ -262,16 +263,37 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func didTapOnSave(_ sender: Any) {
-        if let image = imageView.image {
-            saveButtonGestureRecognizer.isEnabled = false
-            UIImageWriteToSavedPhotosAlbum(image, self, #selector(saveCompletionHandler), nil)
-            feedbackGenerator.selectionChanged()
+        guard let image = imageView.image else { return }
+        saveButtonGestureRecognizer.isEnabled = false
+        UIImageWriteToSavedPhotosAlbum(image, self, #selector(saveCompletionHandler), nil)
+        feedbackGenerator.selectionChanged()
+    }
+    
+    @objc func saveCompletionHandler(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        guard error == nil else {
+            presentAlertForDeniedAccessToPhotos()
+            self.saveButtonGestureRecognizer.isEnabled = true
+            return
+        }
+        view.makeToast(DetailViewStrings.saveToPhotosSucceededMessage.localized, duration: 2.0, position: .bottom) { _ in
+            self.saveButtonGestureRecognizer.isEnabled = true
         }
     }
     
-    @objc func saveCompletionHandler(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {        view.makeToast(DetailViewStrings.saveToPhotosMessage.localized, duration: 2.0, position: .bottom) { _ in
-            self.saveButtonGestureRecognizer.isEnabled = true
+    private func presentAlertForDeniedAccessToPhotos() {
+        let alertController = UIAlertController (title: "Allow Cosmos access to your photos", message: "To save images please allow Cosmos access from Settings.", preferredStyle: .alert)
+        let settingsAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
+            guard let url = URL(string: UIApplication.openSettingsURLString) else {
+                return
+            }
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url)
+            }
         }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+        alertController.addAction(settingsAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
     }
 }
 
