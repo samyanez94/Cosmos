@@ -9,7 +9,6 @@
 import Photos
 import UIKit
 import WebKit
-import Alamofire
 import AlamofireImage
 import Lightbox
 import Toast_Swift
@@ -127,14 +126,14 @@ class DetailViewController: UIViewController {
     // MARK: View Updates
     
     private func updateView(for viewModel: APODViewModel) {
-        updateViews(for: viewModel)
+        updateSubViews(for: viewModel)
         updateLabels(for: viewModel)
         updateFavoritesButton(for: viewModel)
-        updateMediaView(for: viewModel)
+        updateMedia(for: viewModel)
         updateFavoritesButton(for: viewModel)
     }
     
-    private func updateViews(for viewModel: APODViewModel) {
+    private func updateSubViews(for viewModel: APODViewModel) {
         dateLabelGestureRecognizer.isEnabled = viewModel.preferredDate.isNotNil
         copyrightLabel.isHidden = viewModel.copyright.isNil
         saveButton.isHidden = viewModel.mediaType == .video
@@ -147,7 +146,7 @@ class DetailViewController: UIViewController {
         copyrightLabel.attributedText = viewModel.copyright
     }
     
-    private func updateMediaView(for viewModel: APODViewModel) {
+    private func updateMedia(for viewModel: APODViewModel) {
         if let url = viewModel.url {
             switch viewModel.mediaType {
             case .image:

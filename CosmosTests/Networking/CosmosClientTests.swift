@@ -52,7 +52,7 @@ class CosmosClientTests: XCTestCase {
     
     func testSuccessfulRequest() {
         // Given
-        client = MockClient(withResource: "apod-single-response", ofType: "json", inBundle: bundle)
+        client = MockClient(withResource: "single_response_success", ofType: "json", inBundle: bundle)
                 
         let promise = expectation(description: "Fetch completed. 🚀")
         
@@ -75,7 +75,7 @@ class CosmosClientTests: XCTestCase {
     
     func testSuccessfulDatedRequest() {
         // Given
-        client = MockClient(withResource: "apod-single-response", ofType: "json", inBundle: bundle)
+        client = MockClient(withResource: "single_response_success", ofType: "json", inBundle: bundle)
         
         let promise = expectation(description: "Fetch completed. 🚀")
         
@@ -98,7 +98,7 @@ class CosmosClientTests: XCTestCase {
     
     func testSuccessfulRandomRequest() {
         // Given
-        client = MockClient(withResource: "apod-ranged-response", ofType: "json", inBundle: bundle)
+        client = MockClient(withResource: "ranged_response_success", ofType: "json", inBundle: bundle)
         
         let promise = expectation(description: "Fetch completed. 🚀")
         
@@ -121,7 +121,7 @@ class CosmosClientTests: XCTestCase {
     
     func testSuccessfulRangedRequest() {
         // Given
-        client = MockClient(withResource: "apod-ranged-response", ofType: "json", inBundle: bundle)
+        client = MockClient(withResource: "ranged_response_success", ofType: "json", inBundle: bundle)
         
         let promise = expectation(description: "Fetch completed. 🚀")
         
@@ -338,12 +338,5 @@ class CosmosClientTests: XCTestCase {
         // Then
         XCTAssertEqual(error, APIError.requestFailed, "Request should fail.")
         XCTAssertNil(apod, "Response should be nil.")
-    }
-    
-    func testSuccessfulResponsePerformance() {
-        let client = MockClient(withResource: "apod-single-response", ofType: "json", inBundle: bundle)
-        measure {
-            client.fetch()
-        }
     }
 }

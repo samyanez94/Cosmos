@@ -6,9 +6,9 @@
 //  Copyright © 2018 Samuel Yanez. All rights reserved.
 //
 
+import AlamofireImage
 import Foundation
 import UIKit
-import Alamofire
 
 class DiscoverDataSource: NSObject, UICollectionViewDataSource {
     
