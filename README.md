@@ -20,7 +20,7 @@ Content feature in the app comes from [NASA's APOD API](https://api.nasa.gov), a
 
 ## Contributing
 
-Building this app has been a rewarding experience. Please, feel free to contribute by looking at the pending issues on the Issues tab on GitHub. I try to keep it updated with new features and bugs 🐛.
+Building this app has been a rewarding experience. Please, feel free to contribute by looking at the pending issues on the Issues tab on GitHub. I'll try to keep it updated with new features and bugs 🐛.
 
 ## Author
 * Samuel Yanez ~ [samyanez94](https://github.com/samyanez94)
