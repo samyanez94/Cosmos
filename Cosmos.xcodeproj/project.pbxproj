@@ -31,6 +31,8 @@
 		225220392104391100221D29 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 225220372104391100221D29 /* Main.storyboard */; };
 		225220412104391200221D29 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2252203F2104391200221D29 /* LaunchScreen.storyboard */; };
 		2252204921043C0E00221D29 /* APOD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2252204821043C0E00221D29 /* APOD.swift */; };
+		225A539323D5762B00677896 /* ShareStrings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 225A539223D5762B00677896 /* ShareStrings.plist */; };
+		225A539423D579DD00677896 /* EnvironmentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223A2BF1233B0FFA00005DFA /* EnvironmentManager.swift */; };
 		226E25B723245E9800908A39 /* SortedSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E25B623245E9800908A39 /* SortedSet.swift */; };
 		227846B62346CDCE009F01B8 /* single_response_success.json in Resources */ = {isa = PBXBuildFile; fileRef = 227846B42346CDCE009F01B8 /* single_response_success.json */; };
 		2281F27B23877240001D52D3 /* JSONDecoder+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E315C423726CFF008EDF34 /* JSONDecoder+Extensions.swift */; };
@@ -65,7 +67,6 @@
 		22CE291C23447B0C00170FEE /* CosmosClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BC0A0C21056A580086BB19 /* CosmosClient.swift */; };
 		22CE291D23447BA000170FEE /* APOD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2252204821043C0E00221D29 /* APOD.swift */; };
 		22CE291E23447BCF00170FEE /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA5F08229B4EC000E27EC4 /* APIClient.swift */; };
-		22CE291F23447BD600170FEE /* EnvironmentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223A2BF1233B0FFA00005DFA /* EnvironmentManager.swift */; };
 		22CE292023447BD900170FEE /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AA95AF21055E47001B755F /* Endpoint.swift */; };
 		22D47127211C0E5A0006EAD6 /* DiscoverDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D47126211C0E5A0006EAD6 /* DiscoverDataSource.swift */; };
 		22DABE4221BC617F004D6EBF /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DABE4121BC617F004D6EBF /* TabBarViewController.swift */; };
@@ -115,6 +116,7 @@
 		225220402104391200221D29 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		225220422104391200221D29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2252204821043C0E00221D29 /* APOD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APOD.swift; sourceTree = "<group>"; };
+		225A539223D5762B00677896 /* ShareStrings.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ShareStrings.plist; sourceTree = "<group>"; };
 		226E25B623245E9800908A39 /* SortedSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortedSet.swift; sourceTree = "<group>"; };
 		227846B42346CDCE009F01B8 /* single_response_success.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = single_response_success.json; sourceTree = "<group>"; };
 		2281F28D238791EB001D52D3 /* Optional+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Extensions.swift"; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				2200E53D239621FE00897286 /* DetailViewStrings.plist */,
 				2200E5412396220500897286 /* DiscoverViewStrings.plist */,
 				2200E5452396220D00897286 /* FavoritesViewStrings.plist */,
+				225A539223D5762B00677896 /* ShareStrings.plist */,
 			);
 			path = Strings;
 			sourceTree = "<group>";
@@ -214,14 +217,6 @@
 				22B43D5F234169F900DD2A30 /* DynamicFonts.plist */,
 			);
 			path = "Dynamic Typing";
-			sourceTree = "<group>";
-		};
-		2207E60023627895009F9CD5 /* Favorites */ = {
-			isa = PBXGroup;
-			children = (
-				2207E601236278BD009F9CD5 /* FavoritesManager.swift */,
-			);
-			path = Favorites;
 			sourceTree = "<group>";
 		};
 		220B1F22234D7E90008BAAF6 /* Accessibility */ = {
@@ -298,12 +293,11 @@
 				22A7D3E62117F7690011B097 /* Data Sources */,
 				2200E54C23963F7400897286 /* Dynamic Typing */,
 				225810A2213674E900ECBCC3 /* Extensions */,
-				2207E60023627895009F9CD5 /* Favorites */,
 				2200E52C23960EFD00897286 /* Localization */,
+				225A539123D5751C00677896 /* Managers */,
 				22AA95AE21055DE7001B755F /* Models */,
 				22AA95AD21055DD9001B755F /* Networking */,
 				220EE6FD23924064006B16EB /* Property Wrappers */,
-				2281F2912387969D001D52D3 /* Sharing */,
 				221AC07621059C7C006006B7 /* Storyboards */,
 				22C548592356E4D3002A52B4 /* View Models */,
 				22AA95AC2105579E001B755F /* Views */,
@@ -332,12 +326,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		2281F2912387969D001D52D3 /* Sharing */ = {
+		225A539123D5751C00677896 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				223A2BF1233B0FFA00005DFA /* EnvironmentManager.swift */,
+				2207E601236278BD009F9CD5 /* FavoritesManager.swift */,
 				2281F29223879701001D52D3 /* ShareManager.swift */,
 			);
-			path = Sharing;
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		22A7D3E62117F7690011B097 /* Data Sources */ = {
@@ -364,7 +360,6 @@
 				22FA5F08229B4EC000E27EC4 /* APIClient.swift */,
 				22BC0A0C21056A580086BB19 /* CosmosClient.swift */,
 				22AA95AF21055E47001B755F /* Endpoint.swift */,
-				223A2BF1233B0FFA00005DFA /* EnvironmentManager.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -521,6 +516,7 @@
 				2200E53123961C6200897286 /* AboutViewStrings.plist in Resources */,
 				225220412104391200221D29 /* LaunchScreen.storyboard in Resources */,
 				2200E53F2396220500897286 /* DiscoverViewStrings.plist in Resources */,
+				225A539323D5762B00677896 /* ShareStrings.plist in Resources */,
 				225220392104391100221D29 /* Main.storyboard in Resources */,
 				22B43D60234169F900DD2A30 /* DynamicFonts.plist in Resources */,
 				2200E5432396220D00897286 /* FavoritesViewStrings.plist in Resources */,
@@ -648,7 +644,6 @@
 				2207E603236278BD009F9CD5 /* FavoritesManager.swift in Sources */,
 				22CE292023447BD900170FEE /* Endpoint.swift in Sources */,
 				2281F27E23877248001D52D3 /* UICollectionViewCell+Extensions.swift in Sources */,
-				22CE291F23447BD600170FEE /* EnvironmentManager.swift in Sources */,
 				220B1F25234D7EBB008BAAF6 /* AccessibilityIdentifiers.swift in Sources */,
 				22C5485D2356E824002A52B4 /* EnvironmentTest.swift in Sources */,
 				22AD236323D51A5100AF5992 /* HTTPURLResponse+Dummy.swift in Sources */,
@@ -664,6 +659,7 @@
 				22C8341A2349638B00B876A6 /* SortedSet.swift in Sources */,
 				2200E5492396271600897286 /* Localizable.swift in Sources */,
 				22C834192349630200B876A6 /* SortedSetTests.swift in Sources */,
+				225A539423D579DD00677896 /* EnvironmentManager.swift in Sources */,
 				22CE2919234479BC00170FEE /* CosmosClientTests.swift in Sources */,
 				2281F2802387724C001D52D3 /* UITableViewCell+Extensions.swift in Sources */,
 				22CE291C23447B0C00170FEE /* CosmosClient.swift in Sources */,

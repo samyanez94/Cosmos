@@ -99,9 +99,6 @@ class DetailViewController: UIViewController {
     /// Feedback generator
     private var feedbackGenerator = UISelectionFeedbackGenerator()
     
-    /// Favorites manager
-    private let favoritesManager = UserDefaultsFavoritesManager()
-    
     /// Share manager
     private let shareManager = ShareManager()
     
@@ -158,7 +155,7 @@ class DetailViewController: UIViewController {
     }
     
     private func updateFavoritesButton(for viewModel: APODViewModel) {
-        favoritesManager.isFavorite(viewModel.apod.date) { isFavorite in
+        UserDefaultsFavoritesManager.shared.isFavorite(viewModel.apod.date) { isFavorite in
             animateFavoritesButtonTransition(isFavorite: isFavorite)
         }
     }
@@ -239,9 +236,9 @@ class DetailViewController: UIViewController {
     
     @IBAction func didTapOnFavorites(_ sender: Any) {
         guard let viewModel = viewModel else { return }
-        favoritesManager.isFavorite(viewModel.apod.date) { isFavorite in
+        UserDefaultsFavoritesManager.shared.isFavorite(viewModel.apod.date) { isFavorite in
             guard let viewModel = self.viewModel else { return }
-            isFavorite ? self.favoritesManager.removeFromFavorites(viewModel.apod.date) : self.favoritesManager.addToFavorites(viewModel.apod.date)
+            isFavorite ? UserDefaultsFavoritesManager.shared.removeFromFavorites(viewModel.apod.date) : UserDefaultsFavoritesManager.shared.addToFavorites(viewModel.apod.date)
             print(viewModel.apod.date.description)
             feedbackGenerator.selectionChanged()
             self.animateFavoritesButtonTransition(isFavorite: !isFavorite)
@@ -250,15 +247,16 @@ class DetailViewController: UIViewController {
         
     @IBAction func didTapOnShare(_ sender: Any) {
         guard let viewModel = viewModel else { return }
-        let activityViewController: UIActivityViewController = {
-            switch viewModel.mediaType {
-            case .image:
-                return shareManager.activityViewController(with: .image(imageView.image))
-            case .video:
-                return shareManager.activityViewController(with: .video(viewModel.apod.urlString))
+        switch viewModel.mediaType {
+        case .image:
+            if let image = imageView.image {
+                let activityViewController = shareManager.activityViewController(with: .image(image))
+                present(activityViewController, animated: true)
             }
-        }()
-        present(activityViewController, animated: true)
+        case .video:
+            let activityViewController = shareManager.activityViewController(with: .video(viewModel.apod.urlString))
+            present(activityViewController, animated: true)
+        }
     }
     
     @IBAction func didTapOnSave(_ sender: Any) {

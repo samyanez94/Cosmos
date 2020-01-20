@@ -105,3 +105,15 @@ enum FavoritesViewStrings: Localizable {
         }
     }
 }
+
+enum ShareStrings: Localizable {
+    case imageShareMessage
+    case videoShareMessage
+    
+    var key: String {
+        switch self {
+        case .imageShareMessage: return "Image Share Message"
+        case .videoShareMessage: return "Video Share Message"
+        }
+    }
+}

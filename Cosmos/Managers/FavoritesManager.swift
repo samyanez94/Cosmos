@@ -19,6 +19,9 @@ protocol FavoritesManaging {
 }
 
 class UserDefaultsFavoritesManager: FavoritesManaging {
+    
+    static var shared: FavoritesManaging = UserDefaultsFavoritesManager()
+    
     @Storage(key: "favorites", defaultValue: [])
     var favorites: [Date]
     

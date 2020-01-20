@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Image Share Message</key>
+	<dict>
+		<key>value</key>
+		<string>Checkout this image I discovered using the Cosmos app.
+ 
+The Cosmos app is available on the App Store. %@</string>
+		<key>comment</key>
+		<string></string>
+	</dict>
+	<key>Video Share Message</key>
+	<dict>
+		<key>value</key>
+		<string>Checkout this video I discovered using the Cosmos app: %@.
+
+The Cosmos app is available on the App Store. %@</string>
+		<key>comment</key>
+		<string></string>
+	</dict>
+</dict>
+</plist>
