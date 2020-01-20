@@ -1,5 +1,5 @@
 //
-//  Environment.swift
+//  EnvironmentManager.swift
 //  Cosmos
 //
 //  Created by Samuel Yanez on 9/24/19.
@@ -8,9 +8,9 @@
 
 import Foundation
 
-class Environment {
+class EnvironmentManager {
     
-    static let shared = Environment()
+    static let shared = EnvironmentManager()
     
     private var buildConfigurationKey: String {
         "Build configuration"

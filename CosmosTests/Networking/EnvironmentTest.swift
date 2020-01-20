@@ -10,16 +10,16 @@ import XCTest
 
 class EnvironmentTests: XCTestCase {
     
-    var enviroment: Environment!
+    var enviromentManager: EnvironmentManager!
 
     override func setUp() {
         super.setUp()
         
-        enviroment = Environment()
+        enviromentManager = EnvironmentManager()
     }
 
     func testDescription() {
-        XCTAssertEqual(enviroment.description, "Stage")
+        XCTAssertEqual(enviromentManager.description, "Stage")
     }
 
 }

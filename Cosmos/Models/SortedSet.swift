@@ -63,9 +63,8 @@ public struct SortedSet<E>: Collection where E: Hashable, E: Comparable {
     }
     
     public mutating func remove(_ element: Element) {
-        set.remove(element)
-        array.removeAll { arrayElement -> Bool in
-            arrayElement == element
+        if let element = set.remove(element) {
+            array.removeAll { $0 == element }
         }
     }
 }

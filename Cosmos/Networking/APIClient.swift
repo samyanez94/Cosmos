@@ -8,8 +8,24 @@
 
 import Foundation
 
+protocol APISession {
+    func loadData(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> APISessionDataTask
+}
+
+protocol APISessionDataTask {
+    func resume()
+}
+
+extension URLSession: APISession {
+    func loadData(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> APISessionDataTask {
+        dataTask(with: request, completionHandler: completionHandler)
+    }
+}
+
+extension URLSessionDataTask: APISessionDataTask { }
+
 protocol APIClient {
-    var session: URLSession { get }
+    var session: APISession { get }
     
     func fetch<T: Decodable>(with request: URLRequest, parse: @escaping (Data) -> T?, queue: DispatchQueue, completion: ((Result<T, APIError>) -> Void)?)
     
@@ -19,8 +35,8 @@ protocol APIClient {
 }
 
 extension APIClient {
-    func task(with request: URLRequest, completionHandler completion: @escaping (Swift.Result<Data, APIError>) -> Void) -> URLSessionDataTask {
-        return session.dataTask(with: request) { data, response, error in
+    func task(with request: URLRequest, completionHandler completion: @escaping (Swift.Result<Data, APIError>) -> Void) -> APISessionDataTask {
+        return session.loadData(with: request) { data, response, error in
             if let error = error {
                 completion(.failure(.requestFailedWithError(error.localizedDescription)))
                 return
@@ -75,15 +91,9 @@ extension APIClient {
         }.resume()
     }
     
-    func fetch<T: Decodable>(
-        with requests: [URLRequest],
-        parse: @escaping (Data) -> T?,
-        runQueue: DispatchQueue = .global(qos: .userInitiated),
-        completionQueue: DispatchQueue = .main,
-        group: DispatchGroup = DispatchGroup(),
-        completion: ((Result<[T], APIError>) -> Void)?
-    ) {
-        var values: [T] = []
+    // swiftlint:disable line_length
+    func fetch<T: Decodable>(with requests: [URLRequest], parse: @escaping (Data) -> T?, runQueue: DispatchQueue = .global(qos: .userInitiated), completionQueue: DispatchQueue = .main, group: DispatchGroup = DispatchGroup(), completion: ((Result<[T], APIError>) -> Void)?) {
+        var values = [T]()
         var error: APIError?
         DispatchQueue.concurrentPerform(iterations: requests.count) { index in
             group.enter()
@@ -107,7 +117,7 @@ extension APIClient {
     }
 }
 
-enum APIError: Error {
+enum APIError: LocalizedError {
     case incorrectParameters
     case requestFailedWithError(String)
     case requestFailed
@@ -115,7 +125,7 @@ enum APIError: Error {
     case responseUnsuccessful
     case jsonParsingFailure
     
-    var localizedDescription: String {
+    var errorDescription: String {
         switch self {
         case .incorrectParameters: return "Incorrect parameters for request"
         case .requestFailedWithError(let error): return "Request failed with error: \(error)"

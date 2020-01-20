@@ -43,7 +43,7 @@ class SortedSetTests: XCTestCase {
     }
     
     func testContainsElement() {
-        XCTAssertTrue(set.contains("Reindeer"), "Set should contain element.")
+        XCTAssert(set.contains("Reindeer"), "Set should contain element.")
     }
     
     func testSetIsEquatable() {
@@ -62,8 +62,11 @@ class SortedSetTests: XCTestCase {
         XCTAssertNotEqual(set, newSet, "Sets should not match.")
     }
     
-    func testSetIsRandomAccessCollection() {
+    func testStartIndex() {
         XCTAssertEqual(set.startIndex, 0, "Indices should match.")
+    }
+    
+    func testEndIndex() {
         XCTAssertEqual(set.endIndex, 4, "Indices should match.")
     }
     
@@ -81,6 +84,14 @@ class SortedSetTests: XCTestCase {
         
         // Then
         XCTAssertEqual("Puma", set.element(at: 2), "Elements should match.")
+    }
+    
+    func testSetRemovesElements() {
+        // When
+        set.remove("Polar Bear")
+        
+        // Then
+        XCTAssertFalse(set.contains("Polar Bear"), "Set should not contain the element.")
     }
     
     func testSubscript() {

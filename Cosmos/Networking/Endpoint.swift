@@ -39,7 +39,7 @@ enum CosmosEndpoint {
 extension CosmosEndpoint: Endpoint {
     
     var base: String {
-        return Environment.shared.baseUrl
+        return EnvironmentManager.shared.baseUrl
     }
     
     var path: String {

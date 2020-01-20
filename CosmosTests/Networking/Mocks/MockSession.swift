@@ -8,26 +8,27 @@
 
 import Foundation
 
-class MockSession: URLSession {
-    
+final class MockSession: APISession {
     let data: Data?
     let response: URLResponse?
     let error: Error?
     
-    init(data: Data?, response: URLResponse?, error: Error?) {
+    init(data: Data? = nil, response: URLResponse? = nil, error: Error? = nil) {
         self.data = data
         self.response = response
         self.error = error
     }
     
-    override func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
+    func loadData(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> APISessionDataTask {
         completionHandler(data, response, error)
-        return MockDataTask()
+        return MockSessionDataTask()
     }
 }
 
-class MockDataTask: URLSessionDataTask {
-    override init() {}
+final class MockSessionDataTask: APISessionDataTask {
+    var resumeWasCalled = false
     
-    override func resume() {}
+    func resume() {
+        resumeWasCalled = true
+    }
 }

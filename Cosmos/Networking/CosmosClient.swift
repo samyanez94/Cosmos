@@ -10,11 +10,11 @@ import Foundation
 
 class CosmosClient: APIClient {
 
-    var session: URLSession
+    var session: APISession
     
     let decoder = JSONDecoder(dateDecodingStrategy: .formatted(DateFormatter(locale: .current, format: "yyyy-MM-dd")))
     
-    init(session: URLSession) {
+    init(session: APISession) {
         self.session = session
     }
     
