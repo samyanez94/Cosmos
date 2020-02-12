@@ -17,11 +17,7 @@ class DiscoverCell: UICollectionViewCell {
     @IBOutlet var headerView: UIView!
     
     /// Container view
-    @IBOutlet var containerView: UIView! {
-        didSet {
-            containerView.roundCorners(radius: 20)                
-        }
-    }
+    @IBOutlet var containerView: UIView!
     
     /// Title label
     @IBOutlet var titleLabel: UILabel! {
@@ -59,10 +55,13 @@ class DiscoverCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        
         imageView.image = nil
-        
         imageView.af_cancelImageRequest()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        containerView.roundCorners(radius: 20)
     }
 }
 // MARK: - Accesibility

@@ -143,6 +143,6 @@ extension DiscoverViewController: UICollectionViewDelegate {
 
 extension DiscoverViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.size.width, height: collectionView.bounds.size.width * 1.2)
+        return CGSize(width: collectionView.bounds.size.width, height: collectionView.bounds.size.width * 1.1)
     }
 }

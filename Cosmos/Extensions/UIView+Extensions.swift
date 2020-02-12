@@ -40,11 +40,7 @@ extension UIView {
     }
     
     func setShadow(
-        withColor color: UIColor = .black,
-        opacity: Float = 1,
-        offSet: CGSize = .zero,
-        radius: CGFloat = 0
-    ) {
+        withColor color: UIColor = .black, opacity: Float = 1, offSet: CGSize = .zero, radius: CGFloat = 0) {
         layer.shadowColor = color.cgColor
         layer.shadowOpacity = opacity
         layer.shadowOffset = offSet
