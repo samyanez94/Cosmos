@@ -9,7 +9,7 @@ jobs:
   build:
     name: Build & Test
 
-    runs-on: macos-latest
+    runs-on: macos-10.15
 
     steps:
     - uses: actions/checkout@v1
@@ -21,7 +21,7 @@ jobs:
       run: pod install
       
     - name: Build
-      run: xcodebuild clean build-for-testing -workspace Cosmos.xcworkspace -scheme "Cosmos" -destination "name=iPhone 11 Pro,OS=13.2.2"
+      run: xcodebuild clean build-for-testing -workspace Cosmos.xcworkspace -scheme "Cosmos" -destination "name=iPhone 11 Pro,OS=13.3"
     
     - name: Test
-      run: xcodebuild test-without-building -workspace Cosmos.xcworkspace -scheme "Cosmos" -destination "name=iPhone 11 Pro,OS=13.2.2" -enableCodeCoverage=YES
+      run: xcodebuild test-without-building -workspace Cosmos.xcworkspace -scheme "Cosmos" -destination "name=iPhone 11 Pro,OS=13.3" -enableCodeCoverage=YES
