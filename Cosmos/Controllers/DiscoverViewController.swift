@@ -24,22 +24,18 @@ class DiscoverViewController: UIViewController {
     /// Ativity indicator
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     
-    /// Error view
-    @IBOutlet var errorView: UIView! {
-        didSet {
-            errorView.isAccessibilityElement = true
-            errorView.accessibilityLabel = DiscoverViewStrings.errorMessage.localized
-            errorView.accessibilityTraits = .button
-            errorView.accessibilityHint = "Tap to load the view one more time."
-        }
-    }
+    /// Message view
+    @IBOutlet var messageView: UIView!
     
-    /// Error label
-    @IBOutlet var errorLabel: UILabel! {
+    /// Message image
+    @IBOutlet var messageImage: UIImageView!
+    
+    /// Message label
+    @IBOutlet var messageLabel: UILabel! {
         didSet {
-            errorLabel.font = DynamicFont.shared.font(forTextStyle: .body)
-            errorLabel.adjustsFontForContentSizeCategory = true
-            errorLabel.text = DiscoverViewStrings.errorMessage.localized
+            messageLabel.font = DynamicFont.shared.font(forTextStyle: .body)
+            messageLabel.adjustsFontForContentSizeCategory = true
+            messageLabel.text = DiscoverViewStrings.errorMessage.localized
         }
     }
     
@@ -70,15 +66,15 @@ class DiscoverViewController: UIViewController {
             switch state {
             case .loading:
                 activityIndicator.startAnimating()
-                errorView.isHidden = true
+                messageView.isHidden = true
                 collectionView.isHidden = true
             case .displayCollection:
                 activityIndicator.stopAnimating()
-                errorView.isHidden = true
+                messageView.isHidden = true
                 collectionView.isHidden = false
             case .error:
                 activityIndicator.stopAnimating()
-                errorView.isHidden = false
+                messageView.isHidden = false
                 collectionView.isHidden = true
             }
         }

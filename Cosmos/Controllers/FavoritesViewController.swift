@@ -21,51 +21,29 @@ class FavoritesViewController: UIViewController {
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    /// Missing favorites view
-    @IBOutlet weak var missingFavoritesView: UIView! {
-        didSet {
-            missingFavoritesView.isAccessibilityElement = true
-            missingFavoritesView.accessibilityLabel = FavoritesViewStrings.missingFavoritesMessage.localized
-            missingFavoritesView.accessibilityTraits = .none
-        }
-    }
+    /// Message view
+    @IBOutlet var messageView: UIView!
     
-    /// Missing favorites message
-    @IBOutlet weak var missingFavoritesMessage: UILabel! {
-        didSet {
-            missingFavoritesMessage.font = DynamicFont.shared.font(forTextStyle: .body)
-            missingFavoritesMessage.adjustsFontForContentSizeCategory = true
-            missingFavoritesMessage.text = FavoritesViewStrings.missingFavoritesMessage.localized
-        }
-    }
+    /// Message image
+    @IBOutlet var messageImage: UIImageView!
     
-    /// Error view
-     @IBOutlet var errorView: UIView! {
-         didSet {
-             errorView.isAccessibilityElement = true
-             errorView.accessibilityLabel = FavoritesViewStrings.errorMessage.localized
-             errorView.accessibilityTraits = .button
-             errorView.accessibilityHint = "Tap to load the view one more time."
-         }
-     }
-    
-    /// Error label
-    @IBOutlet var errorLabel: UILabel! {
+    /// Message label
+    @IBOutlet var messageLabel: UILabel! {
         didSet {
-            errorLabel.font = DynamicFont.shared.font(forTextStyle: .body)
-            errorLabel.adjustsFontForContentSizeCategory = true
-            errorLabel.text = FavoritesViewStrings.errorMessage.localized
+            messageLabel.font = DynamicFont.shared.font(forTextStyle: .body)
+            messageLabel.adjustsFontForContentSizeCategory = true
         }
     }
     
     /// API Client
     lazy var client = CosmosClient()
     
-    /// Data Source
+    /// Data source
     lazy var dataSource: FavoritesDataSource = {
         FavoritesDataSource(tableView: tableView)
     }()
     
+    /// Different view states
     enum State {
         case loading
         case displayCollection
@@ -73,30 +51,31 @@ class FavoritesViewController: UIViewController {
         case error
     }
     
+    /// View state
     var state: State = .loading {
         didSet {
             switch state {
             case .loading:
                 activityIndicator.startAnimating()
-                errorView.isHidden = true
                 tableView.isHidden = true
-                missingFavoritesView.isHidden = true
+                messageView.isHidden = true
             case .displayCollection:
                 activityIndicator.stopAnimating()
-                errorView.isHidden = true
                 tableView.isHidden = false
-                missingFavoritesView.isHidden = true
+                messageView.isHidden = true
                 tableView.reloadSections(IndexSet(integer: 0), with: .fade)
             case .missingFavorites:
                 activityIndicator.stopAnimating()
-                errorView.isHidden = true
                 tableView.isHidden = true
-                missingFavoritesView.isHidden = false
+                messageView.isHidden = false
+                messageImage.image = UIImage(systemName: "heart.fill")
+                messageLabel.text = FavoritesViewStrings.missingFavoritesMessage.localized
             case .error:
                 activityIndicator.stopAnimating()
-                errorView.isHidden = false
                 tableView.isHidden = true
-                missingFavoritesView.isHidden = true
+                messageView.isHidden = false
+                messageImage.image = UIImage(systemName: "arrow.clockwise")
+                messageLabel.text = FavoritesViewStrings.errorMessage.localized
             }
         }
     }
