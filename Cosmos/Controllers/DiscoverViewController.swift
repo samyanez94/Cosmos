@@ -59,14 +59,37 @@ class DiscoverViewController: UIViewController {
     /// Pagination page size
     var collectionPageSize = 10
     
+    enum State {
+        case loading
+        case displayCollection
+        case error
+    }
+    
+    var state: State = .loading {
+        didSet {
+            switch state {
+            case .loading:
+                activityIndicator.startAnimating()
+                errorView.isHidden = true
+                collectionView.isHidden = true
+            case .displayCollection:
+                activityIndicator.stopAnimating()
+                errorView.isHidden = true
+                collectionView.isHidden = false
+            case .error:
+                activityIndicator.stopAnimating()
+                errorView.isHidden = false
+                collectionView.isHidden = true
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = DiscoverViewStrings.title.localized
                 
-        fetch(count: collectionPageSize, offset: collectionOffset) {
-            self.activityIndicator.stopAnimating()
-        }
+        fetch(count: collectionPageSize, offset: collectionOffset)
     }
     
     override func viewWillLayoutSubviews() {
@@ -101,29 +124,25 @@ class DiscoverViewController: UIViewController {
             guard let self = self else { return }
             switch result {
             case .failure:
-                self.collectionView.isHidden = true
-                self.errorView.isHidden = false
+                self.state = .error
             case .success(let apods):
+                // Update collection
                 self.dataSource.append(apods)
                 self.collectionView.reloadData()
-                self.collectionView.isHidden = false
-                self.errorView.isHidden = true
+                
+                // Update view's state
+                self.state = .displayCollection
                 
                 // Important to increase the offset for pagination
                 self.collectionOffset = offset + self.collectionPageSize
             }
-            if let completion = completion {
-                completion()
-            }
+            completion?()
         }
     }
     
     @IBAction func didTapOnRefreshButton(_ sender: Any) {
-        errorView.isHidden = true
-        activityIndicator.startAnimating()
-        fetch(count: collectionPageSize, offset: collectionOffset) {
-            self.activityIndicator.stopAnimating()
-        }
+        state = .loading
+        fetch(count: collectionPageSize, offset: collectionOffset)
     }
     
     func scrollToTop() {

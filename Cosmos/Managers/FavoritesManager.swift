@@ -9,6 +9,8 @@
 import Foundation
 
 protocol FavoritesManaging {
+    var isRefreshRequired: Bool { get }
+    
     func getFavorites(completion: (([Date]) -> Void))
     
     func isFavorite(_ date: Date, completion: ((Bool) -> Void))
@@ -22,10 +24,13 @@ class UserDefaultsFavoritesManager: FavoritesManaging {
     
     static var shared: FavoritesManaging = UserDefaultsFavoritesManager()
     
+    var isRefreshRequired: Bool = true
+    
     @Storage(key: "favorites", defaultValue: [])
     var favorites: [Date]
     
     func getFavorites(completion: (([Date]) -> Void)) {
+        isRefreshRequired = false
         completion(favorites)
     }
     
@@ -34,10 +39,12 @@ class UserDefaultsFavoritesManager: FavoritesManaging {
     }
     
     func addToFavorites(_ date: Date) {
+        isRefreshRequired = true
         favorites.append(date)
     }
     
     func removeFromFavorites(_ date: Date) {
+        isRefreshRequired = true
         favorites.removeAll { $0 == date }
     }
 }

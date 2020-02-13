@@ -19,12 +19,25 @@ class FavoritesViewController: UIViewController {
         }
     }
     
-    /// Ativity indicator
-     @IBOutlet var activityIndicatorView: UIView! {
-         didSet {
-             activityIndicatorView.isHidden = false
-         }
-     }
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    /// Missing favorites view
+    @IBOutlet weak var missingFavoritesView: UIView! {
+        didSet {
+            missingFavoritesView.isAccessibilityElement = true
+            missingFavoritesView.accessibilityLabel = FavoritesViewStrings.missingFavoritesMessage.localized
+            missingFavoritesView.accessibilityTraits = .none
+        }
+    }
+    
+    /// Missing favorites message
+    @IBOutlet weak var missingFavoritesMessage: UILabel! {
+        didSet {
+            missingFavoritesMessage.font = DynamicFont.shared.font(forTextStyle: .body)
+            missingFavoritesMessage.adjustsFontForContentSizeCategory = true
+            missingFavoritesMessage.text = FavoritesViewStrings.missingFavoritesMessage.localized
+        }
+    }
     
     /// Error view
      @IBOutlet var errorView: UIView! {
@@ -52,15 +65,53 @@ class FavoritesViewController: UIViewController {
     lazy var dataSource: FavoritesDataSource = {
         FavoritesDataSource(tableView: tableView)
     }()
+    
+    enum State {
+        case loading
+        case displayCollection
+        case missingFavorites
+        case error
+    }
+    
+    var state: State = .loading {
+        didSet {
+            switch state {
+            case .loading:
+                activityIndicator.startAnimating()
+                errorView.isHidden = true
+                tableView.isHidden = true
+                missingFavoritesView.isHidden = true
+            case .displayCollection:
+                activityIndicator.stopAnimating()
+                errorView.isHidden = true
+                tableView.isHidden = false
+                missingFavoritesView.isHidden = true
+                tableView.reloadSections(IndexSet(integer: 0), with: .fade)
+            case .missingFavorites:
+                activityIndicator.stopAnimating()
+                errorView.isHidden = true
+                tableView.isHidden = true
+                missingFavoritesView.isHidden = false
+            case .error:
+                activityIndicator.stopAnimating()
+                errorView.isHidden = false
+                tableView.isHidden = true
+                missingFavoritesView.isHidden = true
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         title = FavoritesViewStrings.title.localized
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
-        UserDefaultsFavoritesManager.shared.getFavorites { [weak self] dates in
-            self?.fetch(favorites: dates) {
-                self?.activityIndicatorView.isHidden = true
+        if UserDefaultsFavoritesManager.shared.isRefreshRequired {
+            UserDefaultsFavoritesManager.shared.getFavorites { [weak self] dates in
+                self?.fetch(favorites: dates)
             }
         }
     }
@@ -95,24 +146,24 @@ class FavoritesViewController: UIViewController {
         client.fetch(dates: favorites) { [weak self] result in
             switch result {
             case .failure:
-                self?.tableView.isHidden = true
-                self?.errorView.isHidden = false
+                self?.state = .error
             case .success(let apods):
-                self?.dataSource.set(withCollection: apods)
-                self?.tableView.isHidden = false
-                self?.tableView.reloadSections(IndexSet(integer: 0), with: .fade)
+                if apods.isEmpty {
+                    self?.state = .missingFavorites
+                } else {
+                    self?.dataSource.set(withCollection: apods)
+                    self?.state = .displayCollection
+                    self?.tableView.reloadSections(IndexSet(integer: 0), with: .fade)
+                }
             }
             completion?()
         }
     }
     
     @IBAction func didTapOnRefreshButton(_ sender: Any) {
-        errorView.isHidden = true
-        activityIndicatorView.isHidden = false
+        state = .loading
         UserDefaultsFavoritesManager.shared.getFavorites { [weak self] dates in
-            self?.fetch(favorites: dates) {
-                self?.activityIndicatorView.isHidden = true
-            }
+            self?.fetch(favorites: dates)
         }
     }
     

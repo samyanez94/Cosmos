@@ -96,12 +96,14 @@ enum FavoritesViewStrings: Localizable {
     case title
     case remove
     case errorMessage
+    case missingFavoritesMessage
     
     var key: String {
         switch self {
         case .title: return "Title"
         case .remove: return "Remove"
         case .errorMessage: return "Error Message"
+        case .missingFavoritesMessage: return "Missing Favorites Message"
         }
     }
 }

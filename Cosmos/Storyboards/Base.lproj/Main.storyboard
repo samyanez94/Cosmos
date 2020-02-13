@@ -139,9 +139,6 @@
                                     </constraints>
                                 </collectionReusableView>
                             </collectionView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="NqR-N5-kDt">
-                                <rect key="frame" x="197" y="438" width="20" height="20"/>
-                            </activityIndicatorView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7YX-ug-AZK" userLabel="Error View">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <subviews>
@@ -181,6 +178,9 @@ Tap here to try again.</string>
                                     <constraint firstItem="tM6-Og-B1d" firstAttribute="centerX" secondItem="7YX-ug-AZK" secondAttribute="centerX" id="ZbH-2N-Ar1"/>
                                 </constraints>
                             </view>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="NqR-N5-kDt">
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -409,7 +409,7 @@ Tap here to try again.</string>
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JNc-h8-655" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="640"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="616"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="“The Cosmos is all that is, or ever was, or ever will be.” - Carl Sagan. " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KBe-fd-YQ2" userLabel="About Body Quote Label">
                                                 <rect key="frame" x="16" y="16" width="382" height="48"/>
@@ -418,27 +418,27 @@ Tap here to try again.</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xg5-6G-pdm" userLabel="About Body Label">
-                                                <rect key="frame" x="16" y="80" width="382" height="167.5"/>
-                                                <string key="text">This app was born from a strong desire to learn more about space and software development. I decided to build an iOS app that displays images and videos from our universe. Keeping in mind a minimal and user-friendly design. I hope you enjoy it and share it with your friends if you like it.</string>
+                                                <rect key="frame" x="16" y="80" width="382" height="143.5"/>
+                                                <string key="text">This app was born from a strong desire to learn more about space and software development. I decided to build an iOS app that displays images and videos from our universe. Keeping in mind a minimal and user-friendly design.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Acknowledgements" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UpS-uD-Out" userLabel="Acknowledgements Title Label">
-                                                <rect key="frame" x="16" y="279.5" width="382" height="29"/>
+                                                <rect key="frame" x="16" y="255.5" width="382" height="29"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4iq-Xa-pHO" userLabel="Acknowledgements Body Label">
-                                                <rect key="frame" x="16" y="324.5" width="382" height="143.5"/>
+                                                <rect key="frame" x="16" y="300.5" width="382" height="143.5"/>
                                                 <string key="text">All content featured in this app comes from NASA’s APOD API, a service that has been offering daily pictures of our universe since 1995. It contains the largest collection of annotated astronomical images on the internet.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3lt-bj-SNc" userLabel="Visit Button">
-                                                <rect key="frame" x="16" y="484" width="382" height="36"/>
+                                                <rect key="frame" x="16" y="460" width="382" height="36"/>
                                                 <accessibility key="accessibilityConfiguration" hint="Double tap to open NASA's website."/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <state key="normal" title="Visit NASA's APOD official website">
@@ -449,7 +449,7 @@ Tap here to try again.</string>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version 1.2.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LgY-bM-WJr" userLabel="Version Label">
-                                                <rect key="frame" x="16" y="552" width="382" height="24"/>
+                                                <rect key="frame" x="16" y="528" width="382" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -649,18 +649,40 @@ Tap here to try again.</string>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5bS-fP-lwj" userLabel="Loading Indicator View">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PIR-6h-e7r" userLabel="Missing Favorites View">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <subviews>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="0ch-Y6-pJV">
-                                        <rect key="frame" x="197" y="352.5" width="20" height="20"/>
-                                        <color key="color" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    </activityIndicatorView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="UKo-cS-eLK">
+                                        <rect key="frame" x="82" y="269" width="250" height="187.5"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Y2Z-fy-dqD" userLabel="Heart Icon">
+                                                <rect key="frame" x="112.5" y="1.5" width="25" height="21.5"/>
+                                                <color key="tintColor" systemColor="quaternaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.17999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20" scale="medium" weight="medium"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Yd-sO-sDO" userLabel="Missing Favorites Label">
+                                                <rect key="frame" x="0.0" y="44" width="250" height="143.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="250" id="a6B-fy-KVi"/>
+                                                </constraints>
+                                                <string key="text">As in the cosmos, there is a lot of emptiness in here. 
+
+Tap the heart icon on any picture to add it to your favorites.</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <gestureRecognizers/>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
                                 <constraints>
-                                    <constraint firstItem="0ch-Y6-pJV" firstAttribute="centerX" secondItem="5bS-fP-lwj" secondAttribute="centerX" id="8a3-j2-XbI"/>
-                                    <constraint firstItem="0ch-Y6-pJV" firstAttribute="centerY" secondItem="5bS-fP-lwj" secondAttribute="centerY" id="bRb-5N-5N0"/>
+                                    <constraint firstItem="UKo-cS-eLK" firstAttribute="centerY" secondItem="PIR-6h-e7r" secondAttribute="centerY" id="7Bo-ib-A57"/>
+                                    <constraint firstItem="UKo-cS-eLK" firstAttribute="centerX" secondItem="PIR-6h-e7r" secondAttribute="centerX" id="Kti-ew-ah1"/>
                                 </constraints>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="me7-Y4-VJt" userLabel="Error View">
@@ -702,29 +724,35 @@ Tap here to try again.</string>
                                     <constraint firstItem="hDY-nU-qcc" firstAttribute="centerY" secondItem="me7-Y4-VJt" secondAttribute="centerY" id="GJc-sT-Qbj"/>
                                 </constraints>
                             </view>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="ohq-vH-wHK">
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="5bS-fP-lwj" firstAttribute="top" secondItem="ot2-gx-31u" secondAttribute="top" id="4ZJ-8j-fNT"/>
+                            <constraint firstItem="PIR-6h-e7r" firstAttribute="top" secondItem="ot2-gx-31u" secondAttribute="top" id="1pi-wn-CQa"/>
                             <constraint firstItem="ot2-gx-31u" firstAttribute="top" secondItem="me7-Y4-VJt" secondAttribute="top" id="6jf-mP-hbS"/>
                             <constraint firstItem="me7-Y4-VJt" firstAttribute="leading" secondItem="ot2-gx-31u" secondAttribute="leading" id="Gws-q8-Glc"/>
-                            <constraint firstItem="ot2-gx-31u" firstAttribute="bottom" secondItem="5bS-fP-lwj" secondAttribute="bottom" id="HW4-Mz-hUB"/>
+                            <constraint firstItem="ot2-gx-31u" firstAttribute="bottom" secondItem="PIR-6h-e7r" secondAttribute="bottom" id="HTs-B1-Ff0"/>
                             <constraint firstItem="ot2-gx-31u" firstAttribute="trailing" secondItem="me7-Y4-VJt" secondAttribute="trailing" id="I6C-m9-aM5"/>
                             <constraint firstItem="ot2-gx-31u" firstAttribute="trailing" secondItem="MH3-Fd-mFy" secondAttribute="trailing" id="cNZ-1E-q0q"/>
                             <constraint firstItem="MH3-Fd-mFy" firstAttribute="top" secondItem="xun-hu-JvK" secondAttribute="top" id="hp5-dy-MxQ"/>
+                            <constraint firstItem="PIR-6h-e7r" firstAttribute="leading" secondItem="ot2-gx-31u" secondAttribute="leading" id="khK-Gm-eIq"/>
                             <constraint firstItem="ot2-gx-31u" firstAttribute="bottom" secondItem="me7-Y4-VJt" secondAttribute="bottom" id="l1Y-1d-gxQ"/>
                             <constraint firstItem="MH3-Fd-mFy" firstAttribute="leading" secondItem="ot2-gx-31u" secondAttribute="leading" id="rrZ-lg-a2W"/>
                             <constraint firstAttribute="bottom" secondItem="MH3-Fd-mFy" secondAttribute="bottom" id="tba-rC-5z0"/>
-                            <constraint firstItem="ot2-gx-31u" firstAttribute="trailing" secondItem="5bS-fP-lwj" secondAttribute="trailing" id="zkf-Pb-xA4"/>
-                            <constraint firstItem="5bS-fP-lwj" firstAttribute="leading" secondItem="ot2-gx-31u" secondAttribute="leading" id="znr-2b-a74"/>
+                            <constraint firstItem="PIR-6h-e7r" firstAttribute="trailing" secondItem="ot2-gx-31u" secondAttribute="trailing" id="xm6-FA-SHK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ot2-gx-31u"/>
                     </view>
                     <navigationItem key="navigationItem" title="Favorites" id="kHz-qF-jwc"/>
                     <connections>
-                        <outlet property="activityIndicatorView" destination="5bS-fP-lwj" id="FmO-TR-oUC"/>
+                        <outlet property="activityIndicator" destination="ohq-vH-wHK" id="PBA-hq-WnH"/>
                         <outlet property="errorLabel" destination="vMb-pc-Eo7" id="xEf-nH-Qvf"/>
                         <outlet property="errorView" destination="me7-Y4-VJt" id="iJC-rR-Ssl"/>
+                        <outlet property="missingFavoritesMessage" destination="3Yd-sO-sDO" id="Vv9-OW-Qxe"/>
+                        <outlet property="missingFavoritesView" destination="PIR-6h-e7r" id="x3U-7A-VF1"/>
                         <outlet property="tableView" destination="MH3-Fd-mFy" id="ba5-9h-C0a"/>
                     </connections>
                 </viewController>
@@ -787,6 +815,7 @@ Tap here to try again.</string>
         <image name="Rocket Icon Large" width="75" height="75"/>
         <image name="arrow.clockwise" catalog="system" width="56" height="64"/>
         <image name="heart" catalog="system" width="64" height="54"/>
+        <image name="heart.fill" catalog="system" width="64" height="54"/>
         <image name="square.and.arrow.down" catalog="system" width="60" height="64"/>
         <image name="square.and.arrow.up" catalog="system" width="56" height="64"/>
         <namedColor name="Accent Color">

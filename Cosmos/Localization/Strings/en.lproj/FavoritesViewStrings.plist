@@ -25,5 +25,14 @@ Tap here to try again.</string>
 		<key>comment</key>
 		<string></string>
 	</dict>
+	<key>Missing Favorites Message</key>
+	<dict>
+		<key>value</key>
+		<string>As in the cosmos, there is a lot of emptiness in here. 
+
+Tap the heart icon on any picture to add it to your favorites.</string>
+		<key>comment</key>
+		<string></string>
+	</dict>
 </dict>
 </plist>

@@ -239,7 +239,6 @@ class DetailViewController: UIViewController {
         UserDefaultsFavoritesManager.shared.isFavorite(viewModel.apod.date) { isFavorite in
             guard let viewModel = self.viewModel else { return }
             isFavorite ? UserDefaultsFavoritesManager.shared.removeFromFavorites(viewModel.apod.date) : UserDefaultsFavoritesManager.shared.addToFavorites(viewModel.apod.date)
-            print(viewModel.apod.date.description)
             feedbackGenerator.selectionChanged()
             self.animateFavoritesButtonTransition(isFavorite: !isFavorite)
         }
