@@ -121,7 +121,7 @@ class DiscoverViewController: UIViewController {
                 if apods.isEmpty {
                     self.state = .error
                 } else {
-                    self.dataSource.append(apods)
+                    self.dataSource.append(apods.sorted(by: >))
                     self.collectionView.reloadData()
                     self.state = .displayCollection
                     self.collectionOffset = offset + self.collectionPageSize

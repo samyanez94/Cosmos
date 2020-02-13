@@ -1,5 +1,5 @@
 //
-//  SortedSetTests.swift
+//  OrderedSet.swift
 //  CosmosTests
 //
 //  Created by Samuel Yanez on 10/5/19.
@@ -8,20 +8,20 @@
 
 import XCTest
 
-class SortedSetTests: XCTestCase {
+class OrderedSetTests: XCTestCase {
     
-    var set = SortedSet<String>()
+    var set = OrderedSet<String>()
     
     let collection = ["Sheep", "Reindeer", "Polar Bear", "Cat"]
     
     override func setUp() {
-        set = SortedSet(withCollection: collection)
+        set = OrderedSet(withCollection: collection)
         
         super.setUp()
     }
 
     override func tearDown() {
-        set = SortedSet(withCollection: collection)
+        set = OrderedSet(withCollection: collection)
         
         super.tearDown()
     }
@@ -48,7 +48,7 @@ class SortedSetTests: XCTestCase {
     
     func testSetIsEquatable() {
         // Given
-        let newSet = SortedSet(withCollection: ["Sheep", "Reindeer", "Polar Bear", "Cat"])
+        let newSet = OrderedSet(withCollection: ["Sheep", "Reindeer", "Polar Bear", "Cat"])
         
         // Then
         XCTAssertEqual(set, newSet, "Sets should match.")
@@ -56,7 +56,7 @@ class SortedSetTests: XCTestCase {
     
     func testSetIsNotEquatable() {
         // Given
-        let newSet = SortedSet(withCollection: ["Reindeer", "Polar Bear", "Mouse", "Cat", "Alpaca"])
+        let newSet = OrderedSet(withCollection: ["Reindeer", "Polar Bear", "Mouse", "Cat", "Alpaca"])
         
         // Then
         XCTAssertNotEqual(set, newSet, "Sets should not match.")
@@ -78,12 +78,12 @@ class SortedSetTests: XCTestCase {
         XCTAssertEqual(4, set.count, "Set count should remain 4.")
     }
     
-    func testSetRemainsSorted() {
+    func testSetRemainsOrdered() {
         // When
         set.append(["Puma", "Ant", "Elephant", "Mice"])
         
         // Then
-        XCTAssertEqual("Puma", set.element(at: 2), "Elements should match.")
+        XCTAssertEqual("Puma", set.element(at: 4), "Elements should match.")
     }
     
     func testSetRemovesElements() {

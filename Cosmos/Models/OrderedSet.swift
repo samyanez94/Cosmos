@@ -1,21 +1,17 @@
 //
-//  SortedSet.swift
+//  OrderedSet.swift
 //  Cosmos
 //
 //  Created by Samuel Yanez on 9/7/19.
 //  Copyright © 2019 Samuel Yanez. All rights reserved.
 //
 
-public struct SortedSet<E>: Collection where E: Hashable, E: Comparable {
+public struct OrderedSet<E>: Collection where E: Hashable, E: Comparable {
     public typealias Element = E
     public typealias Index = Int
     public typealias Indices = CountableRange<Int>
 
-    private var array: [Element] {
-        didSet {
-            array.sort(by: >)
-        }
-    }
+    private var array: [Element]
     
     private var set: Set<Element>
 
@@ -71,13 +67,13 @@ public struct SortedSet<E>: Collection where E: Hashable, E: Comparable {
     }
 }
 
-extension SortedSet: Equatable {
-    static public func == <T>(lhs: SortedSet<T>, rhs: SortedSet<T>) -> Bool {
+extension OrderedSet: Equatable {
+    static public func == <T>(lhs: OrderedSet<T>, rhs: OrderedSet<T>) -> Bool {
         return lhs.contents == rhs.contents
     }
 }
 
-extension SortedSet: RandomAccessCollection {
+extension OrderedSet: RandomAccessCollection {
     public var startIndex: Int {
         contents.startIndex
     }

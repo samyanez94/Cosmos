@@ -33,7 +33,7 @@
 		2252204921043C0E00221D29 /* APOD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2252204821043C0E00221D29 /* APOD.swift */; };
 		225A539323D5762B00677896 /* ShareStrings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 225A539223D5762B00677896 /* ShareStrings.plist */; };
 		225A539423D579DD00677896 /* EnvironmentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223A2BF1233B0FFA00005DFA /* EnvironmentManager.swift */; };
-		226E25B723245E9800908A39 /* SortedSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E25B623245E9800908A39 /* SortedSet.swift */; };
+		226E25B723245E9800908A39 /* OrderedSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E25B623245E9800908A39 /* OrderedSet.swift */; };
 		227846B62346CDCE009F01B8 /* single_response_success.json in Resources */ = {isa = PBXBuildFile; fileRef = 227846B42346CDCE009F01B8 /* single_response_success.json */; };
 		2281F27B23877240001D52D3 /* JSONDecoder+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E315C423726CFF008EDF34 /* JSONDecoder+Extensions.swift */; };
 		2281F27C23877242001D52D3 /* NSMutableAttributedString+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E315C823726D40008EDF34 /* NSMutableAttributedString+Extensions.swift */; };
@@ -59,8 +59,8 @@
 		22BC0A0D21056A580086BB19 /* CosmosClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BC0A0C21056A580086BB19 /* CosmosClient.swift */; };
 		22C5485823568A7A002A52B4 /* APODViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C5485723568A7A002A52B4 /* APODViewModel.swift */; };
 		22C5485D2356E824002A52B4 /* EnvironmentTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C5485C2356E824002A52B4 /* EnvironmentTest.swift */; };
-		22C834192349630200B876A6 /* SortedSetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C834182349630200B876A6 /* SortedSetTests.swift */; };
-		22C8341A2349638B00B876A6 /* SortedSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E25B623245E9800908A39 /* SortedSet.swift */; };
+		22C834192349630200B876A6 /* OrderedSetTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C834182349630200B876A6 /* OrderedSetTest.swift */; };
+		22C8341A2349638B00B876A6 /* OrderedSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E25B623245E9800908A39 /* OrderedSet.swift */; };
 		22C8341D2349707600B876A6 /* ranged_response_success.json in Resources */ = {isa = PBXBuildFile; fileRef = 222DDF6422D2869E00BE3645 /* ranged_response_success.json */; };
 		22CE2919234479BC00170FEE /* CosmosClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CE2918234479BC00170FEE /* CosmosClientTests.swift */; };
 		22CE291A234479E100170FEE /* MockSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CE29162344700D00170FEE /* MockSession.swift */; };
@@ -117,7 +117,7 @@
 		225220422104391200221D29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2252204821043C0E00221D29 /* APOD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APOD.swift; sourceTree = "<group>"; };
 		225A539223D5762B00677896 /* ShareStrings.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ShareStrings.plist; sourceTree = "<group>"; };
-		226E25B623245E9800908A39 /* SortedSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortedSet.swift; sourceTree = "<group>"; };
+		226E25B623245E9800908A39 /* OrderedSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderedSet.swift; sourceTree = "<group>"; };
 		227846B42346CDCE009F01B8 /* single_response_success.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = single_response_success.json; sourceTree = "<group>"; };
 		2281F28D238791EB001D52D3 /* Optional+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Extensions.swift"; sourceTree = "<group>"; };
 		2281F29223879701001D52D3 /* ShareManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareManager.swift; sourceTree = "<group>"; };
@@ -132,7 +132,7 @@
 		22BC0A0C21056A580086BB19 /* CosmosClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmosClient.swift; sourceTree = "<group>"; };
 		22C5485723568A7A002A52B4 /* APODViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODViewModel.swift; sourceTree = "<group>"; };
 		22C5485C2356E824002A52B4 /* EnvironmentTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentTest.swift; sourceTree = "<group>"; };
-		22C834182349630200B876A6 /* SortedSetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortedSetTests.swift; sourceTree = "<group>"; };
+		22C834182349630200B876A6 /* OrderedSetTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderedSetTest.swift; sourceTree = "<group>"; };
 		22CE290B23446BF400170FEE /* CosmosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CosmosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		22CE290F23446BF400170FEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22CE29162344700D00170FEE /* MockSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSession.swift; sourceTree = "<group>"; };
@@ -368,7 +368,7 @@
 			isa = PBXGroup;
 			children = (
 				2252204821043C0E00221D29 /* APOD.swift */,
-				226E25B623245E9800908A39 /* SortedSet.swift */,
+				226E25B623245E9800908A39 /* OrderedSet.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -392,7 +392,7 @@
 		22C83417234962EB00B876A6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				22C834182349630200B876A6 /* SortedSetTests.swift */,
+				22C834182349630200B876A6 /* OrderedSetTest.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -599,7 +599,7 @@
 				22C5485823568A7A002A52B4 /* APODViewModel.swift in Sources */,
 				22E315D12372777F008EDF34 /* UICollectionViewCell+Extensions.swift in Sources */,
 				22E315CD23726D71008EDF34 /* UIFont+Extensions.swift in Sources */,
-				226E25B723245E9800908A39 /* SortedSet.swift in Sources */,
+				226E25B723245E9800908A39 /* OrderedSet.swift in Sources */,
 				22B43D6223416B2800DD2A30 /* DynamicFont.swift in Sources */,
 				2202F50D211ECE4700DEFDE1 /* DetailViewController.swift in Sources */,
 				220EE6FF23924080006B16EB /* Storage.swift in Sources */,
@@ -656,9 +656,9 @@
 				2281F27C23877242001D52D3 /* NSMutableAttributedString+Extensions.swift in Sources */,
 				22CE291A234479E100170FEE /* MockSession.swift in Sources */,
 				2281F27D23877244001D52D3 /* String+Extensions.swift in Sources */,
-				22C8341A2349638B00B876A6 /* SortedSet.swift in Sources */,
+				22C8341A2349638B00B876A6 /* OrderedSet.swift in Sources */,
 				2200E5492396271600897286 /* Localizable.swift in Sources */,
-				22C834192349630200B876A6 /* SortedSetTests.swift in Sources */,
+				22C834192349630200B876A6 /* OrderedSetTest.swift in Sources */,
 				225A539423D579DD00677896 /* EnvironmentManager.swift in Sources */,
 				22CE2919234479BC00170FEE /* CosmosClientTests.swift in Sources */,
 				2281F2802387724C001D52D3 /* UITableViewCell+Extensions.swift in Sources */,

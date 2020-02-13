@@ -53,5 +53,4 @@ extension UICollectionViewCell {
         }
         return cell
     }
-    
 }

@@ -18,6 +18,22 @@ struct APODViewModel {
 }
 
 extension APODViewModel {
+    var url: URL? {
+        URL(string: apod.urlString)
+    }
+    
+    var thumbnailUrl: URL? {
+        switch apod.mediaType {
+        case .image:
+            return URL(string: apod.urlString)
+        case .video:
+            guard let thumbnailUrlString = apod.thumbnailUrlString else { return nil }
+            return URL(string: thumbnailUrlString)
+        }
+    }
+}
+
+extension APODViewModel {
     var title: String {
          apod.title
      }
@@ -49,9 +65,5 @@ extension APODViewModel {
             return NSMutableAttributedString(string: String(format: DetailViewStrings.copyright.localized, author), blackString: "Copyright", font: .systemFont(ofSize: 20))
          }
          return nil
-     }
-     
-     var url: URL? {
-         apod.url
      }
 }

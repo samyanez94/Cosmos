@@ -10,13 +10,16 @@ import UIKit
 
 class FavoritesCell: UITableViewCell {
 
-    @IBOutlet var thumbnailImageView: UIImageView! {
-        didSet {
-            thumbnailImageView.roundCorners(radius: 5)
-        }
-    }
+    /// Thumbnail image view
+    @IBOutlet var thumbnailImageView: UIImageView!
+    
+    /// Date label
     @IBOutlet var dateLabel: UILabel!
+    
+    /// Title label
     @IBOutlet var titleLabel: UILabel!
+    
+    /// Explanation label
     @IBOutlet var explanationLabel: UILabel!
     
     /// Cell height
@@ -24,9 +27,12 @@ class FavoritesCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        
         thumbnailImageView.image = nil
-        
         thumbnailImageView.af_cancelImageRequest()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        thumbnailImageView.roundCorners(radius: 5)
     }
 }

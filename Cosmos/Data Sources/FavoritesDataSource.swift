@@ -15,14 +15,14 @@ class FavoritesDataSource: NSObject, UITableViewDataSource {
     weak private var tableView: UITableView?
     
     /// List of astronomy pictures of the day.
-    var apods: SortedSet<APOD> = SortedSet()
+    var apods = OrderedSet<APOD>()
     
     init(tableView: UITableView) {
         self.tableView = tableView
     }
     
     func update(withCollection collection: [APOD]) {
-        apods = SortedSet(withCollection: collection)
+        apods = OrderedSet(withCollection: collection)
     }
     
     func element(at indexPath: IndexPath) -> APOD {
@@ -59,20 +59,20 @@ class FavoritesDataSource: NSObject, UITableViewDataSource {
         cell.explanationLabel.text = viewModel.explanation
         
         // Load preview
-        setImageView(for: cell, apod: apod)
+        setImageView(for: cell, viewModel: viewModel)
                 
         return cell
     }
     
-    private func setImageView(for cell: FavoritesCell, apod: APOD) {
-        if let url = apod.thumbnailUrl {
-            cell.thumbnailImageView.af_setImage(withURL: url, imageTransition: .crossDissolve(0.2)) { data in
-                if data.response?.statusCode == 404 {
-                    cell.thumbnailImageView.image = DiscoverCell.placeholderImage
-                }
-            }
-        } else {
+    private func setImageView(for cell: FavoritesCell, viewModel: APODViewModel) {
+        guard let url = viewModel.thumbnailUrl else {
             cell.thumbnailImageView.image = DiscoverCell.placeholderImage
+            return
+        }
+        cell.thumbnailImageView.af_setImage(withURL: url, imageTransition: .crossDissolve(0.2)) { data in
+            if data.response?.statusCode == 404 {
+                cell.thumbnailImageView.image = DiscoverCell.placeholderImage
+            }
         }
     }
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class APOD: Codable {
+struct APOD: Codable {
     let title: String
     let date: Date
     let explanation: String
@@ -30,25 +30,6 @@ class APOD: Codable {
     enum MediaType: String, Codable {
         case image
         case video
-    }
-}
-
-extension APOD {
-    var url: URL? {
-        URL(string: urlString)
-    }
-    
-    var thumbnailUrl: URL? {
-        switch mediaType {
-        case .image:
-            return URL(string: urlString)
-        case .video:
-            if let thumbnailUrlString = thumbnailUrlString {
-                return URL(string: thumbnailUrlString)
-            } else {
-                return nil
-            }
-        }
     }
 }
 

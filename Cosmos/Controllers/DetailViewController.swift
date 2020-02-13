@@ -46,6 +46,7 @@ class DetailViewController: UIViewController {
         }
     }
     
+    /// Save button gesture recognizer
     @IBOutlet var saveButtonGestureRecognizer: UITapGestureRecognizer!
     
     /// Date label
@@ -106,7 +107,8 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        
+        // Update view everytime the view loads
         if let viewModel = viewModel {
             updateView(for: viewModel)
         }
@@ -115,6 +117,7 @@ class DetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        // Update favorites button everytime the view appears
         if let viewModel = viewModel {
             updateFavoritesButton(for: viewModel)
         }
@@ -124,8 +127,7 @@ class DetailViewController: UIViewController {
     
     private func updateView(for viewModel: APODViewModel) {
         updateSubViews(for: viewModel)
-        updateLabels(for: viewModel)
-        updateFavoritesButton(for: viewModel)
+        updateLabelsText(for: viewModel)
         updateMedia(for: viewModel)
         updateFavoritesButton(for: viewModel)
     }
@@ -136,7 +138,7 @@ class DetailViewController: UIViewController {
         saveButton.isHidden = viewModel.mediaType == .video
     }
     
-    private func updateLabels(for viewModel: APODViewModel) {
+    private func updateLabelsText(for viewModel: APODViewModel) {
         dateLabel.text = viewModel.preferredDate ?? viewModel.date
         titleLabel.text = viewModel.title
         explanationLabel.text = viewModel.explanation
@@ -174,13 +176,13 @@ class DetailViewController: UIViewController {
     // MARK: Media Updates
         
     private func setupImageView(with url: URL) {
-        // Observe user interaction events.
+        // Observe user interaction events
         imageView.isUserInteractionEnabled = true
         
-        // Image need to scale to allways fill the size of the view.
+        // Image need to scale to always fill the size of the view
         imageView.contentMode = .scaleAspectFill
         
-        // Pin view to container.
+        // Pin view to container
         mediaContainerView.pinSubView(imageView)
         
         // Fetch image
@@ -189,17 +191,17 @@ class DetailViewController: UIViewController {
         // Accessibility
         applyAccessibilityAttributesforImageView(imageView)
         
-        // Cannot add accessibility attributes to Lightbox. Therefore, we disable the feature when using VoiceOver.
+        // Cannot add accessibility attributes to Lightbox. Therefore, we disable the feature when using VoiceOver
         if !UIAccessibility.isVoiceOverRunning {
             imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapOnImage(_:))))
         }
     }
     
     private func setupWebView(with url: URL) {
-        // Pin view to container.
+        // Pin view to container
         mediaContainerView.pinSubView(webView)
         
-        // Load URL.
+        // Load URL
         webView.load(URLRequest(url: url))
         
         // Accessibility
@@ -236,8 +238,8 @@ class DetailViewController: UIViewController {
     
     @IBAction func didTapOnFavorites(_ sender: Any) {
         guard let viewModel = viewModel else { return }
-        UserDefaultsFavoritesManager.shared.isFavorite(viewModel.apod.date) { isFavorite in
-            guard let viewModel = self.viewModel else { return }
+        UserDefaultsFavoritesManager.shared.isFavorite(viewModel.apod.date) { [weak self] isFavorite in
+            guard let self = self, let viewModel = self.viewModel else { return }
             isFavorite ? UserDefaultsFavoritesManager.shared.removeFromFavorites(viewModel.apod.date) : UserDefaultsFavoritesManager.shared.addToFavorites(viewModel.apod.date)
             feedbackGenerator.selectionChanged()
             self.animateFavoritesButtonTransition(isFavorite: !isFavorite)

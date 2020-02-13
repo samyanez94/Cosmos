@@ -12,11 +12,11 @@ import UIKit
 
 class DiscoverDataSource: NSObject, UICollectionViewDataSource {
     
-    /// Collection view.
+    /// Collection view
     weak private var collectionView: UICollectionView?
     
-    /// List of astronomy pictures of the day.
-    private(set) var apods: SortedSet<APOD> = SortedSet()
+    /// List of astronomy pictures of the day
+    private(set) var apods = OrderedSet<APOD>()
     
     /// The identifier for the footer cell
     private let footerCellIdentifier = "com.samuelyanez.CosmosCellFooter"
@@ -59,23 +59,22 @@ class DiscoverDataSource: NSObject, UICollectionViewDataSource {
         cell.applyAccessibilityAttributes(for: viewModel)
         
         // Load preview
-        setImageView(for: cell, apod: apod)
+        setImageView(for: cell, viewModel: viewModel)
         
         return cell
     }
     
-    // TODO: Try to refactor or move this logic
-    private func setImageView(for cell: DiscoverCell, apod: APOD) {
-        if let url = apod.thumbnailUrl {
-            cell.imageView.af_setImage(withURL: url, imageTransition: .crossDissolve(0.2)) { data in
-                if data.response?.statusCode == 404 {
-                    cell.imageView.image = DiscoverCell.placeholderImage
-                }
-                cell.activityIndicator.stopAnimating()
-            }
-        } else {
+    private func setImageView(for cell: DiscoverCell, viewModel: APODViewModel) {
+        guard let url = viewModel.thumbnailUrl else {
             cell.activityIndicator.stopAnimating()
             cell.imageView.image = DiscoverCell.placeholderImage
+            return
+        }
+        cell.imageView.af_setImage(withURL: url, imageTransition: .crossDissolve(0.2)) { data in
+            if data.response?.statusCode == 404 {
+                cell.imageView.image = DiscoverCell.placeholderImage
+            }
+            cell.activityIndicator.stopAnimating()
         }
     }
 }

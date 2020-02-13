@@ -88,6 +88,7 @@ class FavoritesViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        // Update view on view did appear only when required
         if UserDefaultsFavoritesManager.shared.isRefreshRequired {
             UserDefaultsFavoritesManager.shared.getFavorites { [weak self] dates in
                 self?.fetch(favorites: dates)
@@ -131,7 +132,7 @@ class FavoritesViewController: UIViewController {
                 if apods.isEmpty {
                     self.state = .missingFavorites
                 } else {
-                    self.dataSource.update(withCollection: apods)
+                    self.dataSource.update(withCollection: apods.sorted(by: >))
                     self.tableView.reloadFirstSecction()
                     self.state = .displayCollection
                 }
