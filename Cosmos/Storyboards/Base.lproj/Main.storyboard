@@ -410,7 +410,7 @@ Tap here to try again.</string>
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JNc-h8-655" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="616"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="680"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="“The Cosmos is all that is, or ever was, or ever will be.” - Carl Sagan. " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KBe-fd-YQ2" userLabel="About Body Quote Label">
                                                 <rect key="frame" x="16" y="16" width="382" height="48"/>
@@ -462,7 +462,7 @@ Tap here to try again.</string>
                                             <constraint firstAttribute="trailing" secondItem="UpS-uD-Out" secondAttribute="trailing" constant="16" id="4dZ-GN-t8V"/>
                                             <constraint firstItem="KBe-fd-YQ2" firstAttribute="leading" secondItem="JNc-h8-655" secondAttribute="leading" constant="16" id="F05-Ri-4oL"/>
                                             <constraint firstItem="Xg5-6G-pdm" firstAttribute="top" secondItem="KBe-fd-YQ2" secondAttribute="bottom" constant="16" id="Fej-n8-atD"/>
-                                            <constraint firstAttribute="bottom" secondItem="LgY-bM-WJr" secondAttribute="bottom" constant="64" id="Hwb-oD-Sda"/>
+                                            <constraint firstAttribute="bottom" secondItem="LgY-bM-WJr" secondAttribute="bottom" constant="128" id="Hwb-oD-Sda"/>
                                             <constraint firstItem="LgY-bM-WJr" firstAttribute="leading" secondItem="JNc-h8-655" secondAttribute="leading" constant="16" id="HxS-cq-hAW"/>
                                             <constraint firstItem="UpS-uD-Out" firstAttribute="top" secondItem="Xg5-6G-pdm" secondAttribute="bottom" constant="32" id="INh-jf-1nU"/>
                                             <constraint firstAttribute="trailing" secondItem="Xg5-6G-pdm" secondAttribute="trailing" constant="16" id="Sbc-tK-7CG"/>
