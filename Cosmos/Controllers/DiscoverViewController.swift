@@ -47,8 +47,6 @@ class DiscoverViewController: UIViewController {
         return DiscoverDataSource(collectionView: collectionView)
     }()
     
-    // TODO: Consider moving pagination logic somewhere else...
-    
     /// Pagination offset
     var collectionOffset = 0
     
@@ -82,9 +80,7 @@ class DiscoverViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         title = DiscoverViewStrings.title.localized
-                
         fetch(count: collectionPageSize, offset: collectionOffset)
     }
     
@@ -122,15 +118,14 @@ class DiscoverViewController: UIViewController {
             case .failure:
                 self.state = .error
             case .success(let apods):
-                // Update collection
-                self.dataSource.append(apods)
-                self.collectionView.reloadData()
-                
-                // Update view's state
-                self.state = .displayCollection
-                
-                // Important to increase the offset for pagination
-                self.collectionOffset = offset + self.collectionPageSize
+                if apods.isEmpty {
+                    self.state = .error
+                } else {
+                    self.dataSource.append(apods)
+                    self.collectionView.reloadData()
+                    self.state = .displayCollection
+                    self.collectionOffset = offset + self.collectionPageSize
+                }
             }
             completion?()
         }

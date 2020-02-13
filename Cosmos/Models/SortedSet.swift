@@ -62,10 +62,12 @@ public struct SortedSet<E>: Collection where E: Hashable, E: Comparable {
         }
     }
     
-    public mutating func remove(_ element: Element) {
+    @discardableResult public mutating func remove(_ element: Element) -> Element? {
         if let element = set.remove(element) {
             array.removeAll { $0 == element }
+            return element
         }
+        return nil
     }
 }
 

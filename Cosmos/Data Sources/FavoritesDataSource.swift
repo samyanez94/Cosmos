@@ -21,24 +21,24 @@ class FavoritesDataSource: NSObject, UITableViewDataSource {
         self.tableView = tableView
     }
     
-    func set(withCollection collection: [APOD]) {
+    func update(withCollection collection: [APOD]) {
         apods = SortedSet(withCollection: collection)
     }
     
     func element(at indexPath: IndexPath) -> APOD {
-        return apods.element(at: indexPath.row)
+        apods.element(at: indexPath.row)
     }
     
     func append(_ apods: [APOD]) {
         self.apods.append(apods)
     }
     
-    func remove(_ apod: APOD) {
-        apods.remove(apod)
+    @discardableResult func remove(_ apod: APOD) -> APOD? {
+        return apods.remove(apod)
     }
     
-    func removeElement(at indexPath: IndexPath) {
-        apods.remove(apods[indexPath.row])
+    @discardableResult func removeElement(at indexPath: IndexPath) -> APOD? {
+        return apods.remove(apods[indexPath.row])
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

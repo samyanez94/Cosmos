@@ -276,6 +276,8 @@ class DetailViewController: UIViewController {
         }
     }
     
+    // MARK: Alert
+    
     private func presentAlertForDeniedAccessToPhotos() {
         let alertController = UIAlertController (title: "Allow Cosmos access to your photos", message: "To save images please allow Cosmos access from Settings.", preferredStyle: .alert)
         let settingsAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in

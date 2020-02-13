@@ -123,16 +123,17 @@ class FavoritesViewController: UIViewController {
     
     func fetch(favorites: [Date], completion: (() -> Void)? = nil) {
         client.fetch(dates: favorites) { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .failure:
-                self?.state = .error
+                self.state = .error
             case .success(let apods):
                 if apods.isEmpty {
-                    self?.state = .missingFavorites
+                    self.state = .missingFavorites
                 } else {
-                    self?.dataSource.set(withCollection: apods)
-                    self?.state = .displayCollection
-                    self?.tableView.reloadSections(IndexSet(integer: 0), with: .fade)
+                    self.dataSource.update(withCollection: apods)
+                    self.tableView.reloadFirstSecction()
+                    self.state = .displayCollection
                 }
             }
             completion?()
@@ -151,6 +152,8 @@ class FavoritesViewController: UIViewController {
     }
 }
 
+// MARK: UITableViewDelegate
+
 extension FavoritesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         FavoritesCell.height
@@ -158,11 +161,17 @@ extension FavoritesViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let removeAction = UIContextualAction(style: .destructive, title: FavoritesViewStrings.remove.localized, handler: { _, _, completionHandler  in
-            // TODO: Consider developing a notification system for changes to the favorites manager
-            UserDefaultsFavoritesManager.shared.removeFromFavorites(self.dataSource.element(at: indexPath).date)
-            self.dataSource.removeElement(at: indexPath)
-            self.tableView.deleteRows(at: [indexPath], with: .automatic)
-            completionHandler(true)
+            if let apod = self.dataSource.removeElement(at: indexPath) {
+                self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                UserDefaultsFavoritesManager.shared.removeFromFavorites(apod.date)
+                if self.dataSource.apods.count == 0 {
+                    self.state = .missingFavorites
+                }
+                completionHandler(true)
+            } else {
+                completionHandler(false)
+            }
+            
         })
         return UISwipeActionsConfiguration(actions: [removeAction])
     }
