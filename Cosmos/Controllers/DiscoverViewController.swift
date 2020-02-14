@@ -104,6 +104,11 @@ class DiscoverViewController: UIViewController {
                 let apod = dataSource.element(at: selectedIndexPath[0])
                 if let detailViewController = segue.destination as? DetailViewController {
                     detailViewController.viewModel = APODViewModel(apod: apod)
+                    
+                    // Inform the tab bar controller of the last view controller shown
+                    if let tabBarController = tabBarController as? TabBarViewController {
+                        tabBarController.previousSelectedViewController = detailViewController
+                    }
                 }
             }
         }

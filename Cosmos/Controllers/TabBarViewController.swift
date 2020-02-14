@@ -11,20 +11,24 @@ import UIKit
 class TabBarViewController: UITabBarController {
     
     /// Previous selected view controller
-    var previousViewController: UIViewController?
+    var previousSelectedViewController: UIViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
-        previousViewController = selectedViewController
+        previousSelectedViewController = selectedViewController
     }
 }
 
 extension TabBarViewController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        if viewController == previousViewController, let navigationController = viewController as? UINavigationController, let discoverViewController = navigationController.topViewController as? DiscoverViewController {
+        if viewController == previousSelectedViewController, let navigationController = viewController as? UINavigationController {
+            if let discoverViewController = navigationController.topViewController as? DiscoverViewController {
                 discoverViewController.scrollToTop()
+            } else if let favoritesViewController = navigationController.topViewController as? FavoritesViewController {
+                favoritesViewController.scrollToTop()
+            }
         }
-        previousViewController = viewController
+        previousSelectedViewController = viewController
     }
 }
