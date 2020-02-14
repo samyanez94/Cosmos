@@ -2,7 +2,7 @@
 
 # Cosmos
 
-> "The cosmos is all that is, over ever was, or ever will be." - Carl Sagan
+> "The cosmos is all that is, or ever was, or ever will be." - Carl Sagan
 
 Cosmos is an iOS app that displays images and videos from our universe while keeping in mind a minimal and user-friendly design. The app was born from a strong desire to learn more about space and software development. I wanted to learn about the app development process by building an app from scratch and releasing it on the App Store.
 
