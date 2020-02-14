@@ -34,12 +34,13 @@ class FavoritesCell: UITableViewCell {
         didSet {
             explanationLabel.font = DynamicFont.shared.font(forTextStyle: .caption1)
             explanationLabel.adjustsFontForContentSizeCategory = false
+            explanationLabel.isAccessibilityElement = false
         }
     }
     
     /// Cell height
     static let height: CGFloat = 140
-    
+        
     override func prepareForReuse() {
         super.prepareForReuse()
         thumbnailImageView.image = nil
@@ -49,5 +50,12 @@ class FavoritesCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         thumbnailImageView.roundCorners(radius: 5)
+    }
+}
+
+extension FavoritesCell {
+    func applyAccessibilityAttributes() {
+        self.isAccessibilityElement = true
+        self.accessibilityHint = "Double tap to show more details."
     }
 }

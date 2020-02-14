@@ -54,6 +54,7 @@ class AboutViewController: UIViewController {
     @IBOutlet private var visitButton: UIButton! {
         didSet {
             visitButton.accessibilityIdentifier = AboutViewAccessibilityIdentifier.Button.visitButton
+            visitButton.accessibilityTraits = .link
             visitButton.titleLabel?.font = DynamicFont.shared.font(forTextStyle: .body)
             visitButton.titleLabel?.adjustsFontForContentSizeCategory = false
             visitButton.titleLabel?.text = AboutViewStrings.visitButton.localized

@@ -55,7 +55,6 @@
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Central Lunar Eclipse" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0aM-Eg-prD" userLabel="Title Label">
                                                                             <rect key="frame" x="0.0" y="24" width="293" height="76"/>
                                                                             <accessibility key="accessibilityConfiguration">
-                                                                                <accessibilityTraits key="traits" staticText="YES"/>
                                                                                 <bool key="isElement" value="NO"/>
                                                                             </accessibility>
                                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
@@ -78,16 +77,15 @@
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Kt9-WC-Du9" userLabel="Image View">
                                                             <rect key="frame" x="0.0" y="120" width="333" height="330"/>
                                                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                            <accessibility key="accessibilityConfiguration">
+                                                                <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
+                                                            </accessibility>
                                                         </imageView>
                                                         <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="mLT-80-Upo">
                                                             <rect key="frame" x="0.0" y="120" width="333" height="330"/>
                                                             <color key="color" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         </activityIndicatorView>
                                                     </subviews>
-                                                    <accessibility key="accessibilityConfiguration">
-                                                        <accessibilityTraits key="traits" button="YES"/>
-                                                        <bool key="isElement" value="YES"/>
-                                                    </accessibility>
                                                     <constraints>
                                                         <constraint firstItem="Kt9-WC-Du9" firstAttribute="top" secondItem="VH7-Qi-Scl" secondAttribute="bottom" id="HEW-Wx-0RL"/>
                                                         <constraint firstItem="VH7-Qi-Scl" firstAttribute="top" secondItem="usi-kE-pWi" secondAttribute="top" id="Luv-1l-8Bt"/>
@@ -419,7 +417,7 @@ Tap here to try again.</string>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xg5-6G-pdm" userLabel="About Body Label">
                                                 <rect key="frame" x="16" y="80" width="382" height="143.5"/>
-                                                <string key="text">This app was born from a strong desire to learn more about space and software development. I decided to build an iOS app that displays images and videos from our universe. Keeping in mind a minimal and user-friendly design.</string>
+                                                <string key="text">This app was born from a strong desire to learn more about space and software development. I decided to build an iOS app that displays images and videos from our universe keeping in mind a minimal and user-friendly design.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -639,6 +637,10 @@ Tap here to try again.</string>
                                                 <constraint firstItem="mfM-ty-avp" firstAttribute="leading" secondItem="8mD-1p-xNb" secondAttribute="leading" constant="16" id="tIB-wG-H8F"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" none="YES"/>
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <connections>
                                             <outlet property="dateLabel" destination="i38-cf-OZs" id="LDq-i2-fkt"/>
                                             <outlet property="explanationLabel" destination="Dhq-ae-Xld" id="mAZ-NN-qOS"/>
@@ -688,9 +690,8 @@ Tap here to try again.</string>
                                     <constraint firstItem="hDY-nU-qcc" firstAttribute="centerY" secondItem="me7-Y4-VJt" secondAttribute="centerY" id="GJc-sT-Qbj"/>
                                 </constraints>
                             </view>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="ohq-vH-wHK">
-                                <rect key="frame" x="197" y="438" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="ohq-vH-wHK">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -698,9 +699,13 @@ Tap here to try again.</string>
                             <constraint firstItem="ot2-gx-31u" firstAttribute="top" secondItem="me7-Y4-VJt" secondAttribute="top" id="6jf-mP-hbS"/>
                             <constraint firstItem="me7-Y4-VJt" firstAttribute="leading" secondItem="ot2-gx-31u" secondAttribute="leading" id="Gws-q8-Glc"/>
                             <constraint firstItem="ot2-gx-31u" firstAttribute="trailing" secondItem="me7-Y4-VJt" secondAttribute="trailing" id="I6C-m9-aM5"/>
+                            <constraint firstItem="ot2-gx-31u" firstAttribute="trailing" secondItem="ohq-vH-wHK" secondAttribute="trailing" id="PvL-GE-Gdy"/>
                             <constraint firstItem="ot2-gx-31u" firstAttribute="trailing" secondItem="MH3-Fd-mFy" secondAttribute="trailing" id="cNZ-1E-q0q"/>
+                            <constraint firstItem="ohq-vH-wHK" firstAttribute="top" secondItem="ot2-gx-31u" secondAttribute="top" id="ew4-Lc-ykk"/>
+                            <constraint firstItem="ot2-gx-31u" firstAttribute="bottom" secondItem="ohq-vH-wHK" secondAttribute="bottom" id="f0J-vd-bWM"/>
                             <constraint firstItem="MH3-Fd-mFy" firstAttribute="top" secondItem="xun-hu-JvK" secondAttribute="top" id="hp5-dy-MxQ"/>
                             <constraint firstItem="ot2-gx-31u" firstAttribute="bottom" secondItem="me7-Y4-VJt" secondAttribute="bottom" id="l1Y-1d-gxQ"/>
+                            <constraint firstItem="ohq-vH-wHK" firstAttribute="leading" secondItem="ot2-gx-31u" secondAttribute="leading" id="qYn-SZ-nH1"/>
                             <constraint firstItem="MH3-Fd-mFy" firstAttribute="leading" secondItem="ot2-gx-31u" secondAttribute="leading" id="rrZ-lg-a2W"/>
                             <constraint firstAttribute="bottom" secondItem="MH3-Fd-mFy" secondAttribute="bottom" id="tba-rC-5z0"/>
                         </constraints>

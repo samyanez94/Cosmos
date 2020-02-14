@@ -29,6 +29,9 @@ class DetailViewController: UIViewController {
     @IBOutlet private var favoritesButton: UIImageView! {
         didSet {
             favoritesButton.accessibilityIdentifier = DetailViewAccessibilityIdentifier.Button.favoritesButton
+            favoritesButton.isAccessibilityElement = true
+            favoritesButton.accessibilityTraits = .button
+            favoritesButton.accessibilityLabel = "Add to favorites"
         }
     }
     
@@ -36,6 +39,10 @@ class DetailViewController: UIViewController {
     @IBOutlet private var shareButton: UIImageView! {
         didSet {
             shareButton.accessibilityIdentifier = DetailViewAccessibilityIdentifier.Button.shareButton
+            shareButton.isAccessibilityElement = true
+            shareButton.accessibilityTraits = .button
+            shareButton.accessibilityLabel = "Share"
+            shareButton.accessibilityHint = "Double tap to share."
         }
     }
     
@@ -43,6 +50,10 @@ class DetailViewController: UIViewController {
     @IBOutlet private var saveButton: UIImageView! {
         didSet {
             saveButton.accessibilityIdentifier = DetailViewAccessibilityIdentifier.Button.saveToPhotosButton
+            saveButton.isAccessibilityElement = true
+            saveButton.accessibilityTraits = .button
+            saveButton.accessibilityLabel = "Save to Photos"
+            saveButton.accessibilityHint = "Double tap save to Photos."
         }
     }
     
@@ -79,7 +90,7 @@ class DetailViewController: UIViewController {
     /// Copyright label
     @IBOutlet private var copyrightLabel: UILabel! {
         didSet {
-            copyrightLabel.accessibilityLabel = DetailViewAccessibilityIdentifier.Label.copyrightLabel
+            copyrightLabel.accessibilityIdentifier = DetailViewAccessibilityIdentifier.Label.copyrightLabel
             copyrightLabel.font = DynamicFont.shared.font(forTextStyle: .body)
             copyrightLabel.adjustsFontForContentSizeCategory = false
         }
@@ -159,6 +170,7 @@ class DetailViewController: UIViewController {
     private func updateFavoritesButton(for viewModel: APODViewModel) {
         UserDefaultsFavoritesManager.shared.isFavorite(viewModel.apod.date) { isFavorite in
             animateFavoritesButtonTransition(isFavorite: isFavorite)
+            updateAccesibilityAttributesValueToFavoritesButton(isFavorite: isFavorite)
         }
     }
     
@@ -243,6 +255,7 @@ class DetailViewController: UIViewController {
             isFavorite ? UserDefaultsFavoritesManager.shared.removeFromFavorites(viewModel.apod.date) : UserDefaultsFavoritesManager.shared.addToFavorites(viewModel.apod.date)
             feedbackGenerator.selectionChanged()
             self.animateFavoritesButtonTransition(isFavorite: !isFavorite)
+            self.updateAccesibilityAttributesValueToFavoritesButton(isFavorite: !isFavorite)
         }
     }
         
@@ -315,5 +328,15 @@ extension DetailViewController {
         webView.accessibilityTraits = .startsMediaSession
         webView.accessibilityHint = "Double tap to play media."
         webView.accessibilityIdentifier = DetailViewAccessibilityIdentifier.WebView.webView
+    }
+    
+    private func updateAccesibilityAttributesValueToFavoritesButton(isFavorite: Bool) {
+        if isFavorite {
+            favoritesButton.accessibilityValue = "Added"
+            favoritesButton.accessibilityHint = "Double tap to remove from favorites."
+        } else {
+            favoritesButton.accessibilityValue = "Not in favorites"
+            favoritesButton.accessibilityHint = "Double tap to add to favorites."
+        }
     }
 }

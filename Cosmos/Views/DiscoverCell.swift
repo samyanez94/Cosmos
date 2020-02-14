@@ -64,21 +64,21 @@ class DiscoverCell: UICollectionViewCell {
         containerView.roundCorners(radius: 20)
     }
 }
+
 // MARK: - Accesibility
 
 extension DiscoverCell {
-    
     func applyAccessibilityAttributes(for viewModel: APODViewModel) {
+        containerView.isAccessibilityElement = true
+        containerView.accessibilityTraits = .button
         containerView.accessibilityLabel = "\(viewModel.preferredDate ?? viewModel.date). \(viewModel.title)"
-        containerView.accessibilityTraits = UIAccessibilityTraits.button
-        containerView.accessibilityHint = "Double tap to show more details about this media."
+        containerView.accessibilityHint = "Double tap to show more details."
     }
 }
 
 // MARK: - Gesture Recognizer
 
 extension DiscoverCell {
-        
     private func configureGestureRecognizer() {
         let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPressGesture(gestureRecognizer:)))
         longPressGestureRecognizer.minimumPressDuration = 0.25

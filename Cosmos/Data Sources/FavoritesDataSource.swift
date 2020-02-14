@@ -58,6 +58,9 @@ class FavoritesDataSource: NSObject, UITableViewDataSource {
         cell.titleLabel.text = viewModel.title
         cell.explanationLabel.text = viewModel.explanation
         
+        // Accessibility
+        cell.applyAccessibilityAttributes()
+        
         // Load preview
         setImageView(for: cell, viewModel: viewModel)
                 
