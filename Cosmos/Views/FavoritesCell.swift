@@ -14,13 +14,28 @@ class FavoritesCell: UITableViewCell {
     @IBOutlet var thumbnailImageView: UIImageView!
     
     /// Date label
-    @IBOutlet var dateLabel: UILabel!
+    @IBOutlet var dateLabel: UILabel! {
+        didSet {
+            dateLabel.font = DynamicFont.shared.font(forTextStyle: .footnote)
+            dateLabel.adjustsFontForContentSizeCategory = false
+        }
+    }
     
     /// Title label
-    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var titleLabel: UILabel! {
+        didSet {
+            titleLabel.font = DynamicFont.shared.font(forTextStyle: .title3)
+             titleLabel.adjustsFontForContentSizeCategory = false
+        }
+    }
     
     /// Explanation label
-    @IBOutlet var explanationLabel: UILabel!
+    @IBOutlet var explanationLabel: UILabel! {
+        didSet {
+            explanationLabel.font = DynamicFont.shared.font(forTextStyle: .caption1)
+            explanationLabel.adjustsFontForContentSizeCategory = false
+        }
+    }
     
     /// Cell height
     static let height: CGFloat = 140

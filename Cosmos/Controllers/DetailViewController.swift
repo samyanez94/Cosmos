@@ -54,7 +54,7 @@ class DetailViewController: UIViewController {
         didSet {
             dateLabel.accessibilityIdentifier = DetailViewAccessibilityIdentifier.Label.dateLabel
             dateLabel.font = DynamicFont.shared.font(forTextStyle: .subheadline)
-            dateLabel.adjustsFontForContentSizeCategory = true
+            dateLabel.adjustsFontForContentSizeCategory = false
         }
     }
     
@@ -63,7 +63,7 @@ class DetailViewController: UIViewController {
         didSet {
             titleLabel.accessibilityIdentifier = DetailViewAccessibilityIdentifier.Label.titleLabel
             titleLabel.font = DynamicFont.shared.font(forTextStyle: .headline)
-            titleLabel.adjustsFontForContentSizeCategory = true
+            titleLabel.adjustsFontForContentSizeCategory = false
         }
     }
     
@@ -72,7 +72,7 @@ class DetailViewController: UIViewController {
         didSet {
             explanationLabel.accessibilityIdentifier = DetailViewAccessibilityIdentifier.Label.explanationLabel
             explanationLabel.font = DynamicFont.shared.font(forTextStyle: .body)
-            explanationLabel.adjustsFontForContentSizeCategory = true
+            explanationLabel.adjustsFontForContentSizeCategory = false
         }
     }
     
@@ -81,7 +81,7 @@ class DetailViewController: UIViewController {
         didSet {
             copyrightLabel.accessibilityLabel = DetailViewAccessibilityIdentifier.Label.copyrightLabel
             copyrightLabel.font = DynamicFont.shared.font(forTextStyle: .body)
-            copyrightLabel.adjustsFontForContentSizeCategory = true
+            copyrightLabel.adjustsFontForContentSizeCategory = false
         }
     }
     

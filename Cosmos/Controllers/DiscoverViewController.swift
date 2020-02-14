@@ -34,7 +34,7 @@ class DiscoverViewController: UIViewController {
     @IBOutlet var messageLabel: UILabel! {
         didSet {
             messageLabel.font = DynamicFont.shared.font(forTextStyle: .body)
-            messageLabel.adjustsFontForContentSizeCategory = true
+            messageLabel.adjustsFontForContentSizeCategory = false
             messageLabel.text = DiscoverViewStrings.errorMessage.localized
         }
     }

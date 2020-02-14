@@ -31,7 +31,7 @@ class FavoritesViewController: UIViewController {
     @IBOutlet var messageLabel: UILabel! {
         didSet {
             messageLabel.font = DynamicFont.shared.font(forTextStyle: .body)
-            messageLabel.adjustsFontForContentSizeCategory = true
+            messageLabel.adjustsFontForContentSizeCategory = false
         }
     }
     

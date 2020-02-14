@@ -15,7 +15,7 @@ class AboutViewController: UIViewController {
         didSet {
             aboutBodyQuoteLabel.accessibilityIdentifier = AboutViewAccessibilityIdentifier.Label.aboutBodyQuoteLabel
             aboutBodyQuoteLabel.font = DynamicFont.shared.font(forTextStyle: .body)
-            aboutBodyQuoteLabel.adjustsFontForContentSizeCategory = true
+            aboutBodyQuoteLabel.adjustsFontForContentSizeCategory = false
             aboutBodyQuoteLabel.text = AboutViewStrings.aboutBodyQuote.localized
         }
     }
@@ -25,7 +25,7 @@ class AboutViewController: UIViewController {
         didSet {
             aboutBodyLabel.accessibilityIdentifier = AboutViewAccessibilityIdentifier.Label.aboutBodyLabel
             aboutBodyLabel.font = DynamicFont.shared.font(forTextStyle: .body)
-            aboutBodyLabel.adjustsFontForContentSizeCategory = true
+            aboutBodyLabel.adjustsFontForContentSizeCategory = false
             aboutBodyLabel.text = AboutViewStrings.aboutBody.localized
         }
     }
@@ -35,7 +35,7 @@ class AboutViewController: UIViewController {
         didSet {
             acknowledgementsTitleLabel.accessibilityIdentifier = AboutViewAccessibilityIdentifier.Label.acknowledgementsTitleLabel
             acknowledgementsTitleLabel.font = DynamicFont.shared.font(forTextStyle: .headline)
-            acknowledgementsTitleLabel.adjustsFontForContentSizeCategory = true
+            acknowledgementsTitleLabel.adjustsFontForContentSizeCategory = false
             acknowledgementsTitleLabel.text = AboutViewStrings.acknowledgementsTitle.localized
         }
     }
@@ -45,7 +45,7 @@ class AboutViewController: UIViewController {
         didSet {
             acknowledgementsBodyLabel.accessibilityIdentifier = AboutViewAccessibilityIdentifier.Label.acknowledgementsBodyLabel
             acknowledgementsBodyLabel.font = DynamicFont.shared.font(forTextStyle: .body)
-            acknowledgementsBodyLabel.adjustsFontForContentSizeCategory = true
+            acknowledgementsBodyLabel.adjustsFontForContentSizeCategory = false
             acknowledgementsBodyLabel.text = AboutViewStrings.acknowledgementsBody.localized
         }
     }
@@ -55,8 +55,9 @@ class AboutViewController: UIViewController {
         didSet {
             visitButton.accessibilityIdentifier = AboutViewAccessibilityIdentifier.Button.visitButton
             visitButton.titleLabel?.font = DynamicFont.shared.font(forTextStyle: .body)
-            visitButton.titleLabel?.adjustsFontForContentSizeCategory = true
+            visitButton.titleLabel?.adjustsFontForContentSizeCategory = false
             visitButton.titleLabel?.text = AboutViewStrings.visitButton.localized
+            visitButton.titleLabel?.numberOfLines = 0
         }
     }
     
@@ -66,7 +67,7 @@ class AboutViewController: UIViewController {
             if let versionNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String {
                 versionLabel.accessibilityIdentifier = AboutViewAccessibilityIdentifier.Label.versionLabel
                 versionLabel.font = DynamicFont.shared.font(forTextStyle: .body)
-                versionLabel.adjustsFontForContentSizeCategory = true
+                versionLabel.adjustsFontForContentSizeCategory = false
                 versionLabel.text = String(format: AboutViewStrings.version.localized, versionNumber)
             }
         }

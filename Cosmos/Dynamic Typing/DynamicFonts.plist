@@ -19,9 +19,9 @@
 	<key>UICTFontTextStyleTitle3</key>
 	<dict>
 		<key>fontSize</key>
-		<integer>20</integer>
+		<integer>18</integer>
 		<key>fontWeight</key>
-		<string>Regular</string>
+		<string>Medium</string>
 	</dict>
 	<key>UICTFontTextStyleHeadline</key>
 	<dict>
@@ -54,14 +54,14 @@
 	<key>UICTFontTextStyleFootnote</key>
 	<dict>
 		<key>fontSize</key>
-		<integer>16</integer>
+		<integer>14</integer>
 		<key>fontWeight</key>
-		<string>Regular</string>
+		<string>Medium</string>
 	</dict>
 	<key>UICTFontTextStyleCaption1</key>
 	<dict>
 		<key>fontSize</key>
-		<integer>12</integer>
+		<integer>16</integer>
 		<key>fontWeight</key>
 		<string>Regular</string>
 	</dict>

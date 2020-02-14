@@ -23,7 +23,7 @@ class DiscoverCell: UICollectionViewCell {
     @IBOutlet var titleLabel: UILabel! {
         didSet {
             titleLabel.font = DynamicFont.shared.font(forTextStyle: .headline)
-            titleLabel.adjustsFontForContentSizeCategory = true
+            titleLabel.adjustsFontForContentSizeCategory = false
         }
     }
     
@@ -31,7 +31,7 @@ class DiscoverCell: UICollectionViewCell {
     @IBOutlet var dateLabel: UILabel! {
         didSet {
             dateLabel.font = DynamicFont.shared.font(forTextStyle: .subheadline)
-            dateLabel.adjustsFontForContentSizeCategory = true
+            dateLabel.adjustsFontForContentSizeCategory = false
         }
     }
     
