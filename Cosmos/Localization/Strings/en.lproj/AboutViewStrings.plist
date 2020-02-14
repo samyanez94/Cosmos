@@ -12,7 +12,7 @@
 	<key>About Body Quote</key>
 	<dict>
 		<key>value</key>
-		<string>“The Cosmos is all that is, or ever was, or ever will be.” - Carl Sagan.</string>
+		<string>“The cosmos is all that is, or ever was, or ever will be.” - Carl Sagan.</string>
 		<key>comment</key>
 		<string></string>
 	</dict>
@@ -33,7 +33,7 @@
 	<key>Acknowledgements Body</key>
 	<dict>
 		<key>value</key>
-		<string>All content featured in this app comes from NASA’s APOD API, a service that has been offering daily pictures of our universe since 1995. It contains the largest collection of annotated astronomical images on the internet.</string>
+		<string>The content featured in this app comes from NASA’s APOD API, a service that has been offering daily pictures of our universe since 1995. It contains the largest collection of annotated astronomical images on the internet.</string>
 		<key>comment</key>
 		<string></string>
 	</dict>
