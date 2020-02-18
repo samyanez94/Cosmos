@@ -22,6 +22,10 @@ The content feature in this app comes from [NASA's APOD API](https://api.nasa.go
 
 Building this app has been a rewarding experience. Please, feel free to contribute by looking at the pending issues on the Issues tab on GitHub. I'll try to keep it updated with new features and bugs 🐛.
 
+## Releases
+
+[Cosmos is on the App Store](https://apps.apple.com/us/app/cosmos-discover-our-universe/id1481310548?ls=1)! Is my first app to be published. Please, download it and share your thoughts. 🥳
+
 ## Author
 * Samuel Yanez ~ [samyanez94](https://github.com/samyanez94)
 
