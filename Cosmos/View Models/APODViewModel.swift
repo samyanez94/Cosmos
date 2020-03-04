@@ -1,5 +1,5 @@
 //
-//  APODViewModel.swift
+//  ApodViewModel.swift
 //  Cosmos
 //
 //  Created by Samuel Yanez on 10/15/19.
@@ -8,16 +8,16 @@
 
 import Foundation
 
-struct APODViewModel {
+struct ApodViewModel {
     
-    let apod: APOD
+    let apod: Apod
     
-    init(apod: APOD) {
+    init(apod: Apod) {
         self.apod = apod
     }
 }
 
-extension APODViewModel {
+extension ApodViewModel {
     var url: URL? {
         URL(string: apod.urlString)
     }
@@ -33,7 +33,7 @@ extension APODViewModel {
     }
 }
 
-extension APODViewModel {
+extension ApodViewModel {
     var title: String {
          apod.title
      }
@@ -46,7 +46,7 @@ extension APODViewModel {
         apod.explanation.isEmpty ? DetailViewStrings.missingExplanation.localized : apod.explanation
      }
      
-     var mediaType: APOD.MediaType {
+     var mediaType: Apod.MediaType {
          apod.mediaType
      }
      

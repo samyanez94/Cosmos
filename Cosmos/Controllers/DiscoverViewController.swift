@@ -103,7 +103,7 @@ class DiscoverViewController: UIViewController {
             if let selectedIndexPath = collectionView.indexPathsForSelectedItems {
                 let apod = dataSource.element(at: selectedIndexPath[0])
                 if let detailViewController = segue.destination as? DetailViewController {
-                    detailViewController.viewModel = APODViewModel(apod: apod)
+                    detailViewController.viewModel = ApodViewModel(apod: apod)
                     
                     // Inform the tab bar controller of the last view controller shown
                     if let tabBarController = tabBarController as? TabBarViewController {

@@ -28,11 +28,11 @@ class CosmosClient: APIClient {
      - Parameters:
         - completion: Completion hanlder for response. The response may contain an single APOD or an error.
      */
-    func fetch(completion: ((Swift.Result<APOD, APIError>) -> Void)? = nil) {
+    func fetch(completion: ((Swift.Result<Apod, APIError>) -> Void)? = nil) {
         let endpoint = CosmosEndpoint.today(thumbnails: true)
         
-        fetch(with: endpoint.request, parse: { data -> APOD? in
-            return try? self.decoder.decode(APOD.self, from: data)
+        fetch(with: endpoint.request, parse: { data -> Apod? in
+            return try? self.decoder.decode(Apod.self, from: data)
         }, completion: completion)
     }
     
@@ -43,11 +43,11 @@ class CosmosClient: APIClient {
         - date: The date for the APOD being fetched.
         - completion: Completion hanlder for response. The response may contain an single APOD or an error.
      */
-    func fetch(date: Date, completion: ((Swift.Result<APOD, APIError>) -> Void)? = nil) {
+    func fetch(date: Date, completion: ((Swift.Result<Apod, APIError>) -> Void)? = nil) {
         let endpoint = CosmosEndpoint.dated(date: date, thumbnails: true)
         
-        fetch(with: endpoint.request, parse: { data -> APOD? in
-            return try? self.decoder.decode(APOD.self, from: data)
+        fetch(with: endpoint.request, parse: { data -> Apod? in
+            return try? self.decoder.decode(Apod.self, from: data)
         }, completion: completion)
     }
     
@@ -58,11 +58,11 @@ class CosmosClient: APIClient {
         - count: The number of random APODs.
         - completion: Completion hanlder for response. The response may contain a list of APODs or an error.
      */
-    func fetch(count: Int, completion: ((Swift.Result<[APOD], APIError>) -> Void)? = nil) {
+    func fetch(count: Int, completion: ((Swift.Result<[Apod], APIError>) -> Void)? = nil) {
         let endpoint = CosmosEndpoint.randomized(count: count, thumbnails: true)
         
-        fetch(with: endpoint.request, parse: { data -> [APOD]? in
-            return try? self.decoder.decode([APOD].self, from: data)
+        fetch(with: endpoint.request, parse: { data -> [Apod]? in
+            return try? self.decoder.decode([Apod].self, from: data)
         }, completion: completion)
     }
     
@@ -74,14 +74,14 @@ class CosmosClient: APIClient {
         - offset: The offset days from today's date for the range of APODs.
         - completion: Completion hanlder for response. The response may contain a list of APODs or an error.
      */
-    func fetch(count: Int, offset: Int, completion: ((Swift.Result<[APOD], APIError>) -> Void)? = nil) {
+    func fetch(count: Int, offset: Int, completion: ((Swift.Result<[Apod], APIError>) -> Void)? = nil) {
         if let to = Calendar.current.date(byAdding: .day, value: -offset, to: Date()),
             let from = Calendar.current.date(byAdding: .day, value: -count, to: to) {
         
             let endpoint = CosmosEndpoint.ranged(from: from, to: to, thumbnails: true)
             
-            fetch(with: endpoint.request, parse: { data -> [APOD]? in
-                return try? self.decoder.decode([APOD].self, from: data)
+            fetch(with: endpoint.request, parse: { data -> [Apod]? in
+                return try? self.decoder.decode([Apod].self, from: data)
             }, completion: completion)
         } else {
             completion?(.failure(.incorrectParameters))
@@ -95,14 +95,14 @@ class CosmosClient: APIClient {
         - dates: List of dates from the APODs to fetch.
         - completion: Completion hanlder for response. The response may contain a list of APODs or an error.
      */
-    func fetch(dates: [Date], completion: ((Swift.Result<[APOD], APIError>) -> Void)? = nil) {
+    func fetch(dates: [Date], completion: ((Swift.Result<[Apod], APIError>) -> Void)? = nil) {
         var endpoint: [CosmosEndpoint] = []
         for date in dates {
             endpoint.append(CosmosEndpoint.dated(date: date, thumbnails: true))
         }
         let requests = endpoint.map { $0.request }
-        fetch(with: requests, parse: { data -> APOD? in
-            return try? self.decoder.decode(APOD.self, from: data)
+        fetch(with: requests, parse: { data -> Apod? in
+            return try? self.decoder.decode(Apod.self, from: data)
         }, completion: completion)
     }
 }

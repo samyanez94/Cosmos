@@ -106,7 +106,7 @@ class DetailViewController: UIViewController {
     private lazy var webView = WKWebView()
     
     /// View model
-    var viewModel: APODViewModel?
+    var viewModel: ApodViewModel?
         
     /// Feedback generator
     private var feedbackGenerator = UISelectionFeedbackGenerator()
@@ -136,27 +136,27 @@ class DetailViewController: UIViewController {
     
     // MARK: View Updates
     
-    private func updateView(for viewModel: APODViewModel) {
+    private func updateView(for viewModel: ApodViewModel) {
         updateSubViews(for: viewModel)
         updateLabelsText(for: viewModel)
         updateMedia(for: viewModel)
         updateFavoritesButton(for: viewModel)
     }
     
-    private func updateSubViews(for viewModel: APODViewModel) {
+    private func updateSubViews(for viewModel: ApodViewModel) {
         dateLabelGestureRecognizer.isEnabled = viewModel.preferredDate.isNotNil
         copyrightLabel.isHidden = viewModel.copyright.isNil
         saveButton.isHidden = viewModel.mediaType == .video
     }
     
-    private func updateLabelsText(for viewModel: APODViewModel) {
+    private func updateLabelsText(for viewModel: ApodViewModel) {
         dateLabel.text = viewModel.preferredDate ?? viewModel.date
         titleLabel.text = viewModel.title
         explanationLabel.text = viewModel.explanation
         copyrightLabel.attributedText = viewModel.copyright
     }
     
-    private func updateMedia(for viewModel: APODViewModel) {
+    private func updateMedia(for viewModel: ApodViewModel) {
         if let url = viewModel.url {
             switch viewModel.mediaType {
             case .image:
@@ -167,7 +167,7 @@ class DetailViewController: UIViewController {
         }
     }
     
-    private func updateFavoritesButton(for viewModel: APODViewModel) {
+    private func updateFavoritesButton(for viewModel: ApodViewModel) {
         UserDefaultsFavoritesManager.shared.isFavorite(viewModel.apod.date) { isFavorite in
             animateFavoritesButtonTransition(isFavorite: isFavorite)
             updateAccesibilityAttributesValueToFavoritesButton(isFavorite: isFavorite)

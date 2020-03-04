@@ -113,7 +113,7 @@ class FavoritesViewController: UIViewController {
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
                 let apod = dataSource.element(at: selectedIndexPath)
                 if let detailViewController = segue.destination as? DetailViewController {
-                    detailViewController.viewModel = APODViewModel(apod: apod)
+                    detailViewController.viewModel = ApodViewModel(apod: apod)
                     
                     // Inform the tab bar controller of the last view controller shown
                     if let tabBarController = tabBarController as? TabBarViewController {

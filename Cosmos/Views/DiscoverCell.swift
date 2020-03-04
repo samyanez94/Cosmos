@@ -11,16 +11,16 @@ import UIKit
 class DiscoverCell: UICollectionViewCell {
 
     /// Image view
-    @IBOutlet var imageView: UIImageView!
+    @IBOutlet private var imageView: UIImageView!
     
     /// Header view
-    @IBOutlet var headerView: UIView!
+    @IBOutlet private var headerView: UIView!
     
     /// Container view
-    @IBOutlet var containerView: UIView!
+    @IBOutlet private var containerView: UIView!
     
     /// Title label
-    @IBOutlet var titleLabel: UILabel! {
+    @IBOutlet private var titleLabel: UILabel! {
         didSet {
             titleLabel.font = DynamicFont.shared.font(forTextStyle: .headline)
             titleLabel.adjustsFontForContentSizeCategory = false
@@ -28,7 +28,7 @@ class DiscoverCell: UICollectionViewCell {
     }
     
     /// Date label
-    @IBOutlet var dateLabel: UILabel! {
+    @IBOutlet private var dateLabel: UILabel! {
         didSet {
             dateLabel.font = DynamicFont.shared.font(forTextStyle: .subheadline)
             dateLabel.adjustsFontForContentSizeCategory = false
@@ -37,12 +37,18 @@ class DiscoverCell: UICollectionViewCell {
     
     /// Activity indicator
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
+    
+    /// Placeholder image
+    static let placeholderImage = UIImage(named: "Missing Image Placeholder")
         
     /// Feedback generator
     private var feedbackGenerator: UISelectionFeedbackGenerator?
     
-    /// Placeholder image
-    static let placeholderImage = UIImage(named: "Missing Image Placeholder")
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        configureGestureRecognizer()
+        applyAccessibilityAttributes()
+    }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -50,7 +56,13 @@ class DiscoverCell: UICollectionViewCell {
     }
     
     override func draw(_ rect: CGRect) {
+        super.draw(rect)
         setShadow(opacity: 0.2, radius: 20)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        containerView.roundCorners(radius: 20)
     }
     
     override func prepareForReuse() {
@@ -59,20 +71,43 @@ class DiscoverCell: UICollectionViewCell {
         imageView.af_cancelImageRequest()
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        containerView.roundCorners(radius: 20)
+    func update(with viewModel: ApodViewModel) {
+        titleLabel.text = viewModel.title
+        dateLabel.text = viewModel.preferredDate ?? viewModel.date
+        setImageView(with: viewModel.thumbnailUrl)
+        updateAccessibilityAttributes(for: viewModel)
+    }
+}
+
+extension DiscoverCell {
+    private func setImageView(with url: URL?) {
+        guard let url = url else {
+            imageView.image = DiscoverCell.placeholderImage
+            return
+        }
+        activityIndicator.startAnimating()
+        imageView.af_setImage(withURL: url, imageTransition: .crossDissolve(0.2)) { [weak self] data in
+            guard data.response?.statusCode != 404 else {
+                self?.imageView.image = DiscoverCell.placeholderImage
+                self?.activityIndicator.stopAnimating()
+                return
+            }
+            self?.activityIndicator.stopAnimating()
+        }
     }
 }
 
 // MARK: - Accesibility
 
 extension DiscoverCell {
-    func applyAccessibilityAttributes(for viewModel: APODViewModel) {
+    private func applyAccessibilityAttributes() {
         containerView.isAccessibilityElement = true
         containerView.accessibilityTraits = .button
-        containerView.accessibilityLabel = "\(viewModel.preferredDate ?? viewModel.date). \(viewModel.title)"
         containerView.accessibilityHint = "Double tap to show more details."
+    }
+    
+    private func updateAccessibilityAttributes(for viewModel: ApodViewModel) {
+        containerView.accessibilityLabel = "\(viewModel.preferredDate ?? viewModel.date). \(viewModel.title)"
     }
 }
 
@@ -85,7 +120,7 @@ extension DiscoverCell {
         addGestureRecognizer(longPressGestureRecognizer)
     }
     
-    @objc internal func handleLongPressGesture(gestureRecognizer: UILongPressGestureRecognizer) {
+    @objc private func handleLongPressGesture(gestureRecognizer: UILongPressGestureRecognizer) {
         if gestureRecognizer.state == .began {
             handleLongPressBegan()
         } else if gestureRecognizer.state == .ended || gestureRecognizer.state == .cancelled {

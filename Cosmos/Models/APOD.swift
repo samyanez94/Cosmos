@@ -1,5 +1,5 @@
 //
-//  APOD.swift
+//  Apod.swift
 //  Cosmos
 //
 //  Created by Samuel Yanez on 7/21/18.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct APOD: Codable {
+struct Apod: Codable {
     let title: String
     let date: Date
     let explanation: String
@@ -33,19 +33,19 @@ struct APOD: Codable {
     }
 }
 
-extension APOD: Equatable {
-    static func == (lhs: APOD, rhs: APOD) -> Bool {
+extension Apod: Equatable {
+    static func == (lhs: Apod, rhs: Apod) -> Bool {
         lhs.date == rhs.date
     }
 }
 
-extension APOD: Comparable {
-    static func < (lhs: APOD, rhs: APOD) -> Bool {
+extension Apod: Comparable {
+    static func < (lhs: Apod, rhs: Apod) -> Bool {
         lhs.date < rhs.date
     }
 }
 
-extension APOD: Hashable {
+extension Apod: Hashable {
     func hash(into hasher: inout Hasher) {
         hasher.combine(date.hashValue)
     }

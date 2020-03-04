@@ -16,9 +16,9 @@ class CosmosClientTests: XCTestCase {
         
     var response: HTTPURLResponse! = HTTPURLResponse.dummy()
         
-    var apod: APOD?
+    var apod: Apod?
     
-    var apods: [APOD]?
+    var apods: [Apod]?
     
     var error: APIError?
         
