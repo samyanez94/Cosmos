@@ -15,7 +15,7 @@ class FavoritesDataSource: NSObject, UITableViewDataSource {
     weak private var tableView: UITableView?
     
     /// List of astronomy pictures of the day.
-    var apods = OrderedSet<Apod>()
+    private(set) var apods = OrderedSet<Apod>()
     
     init(tableView: UITableView) {
         self.tableView = tableView

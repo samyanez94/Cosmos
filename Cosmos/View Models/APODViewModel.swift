@@ -22,7 +22,7 @@ extension ApodViewModel {
      }
      
      var date: String {
-         String(from: apod.date)
+        DateFormatter(locale: .current, format: "EEEE, MMM d").string(from: apod.date)
      }
          
      var explanation: String {

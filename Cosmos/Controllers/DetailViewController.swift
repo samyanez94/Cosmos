@@ -168,7 +168,7 @@ class DetailViewController: UIViewController {
     }
     
     private func updateFavoritesButton(for viewModel: ApodViewModel) {
-        UserDefaultsFavoritesManager.shared.isFavorite(viewModel.apod.date) { isFavorite in
+        UserDefaultsFavoritesManager.shared.isFavorite(viewModel.apod) { isFavorite in
             animateFavoritesButtonTransition(isFavorite: isFavorite)
             updateAccesibilityAttributesValueToFavoritesButton(isFavorite: isFavorite)
         }
@@ -250,9 +250,9 @@ class DetailViewController: UIViewController {
     
     @IBAction func didTapOnFavorites(_ sender: Any) {
         guard let viewModel = viewModel else { return }
-        UserDefaultsFavoritesManager.shared.isFavorite(viewModel.apod.date) { [weak self] isFavorite in
+        UserDefaultsFavoritesManager.shared.isFavorite(viewModel.apod) { [weak self] isFavorite in
             guard let self = self, let viewModel = self.viewModel else { return }
-            isFavorite ? UserDefaultsFavoritesManager.shared.removeFromFavorites(viewModel.apod.date) : UserDefaultsFavoritesManager.shared.addToFavorites(viewModel.apod.date)
+            isFavorite ? UserDefaultsFavoritesManager.shared.removeFromFavorites(viewModel.apod) : UserDefaultsFavoritesManager.shared.addToFavorites(viewModel.apod)
             feedbackGenerator.selectionChanged()
             self.animateFavoritesButtonTransition(isFavorite: !isFavorite)
             self.updateAccesibilityAttributesValueToFavoritesButton(isFavorite: !isFavorite)

@@ -12,10 +12,8 @@ import UIKit
 extension NSMutableAttributedString {
     convenience init(string: String, blackString: String, font: UIFont) {
         self.init(string: string, attributes: [.font: font])
-        
         let blackFontAttribute: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.label]
         let range = (string as NSString).range(of: blackString)
-        
         self.addAttributes(blackFontAttribute, range: range)
     }
 }

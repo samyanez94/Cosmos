@@ -14,36 +14,32 @@ protocol ShareManaging {
 }
 
 class ShareManager: ShareManaging {
-    
-    static let shared: ShareManaging = ShareManager()
+        
+    enum ShareMedia {
+        case image(UIImage)
+        case video(String)
+    }
     
     private struct Constants {
-        static let appStoreLink = "https://apps.apple.com/app/1481310548"
+        static let appStoreUrl = "https://apps.apple.com/app/id1481310548"
     }
     
     private let excludedTypes: [UIActivity.ActivityType] = [
         .postToFacebook
     ]
-        
+            
     func activityViewController(with media: ShareMedia) -> UIActivityViewController {
         let activityViewController: UIActivityViewController = {
             switch media {
             case .image(let image):
-                let message = String(format: ShareStrings.imageShareMessage.localized, Constants.appStoreLink)
+                let message = String(format: ShareStrings.imageShareMessage.localized, Constants.appStoreUrl)
                 return UIActivityViewController(activityItems: [image, message], applicationActivities: nil)
             case .video(let url):
-                let message = String(format: ShareStrings.videoShareMessage.localized, url, Constants.appStoreLink)
+                let message = String(format: ShareStrings.videoShareMessage.localized, url, Constants.appStoreUrl)
                 return UIActivityViewController(activityItems: [message], applicationActivities: nil)
             }
         }()
         activityViewController.excludedActivityTypes = excludedTypes
         return activityViewController
-    }
-}
-
-extension ShareManager {
-    enum ShareMedia {
-        case image(UIImage)
-        case video(String)
     }
 }

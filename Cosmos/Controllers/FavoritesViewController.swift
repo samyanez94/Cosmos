@@ -10,6 +10,7 @@ import UIKit
 
 class FavoritesViewController: UIViewController {
     
+    /// Fasvorites table view
     @IBOutlet var tableView: UITableView! {
         didSet {
             tableView.dataSource = dataSource
@@ -19,6 +20,7 @@ class FavoritesViewController: UIViewController {
         }
     }
     
+    /// Activity indicator
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     /// Message view
@@ -88,9 +90,9 @@ class FavoritesViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        // Update view on view did appear only when required
+        // Update view only when required
         if UserDefaultsFavoritesManager.shared.isRefreshRequired {
-            UserDefaultsFavoritesManager.shared.getFavorites { [weak self] dates in
+            UserDefaultsFavoritesManager.shared.getFavoriteDates { [weak self] dates in
                 self?.fetch(favorites: dates)
             }
         }
@@ -99,7 +101,7 @@ class FavoritesViewController: UIViewController {
     // MARK: Table View
     
     @objc func handleRefreshControl() {
-        UserDefaultsFavoritesManager.shared.getFavorites { [weak self] dates in
+        UserDefaultsFavoritesManager.shared.getFavoriteDates { [weak self] dates in
             self?.fetch(favorites: dates) {
                 self?.tableView.refreshControl?.endRefreshing()
             }
@@ -109,18 +111,15 @@ class FavoritesViewController: UIViewController {
     // MARK: Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowDetails" {
-            if let selectedIndexPath = tableView.indexPathForSelectedRow {
-                let apod = dataSource.element(at: selectedIndexPath)
-                if let detailViewController = segue.destination as? DetailViewController {
-                    detailViewController.viewModel = ApodViewModel(apod: apod)
-                    
-                    // Inform the tab bar controller of the last view controller shown
-                    if let tabBarController = tabBarController as? TabBarViewController {
-                        tabBarController.previousSelectedViewController = detailViewController
-                    }
+        if segue.identifier == "ShowDetails", let selectedIndexPath = tableView.indexPathForSelectedRow {
+            let apod = dataSource.element(at: selectedIndexPath)
+            if let detailViewController = segue.destination as? DetailViewController {
+                detailViewController.viewModel = ApodViewModel(apod: apod)
+                
+                // Inform tab bar controller of the last view controller shown
+                if let tabBarController = tabBarController as? TabBarViewController {
+                    tabBarController.previousSelectedViewController = detailViewController
                 }
-                tableView.deselectRow(at: selectedIndexPath, animated: true)
             }
         }
     }
@@ -138,7 +137,7 @@ class FavoritesViewController: UIViewController {
                     self.state = .missingFavorites
                 } else {
                     self.dataSource.update(fromCollection: apods.sorted(by: >))
-                    self.tableView.reloadFirstSecction()
+                    self.tableView.reloadFirstSection()
                     self.state = .displayCollection
                 }
             }
@@ -148,7 +147,7 @@ class FavoritesViewController: UIViewController {
     
     @IBAction func didTapOnRefreshButton(_ sender: Any) {
         state = .loading
-        UserDefaultsFavoritesManager.shared.getFavorites { [weak self] dates in
+        UserDefaultsFavoritesManager.shared.getFavoriteDates { [weak self] dates in
             self?.fetch(favorites: dates)
         }
     }
@@ -161,23 +160,28 @@ class FavoritesViewController: UIViewController {
 // MARK: UITableViewDelegate
 
 extension FavoritesViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         FavoritesCell.height
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let removeAction = UIContextualAction(style: .destructive, title: FavoritesViewStrings.remove.localized, handler: { _, _, completionHandler  in
-            if let apod = self.dataSource.removeElement(at: indexPath) {
-                self.tableView.deleteRows(at: [indexPath], with: .automatic)
-                UserDefaultsFavoritesManager.shared.removeFromFavorites(apod.date)
-                if self.dataSource.apods.count == 0 {
-                    self.state = .missingFavorites
-                }
-                completionHandler(true)
-            } else {
+            guard let apod = self.dataSource.removeElement(at: indexPath) else {
                 completionHandler(false)
+                return
             }
+            UserDefaultsFavoritesManager.shared.removeFromFavorites(apod)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
             
+            // Check there are APODs left after removing
+            if self.dataSource.apods.isEmpty {
+                self.state = .missingFavorites
+            }
+            completionHandler(true)
         })
         return UISwipeActionsConfiguration(actions: [removeAction])
     }

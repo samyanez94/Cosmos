@@ -48,17 +48,19 @@ class DiscoverViewController: UIViewController {
     }()
     
     /// Pagination offset
-    var collectionOffset = 0
+    var paginationOffset = 0
     
     /// Pagination page size
-    var collectionPageSize = 10
+    var pageSize = 10
     
+    /// Different view states
     enum State {
         case loading
         case displayCollection
         case error
     }
     
+    /// View state
     var state: State = .loading {
         didSet {
             switch state {
@@ -81,17 +83,14 @@ class DiscoverViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = DiscoverViewStrings.title.localized
-        fetch(count: collectionPageSize, offset: collectionOffset)
-    }
-    
-    override func viewWillLayoutSubviews() {
-        collectionView.collectionViewLayout.invalidateLayout()
+        
+        fetch(count: pageSize, offset: paginationOffset)
     }
     
     // MARK: Collection View
     
     @objc func handleRefreshControl() {
-        fetch(count: collectionPageSize) {
+        fetch(count: pageSize) {
             self.collectionView.refreshControl?.endRefreshing()
         }
     }
@@ -99,16 +98,14 @@ class DiscoverViewController: UIViewController {
     // MARK: Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowDetails" {
-            if let selectedIndexPath = collectionView.indexPathsForSelectedItems {
-                let apod = dataSource.element(at: selectedIndexPath[0])
-                if let detailViewController = segue.destination as? DetailViewController {
-                    detailViewController.viewModel = ApodViewModel(apod: apod)
-                    
-                    // Inform the tab bar controller of the last view controller shown
-                    if let tabBarController = tabBarController as? TabBarViewController {
-                        tabBarController.previousSelectedViewController = detailViewController
-                    }
+        if segue.identifier == "ShowDetails", let selectedIndexPath = collectionView.indexPathsForSelectedItems {
+            let apod = dataSource.element(at: selectedIndexPath[0])
+            if let detailViewController = segue.destination as? DetailViewController {
+                detailViewController.viewModel = ApodViewModel(apod: apod)
+                
+                // Inform the tab bar controller of the last view controller shown
+                if let tabBarController = tabBarController as? TabBarViewController {
+                    tabBarController.previousSelectedViewController = detailViewController
                 }
             }
         }
@@ -129,7 +126,7 @@ class DiscoverViewController: UIViewController {
                     self.dataSource.append(apods.sorted(by: >))
                     self.collectionView.reloadData()
                     self.state = .displayCollection
-                    self.collectionOffset = offset + self.collectionPageSize
+                    self.paginationOffset = offset + self.pageSize
                 }
             }
             completion?()
@@ -138,7 +135,7 @@ class DiscoverViewController: UIViewController {
     
     @IBAction func didTapOnRefreshButton(_ sender: Any) {
         state = .loading
-        fetch(count: collectionPageSize, offset: collectionOffset)
+        fetch(count: pageSize, offset: paginationOffset)
     }
     
     func scrollToTop() {
@@ -151,7 +148,7 @@ class DiscoverViewController: UIViewController {
 extension DiscoverViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if dataSource.apods.count == indexPath.row + 1 {
-            fetch(count: collectionPageSize, offset: collectionOffset)
+            fetch(count: pageSize, offset: paginationOffset)
         }
     }    
 }

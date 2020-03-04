@@ -11,13 +11,13 @@ import Foundation
 protocol FavoritesManaging {
     var isRefreshRequired: Bool { get }
     
-    func getFavorites(completion: (([Date]) -> Void))
+    func getFavoriteDates(completion: (([Date]) -> Void))
     
-    func isFavorite(_ date: Date, completion: ((Bool) -> Void))
+    func isFavorite(_ apod: Apod, completion: ((Bool) -> Void))
     
-    func addToFavorites(_ date: Date)
+    func addToFavorites(_ apod: Apod)
     
-    func removeFromFavorites(_ date: Date)
+    func removeFromFavorites(_ apod: Apod)
 }
 
 class UserDefaultsFavoritesManager: FavoritesManaging {
@@ -26,25 +26,27 @@ class UserDefaultsFavoritesManager: FavoritesManaging {
     
     var isRefreshRequired: Bool = true
     
+    private init() {}
+    
     @Storage(key: "favorites", defaultValue: [])
     var favorites: [Date]
     
-    func getFavorites(completion: (([Date]) -> Void)) {
+    func getFavoriteDates(completion: (([Date]) -> Void)) {
         isRefreshRequired = false
         completion(favorites)
     }
     
-    func isFavorite(_ date: Date, completion: ((Bool) -> Void)) {
-        completion(favorites.contains(date))
+    func isFavorite(_ apod: Apod, completion: ((Bool) -> Void)) {
+        completion(favorites.contains(apod.id))
     }
     
-    func addToFavorites(_ date: Date) {
+    func addToFavorites(_ apod: Apod) {
         isRefreshRequired = true
-        favorites.append(date)
+        favorites.append(apod.id)
     }
     
-    func removeFromFavorites(_ date: Date) {
+    func removeFromFavorites(_ apod: Apod) {
         isRefreshRequired = true
-        favorites.removeAll { $0 == date }
+        favorites.removeAll { $0 == apod.id }
     }
 }

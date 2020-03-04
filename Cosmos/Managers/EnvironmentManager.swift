@@ -15,7 +15,20 @@ protocol EnvironmentManaging {
 
 final class EnvironmentManager: EnvironmentManaging {
     
+    private enum Keys: String {
+        case buildConfiguration = "Build configuration"
+        case baseUrl = "Cosmos base URL"
+    }
+    
+    private enum Environments: String {
+        case debug = "Debug"
+        case stage = "Stage"
+        case production = "Production"
+    }
+    
     static let shared: EnvironmentManaging = EnvironmentManager()
+    
+    private init() {}
     
     var description: String {
         if let infoDictionary = Bundle.main.infoDictionary, let buildConfiguration = infoDictionary[Keys.buildConfiguration.rawValue] as? String {
@@ -33,18 +46,5 @@ final class EnvironmentManager: EnvironmentManaging {
             return baseUrl
         }
         return ""
-    }
-}
-
-extension EnvironmentManager {
-    private enum Keys: String {
-        case buildConfiguration = "Build configuration"
-        case baseUrl = "Cosmos base URL"
-    }
-    
-    private enum Environments: String {
-        case debug = "Debug"
-        case stage = "Stage"
-        case production = "Production"
     }
 }
