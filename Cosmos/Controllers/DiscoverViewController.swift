@@ -94,26 +94,10 @@ class DiscoverViewController: UIViewController {
             self.collectionView.refreshControl?.endRefreshing()
         }
     }
-
-    // MARK: Navigation
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowDetails", let selectedIndexPath = collectionView.indexPathsForSelectedItems {
-            let apod = dataSource.element(at: selectedIndexPath[0])
-            if let detailViewController = segue.destination as? DetailViewController {
-                detailViewController.viewModel = ApodViewModel(apod: apod)
-                
-                // Inform the tab bar controller of the last view controller shown
-                if let tabBarController = tabBarController as? TabBarViewController {
-                    tabBarController.previousSelectedViewController = detailViewController
-                }
-            }
-        }
-    }
         
     // MARK: Networking
     
-    func fetch(count: Int, offset: Int = 0, completion: (() -> Void)? = nil) {
+    private func fetch(count: Int, offset: Int = 0, completion: (() -> Void)? = nil) {
         client.fetch(count: count, offset: offset) { [weak self] result in
             guard let self = self else { return }
             switch result {
@@ -133,7 +117,7 @@ class DiscoverViewController: UIViewController {
         }
     }
     
-    @IBAction func didTapOnRefreshButton(_ sender: Any) {
+    @IBAction private func didTapOnRefreshButton(_ sender: Any) {
         state = .loading
         fetch(count: pageSize, offset: paginationOffset)
     }
@@ -145,15 +129,21 @@ class DiscoverViewController: UIViewController {
 
 // MARK: UICollectionView Delegate
 
-extension DiscoverViewController: UICollectionViewDelegate {
+extension DiscoverViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let detailViewController = storyboard?.instantiateViewController(identifier: DetailViewController.identifier, creator: { coder in
+            DetailViewController(coder: coder, viewModel: ApodViewModel(apod: self.dataSource.element(at: indexPath)))
+        }) {
+            show(detailViewController, sender: collectionView.cellForItem(at: indexPath))
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if dataSource.apods.count == indexPath.row + 1 {
             fetch(count: pageSize, offset: paginationOffset)
         }
-    }    
-}
-
-extension DiscoverViewController: UICollectionViewDelegateFlowLayout {
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.bounds.size.width, height: collectionView.bounds.size.width * 1.1)
     }

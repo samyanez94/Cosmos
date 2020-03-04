@@ -28,7 +28,7 @@ final class EnvironmentManager: EnvironmentManaging {
     
     static let shared: EnvironmentManaging = EnvironmentManager()
     
-    private init() {}
+    internal init() {}
     
     var description: String {
         if let infoDictionary = Bundle.main.infoDictionary, let buildConfiguration = infoDictionary[Keys.buildConfiguration.rawValue] as? String {

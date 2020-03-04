@@ -100,7 +100,7 @@ class FavoritesViewController: UIViewController {
     
     // MARK: Table View
     
-    @objc func handleRefreshControl() {
+    @objc private func handleRefreshControl() {
         UserDefaultsFavoritesManager.shared.getFavoriteDates { [weak self] dates in
             self?.fetch(favorites: dates) {
                 self?.tableView.refreshControl?.endRefreshing()
@@ -108,25 +108,9 @@ class FavoritesViewController: UIViewController {
         }
      }
     
-    // MARK: Navigation
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowDetails", let selectedIndexPath = tableView.indexPathForSelectedRow {
-            let apod = dataSource.element(at: selectedIndexPath)
-            if let detailViewController = segue.destination as? DetailViewController {
-                detailViewController.viewModel = ApodViewModel(apod: apod)
-                
-                // Inform tab bar controller of the last view controller shown
-                if let tabBarController = tabBarController as? TabBarViewController {
-                    tabBarController.previousSelectedViewController = detailViewController
-                }
-            }
-        }
-    }
-    
     // MARK: Networking
     
-    func fetch(favorites: [Date], completion: (() -> Void)? = nil) {
+    private func fetch(favorites: [Date], completion: (() -> Void)? = nil) {
         client.fetch(dates: favorites) { [weak self] result in
             guard let self = self else { return }
             switch result {
@@ -145,7 +129,7 @@ class FavoritesViewController: UIViewController {
         }
     }
     
-    @IBAction func didTapOnRefreshButton(_ sender: Any) {
+    @IBAction private func didTapOnRefreshButton(_ sender: Any) {
         state = .loading
         UserDefaultsFavoritesManager.shared.getFavoriteDates { [weak self] dates in
             self?.fetch(favorites: dates)
@@ -161,6 +145,11 @@ class FavoritesViewController: UIViewController {
 
 extension FavoritesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let detailViewController = storyboard?.instantiateViewController(identifier: DetailViewController.identifier, creator: { coder in
+            DetailViewController(coder: coder, viewModel: ApodViewModel(apod: self.dataSource.element(at: indexPath)))
+        }) {
+            show(detailViewController, sender: tableView.cellForRow(at: indexPath))
+        }
         tableView.deselectRow(at: indexPath, animated: true)
     }
     

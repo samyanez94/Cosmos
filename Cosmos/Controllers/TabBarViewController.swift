@@ -11,7 +11,7 @@ import UIKit
 class TabBarViewController: UITabBarController {
     
     /// Previous selected view controller
-    var previousSelectedViewController: UIViewController?
+    private var previousSelectedViewController: UIViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +19,8 @@ class TabBarViewController: UITabBarController {
         previousSelectedViewController = selectedViewController
     }
 }
+
+// MARK: UITabBarControllerDelegate
 
 extension TabBarViewController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
