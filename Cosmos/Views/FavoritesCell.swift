@@ -83,6 +83,8 @@ extension FavoritesCell {
     }
 }
 
+// MARK: - Accesibility
+
 extension FavoritesCell {
     private func applyAccessibilityAttributes() {
         self.isAccessibilityElement = true

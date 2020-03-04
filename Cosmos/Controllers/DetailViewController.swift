@@ -54,7 +54,6 @@ class DetailViewController: UIViewController {
             saveButton.accessibilityTraits = .button
             saveButton.accessibilityLabel = "Save to Photos"
             saveButton.accessibilityHint = "Double tap save to Photos."
-            saveButton.isHidden = viewModel.mediaType == .video
         }
     }
     
@@ -127,6 +126,19 @@ class DetailViewController: UIViewController {
     /// View model
     var viewModel: ApodViewModel
     
+    var resourceType: Apod.MediaType = .image {
+        didSet {
+            switch resourceType {
+            case .image:
+                setupImageView()
+                saveButton.isHidden = false
+            case .video:
+                setupWebView()
+                saveButton.isHidden = true
+            }
+        }
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -136,26 +148,22 @@ class DetailViewController: UIViewController {
         super.init(coder: coder)
     }
     
-    // MARK: View controller lifecycle
+    // MARK: View Controller Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let url = viewModel.url {
-            switch viewModel.mediaType {
-            case .image:
-                setupImageView(with: url)
-            case .video:
-                setupWebView(with: url)
-            }
-        }
+        // Update the resource type
+        resourceType = viewModel.mediaType
+        
+        // Update the favorites button
         updateFavoritesButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // Update favorites button everytime the view appears
+        // Update favorites button every time the view appears
         updateFavoritesButton()
     }
     
@@ -181,7 +189,8 @@ class DetailViewController: UIViewController {
     
     // MARK: Media Updates
         
-    private func setupImageView(with url: URL) {
+    private func setupImageView() {
+        guard let url = viewModel.url else { return }
         imageView.isUserInteractionEnabled = true
         imageView.contentMode = .scaleAspectFill
         mediaContainerView.pinSubView(imageView)
@@ -194,13 +203,14 @@ class DetailViewController: UIViewController {
         }
     }
     
-    private func setupWebView(with url: URL) {
+    private func setupWebView() {
+        guard let url = viewModel.url else { return }
         mediaContainerView.pinSubView(webView)
         webView.load(URLRequest(url: url))
         applyAccesibilityAttributesforWebView(webView)
     }
     
-    // MARK: User interaction
+    // MARK: User Interaction
     
     @objc private func didTapOnImage(_ sender: UITapGestureRecognizer? = nil) {
         if let sender = sender, let imageView = sender.view as? UIImageView, let image = imageView.image {
