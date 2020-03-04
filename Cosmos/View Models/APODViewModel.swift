@@ -9,27 +9,10 @@
 import Foundation
 
 struct ApodViewModel {
-    
     let apod: Apod
     
     init(apod: Apod) {
         self.apod = apod
-    }
-}
-
-extension ApodViewModel {
-    var url: URL? {
-        URL(string: apod.urlString)
-    }
-    
-    var thumbnailUrl: URL? {
-        switch apod.mediaType {
-        case .image:
-            return URL(string: apod.urlString)
-        case .video:
-            guard let thumbnailUrlString = apod.thumbnailUrlString else { return nil }
-            return URL(string: thumbnailUrlString)
-        }
     }
 }
 
@@ -60,10 +43,24 @@ extension ApodViewModel {
          }
      }
      
-     var copyright: NSMutableAttributedString? {
+    var copyright: NSMutableAttributedString? {
          if let author = apod.copyright {
             return NSMutableAttributedString(string: String(format: DetailViewStrings.copyright.localized, author), blackString: "Copyright", font: DynamicFont.shared.font(forTextStyle: .body))
-         }
+        }
          return nil
-     }
+    }
+    
+    var url: URL? {
+        URL(string: apod.urlString)
+    }
+    
+    var thumbnailUrl: URL? {
+        switch apod.mediaType {
+        case .image:
+            return URL(string: apod.urlString)
+        case .video:
+            guard let thumbnailUrlString = apod.thumbnailUrlString else { return nil }
+            return URL(string: thumbnailUrlString)
+        }
+    }
 }

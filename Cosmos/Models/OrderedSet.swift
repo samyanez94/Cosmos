@@ -11,35 +11,31 @@ public struct OrderedSet<E>: Collection where E: Hashable, E: Comparable {
     public typealias Index = Int
     public typealias Indices = CountableRange<Int>
 
-    private var array: [Element]
+    private(set) var elements: [Element]
     
     private var set: Set<Element>
 
     public init() {
-        self.array = []
+        self.elements = []
         self.set = Set()
     }
     
-    public init(withCollection collection: [Element]) {
-        self.array = []
+    public init(fromCollection collection: [Element]) {
+        self.elements = []
         self.set = Set()
         self.append(collection)
     }
     
     public var count: Int {
-        array.count
+        elements.count
     }
 
     public var isEmpty: Bool {
-        array.isEmpty
-    }
-
-    public var contents: [Element] {
-        array
+        elements.isEmpty
     }
     
     public func element(at index: Int) -> Element {
-        array[index]
+        elements[index]
     }
 
     public func contains(_ element: Element) -> Bool {
@@ -48,7 +44,7 @@ public struct OrderedSet<E>: Collection where E: Hashable, E: Comparable {
 
     public mutating func append(_ element: Element) {
         if set.insert(element).inserted {
-            array.append(element)
+            elements.append(element)
         }
     }
     
@@ -60,7 +56,7 @@ public struct OrderedSet<E>: Collection where E: Hashable, E: Comparable {
     
     @discardableResult public mutating func remove(_ element: Element) -> Element? {
         if let element = set.remove(element) {
-            array.removeAll { $0 == element }
+            elements.removeAll { $0 == element }
             return element
         }
         return nil
@@ -69,20 +65,20 @@ public struct OrderedSet<E>: Collection where E: Hashable, E: Comparable {
 
 extension OrderedSet: Equatable {
     static public func == <T>(lhs: OrderedSet<T>, rhs: OrderedSet<T>) -> Bool {
-        return lhs.contents == rhs.contents
+        return lhs.elements == rhs.elements
     }
 }
 
 extension OrderedSet: RandomAccessCollection {
     public var startIndex: Int {
-        contents.startIndex
+        elements.startIndex
     }
     
     public var endIndex: Int {
-        contents.endIndex
+        elements.endIndex
     }
     
     public subscript(index: Int) -> Element {
-        contents[index]
+        elements[index]
     }
 }

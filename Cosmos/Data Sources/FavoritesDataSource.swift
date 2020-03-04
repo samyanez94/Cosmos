@@ -21,8 +21,8 @@ class FavoritesDataSource: NSObject, UITableViewDataSource {
         self.tableView = tableView
     }
     
-    func update(withCollection collection: [Apod]) {
-        apods = OrderedSet(withCollection: collection)
+    func update(fromCollection collection: [Apod]) {
+        apods = OrderedSet(fromCollection: collection)
     }
     
     func element(at indexPath: IndexPath) -> Apod {

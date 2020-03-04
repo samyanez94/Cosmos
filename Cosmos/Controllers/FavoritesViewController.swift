@@ -137,7 +137,7 @@ class FavoritesViewController: UIViewController {
                 if apods.isEmpty {
                     self.state = .missingFavorites
                 } else {
-                    self.dataSource.update(withCollection: apods.sorted(by: >))
+                    self.dataSource.update(fromCollection: apods.sorted(by: >))
                     self.tableView.reloadFirstSecction()
                     self.state = .displayCollection
                 }

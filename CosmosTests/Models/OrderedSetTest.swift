@@ -15,13 +15,13 @@ class OrderedSetTests: XCTestCase {
     let collection = ["Sheep", "Reindeer", "Polar Bear", "Cat"]
     
     override func setUp() {
-        set = OrderedSet(withCollection: collection)
+        set = OrderedSet(fromCollection: collection)
         
         super.setUp()
     }
 
     override func tearDown() {
-        set = OrderedSet(withCollection: collection)
+        set = OrderedSet(fromCollection: collection)
         
         super.tearDown()
     }
@@ -35,7 +35,7 @@ class OrderedSetTests: XCTestCase {
     }
     
     func testSetContents() {
-        XCTAssertEqual(collection, set.contents, "Contents should match.")
+        XCTAssertEqual(collection, set.elements, "Contents should match.")
     }
     
     func testGetElement() {
@@ -48,7 +48,7 @@ class OrderedSetTests: XCTestCase {
     
     func testSetIsEquatable() {
         // Given
-        let newSet = OrderedSet(withCollection: ["Sheep", "Reindeer", "Polar Bear", "Cat"])
+        let newSet = OrderedSet(fromCollection: ["Sheep", "Reindeer", "Polar Bear", "Cat"])
         
         // Then
         XCTAssertEqual(set, newSet, "Sets should match.")
@@ -56,7 +56,7 @@ class OrderedSetTests: XCTestCase {
     
     func testSetIsNotEquatable() {
         // Given
-        let newSet = OrderedSet(withCollection: ["Reindeer", "Polar Bear", "Mouse", "Cat", "Alpaca"])
+        let newSet = OrderedSet(fromCollection: ["Reindeer", "Polar Bear", "Mouse", "Cat", "Alpaca"])
         
         // Then
         XCTAssertNotEqual(set, newSet, "Sets should not match.")
