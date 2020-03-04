@@ -689,7 +689,7 @@ Tap here to try again.</string>
                                 </constraints>
                             </view>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="ohq-vH-wHK">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -697,13 +697,11 @@ Tap here to try again.</string>
                             <constraint firstItem="ot2-gx-31u" firstAttribute="top" secondItem="me7-Y4-VJt" secondAttribute="top" id="6jf-mP-hbS"/>
                             <constraint firstItem="me7-Y4-VJt" firstAttribute="leading" secondItem="ot2-gx-31u" secondAttribute="leading" id="Gws-q8-Glc"/>
                             <constraint firstItem="ot2-gx-31u" firstAttribute="trailing" secondItem="me7-Y4-VJt" secondAttribute="trailing" id="I6C-m9-aM5"/>
-                            <constraint firstItem="ot2-gx-31u" firstAttribute="trailing" secondItem="ohq-vH-wHK" secondAttribute="trailing" id="PvL-GE-Gdy"/>
+                            <constraint firstItem="ohq-vH-wHK" firstAttribute="centerY" secondItem="xun-hu-JvK" secondAttribute="centerY" id="JeE-aj-uI3"/>
+                            <constraint firstItem="ohq-vH-wHK" firstAttribute="centerX" secondItem="xun-hu-JvK" secondAttribute="centerX" id="NPO-DG-imy"/>
                             <constraint firstItem="ot2-gx-31u" firstAttribute="trailing" secondItem="MH3-Fd-mFy" secondAttribute="trailing" id="cNZ-1E-q0q"/>
-                            <constraint firstItem="ohq-vH-wHK" firstAttribute="top" secondItem="ot2-gx-31u" secondAttribute="top" id="ew4-Lc-ykk"/>
-                            <constraint firstItem="ot2-gx-31u" firstAttribute="bottom" secondItem="ohq-vH-wHK" secondAttribute="bottom" id="f0J-vd-bWM"/>
                             <constraint firstItem="MH3-Fd-mFy" firstAttribute="top" secondItem="xun-hu-JvK" secondAttribute="top" id="hp5-dy-MxQ"/>
                             <constraint firstItem="ot2-gx-31u" firstAttribute="bottom" secondItem="me7-Y4-VJt" secondAttribute="bottom" id="l1Y-1d-gxQ"/>
-                            <constraint firstItem="ohq-vH-wHK" firstAttribute="leading" secondItem="ot2-gx-31u" secondAttribute="leading" id="qYn-SZ-nH1"/>
                             <constraint firstItem="MH3-Fd-mFy" firstAttribute="leading" secondItem="ot2-gx-31u" secondAttribute="leading" id="rrZ-lg-a2W"/>
                             <constraint firstAttribute="bottom" secondItem="MH3-Fd-mFy" secondAttribute="bottom" id="tba-rC-5z0"/>
                         </constraints>
