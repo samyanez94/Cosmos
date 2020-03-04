@@ -91,7 +91,6 @@ extension APIClient {
         }.resume()
     }
     
-    // swiftlint:disable line_length
     func fetch<T: Decodable>(with requests: [URLRequest], parse: @escaping (Data) -> T?, runQueue: DispatchQueue = .global(qos: .userInitiated), completionQueue: DispatchQueue = .main, group: DispatchGroup = DispatchGroup(), completion: ((Result<[T], APIError>) -> Void)?) {
         var values = [T]()
         var error: APIError?
