@@ -82,28 +82,36 @@ enum DetailViewStrings: Localizable {
 
 enum DiscoverViewStrings: Localizable {
     case title
-    case errorMessage
     
     var key: String {
         switch self {
         case .title: return "Title"
-        case .errorMessage: return "Error Message"
         }
     }
 }
 
 enum FavoritesViewStrings: Localizable {
     case title
-    case remove
-    case errorMessage
-    case missingFavoritesMessage
+    case removeButton
     
     var key: String {
         switch self {
         case .title: return "Title"
-        case .remove: return "Remove"
+        case .removeButton: return "Remove Button"
+        }
+    }
+}
+
+enum MessageViewStrings: Localizable {
+    case errorMessage
+    case emptyFavoritesMessage
+    case refreshButton
+    
+    var key: String {
+        switch self {
         case .errorMessage: return "Error Message"
-        case .missingFavoritesMessage: return "Missing Favorites Message"
+        case .emptyFavoritesMessage: return "Empty Favorites Message"
+        case .refreshButton: return "Refresh Button"
         }
     }
 }

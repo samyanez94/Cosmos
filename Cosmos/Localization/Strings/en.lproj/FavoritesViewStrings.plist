@@ -9,28 +9,10 @@
 		<key>comment</key>
 		<string></string>
 	</dict>
-	<key>Remove</key>
+	<key>Remove Button</key>
 	<dict>
 		<key>value</key>
 		<string>Remove</string>
-		<key>comment</key>
-		<string></string>
-	</dict>
-	<key>Error Message</key>
-	<dict>
-		<key>value</key>
-		<string>Well, this is embarrassing. It looks like something went wrong.
-
-Tap here to try again.</string>
-		<key>comment</key>
-		<string></string>
-	</dict>
-	<key>Missing Favorites Message</key>
-	<dict>
-		<key>value</key>
-		<string>You don&apos;t have any favorites. 
-
-Tap the heart icon on any picture to add it here.</string>
 		<key>comment</key>
 		<string></string>
 	</dict>

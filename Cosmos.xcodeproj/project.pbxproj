@@ -15,6 +15,9 @@
 		2200E5472396270F00897286 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220EE6FE23924080006B16EB /* Storage.swift */; };
 		2200E5492396271600897286 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2200E52D23960F3500897286 /* Localizable.swift */; };
 		2202F50D211ECE4700DEFDE1 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2202F50C211ECE4700DEFDE1 /* DetailViewController.swift */; };
+		2203F0BA2411C68C00D01C99 /* MessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2203F0B92411C68C00D01C99 /* MessageView.xib */; };
+		2203F0BC2411C75E00D01C99 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2203F0BB2411C75E00D01C99 /* MessageView.swift */; };
+		2203F0BE2411D7E100D01C99 /* MessageViewStrings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2203F0BD2411D7E100D01C99 /* MessageViewStrings.plist */; };
 		2207E602236278BD009F9CD5 /* FavoritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2207E601236278BD009F9CD5 /* FavoritesManager.swift */; };
 		2207E603236278BD009F9CD5 /* FavoritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2207E601236278BD009F9CD5 /* FavoritesManager.swift */; };
 		220B1F24234D7EBB008BAAF6 /* AccessibilityIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B1F23234D7EBB008BAAF6 /* AccessibilityIdentifiers.swift */; };
@@ -95,6 +98,9 @@
 		2200E5422396220800897286 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/DiscoverViewStrings.plist; sourceTree = "<group>"; };
 		2200E5462396221000897286 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/FavoritesViewStrings.plist; sourceTree = "<group>"; };
 		2202F50C211ECE4700DEFDE1 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		2203F0B92411C68C00D01C99 /* MessageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageView.xib; sourceTree = "<group>"; };
+		2203F0BB2411C75E00D01C99 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
+		2203F0BD2411D7E100D01C99 /* MessageViewStrings.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = MessageViewStrings.plist; sourceTree = "<group>"; };
 		2207E601236278BD009F9CD5 /* FavoritesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesManager.swift; sourceTree = "<group>"; };
 		220B1F23234D7EBB008BAAF6 /* AccessibilityIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityIdentifiers.swift; sourceTree = "<group>"; };
 		220EE6FE23924080006B16EB /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
@@ -190,6 +196,7 @@
 				2200E53D239621FE00897286 /* DetailViewStrings.plist */,
 				2200E5412396220500897286 /* DiscoverViewStrings.plist */,
 				2200E5452396220D00897286 /* FavoritesViewStrings.plist */,
+				2203F0BD2411D7E100D01C99 /* MessageViewStrings.plist */,
 				225A539223D5762B00677896 /* ShareStrings.plist */,
 			);
 			path = Strings;
@@ -211,6 +218,15 @@
 				22B43D5F234169F900DD2A30 /* DynamicFonts.plist */,
 			);
 			path = "Dynamic Typing";
+			sourceTree = "<group>";
+		};
+		2203F0B82411C62400D01C99 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				22B381102104583800DCDC24 /* DiscoverCell.swift */,
+				222120D7236013DB009D24AB /* FavoritesCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		220B1F22234D7E90008BAAF6 /* Accessibility */ = {
@@ -340,8 +356,9 @@
 		22AA95AC2105579E001B755F /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				22B381102104583800DCDC24 /* DiscoverCell.swift */,
-				222120D7236013DB009D24AB /* FavoritesCell.swift */,
+				2203F0B82411C62400D01C99 /* Cells */,
+				2203F0BB2411C75E00D01C99 /* MessageView.swift */,
+				2203F0B92411C68C00D01C99 /* MessageView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -507,7 +524,9 @@
 			files = (
 				2200E53123961C6200897286 /* AboutViewStrings.plist in Resources */,
 				225220412104391200221D29 /* LaunchScreen.storyboard in Resources */,
+				2203F0BA2411C68C00D01C99 /* MessageView.xib in Resources */,
 				2200E53F2396220500897286 /* DiscoverViewStrings.plist in Resources */,
+				2203F0BE2411D7E100D01C99 /* MessageViewStrings.plist in Resources */,
 				225A539323D5762B00677896 /* ShareStrings.plist in Resources */,
 				225220392104391100221D29 /* Main.storyboard in Resources */,
 				22B43D60234169F900DD2A30 /* DynamicFonts.plist in Resources */,
@@ -594,6 +613,7 @@
 				226E25B723245E9800908A39 /* OrderedSet.swift in Sources */,
 				22B43D6223416B2800DD2A30 /* DynamicFont.swift in Sources */,
 				2202F50D211ECE4700DEFDE1 /* DetailViewController.swift in Sources */,
+				2203F0BC2411C75E00D01C99 /* MessageView.swift in Sources */,
 				220EE6FF23924080006B16EB /* Storage.swift in Sources */,
 				22E315CF23726F84008EDF34 /* UIView+Extensions.swift in Sources */,
 				223A2BF2233B0FFA00005DFA /* EnvironmentManager.swift in Sources */,

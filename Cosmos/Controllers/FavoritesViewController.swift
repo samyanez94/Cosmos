@@ -24,16 +24,10 @@ class FavoritesViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     /// Message view
-    @IBOutlet var messageView: UIView!
-    
-    /// Message image
-    @IBOutlet var messageImage: UIImageView!
-    
-    /// Message label
-    @IBOutlet var messageLabel: UILabel! {
+    @IBOutlet var messageView: MessageView! {
         didSet {
-            messageLabel.font = DynamicFont.shared.font(forTextStyle: .body)
-            messageLabel.adjustsFontForContentSizeCategory = false
+            messageView.delegate = self
+            messageView.refreshButton.titleLabel?.text = MessageViewStrings.refreshButton.localized
         }
     }
     
@@ -49,7 +43,7 @@ class FavoritesViewController: UIViewController {
     enum State {
         case loading
         case displayCollection
-        case missingFavorites
+        case emptyFavorites
         case error
     }
     
@@ -64,20 +58,22 @@ class FavoritesViewController: UIViewController {
             case .displayCollection:
                 activityIndicator.stopAnimating()
                 tableView.isHidden = false
-                messageView.isHidden = true
                 tableView.reloadSections(IndexSet(integer: 0), with: .fade)
-            case .missingFavorites:
+                messageView.isHidden = true
+            case .emptyFavorites:
                 activityIndicator.stopAnimating()
                 tableView.isHidden = true
                 messageView.isHidden = false
-                messageImage.image = UIImage(systemName: "heart.fill")
-                messageLabel.text = FavoritesViewStrings.missingFavoritesMessage.localized
+                messageView.setImage(to: UIImage(systemName: "heart.fill"))
+                messageView.setMessage(to: MessageViewStrings.emptyFavoritesMessage.localized)
+                messageView.refreshButton.isHidden = true
             case .error:
                 activityIndicator.stopAnimating()
                 tableView.isHidden = true
                 messageView.isHidden = false
-                messageImage.image = UIImage(systemName: "arrow.clockwise")
-                messageLabel.text = FavoritesViewStrings.errorMessage.localized
+                messageView.setImage(to: UIImage(systemName: "exclamationmark.circle"))
+                messageView.setMessage(to: MessageViewStrings.errorMessage.localized)
+                messageView.refreshButton.isHidden = false
             }
         }
     }
@@ -118,7 +114,7 @@ class FavoritesViewController: UIViewController {
                 self.state = .error
             case .success(let apods):
                 if apods.isEmpty {
-                    self.state = .missingFavorites
+                    self.state = .emptyFavorites
                 } else {
                     self.dataSource.update(fromCollection: apods.sorted(by: >))
                     self.tableView.reloadFirstSection()
@@ -129,19 +125,12 @@ class FavoritesViewController: UIViewController {
         }
     }
     
-    @IBAction private func didTapOnRefreshButton(_ sender: Any) {
-        state = .loading
-        UserDefaultsFavoritesManager.shared.getFavoriteDates { [weak self] dates in
-            self?.fetch(favorites: dates)
-        }
-    }
-    
     func scrollToTop() {
         self.tableView.setContentOffset(CGPoint(x: 0, y: -120), animated: true)
     }
 }
 
-// MARK: UITableViewDelegate
+// MARK: UITableView Delegate
 
 extension FavoritesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -158,7 +147,7 @@ extension FavoritesViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let removeAction = UIContextualAction(style: .destructive, title: FavoritesViewStrings.remove.localized, handler: { _, _, completionHandler  in
+        let removeAction = UIContextualAction(style: .destructive, title: FavoritesViewStrings.removeButton.localized, handler: { _, _, completionHandler  in
             guard let apod = self.dataSource.removeElement(at: indexPath) else {
                 completionHandler(false)
                 return
@@ -168,10 +157,21 @@ extension FavoritesViewController: UITableViewDelegate {
             
             // Check there are APODs left after removing
             if self.dataSource.apods.isEmpty {
-                self.state = .missingFavorites
+                self.state = .emptyFavorites
             }
             completionHandler(true)
         })
         return UISwipeActionsConfiguration(actions: [removeAction])
+    }
+}
+
+// MARK: MessageView Delegate
+
+extension FavoritesViewController: MessageViewDelegate {
+    func messageView(_ messageView: MessageView, didTapOnRefreshButton refreshButton: UIButton) {
+        state = .loading
+        UserDefaultsFavoritesManager.shared.getFavoriteDates { [weak self] dates in
+            self?.fetch(favorites: dates)
+        }
     }
 }

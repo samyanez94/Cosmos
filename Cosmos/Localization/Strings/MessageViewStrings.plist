@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Error Message</key>
+	<dict>
+		<key>value</key>
+		<string>Houston, we have a problem. 
+
+It looks like something went wrong.</string>
+		<key>comment</key>
+		<string></string>
+	</dict>
+	<key>Empty Favorites Message</key>
+	<dict>
+		<key>value</key>
+		<string>Bummer. You don&apos;t have any favorites.
+
+Tap the heart icon on any picture to mark it as a favorite.</string>
+		<key>comment</key>
+		<string></string>
+	</dict>
+	<key>Refresh Button</key>
+	<dict>
+		<key>value</key>
+		<string>Tap here to try again</string>
+		<key>comment</key>
+		<string></string>
+	</dict>
+</dict>
+</plist>

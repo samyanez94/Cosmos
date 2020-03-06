@@ -40,19 +40,10 @@ class DiscoverCell: UICollectionViewCell {
     
     /// Placeholder image
     static let placeholderImage = UIImage(named: "Missing Image Placeholder")
-        
-    /// Feedback generator
-    private var feedbackGenerator: UISelectionFeedbackGenerator?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        configureGestureRecognizer()
         applyAccessibilityAttributes()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        configureGestureRecognizer()
     }
     
     override func draw(_ rect: CGRect) {
@@ -108,40 +99,5 @@ extension DiscoverCell {
     
     private func updateAccessibilityAttributes(for viewModel: ApodViewModel) {
         containerView.accessibilityLabel = "\(viewModel.preferredDate ?? viewModel.date). \(viewModel.title)"
-    }
-}
-
-// MARK: - Gesture Recognizer
-
-extension DiscoverCell {
-    private func configureGestureRecognizer() {
-        let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPressGesture(gestureRecognizer:)))
-        longPressGestureRecognizer.minimumPressDuration = 0.25
-        addGestureRecognizer(longPressGestureRecognizer)
-    }
-    
-    @objc private func handleLongPressGesture(gestureRecognizer: UILongPressGestureRecognizer) {
-        if gestureRecognizer.state == .began {
-            handleLongPressBegan()
-        } else if gestureRecognizer.state == .ended || gestureRecognizer.state == .cancelled {
-            handleLongPressEnded()
-        }
-    }
-    
-    private func handleLongPressBegan() {
-        feedbackGenerator = UISelectionFeedbackGenerator()
-        feedbackGenerator?.prepare()
-        UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.2, options: .beginFromCurrentState, animations: {
-            self.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
-            self.feedbackGenerator?.selectionChanged()
-        }, completion: { _ in
-            self.feedbackGenerator = nil
-        })
-    }
-    
-    private func handleLongPressEnded() {
-        UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.2, options: .beginFromCurrentState, animations: {
-            self.transform = CGAffineTransform.identity
-        }, completion: nil)
     }
 }

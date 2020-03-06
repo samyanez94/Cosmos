@@ -25,17 +25,13 @@ class DiscoverViewController: UIViewController {
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     
     /// Message view
-    @IBOutlet var messageView: UIView!
-    
-    /// Message image
-    @IBOutlet var messageImage: UIImageView!
-    
-    /// Message label
-    @IBOutlet var messageLabel: UILabel! {
+    @IBOutlet var messageView: MessageView! {
         didSet {
-            messageLabel.font = DynamicFont.shared.font(forTextStyle: .body)
-            messageLabel.adjustsFontForContentSizeCategory = false
-            messageLabel.text = DiscoverViewStrings.errorMessage.localized
+            messageView.delegate = self
+            messageView.setImage(to: UIImage(systemName: "exclamationmark.circle"))
+            messageView.setMessage(to: MessageViewStrings.errorMessage.localized)
+            messageView.refreshButton.isHidden = false
+            messageView.refreshButton.titleLabel?.text = MessageViewStrings.refreshButton.localized
         }
     }
     
@@ -117,11 +113,6 @@ class DiscoverViewController: UIViewController {
         }
     }
     
-    @IBAction private func didTapOnRefreshButton(_ sender: Any) {
-        state = .loading
-        fetch(count: pageSize, offset: paginationOffset)
-    }
-    
     func scrollToTop() {
         self.collectionView.setContentOffset(CGPoint(x: 0, y: -120), animated: true)
     }
@@ -145,6 +136,15 @@ extension DiscoverViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.size.width, height: collectionView.bounds.size.width * 1.1)
+        CGSize(width: collectionView.bounds.size.width, height: collectionView.bounds.size.width * 1.1)
+    }
+}
+
+// MARK: MessageView Delegate
+
+extension DiscoverViewController: MessageViewDelegate {
+    func messageView(_ messageView: MessageView, didTapOnRefreshButton refreshButton: UIButton) {
+        state = .loading
+        fetch(count: pageSize, offset: paginationOffset)
     }
 }

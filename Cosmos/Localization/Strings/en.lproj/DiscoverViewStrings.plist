@@ -9,14 +9,5 @@
 		<key>comment</key>
 		<string></string>
 	</dict>
-	<key>Error Message</key>
-	<dict>
-		<key>value</key>
-		<string>Well, this is embarrassing. It looks like something went wrong.
-
-Tap here to try again.</string>
-		<key>comment</key>
-		<string></string>
-	</dict>
 </dict>
 </plist>
