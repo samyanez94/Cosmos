@@ -46,14 +46,14 @@ It looks like something went wrong.</string>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x8l-tr-bS8" userLabel="Refresh Button View">
-                            <rect key="frame" x="15" y="181.5" width="220" height="42"/>
+                            <rect key="frame" x="35" y="181.5" width="180" height="42"/>
                             <color key="backgroundColor" name="Accent Color"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="42" id="2Hb-c5-XhT"/>
-                                <constraint firstAttribute="width" constant="220" id="iwO-np-kqm"/>
+                                <constraint firstAttribute="width" constant="180" id="iwO-np-kqm"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                            <state key="normal" title="Tap here to try again">
+                            <state key="normal" title="Try again">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <connections>
@@ -64,7 +64,7 @@ It looks like something went wrong.</string>
                     <gestureRecognizers/>
                 </stackView>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
                 <constraint firstItem="VUY-vx-LYd" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="1IO-NQ-vET"/>
                 <constraint firstItem="VUY-vx-LYd" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="EDD-97-wxd"/>

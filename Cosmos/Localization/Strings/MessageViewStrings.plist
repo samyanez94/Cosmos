@@ -14,7 +14,7 @@ It looks like something went wrong.</string>
 	<key>Empty Favorites Message</key>
 	<dict>
 		<key>value</key>
-		<string>Bummer. You don&apos;t have any favorites.
+		<string>Bummer. You don&apos;t have any favorites yet.
 
 Tap the heart icon on any picture to mark it as a favorite.</string>
 		<key>comment</key>
@@ -23,7 +23,7 @@ Tap the heart icon on any picture to mark it as a favorite.</string>
 	<key>Refresh Button</key>
 	<dict>
 		<key>value</key>
-		<string>Tap here to try again</string>
+		<string>Try again</string>
 		<key>comment</key>
 		<string></string>
 	</dict>

@@ -10,8 +10,21 @@ import UIKit
 
 class FavoritesViewController: UIViewController {
     
+    /// Different view states
+    enum State {
+        case loading
+        case displayCollection
+        case emptyFavorites
+        case error
+    }
+    
+    /// Different view sections
+    enum Section: CaseIterable {
+        case main
+    }
+    
     /// Fasvorites table view
-    @IBOutlet var tableView: UITableView! {
+    @IBOutlet private var tableView: UITableView! {
         didSet {
             tableView.dataSource = dataSource
             tableView.delegate = self
@@ -21,10 +34,10 @@ class FavoritesViewController: UIViewController {
     }
     
     /// Activity indicator
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet private var activityIndicator: UIActivityIndicatorView!
     
     /// Message view
-    @IBOutlet var messageView: MessageView! {
+    @IBOutlet private var messageView: MessageView! {
         didSet {
             messageView.delegate = self
             messageView.refreshButton.titleLabel?.text = MessageViewStrings.refreshButton.localized
@@ -35,17 +48,9 @@ class FavoritesViewController: UIViewController {
     lazy var client = CosmosClient()
     
     /// Data source
-    lazy var dataSource: FavoritesDataSource = {
-        FavoritesDataSource(tableView: tableView)
-    }()
+    lazy var dataSource = tableViewDataSource()
     
-    /// Different view states
-    enum State {
-        case loading
-        case displayCollection
-        case emptyFavorites
-        case error
-    }
+    private var apods = OrderedSet<Apod>()
     
     /// View state
     var state: State = .loading {
@@ -58,7 +63,6 @@ class FavoritesViewController: UIViewController {
             case .displayCollection:
                 activityIndicator.stopAnimating()
                 tableView.isHidden = false
-                tableView.reloadSections(IndexSet(integer: 0), with: .fade)
                 messageView.isHidden = true
             case .emptyFavorites:
                 activityIndicator.stopAnimating()
@@ -116,8 +120,8 @@ class FavoritesViewController: UIViewController {
                 if apods.isEmpty {
                     self.state = .emptyFavorites
                 } else {
-                    self.dataSource.update(fromCollection: apods.sorted(by: >))
-                    self.tableView.reloadFirstSection()
+                    self.apods = OrderedSet(fromCollection: apods.sorted(by: >))
+                    self.updateDataSource(with: self.apods.elements)
                     self.state = .displayCollection
                 }
             }
@@ -130,12 +134,37 @@ class FavoritesViewController: UIViewController {
     }
 }
 
+// MARK: Table View Data Source
+
+extension FavoritesViewController {
+    private func tableViewDataSource() -> SwipeableDiffableDataSource {
+        return SwipeableDiffableDataSource(tableView: tableView) { tableView, indexPath, apod in
+            let cell: FavoritesCell = FavoritesCell.dequeue(from: tableView, for: indexPath)
+            cell.update(with: ApodViewModel(apod: apod))
+            return cell
+        }
+    }
+    
+    private func updateDataSource(with apods: [Apod], animate: Bool = true) {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Apod>()
+        snapshot.appendSections(Section.allCases)
+        snapshot.appendItems(apods)
+        dataSource.apply(snapshot, animatingDifferences: animate)
+    }
+    
+    private func removeFromDataSource(_ apods: [Apod], animate: Bool = true) {
+        var snapshot = dataSource.snapshot()
+        snapshot.deleteItems(apods)
+        dataSource.apply(snapshot, animatingDifferences: animate)
+    }
+}
+
 // MARK: UITableView Delegate
 
 extension FavoritesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let detailViewController = storyboard?.instantiateViewController(identifier: DetailViewController.identifier, creator: { coder in
-            DetailViewController(coder: coder, viewModel: ApodViewModel(apod: self.dataSource.element(at: indexPath)))
+        if let apod = dataSource.itemIdentifier(for: indexPath), let detailViewController = storyboard?.instantiateViewController(identifier: DetailViewController.identifier, creator: { coder in
+            DetailViewController(coder: coder, viewModel: ApodViewModel(apod: apod))
         }) {
             show(detailViewController, sender: tableView.cellForRow(at: indexPath))
         }
@@ -148,15 +177,15 @@ extension FavoritesViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let removeAction = UIContextualAction(style: .destructive, title: FavoritesViewStrings.removeButton.localized, handler: { _, _, completionHandler  in
-            guard let apod = self.dataSource.removeElement(at: indexPath) else {
+            guard let apod = self.apods.removeAt(indexPath.row) else {
                 completionHandler(false)
                 return
             }
             UserDefaultsFavoritesManager.shared.removeFromFavorites(apod)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
+            self.removeFromDataSource([apod])
             
-            // Check there are APODs left after removing
-            if self.dataSource.apods.isEmpty {
+            // Check the table view still contains identifiers
+            if self.dataSource.snapshot().itemIdentifiers.isEmpty {
                 self.state = .emptyFavorites
             }
             completionHandler(true)
@@ -173,5 +202,11 @@ extension FavoritesViewController: MessageViewDelegate {
         UserDefaultsFavoritesManager.shared.getFavoriteDates { [weak self] dates in
             self?.fetch(favorites: dates)
         }
+    }
+}
+
+class SwipeableDiffableDataSource: UITableViewDiffableDataSource<FavoritesViewController.Section, Apod> {
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
     }
 }

@@ -61,6 +61,13 @@ public struct OrderedSet<E>: Collection where E: Hashable, E: Comparable {
         }
         return nil
     }
+    
+    @discardableResult public mutating func removeAt(_ index: Int) -> Element? {
+        let element = elements.remove(at: index)
+        set.remove(element)
+        return element
+        
+    }
 }
 
 extension OrderedSet: Equatable {
