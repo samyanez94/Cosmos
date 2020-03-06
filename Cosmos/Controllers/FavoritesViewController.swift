@@ -50,6 +50,7 @@ class FavoritesViewController: UIViewController {
     /// Data source
     lazy var dataSource = tableViewDataSource()
     
+    /// Astronomy pictures of the day
     private var apods = OrderedSet<Apod>()
     
     /// View state

@@ -52,7 +52,7 @@ class MessageView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        refreshButton.roundCorners(radius: 5.0)
+        refreshButton.roundCorners(radius: 20.0)
     }
     
     override func prepareForInterfaceBuilder() {

@@ -404,9 +404,7 @@
                                                 <rect key="frame" x="16" y="460" width="382" height="36"/>
                                                 <accessibility key="accessibilityConfiguration" hint="Double tap to open NASA's website."/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                <state key="normal" title="Visit NASA's APOD official website">
-                                                    <color key="titleColor" name="Accent Color"/>
-                                                </state>
+                                                <state key="normal" title="Visit NASA's APOD official website"/>
                                                 <connections>
                                                     <action selector="didTapOnAboutButton" destination="77o-Fw-cle" eventType="touchUpInside" id="Ccy-g2-aQw"/>
                                                 </connections>

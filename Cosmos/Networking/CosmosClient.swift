@@ -78,7 +78,7 @@ class CosmosClient: APIClient {
      */
     func fetch(count: Int, offset: Int, completion: ((Swift.Result<[Apod], APIError>) -> Void)? = nil) {
         if let to = Calendar.current.date(byAdding: .day, value: -offset, to: Date()),
-            let from = Calendar.current.date(byAdding: .day, value: -count, to: to) {
+            let from = Calendar.current.date(byAdding: .day, value: -count + 1, to: to) {
         
             let endpoint = CosmosEndpoint.ranged(from: from, to: to, thumbnails: true)
             

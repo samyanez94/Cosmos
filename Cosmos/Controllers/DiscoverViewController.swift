@@ -10,6 +10,13 @@ import UIKit
 
 class DiscoverViewController: UIViewController {
     
+    /// Different view states
+    enum State {
+        case loading
+        case displayCollection
+        case error
+    }
+    
     /// Collection view
     @IBOutlet var collectionView: UICollectionView! {
         didSet {
@@ -48,13 +55,6 @@ class DiscoverViewController: UIViewController {
     
     /// Pagination page size
     var pageSize = 10
-    
-    /// Different view states
-    enum State {
-        case loading
-        case displayCollection
-        case error
-    }
     
     /// View state
     var state: State = .loading {
