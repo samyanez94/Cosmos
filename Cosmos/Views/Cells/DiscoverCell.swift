@@ -16,9 +16,6 @@ class DiscoverCell: UICollectionViewCell {
     /// Header view
     @IBOutlet private var headerView: UIView!
     
-    /// Container view
-    @IBOutlet private var containerView: UIView!
-    
     /// Title label
     @IBOutlet private var titleLabel: UILabel! {
         didSet {
@@ -49,11 +46,7 @@ class DiscoverCell: UICollectionViewCell {
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         setShadow(opacity: 0.2, radius: 20)
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        containerView.roundCorners(radius: 20)
+        contentView.roundCorners(radius: 20)
     }
     
     override func prepareForReuse() {
@@ -92,12 +85,11 @@ extension DiscoverCell {
 
 extension DiscoverCell {
     private func applyAccessibilityAttributes() {
-        containerView.isAccessibilityElement = true
-        containerView.accessibilityTraits = .button
-        containerView.accessibilityHint = "Double tap to show more details."
+        accessibilityTraits = .button
+        accessibilityHint = "Double tap to show more details."
     }
     
     private func updateAccessibilityAttributes(for viewModel: ApodViewModel) {
-        containerView.accessibilityLabel = "\(viewModel.preferredDate ?? viewModel.date). \(viewModel.title)"
+        accessibilityLabel = "\(viewModel.preferredDate ?? viewModel.date). \(viewModel.title)"
     }
 }

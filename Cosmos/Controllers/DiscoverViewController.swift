@@ -136,7 +136,17 @@ extension DiscoverViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: collectionView.bounds.size.width, height: collectionView.bounds.size.width * 1.1)
+        guard let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout else {
+            fatalError("Unable to cast UICollectionViewLayout as UICollectionViewFlowLayout")
+        }
+        let itemHeight: CGFloat = 425.0
+        let minimumItemWidth: CGFloat = 280.0
+        let sectionInset = flowLayout.sectionInset
+        let availableWidth = collectionView.bounds.size.width - sectionInset.left - sectionInset.right
+        let maxNumberOfItemsPerRow = (availableWidth / minimumItemWidth).rounded(.down)
+        let interItemspacing = flowLayout.minimumInteritemSpacing * (maxNumberOfItemsPerRow - 1)
+        let itemWidth = (availableWidth - interItemspacing) / maxNumberOfItemsPerRow
+        return CGSize(width: itemWidth, height: itemHeight)
     }
 }
 
