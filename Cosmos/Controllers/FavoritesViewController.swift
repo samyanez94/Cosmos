@@ -129,10 +129,6 @@ class FavoritesViewController: UIViewController {
             completion?()
         }
     }
-    
-    func scrollToTop() {
-        self.tableView.setContentOffset(CGPoint(x: 0, y: -120), animated: true)
-    }
 }
 
 // MARK: Table View Data Source
@@ -203,6 +199,14 @@ extension FavoritesViewController: MessageViewDelegate {
         UserDefaultsFavoritesManager.shared.getFavoriteDates { [weak self] dates in
             self?.fetch(favorites: dates)
         }
+    }
+}
+
+// MARK: ScrollableViewController
+
+extension FavoritesViewController: ScrollableViewController {
+    func scrollToTop() {
+        self.tableView.setContentOffset(CGPoint(x: 0, y: -120), animated: true)
     }
 }
 

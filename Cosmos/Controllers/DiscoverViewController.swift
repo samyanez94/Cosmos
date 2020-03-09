@@ -112,10 +112,6 @@ class DiscoverViewController: UIViewController {
             completion?()
         }
     }
-    
-    func scrollToTop() {
-        self.collectionView.setContentOffset(CGPoint(x: 0, y: -120), animated: true)
-    }
 }
 
 // MARK: UICollectionView Delegate
@@ -144,8 +140,8 @@ extension DiscoverViewController: UICollectionViewDelegateFlowLayout {
         let sectionInset = flowLayout.sectionInset
         let availableWidth = collectionView.bounds.size.width - sectionInset.left - sectionInset.right
         let maxNumberOfItemsPerRow = (availableWidth / minimumItemWidth).rounded(.down)
-        let interItemspacing = flowLayout.minimumInteritemSpacing * (maxNumberOfItemsPerRow - 1)
-        let itemWidth = (availableWidth - interItemspacing) / maxNumberOfItemsPerRow
+        let interItemspace = flowLayout.minimumInteritemSpacing * (maxNumberOfItemsPerRow - 1)
+        let itemWidth = (availableWidth - interItemspace) / maxNumberOfItemsPerRow
         return CGSize(width: itemWidth, height: itemHeight)
     }
 }
@@ -156,5 +152,13 @@ extension DiscoverViewController: MessageViewDelegate {
     func messageView(_ messageView: MessageView, didTapOnRefreshButton refreshButton: UIButton) {
         state = .loading
         fetch(count: pageSize, offset: paginationOffset)
+    }
+}
+
+// MARK: ScrollableViewController
+
+extension DiscoverViewController: ScrollableViewController {
+    func scrollToTop() {
+        self.collectionView.setContentOffset(CGPoint(x: 0, y: -120), animated: true)
     }
 }

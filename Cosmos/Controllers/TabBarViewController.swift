@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol ScrollableViewController: UIViewController {
+    func scrollToTop()
+}
+
 class TabBarViewController: UITabBarController {
     
     /// Previous selected view controller
@@ -24,13 +28,9 @@ class TabBarViewController: UITabBarController {
 
 extension TabBarViewController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        if viewController == previousSelectedViewController, let navigationController = viewController as? UINavigationController {
-            if let discoverViewController = navigationController.topViewController as? DiscoverViewController {
-                discoverViewController.scrollToTop()
-            } else if let favoritesViewController = navigationController.topViewController as? FavoritesViewController {
-                favoritesViewController.scrollToTop()
+        if viewController == previousSelectedViewController, let navigationController = viewController as? UINavigationController, let viewController = navigationController.topViewController as? ScrollableViewController {
+                viewController.scrollToTop()
             }
-        }
         previousSelectedViewController = viewController
     }
 }
