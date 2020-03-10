@@ -361,35 +361,35 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JNc-h8-655" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="680"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="798"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="“The cosmos is all that is, or ever was, or ever will be.” - Carl Sagan. " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KBe-fd-YQ2" userLabel="About Body Quote Label">
-                                                <rect key="frame" x="16" y="16" width="382" height="48"/>
+                                                <rect key="frame" x="16" y="198" width="382" height="48"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xg5-6G-pdm" userLabel="About Body Label">
-                                                <rect key="frame" x="16" y="80" width="382" height="143.5"/>
+                                                <rect key="frame" x="16" y="262" width="382" height="143.5"/>
                                                 <string key="text">This app was born from a strong desire to learn more about space and software development. I decided to build an iOS app that displays images and videos from our universe keeping in mind a minimal and user-friendly design.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Acknowledgements" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UpS-uD-Out" userLabel="Acknowledgements Title Label">
-                                                <rect key="frame" x="16" y="255.5" width="382" height="29"/>
+                                                <rect key="frame" x="16" y="437.5" width="382" height="29"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4iq-Xa-pHO" userLabel="Acknowledgements Body Label">
-                                                <rect key="frame" x="16" y="300.5" width="382" height="143.5"/>
+                                                <rect key="frame" x="16" y="482.5" width="382" height="143.5"/>
                                                 <string key="text">The content featured in this app comes from NASA’s APOD API, a service that has been offering daily pictures of our universe since 1995. It contains the largest collection of annotated astronomical images on the internet.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3lt-bj-SNc" userLabel="Visit Button">
-                                                <rect key="frame" x="16" y="460" width="382" height="36"/>
+                                                <rect key="frame" x="16" y="642" width="382" height="36"/>
                                                 <accessibility key="accessibilityConfiguration" hint="Double tap to open NASA's website."/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <state key="normal" title="Visit NASA's APOD official website"/>
@@ -398,11 +398,17 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version 1.3.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LgY-bM-WJr" userLabel="Version Label">
-                                                <rect key="frame" x="16" y="528" width="382" height="24"/>
+                                                <rect key="frame" x="16" y="710" width="382" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="About Illustration" translatesAutoresizingMaskIntoConstraints="NO" id="pyy-KC-dnq">
+                                                <rect key="frame" x="16" y="16" width="382" height="150"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="150" id="FML-kj-Qco"/>
+                                                </constraints>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
@@ -410,12 +416,12 @@
                                             <constraint firstAttribute="trailing" secondItem="UpS-uD-Out" secondAttribute="trailing" constant="16" id="4dZ-GN-t8V"/>
                                             <constraint firstItem="KBe-fd-YQ2" firstAttribute="leading" secondItem="JNc-h8-655" secondAttribute="leading" constant="16" id="F05-Ri-4oL"/>
                                             <constraint firstItem="Xg5-6G-pdm" firstAttribute="top" secondItem="KBe-fd-YQ2" secondAttribute="bottom" constant="16" id="Fej-n8-atD"/>
-                                            <constraint firstAttribute="bottom" secondItem="LgY-bM-WJr" secondAttribute="bottom" constant="128" id="Hwb-oD-Sda"/>
+                                            <constraint firstAttribute="bottom" secondItem="LgY-bM-WJr" secondAttribute="bottom" constant="64" id="Hwb-oD-Sda"/>
                                             <constraint firstItem="LgY-bM-WJr" firstAttribute="leading" secondItem="JNc-h8-655" secondAttribute="leading" constant="16" id="HxS-cq-hAW"/>
                                             <constraint firstItem="UpS-uD-Out" firstAttribute="top" secondItem="Xg5-6G-pdm" secondAttribute="bottom" constant="32" id="INh-jf-1nU"/>
                                             <constraint firstAttribute="trailing" secondItem="Xg5-6G-pdm" secondAttribute="trailing" constant="16" id="Sbc-tK-7CG"/>
                                             <constraint firstItem="4iq-Xa-pHO" firstAttribute="top" secondItem="UpS-uD-Out" secondAttribute="bottom" constant="16" id="TqN-XJ-6yQ"/>
-                                            <constraint firstItem="KBe-fd-YQ2" firstAttribute="top" secondItem="JNc-h8-655" secondAttribute="top" constant="16" id="ZXo-89-Ltb"/>
+                                            <constraint firstItem="pyy-KC-dnq" firstAttribute="leading" secondItem="JNc-h8-655" secondAttribute="leading" constant="16" id="VV2-Gr-jMB"/>
                                             <constraint firstAttribute="trailing" secondItem="3lt-bj-SNc" secondAttribute="trailing" constant="16" id="aFF-fj-R0M"/>
                                             <constraint firstItem="3lt-bj-SNc" firstAttribute="top" secondItem="4iq-Xa-pHO" secondAttribute="bottom" constant="16" id="hOx-qh-ZCo"/>
                                             <constraint firstItem="UpS-uD-Out" firstAttribute="leading" secondItem="JNc-h8-655" secondAttribute="leading" constant="16" id="hgD-Pu-8BL"/>
@@ -424,7 +430,10 @@
                                             <constraint firstAttribute="trailing" secondItem="LgY-bM-WJr" secondAttribute="trailing" constant="16" id="lYj-ka-ItS"/>
                                             <constraint firstItem="LgY-bM-WJr" firstAttribute="top" secondItem="3lt-bj-SNc" secondAttribute="bottom" constant="32" id="m0r-aH-1aS"/>
                                             <constraint firstItem="3lt-bj-SNc" firstAttribute="leading" secondItem="JNc-h8-655" secondAttribute="leading" constant="16" id="msn-k9-QPx"/>
+                                            <constraint firstAttribute="trailing" secondItem="pyy-KC-dnq" secondAttribute="trailing" constant="16" id="qCH-6b-wdb"/>
                                             <constraint firstItem="Xg5-6G-pdm" firstAttribute="leading" secondItem="JNc-h8-655" secondAttribute="leading" constant="16" id="sb4-E7-I0Y"/>
+                                            <constraint firstItem="KBe-fd-YQ2" firstAttribute="top" secondItem="pyy-KC-dnq" secondAttribute="bottom" constant="32" id="xLp-Th-fsT"/>
+                                            <constraint firstItem="pyy-KC-dnq" firstAttribute="top" secondItem="JNc-h8-655" secondAttribute="top" constant="16" id="xrK-kI-0UL"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -685,6 +694,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="About Illustration" width="738" height="300"/>
         <image name="Heart Icon" width="25" height="23"/>
         <image name="Heart Icon Large" width="75" height="69"/>
         <image name="Info Icon" width="25" height="25"/>

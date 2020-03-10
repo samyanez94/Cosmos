@@ -35,7 +35,7 @@ class DiscoverViewController: UIViewController {
     @IBOutlet var messageView: MessageView! {
         didSet {
             messageView.delegate = self
-            messageView.setImage(to: UIImage(systemName: "exclamationmark.circle"))
+            messageView.setImage(to: UIImage(named: "Error Illustration"))
             messageView.setMessage(to: MessageViewStrings.errorMessage.localized)
             messageView.refreshButton.isHidden = false
             messageView.refreshButton.titleLabel?.text = MessageViewStrings.refreshButton.localized

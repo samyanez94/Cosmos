@@ -69,14 +69,14 @@ class FavoritesViewController: UIViewController {
                 activityIndicator.stopAnimating()
                 tableView.isHidden = true
                 messageView.isHidden = false
-                messageView.setImage(to: UIImage(systemName: "heart.fill"))
+                messageView.setImage(to: UIImage(named: "Favorites Illustration"))
                 messageView.setMessage(to: MessageViewStrings.emptyFavoritesMessage.localized)
                 messageView.refreshButton.isHidden = true
             case .error:
                 activityIndicator.stopAnimating()
                 tableView.isHidden = true
                 messageView.isHidden = false
-                messageView.setImage(to: UIImage(systemName: "exclamationmark.circle"))
+                messageView.setImage(to: UIImage(named: "Error Illustration"))
                 messageView.setMessage(to: MessageViewStrings.errorMessage.localized)
                 messageView.refreshButton.isHidden = false
             }

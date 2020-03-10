@@ -22,19 +22,19 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="VUY-vx-LYd">
-                    <rect key="frame" x="82" y="336.5" width="250" height="223.5"/>
+                    <rect key="frame" x="82" y="229.5" width="250" height="437.5"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="exclamationmark.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Wgb-To-ydL" userLabel="Image View">
-                            <rect key="frame" x="107" y="0.0" width="36" height="35.5"/>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Error Illustration" translatesAutoresizingMaskIntoConstraints="NO" id="Wgb-To-ydL" userLabel="Image View">
+                            <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
                             <color key="tintColor" systemColor="quaternaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.17999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="36" id="IMe-K9-cGM"/>
-                                <constraint firstAttribute="height" constant="36" id="zXC-EQ-0Z8"/>
+                                <constraint firstAttribute="width" constant="250" id="IMe-K9-cGM"/>
+                                <constraint firstAttribute="height" constant="250" id="zXC-EQ-0Z8"/>
                             </constraints>
                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20" scale="medium" weight="medium"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CtT-rP-Ted" userLabel="Label View">
-                            <rect key="frame" x="0.0" y="61" width="250" height="95.5"/>
+                            <rect key="frame" x="0.0" y="275" width="250" height="95.5"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="250" id="c4q-Jg-ua2"/>
                             </constraints>
@@ -46,7 +46,7 @@ It looks like something went wrong.</string>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x8l-tr-bS8" userLabel="Refresh Button View">
-                            <rect key="frame" x="35" y="181.5" width="180" height="42"/>
+                            <rect key="frame" x="35" y="395.5" width="180" height="42"/>
                             <color key="backgroundColor" name="Accent Color"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="42" id="2Hb-c5-XhT"/>
@@ -74,7 +74,7 @@ It looks like something went wrong.</string>
         </view>
     </objects>
     <resources>
-        <image name="exclamationmark.circle" catalog="system" width="64" height="60"/>
+        <image name="Error Illustration" width="400" height="428"/>
         <namedColor name="Accent Color">
             <color red="0.45100000500679016" green="0.25900000333786011" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
