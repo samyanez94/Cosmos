@@ -42,7 +42,6 @@ enum AboutViewStrings: Localizable {
     case aboutBody
     case acknowledgementsTitle
     case acknowledgementsBody
-    case visitButton
     case version
     
     var key: String {
@@ -52,7 +51,6 @@ enum AboutViewStrings: Localizable {
         case .aboutBody: return "About Body"
         case .acknowledgementsTitle: return "Acknowledgements Title"
         case .acknowledgementsBody: return "Acknowledgements Body"
-        case .visitButton: return "Visit Button"
         case .version: return "Version"
         }
     }

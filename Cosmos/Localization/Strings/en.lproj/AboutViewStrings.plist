@@ -19,7 +19,7 @@
 	<key>About Body</key>
 	<dict>
 		<key>value</key>
-		<string>This app was born from a strong desire to learn more about space and software development. I decided to build an iOS app that displays daily images and videos from our universe while keeping in mind a minimal and user-friendly design.</string>
+		<string>This app was born from a strong desire to learn more about space and software development. It displays daily images and videos from our universe while keeping in mind a minimal and user-friendly design.</string>
 		<key>comment</key>
 		<string></string>
 	</dict>
@@ -33,14 +33,9 @@
 	<key>Acknowledgements Body</key>
 	<dict>
 		<key>value</key>
-		<string>The content featured in this app comes from NASA&apos;s APOD API — a service that has been offering daily pictures of our universe since 1995. It contains the largest collection of annotated astronomical images on the internet.</string>
-		<key>comment</key>
-		<string></string>
-	</dict>
-	<key>Visit Button</key>
-	<dict>
-		<key>value</key>
-		<string>Visit NASA&apos;s APOD official website</string>
+		<string>The content featured in the app comes from NASA’s APOD API, a service that has been offering daily pictures of our universe since 1995. It contains the largest collection of annotated astronomical images on the internet.
+
+Illustrations by Tori Duong.</string>
 		<key>comment</key>
 		<string></string>
 	</dict>

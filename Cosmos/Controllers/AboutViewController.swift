@@ -47,25 +47,17 @@ class AboutViewController: UIViewController {
         }
     }
     
-    /// Acknowledgements body
-    @IBOutlet private var acknowledgementsBodyLabel: UILabel! {
+    @IBOutlet private var acknowledgementsBodyTextView: UITextView! {
         didSet {
-            acknowledgementsBodyLabel.accessibilityIdentifier = AboutViewAccessibilityIdentifier.Label.acknowledgementsBodyLabel
-            acknowledgementsBodyLabel.font = DynamicFont.shared.font(forTextStyle: .body)
-            acknowledgementsBodyLabel.adjustsFontForContentSizeCategory = false
-            acknowledgementsBodyLabel.text = AboutViewStrings.acknowledgementsBody.localized
-        }
-    }
-    
-    /// Visit button
-    @IBOutlet private var visitButton: UIButton! {
-        didSet {
-            visitButton.accessibilityIdentifier = AboutViewAccessibilityIdentifier.Button.visitButton
-            visitButton.accessibilityHint = "Double tap to open the link."
-            visitButton.titleLabel?.font = DynamicFont.shared.font(forTextStyle: .body)
-            visitButton.titleLabel?.adjustsFontForContentSizeCategory = false
-            visitButton.titleLabel?.text = AboutViewStrings.visitButton.localized
-            visitButton.titleLabel?.numberOfLines = 0
+            acknowledgementsBodyTextView.accessibilityIdentifier = AboutViewAccessibilityIdentifier.TextView.acknowledgementsBodyLabel
+            let attributedText = NSMutableAttributedString(string: AboutViewStrings.acknowledgementsBody.localized)
+            attributedText.addLinkAttribute(toSubString: "NASA’s APOD API", link: "https://apod.nasa.gov/apod/")
+            attributedText.addLinkAttribute(toSubString: "Tori Duong", link: "https://toriduong.com")
+            acknowledgementsBodyTextView.attributedText = attributedText
+            acknowledgementsBodyTextView.font = DynamicFont.shared.font(forTextStyle: .body)
+            acknowledgementsBodyTextView.textColor = .secondaryLabel
+            acknowledgementsBodyTextView.textContainerInset = .zero
+            acknowledgementsBodyTextView.textContainer.lineFragmentPadding = 0.0
         }
     }
     
@@ -85,11 +77,5 @@ class AboutViewController: UIViewController {
         super.viewDidLoad()
 
         title = AboutViewStrings.title.localized
-    }
-    
-    @IBAction func didTapOnAboutButton() {
-       if let url = URL(string: "https://apod.nasa.gov/apod/") {
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
-        }
     }
 }
