@@ -9,11 +9,11 @@
 import Foundation
 
 extension Date {
-    func isToday() -> Bool {
+    var isToday: Bool {
         Calendar.current.compare(self, to: Date(), toGranularity: .day) == .orderedSame
     }
     
-    func isYesterday() -> Bool {
+    var isYesterday: Bool {
         if let date = Calendar.current.date(byAdding: .day, value: -1, to: Date()) {
             return Calendar.current.compare(self, to: date, toGranularity: .day) == .orderedSame
         }

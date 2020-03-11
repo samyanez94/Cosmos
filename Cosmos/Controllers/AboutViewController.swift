@@ -10,6 +10,7 @@ import UIKit
 
 class AboutViewController: UIViewController {
     
+    /// Image view
     @IBOutlet private var imageView: UIImageView! {
         didSet {
             imageView.accessibilityIdentifier = AboutViewAccessibilityIdentifier.Image.imageView
@@ -22,7 +23,7 @@ class AboutViewController: UIViewController {
             aboutQuoteLabel.accessibilityIdentifier = AboutViewAccessibilityIdentifier.Label.aboutQuoteLabel
             aboutQuoteLabel.font = DynamicFont.shared.font(forTextStyle: .body)
             aboutQuoteLabel.adjustsFontForContentSizeCategory = false
-            aboutQuoteLabel.text = AboutViewStrings.aboutBodyQuote.localized
+            aboutQuoteLabel.text = AboutViewStrings.aboutQuote.localized
         }
     }
     

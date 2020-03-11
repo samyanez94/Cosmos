@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 extension UITableViewCell {
-    
     static var defaultReuseIdentifier: String {
         "com.samuelyanez.\(defaultName)"
     }

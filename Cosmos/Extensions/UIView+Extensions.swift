@@ -39,17 +39,14 @@ extension UIView {
         layer.mask = mask
     }
     
-    func setShadow(
-        withColor color: UIColor = .black, opacity: Float = 1, offSet: CGSize = .zero, radius: CGFloat = 0) {
+    func setShadow(withColor color: UIColor = .black, opacity: Float = 1, offSet: CGSize = .zero, radius: CGFloat = 0) {
         layer.shadowColor = color.cgColor
         layer.shadowOpacity = opacity
         layer.shadowOffset = offSet
         layer.shadowRadius = radius
         layer.masksToBounds = false
     }
-}
-
-extension UIView {
+    
     func pinSubView(_ view: UIView) {
         view.frame = frame
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]

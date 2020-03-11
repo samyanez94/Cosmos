@@ -38,7 +38,7 @@ extension Localizable {
 
 enum AboutViewStrings: Localizable {
     case title
-    case aboutBodyQuote
+    case aboutQuote
     case aboutBody
     case acknowledgementsTitle
     case acknowledgementsBody
@@ -48,7 +48,7 @@ enum AboutViewStrings: Localizable {
     var key: String {
         switch self {
         case .title: return "Title"
-        case .aboutBodyQuote: return "About Body Quote"
+        case .aboutQuote: return "About Quote"
         case .aboutBody: return "About Body"
         case .acknowledgementsTitle: return "Acknowledgements Title"
         case .acknowledgementsBody: return "Acknowledgements Body"

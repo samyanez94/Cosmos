@@ -34,9 +34,9 @@ extension ApodViewModel {
      }
      
      var preferredDate: String? {
-         if apod.date.isToday() {
+         if apod.date.isToday {
             return DetailViewStrings.today.localized
-         } else if apod.date.isYesterday() {
+         } else if apod.date.isYesterday {
             return DetailViewStrings.yesterday.localized
          } else {
              return nil
