@@ -11,11 +11,16 @@ import UIKit
 class FavoritesCell: UITableViewCell {
 
     /// Thumbnail image view
-    @IBOutlet private var thumbnailImageView: UIImageView!
+    @IBOutlet private var thumbnailImageView: UIImageView! {
+        didSet {
+            thumbnailImageView.accessibilityIdentifier = FavoritesCellAccessibilityIdentifier.Image.thumbnailImageView
+        }
+    }
     
     /// Date label
     @IBOutlet private var dateLabel: UILabel! {
         didSet {
+            dateLabel.accessibilityIdentifier = FavoritesCellAccessibilityIdentifier.Label.dateLabel
             dateLabel.font = DynamicFont.shared.font(forTextStyle: .footnote)
             dateLabel.adjustsFontForContentSizeCategory = false
         }
@@ -24,6 +29,7 @@ class FavoritesCell: UITableViewCell {
     /// Title label
     @IBOutlet private var titleLabel: UILabel! {
         didSet {
+            titleLabel.accessibilityIdentifier = FavoritesCellAccessibilityIdentifier.Label.titleLabel
             titleLabel.font = DynamicFont.shared.font(forTextStyle: .title3)
             titleLabel.adjustsFontForContentSizeCategory = false
         }
@@ -32,6 +38,7 @@ class FavoritesCell: UITableViewCell {
     /// Explanation label
     @IBOutlet private var explanationLabel: UILabel! {
         didSet {
+            explanationLabel.accessibilityIdentifier = FavoritesCellAccessibilityIdentifier.Label.explanationLabel
             explanationLabel.font = DynamicFont.shared.font(forTextStyle: .caption1)
             explanationLabel.adjustsFontForContentSizeCategory = false
             explanationLabel.isAccessibilityElement = false
@@ -45,12 +52,7 @@ class FavoritesCell: UITableViewCell {
     static let height: CGFloat = 140
     
     override func awakeFromNib() {
-        super.awakeFromNib()        
-        applyAccessibilityAttributes()
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
+        super.awakeFromNib()
         thumbnailImageView.roundCorners(radius: 5)
     }
     
@@ -64,12 +66,13 @@ class FavoritesCell: UITableViewCell {
         dateLabel.text = viewModel.date
         titleLabel.text = viewModel.title
         explanationLabel.text = viewModel.explanation
-        setImageView(with: viewModel.thumbnailUrl)
+        updateImageView(with: viewModel.thumbnailUrl)
+        updateAccessibilityAttributes(with: viewModel)
     }
 }
 
 extension FavoritesCell {
-    private func setImageView(with url: URL?) {
+    private func updateImageView(with url: URL?) {
         guard let url = url else {
             thumbnailImageView.image = FavoritesCell.placeholderImage
             return
@@ -86,8 +89,9 @@ extension FavoritesCell {
 // MARK: - Accesibility
 
 extension FavoritesCell {
-    private func applyAccessibilityAttributes() {
-        self.isAccessibilityElement = true
-        self.accessibilityHint = "Double tap to show more details."
+    private func updateAccessibilityAttributes(with viewModel: ApodViewModel) {
+        isAccessibilityElement = true
+        accessibilityLabel = "\(viewModel.preferredDate ?? viewModel.date). \(viewModel.title)"
+        accessibilityHint = "Double tap to show more details."
     }
 }

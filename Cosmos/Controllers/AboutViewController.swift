@@ -10,13 +10,19 @@ import UIKit
 
 class AboutViewController: UIViewController {
     
-    /// About quote
-    @IBOutlet private var aboutBodyQuoteLabel: UILabel! {
+    @IBOutlet private var imageView: UIImageView! {
         didSet {
-            aboutBodyQuoteLabel.accessibilityIdentifier = AboutViewAccessibilityIdentifier.Label.aboutBodyQuoteLabel
-            aboutBodyQuoteLabel.font = DynamicFont.shared.font(forTextStyle: .body)
-            aboutBodyQuoteLabel.adjustsFontForContentSizeCategory = false
-            aboutBodyQuoteLabel.text = AboutViewStrings.aboutBodyQuote.localized
+            imageView.accessibilityIdentifier = AboutViewAccessibilityIdentifier.Image.imageView
+        }
+    }
+    
+    /// About quote
+    @IBOutlet private var aboutQuoteLabel: UILabel! {
+        didSet {
+            aboutQuoteLabel.accessibilityIdentifier = AboutViewAccessibilityIdentifier.Label.aboutQuoteLabel
+            aboutQuoteLabel.font = DynamicFont.shared.font(forTextStyle: .body)
+            aboutQuoteLabel.adjustsFontForContentSizeCategory = false
+            aboutQuoteLabel.text = AboutViewStrings.aboutBodyQuote.localized
         }
     }
     
@@ -54,7 +60,7 @@ class AboutViewController: UIViewController {
     @IBOutlet private var visitButton: UIButton! {
         didSet {
             visitButton.accessibilityIdentifier = AboutViewAccessibilityIdentifier.Button.visitButton
-            visitButton.accessibilityTraits = .link
+            visitButton.accessibilityHint = "Double tap to open the link."
             visitButton.titleLabel?.font = DynamicFont.shared.font(forTextStyle: .body)
             visitButton.titleLabel?.adjustsFontForContentSizeCategory = false
             visitButton.titleLabel?.text = AboutViewStrings.visitButton.localized

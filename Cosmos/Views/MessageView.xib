@@ -27,6 +27,9 @@
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Error Illustration" translatesAutoresizingMaskIntoConstraints="NO" id="Wgb-To-ydL" userLabel="Image View">
                             <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
                             <color key="tintColor" systemColor="quaternaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.17999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                            <accessibility key="accessibilityConfiguration">
+                                <accessibilityTraits key="traits" notEnabled="YES"/>
+                            </accessibility>
                             <constraints>
                                 <constraint firstAttribute="width" constant="250" id="IMe-K9-cGM"/>
                                 <constraint firstAttribute="height" constant="250" id="zXC-EQ-0Z8"/>

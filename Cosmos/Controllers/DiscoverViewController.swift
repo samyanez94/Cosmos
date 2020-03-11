@@ -34,11 +34,14 @@ class DiscoverViewController: UIViewController {
     /// Message view
     @IBOutlet var messageView: MessageView! {
         didSet {
-            messageView.delegate = self
-            messageView.setImage(to: UIImage(named: "Error Illustration"))
-            messageView.setMessage(to: MessageViewStrings.errorMessage.localized)
+            messageView.imageView.image = UIImage(named: "Error Illustration")
+            messageView.label.text = MessageViewStrings.errorMessage.localized
             messageView.refreshButton.isHidden = false
             messageView.refreshButton.titleLabel?.text = MessageViewStrings.refreshButton.localized
+            messageView.refreshButtonHandler = { [unowned self] in
+                self.state = .loading
+                self.fetch(count: self.pageSize, offset: self.paginationOffset)
+            }
         }
     }
     
@@ -143,15 +146,6 @@ extension DiscoverViewController: UICollectionViewDelegateFlowLayout {
         let interItemspace = flowLayout.minimumInteritemSpacing * (maxNumberOfItemsPerRow - 1)
         let itemWidth = (availableWidth - interItemspace) / maxNumberOfItemsPerRow
         return CGSize(width: itemWidth, height: itemHeight)
-    }
-}
-
-// MARK: MessageView Delegate
-
-extension DiscoverViewController: MessageViewDelegate {
-    func messageView(_ messageView: MessageView, didTapOnRefreshButton refreshButton: UIButton) {
-        state = .loading
-        fetch(count: pageSize, offset: paginationOffset)
     }
 }
 

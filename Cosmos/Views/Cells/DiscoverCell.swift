@@ -11,24 +11,27 @@ import UIKit
 class DiscoverCell: UICollectionViewCell {
 
     /// Image view
-    @IBOutlet private var imageView: UIImageView!
-    
-    /// Header view
-    @IBOutlet private var headerView: UIView!
-    
-    /// Title label
-    @IBOutlet private var titleLabel: UILabel! {
+    @IBOutlet private var imageView: UIImageView! {
         didSet {
-            titleLabel.font = DynamicFont.shared.font(forTextStyle: .headline)
-            titleLabel.adjustsFontForContentSizeCategory = false
+            imageView.accessibilityIdentifier = DiscoverCellAccessibilityIdentifier.Image.imageView
         }
     }
     
     /// Date label
     @IBOutlet private var dateLabel: UILabel! {
         didSet {
+            dateLabel.accessibilityIdentifier = DiscoverCellAccessibilityIdentifier.Label.dateLabel
             dateLabel.font = DynamicFont.shared.font(forTextStyle: .subheadline)
             dateLabel.adjustsFontForContentSizeCategory = false
+        }
+    }
+    
+    /// Title label
+    @IBOutlet private var titleLabel: UILabel! {
+        didSet {
+            titleLabel.accessibilityIdentifier = DiscoverCellAccessibilityIdentifier.Label.titleLabel
+            titleLabel.font = DynamicFont.shared.font(forTextStyle: .headline)
+            titleLabel.adjustsFontForContentSizeCategory = false
         }
     }
     
@@ -40,11 +43,6 @@ class DiscoverCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        applyAccessibilityAttributes()
-    }
-    
-    override func draw(_ rect: CGRect) {
-        super.draw(rect)
         setShadow(opacity: 0.2, radius: 20)
         contentView.roundCorners(radius: 20)
     }
@@ -58,13 +56,13 @@ class DiscoverCell: UICollectionViewCell {
     func update(with viewModel: ApodViewModel) {
         titleLabel.text = viewModel.title
         dateLabel.text = viewModel.preferredDate ?? viewModel.date
-        setImageView(with: viewModel.thumbnailUrl)
-        updateAccessibilityAttributes(for: viewModel)
+        updateImageView(with: viewModel.thumbnailUrl)
+        updateAccessibilityAttributes(with: viewModel)
     }
 }
 
 extension DiscoverCell {
-    private func setImageView(with url: URL?) {
+    private func updateImageView(with url: URL?) {
         guard let url = url else {
             imageView.image = DiscoverCell.placeholderImage
             return
@@ -84,12 +82,9 @@ extension DiscoverCell {
 // MARK: - Accesibility
 
 extension DiscoverCell {
-    private func applyAccessibilityAttributes() {
-        accessibilityTraits = .button
-        accessibilityHint = "Double tap to show more details."
-    }
-    
-    private func updateAccessibilityAttributes(for viewModel: ApodViewModel) {
+    private func updateAccessibilityAttributes(with viewModel: ApodViewModel) {
+        isAccessibilityElement = true
         accessibilityLabel = "\(viewModel.preferredDate ?? viewModel.date). \(viewModel.title)"
+        accessibilityHint = "Double tap to show more details."
     }
 }

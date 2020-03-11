@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol MessageViewDelegate: AnyObject {
-    func messageView(_ messageView: MessageView, didTapOnRefreshButton refreshButton: UIButton)
-}
-
 @IBDesignable
 class MessageView: UIView {
     
@@ -19,11 +15,16 @@ class MessageView: UIView {
     @IBOutlet var contentView: UIView!
     
     // Image view
-    @IBOutlet private var imageView: UIImageView!
+    @IBOutlet var imageView: UIImageView! {
+        didSet {
+            imageView.accessibilityIdentifier = MessageViewAccessibilityIdentifier.Image.imageView
+        }
+    }
     
     // Label view
-    @IBOutlet private var label: UILabel! {
+    @IBOutlet var label: UILabel! {
         didSet {
+            label.accessibilityIdentifier = MessageViewAccessibilityIdentifier.Label.label
             label.font = DynamicFont.shared.font(forTextStyle: .body)
             label.adjustsFontForContentSizeCategory = false
         }
@@ -32,14 +33,16 @@ class MessageView: UIView {
     // Refresh button
     @IBOutlet var refreshButton: UIButton! {
         didSet {
+            refreshButton.accessibilityIdentifier = MessageViewAccessibilityIdentifier.Button.refreshButton
             refreshButton.isHidden = true
             refreshButton.titleLabel?.font = DynamicFont.shared.font(forTextStyle: .subheadline)
             refreshButton.titleLabel?.adjustsFontForContentSizeCategory = false
+            refreshButton.accessibilityHint = "Double tap to try again."
         }
     }
     
-    weak var delegate: MessageViewDelegate?
-    
+    var refreshButtonHandler: (() -> Void)?
+        
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         loadViewFromNib()
@@ -67,16 +70,8 @@ class MessageView: UIView {
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
     
-    func setImage(to image: UIImage?) {
-        imageView.image = image
-    }
-    
-    func setMessage(to message: String?) {
-        label.text = message
-    }
-    
     @IBAction func didTapOnRefreshButton(_ sender: UIButton) {
-        delegate?.messageView(self, didTapOnRefreshButton: sender)
+        refreshButtonHandler?()
     }
     
 }

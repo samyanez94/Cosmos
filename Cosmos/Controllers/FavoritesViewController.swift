@@ -39,8 +39,13 @@ class FavoritesViewController: UIViewController {
     /// Message view
     @IBOutlet private var messageView: MessageView! {
         didSet {
-            messageView.delegate = self
             messageView.refreshButton.titleLabel?.text = MessageViewStrings.refreshButton.localized
+            messageView.refreshButtonHandler = { [unowned self] in
+                self.state = .loading
+                UserDefaultsFavoritesManager.shared.getFavoriteDates { [unowned self] dates in
+                    self.fetch(favorites: dates)
+                }
+            }
         }
     }
     
@@ -69,15 +74,15 @@ class FavoritesViewController: UIViewController {
                 activityIndicator.stopAnimating()
                 tableView.isHidden = true
                 messageView.isHidden = false
-                messageView.setImage(to: UIImage(named: "Favorites Illustration"))
-                messageView.setMessage(to: MessageViewStrings.emptyFavoritesMessage.localized)
+                messageView.imageView.image = UIImage(named: "Favorites Illustration")
+                messageView.label.text = MessageViewStrings.emptyFavoritesMessage.localized
                 messageView.refreshButton.isHidden = true
             case .error:
                 activityIndicator.stopAnimating()
                 tableView.isHidden = true
                 messageView.isHidden = false
-                messageView.setImage(to: UIImage(named: "Error Illustration"))
-                messageView.setMessage(to: MessageViewStrings.errorMessage.localized)
+                messageView.imageView.image = UIImage(named: "Error Illustration")
+                messageView.label.text = MessageViewStrings.errorMessage.localized
                 messageView.refreshButton.isHidden = false
             }
         }
@@ -188,17 +193,6 @@ extension FavoritesViewController: UITableViewDelegate {
             completionHandler(true)
         })
         return UISwipeActionsConfiguration(actions: [removeAction])
-    }
-}
-
-// MARK: MessageView Delegate
-
-extension FavoritesViewController: MessageViewDelegate {
-    func messageView(_ messageView: MessageView, didTapOnRefreshButton refreshButton: UIButton) {
-        state = .loading
-        UserDefaultsFavoritesManager.shared.getFavoriteDates { [weak self] dates in
-            self?.fetch(favorites: dates)
-        }
     }
 }
 

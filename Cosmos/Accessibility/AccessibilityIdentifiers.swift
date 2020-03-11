@@ -8,6 +8,23 @@
 
 import Foundation
 
+enum AboutViewAccessibilityIdentifier {
+    enum Image {
+        static let imageView = "AboutImageViewIdentifier"
+    }
+    enum Label {
+        static let aboutTitleLabel = "AboutTitleLabelIdentifier"
+        static let aboutQuoteLabel = "AboutBodyQuoteLabelIdentifier"
+        static let aboutBodyLabel = "AboutBodyLabelIdentifier"
+        static let acknowledgementsTitleLabel = "AcknowledgementsTitleLabelIdentifier"
+        static let acknowledgementsBodyLabel = "AcknowledgementsBodyLabelIdentifier"
+        static let versionLabel = "VersionLabelIdentifier"
+    }
+    enum Button {
+        static let visitButton = "VisitButtonIdentifier"
+    }
+}
+
 enum DetailViewAccessibilityIdentifier {
     enum Image {
         static let imageView = "DetailImageViewIdentifier"
@@ -28,16 +45,35 @@ enum DetailViewAccessibilityIdentifier {
     }
 }
 
-enum AboutViewAccessibilityIdentifier {
+enum DiscoverCellAccessibilityIdentifier {
+    enum Image {
+        static let imageView = "DiscoverImageViewIdentifier"
+    }
     enum Label {
-        static let aboutTitleLabel = "AboutTitleLabelIdentifier"
-        static let aboutBodyQuoteLabel = "AboutBodyQuoteLabelIdentifier"
-        static let aboutBodyLabel = "AboutBodyLabelIdentifier"
-        static let acknowledgementsTitleLabel = "AcknowledgementsTitleLabelIdentifier"
-        static let acknowledgementsBodyLabel = "AcknowledgementsBodyLabelIdentifier"
-        static let versionLabel = "VersionLabelIdentifier"
+        static let dateLabel = "DiscoverDateLabelIdentifier"
+        static let titleLabel = "DiscoverTitleLabelIdentifier"
+    }
+}
+
+enum FavoritesCellAccessibilityIdentifier {
+    enum Image {
+        static let thumbnailImageView = "FavoritesThumbnailImageViewIdentifier"
+    }
+    enum Label {
+        static let dateLabel = "FavoritesDateLabelIdentifier"
+        static let titleLabel = "FavoritesTitleLabelIdentifier"
+        static let explanationLabel = "FavoritesExplanationLabelIdentifier"
+    }
+}
+
+enum MessageViewAccessibilityIdentifier {
+    enum Image {
+        static let imageView = "MessageImageViewIdentifier"
+    }
+    enum Label {
+        static let label = "MessageLabelIdentifier"
     }
     enum Button {
-        static let visitButton = "VisitButtonIdentifier"
+        static let refreshButton = "MessageRefreshButtonIdentifier"
     }
 }
