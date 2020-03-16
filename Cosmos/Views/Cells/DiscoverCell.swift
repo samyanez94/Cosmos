@@ -41,6 +41,17 @@ class DiscoverCell: UICollectionViewCell {
     /// Placeholder image
     static let placeholderImage = UIImage(named: "Missing Image Placeholder")
     
+    /// View model
+    var viewModel: ApodViewModel? {
+        didSet {
+            guard let viewModel = viewModel else { return }
+            titleLabel.text = viewModel.title
+            dateLabel.text = viewModel.preferredDate ?? viewModel.date
+            updateImageView(with: viewModel.thumbnailUrl)
+            updateAccessibilityAttributes(with: viewModel)
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         setShadow(opacity: 0.2, radius: 20)
@@ -51,13 +62,6 @@ class DiscoverCell: UICollectionViewCell {
         super.prepareForReuse()
         imageView.image = nil
         imageView.af_cancelImageRequest()
-    }
-    
-    func update(with viewModel: ApodViewModel) {
-        titleLabel.text = viewModel.title
-        dateLabel.text = viewModel.preferredDate ?? viewModel.date
-        updateImageView(with: viewModel.thumbnailUrl)
-        updateAccessibilityAttributes(with: viewModel)
     }
 }
 

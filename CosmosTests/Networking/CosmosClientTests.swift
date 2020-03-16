@@ -10,16 +10,22 @@ import XCTest
 
 class CosmosClientTests: XCTestCase {
     
+    /// Session used by the client
     var session: APISession!
     
+    /// System under test
     var client: CosmosClient!
         
+    /// Dummy response
     var response: HTTPURLResponse! = HTTPURLResponse.dummy()
-        
+    
+    /// Single astronomy picture of the day
     var apod: Apod?
     
+    /// Ranged astronomy pictures of the day
     var apods: [Apod]?
     
+    /// Error
     var error: APIError?
         
     override func setUp() {
@@ -340,15 +346,18 @@ class CosmosClientTests: XCTestCase {
 
 extension CosmosClientTests {
     
+    /// Generic error used for testing
     enum ClientError: Error {
         case error
     }
     
+    /// Resource type used for testing
     enum ResourceType {
         case single
         case ranged
         case invalid
         
+        /// Resource path
         var path: String {
             switch self {
             case .single: return "single_response_success"
@@ -357,6 +366,7 @@ extension CosmosClientTests {
             }
         }
         
+        /// Resource data
         var data: Data? {
             let bundle = Bundle(for: CosmosClientTests.self)
             guard let path = bundle.path(forResource: self.path, ofType: "json"), let data = try? Data(contentsOf: URL(fileURLWithPath: path)) else { return nil }

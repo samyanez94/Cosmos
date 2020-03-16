@@ -15,8 +15,8 @@ class DiscoverDataSource: NSObject, UICollectionViewDataSource {
     /// Collection view
     weak private var collectionView: UICollectionView?
     
-    /// List of astronomy pictures of the day
-    private(set) var apods = OrderedSet<Apod>()
+    /// Astronomy pictures of the day
+    private(set) var viewModels = OrderedSet<ApodViewModel>()
     
     /// The identifier for the footer cell
     private let footerCellIdentifier = "com.samuelyanez.CosmosCellFooter"
@@ -25,16 +25,16 @@ class DiscoverDataSource: NSObject, UICollectionViewDataSource {
         self.collectionView = collectionView
     }
     
-    func element(at indexPath: IndexPath) -> Apod {
-        apods.element(at: indexPath.row)
+    func element(at indexPath: IndexPath) -> ApodViewModel {
+        viewModels.element(at: indexPath.row)
     }
     
-    func append(_ apods: [Apod]) {
-        self.apods.append(apods)
+    func append(_ viewModels: [ApodViewModel]) {
+        self.viewModels.append(viewModels)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        apods.count
+        viewModels.count
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -43,9 +43,7 @@ class DiscoverDataSource: NSObject, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: DiscoverCell = DiscoverCell.dequeue(from: collectionView, for: indexPath)
-        let apod = apods.element(at: indexPath.row)
-        let viewModel = ApodViewModel(apod: apod)
-        cell.update(with: viewModel)
+        cell.viewModel = viewModels.element(at: indexPath.row)
         return cell
     }
 }

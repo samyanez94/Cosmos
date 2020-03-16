@@ -106,7 +106,7 @@ class DiscoverViewController: UIViewController {
                 if apods.isEmpty {
                     self.state = .error
                 } else {
-                    self.dataSource.append(apods.sorted(by: >))
+                    self.dataSource.append(apods.sorted(by: >).map({ ApodViewModel(apod: $0) }))
                     self.collectionView.reloadData()
                     self.state = .displayCollection
                     self.paginationOffset = offset + self.pageSize
@@ -122,14 +122,14 @@ class DiscoverViewController: UIViewController {
 extension DiscoverViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let detailViewController = storyboard?.instantiateViewController(identifier: DetailViewController.identifier, creator: { coder in
-            DetailViewController(coder: coder, viewModel: ApodViewModel(apod: self.dataSource.element(at: indexPath)))
+            DetailViewController(coder: coder, viewModel: self.dataSource.element(at: indexPath))
         }) {
             show(detailViewController, sender: collectionView.cellForItem(at: indexPath))
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if dataSource.apods.count == indexPath.row + 1 {
+        if dataSource.viewModels.count == indexPath.row + 1 {
             fetch(count: pageSize, offset: paginationOffset)
         }
     }

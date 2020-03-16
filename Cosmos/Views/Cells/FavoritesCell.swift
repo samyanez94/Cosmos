@@ -51,6 +51,18 @@ class FavoritesCell: UITableViewCell {
     /// Cell height
     static let height: CGFloat = 140
     
+    /// View model
+    var viewModel: ApodViewModel? {
+        didSet {
+            guard let viewModel = viewModel else { return }
+            dateLabel.text = viewModel.date
+            titleLabel.text = viewModel.title
+            explanationLabel.text = viewModel.explanation
+            updateImageView(with: viewModel.thumbnailUrl)
+            updateAccessibilityAttributes(with: viewModel)
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         thumbnailImageView.roundCorners(radius: 5)
@@ -60,14 +72,6 @@ class FavoritesCell: UITableViewCell {
         super.prepareForReuse()
         thumbnailImageView.image = nil
         thumbnailImageView.af_cancelImageRequest()
-    }
-    
-    func update(with viewModel: ApodViewModel) {
-        dateLabel.text = viewModel.date
-        titleLabel.text = viewModel.title
-        explanationLabel.text = viewModel.explanation
-        updateImageView(with: viewModel.thumbnailUrl)
-        updateAccessibilityAttributes(with: viewModel)
     }
 }
 

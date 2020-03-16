@@ -1,5 +1,5 @@
 //
-//  EnvironmentTests.swift
+//  EnvironmentManagerTests.swift
 //  CosmosTests
 //
 //  Created by Samuel Yanez on 10/15/19.
@@ -8,7 +8,7 @@
 
 import XCTest
 
-class EnvironmentTests: XCTestCase {
+class EnvironmentManagerTests: XCTestCase {
     
     var enviromentManager: EnvironmentManager!
 
@@ -21,5 +21,4 @@ class EnvironmentTests: XCTestCase {
     func testDescription() {
         XCTAssertEqual(enviromentManager.description, "Stage")
     }
-
 }

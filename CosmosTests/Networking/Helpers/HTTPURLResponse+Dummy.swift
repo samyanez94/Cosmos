@@ -10,9 +10,7 @@ import Foundation
 
 extension HTTPURLResponse {
     static func dummy(url: String = "www.sample.com", statusCode: Int = 200) -> HTTPURLResponse? {
-        if let url = URL(string: url) {
-            return HTTPURLResponse(url: url, statusCode: statusCode, httpVersion: nil, headerFields: nil)
-        }
-        return nil
+        guard let url = URL(string: url) else { return nil }
+        return HTTPURLResponse(url: url, statusCode: statusCode, httpVersion: nil, headerFields: nil)
     }
 }

@@ -56,7 +56,7 @@ class FavoritesViewController: UIViewController {
     lazy var dataSource = tableViewDataSource()
     
     /// Astronomy pictures of the day
-    private var apods = OrderedSet<Apod>()
+    private var viewModels = OrderedSet<ApodViewModel>()
     
     /// View state
     var state: State = .loading {
@@ -126,8 +126,8 @@ class FavoritesViewController: UIViewController {
                 if apods.isEmpty {
                     self.state = .emptyFavorites
                 } else {
-                    self.apods = OrderedSet(fromCollection: apods.sorted(by: >))
-                    self.updateDataSource(with: self.apods.elements)
+                    self.viewModels = OrderedSet(fromCollection: apods.sorted(by: >).map({ ApodViewModel(apod: $0) }))
+                    self.updateDataSource(with: self.viewModels.elements)
                     self.state = .displayCollection
                 }
             }
@@ -140,23 +140,23 @@ class FavoritesViewController: UIViewController {
 
 extension FavoritesViewController {
     private func tableViewDataSource() -> SwipeableDiffableDataSource {
-        return SwipeableDiffableDataSource(tableView: tableView) { tableView, indexPath, apod in
+        return SwipeableDiffableDataSource(tableView: tableView) { tableView, indexPath, viewModel in
             let cell: FavoritesCell = FavoritesCell.dequeue(from: tableView, for: indexPath)
-            cell.update(with: ApodViewModel(apod: apod))
+            cell.viewModel = viewModel
             return cell
         }
     }
     
-    private func updateDataSource(with apods: [Apod], animate: Bool = true) {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, Apod>()
+    private func updateDataSource(with viewModels: [ApodViewModel], animate: Bool = true) {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, ApodViewModel>()
         snapshot.appendSections(Section.allCases)
-        snapshot.appendItems(apods)
+        snapshot.appendItems(viewModels)
         dataSource.apply(snapshot, animatingDifferences: animate)
     }
     
-    private func removeFromDataSource(_ apods: [Apod], animate: Bool = true) {
+    private func removeFromDataSource(_ viewModels: [ApodViewModel], animate: Bool = true) {
         var snapshot = dataSource.snapshot()
-        snapshot.deleteItems(apods)
+        snapshot.deleteItems(viewModels)
         dataSource.apply(snapshot, animatingDifferences: animate)
     }
 }
@@ -165,8 +165,8 @@ extension FavoritesViewController {
 
 extension FavoritesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let apod = dataSource.itemIdentifier(for: indexPath), let detailViewController = storyboard?.instantiateViewController(identifier: DetailViewController.identifier, creator: { coder in
-            DetailViewController(coder: coder, viewModel: ApodViewModel(apod: apod))
+        if let viewModel = dataSource.itemIdentifier(for: indexPath), let detailViewController = storyboard?.instantiateViewController(identifier: DetailViewController.identifier, creator: { coder in
+            DetailViewController(coder: coder, viewModel: viewModel)
         }) {
             show(detailViewController, sender: tableView.cellForRow(at: indexPath))
         }
@@ -179,12 +179,12 @@ extension FavoritesViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let removeAction = UIContextualAction(style: .destructive, title: FavoritesViewStrings.removeButton.localized, handler: { _, _, completionHandler  in
-            guard let apod = self.apods.removeAt(indexPath.row) else {
+            guard let viewModel = self.viewModels.removeAt(indexPath.row) else {
                 completionHandler(false)
                 return
             }
-            UserDefaultsFavoritesManager.shared.removeFromFavorites(apod)
-            self.removeFromDataSource([apod])
+            UserDefaultsFavoritesManager.shared.removeFromFavorites(viewModel.apod)
+            self.removeFromDataSource([viewModel])
             
             // Check the table view still contains identifiers
             if self.dataSource.snapshot().itemIdentifiers.isEmpty {
@@ -204,7 +204,7 @@ extension FavoritesViewController: ScrollableViewController {
     }
 }
 
-class SwipeableDiffableDataSource: UITableViewDiffableDataSource<FavoritesViewController.Section, Apod> {
+class SwipeableDiffableDataSource: UITableViewDiffableDataSource<FavoritesViewController.Section, ApodViewModel> {
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }

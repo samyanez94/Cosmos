@@ -1,5 +1,5 @@
 //
-//  OrderedSet.swift
+//  OrderedSetTests.swift
 //  CosmosTests
 //
 //  Created by Samuel Yanez on 10/5/19.
@@ -97,5 +97,4 @@ class OrderedSetTests: XCTestCase {
     func testSubscript() {
         XCTAssertEqual(set[0], "Sheep", "Elements should match.")
     }
-    
 }

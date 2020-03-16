@@ -9,40 +9,41 @@
 import Foundation
 
 struct ApodViewModel {
+    
+    /// Astronomy picture of the day
     let apod: Apod
     
-    init(apod: Apod) {
-        self.apod = apod
-    }
-}
-
-extension ApodViewModel {
+    /// Title
     var title: String {
          apod.title
-     }
+    }
      
-     var date: String {
+    /// Formatted date
+    var date: String {
         DateFormatter(locale: .current, format: "EEEE, MMM d").string(from: apod.date)
-     }
-         
-     var explanation: String {
+    }
+    
+    /// Explanation
+    var explanation: String {
         apod.explanation.isEmpty ? DetailViewStrings.missingExplanation.localized : apod.explanation
-     }
+    }
      
-     var mediaType: Apod.MediaType {
+    /// Media type
+    var mediaType: Apod.MediaType {
          apod.mediaType
-     }
+    }
      
-     var preferredDate: String? {
-         if apod.date.isToday {
+    /// Prefered date
+    var preferredDate: String? {
+        if apod.date.isToday {
             return DetailViewStrings.today.localized
-         } else if apod.date.isYesterday {
+        } else if apod.date.isYesterday {
             return DetailViewStrings.yesterday.localized
-         } else {
-             return nil
-         }
-     }
-     
+        }
+        return nil
+    }
+    
+    /// Copyright attributed string
     var copyright: NSMutableAttributedString? {
          if let author = apod.copyright {
             let string = String(format: DetailViewStrings.copyright.localized, author)
@@ -53,10 +54,12 @@ extension ApodViewModel {
          return nil
     }
     
+    /// Media URL
     var url: URL? {
         URL(string: apod.urlString)
     }
     
+    /// Thumbnail URL
     var thumbnailUrl: URL? {
         switch apod.mediaType {
         case .image:
@@ -65,5 +68,27 @@ extension ApodViewModel {
             guard let thumbnailUrlString = apod.thumbnailUrlString else { return nil }
             return URL(string: thumbnailUrlString)
         }
+    }
+    
+    init(apod: Apod) {
+        self.apod = apod
+    }
+}
+
+extension ApodViewModel: Comparable {
+    static func < (lhs: ApodViewModel, rhs: ApodViewModel) -> Bool {
+        lhs.apod < rhs.apod
+    }
+}
+
+extension ApodViewModel: Hashable {
+    func hash(into hasher: inout Hasher) {
+        apod.hash(into: &hasher)
+    }
+}
+
+extension ApodViewModel: Identifiable {
+    var id: Date {
+        apod.id
     }
 }
