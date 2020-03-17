@@ -52,9 +52,13 @@ class DiscoverCell: UICollectionViewCell {
         }
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        
+        // Update shadow
         setShadow(opacity: 0.2, radius: 20)
+        
+        // Update corner radius
         contentView.roundCorners(radius: 20)
     }
     

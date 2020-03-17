@@ -63,8 +63,8 @@ class FavoritesCell: UITableViewCell {
         }
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
         thumbnailImageView.roundCorners(radius: 5)
     }
     
