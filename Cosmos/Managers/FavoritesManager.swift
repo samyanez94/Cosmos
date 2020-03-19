@@ -25,10 +25,8 @@ class UserDefaultsFavoritesManager: FavoritesManaging {
     static var shared: FavoritesManaging = UserDefaultsFavoritesManager()
     
     var isRefreshRequired: Bool = true
-    
-    private init() {}
-    
-    @Storage(key: "favorites", defaultValue: [])
+        
+    @UserDefaultsBacked(key: "favorites", defaultValue: [])
     var favorites: [Date]
     
     func getFavoriteDates(completion: (([Date]) -> Void)) {
