@@ -103,14 +103,14 @@ class DiscoverViewController: UIViewController {
             case .failure:
                 self.state = .error
             case .success(let apods):
-                if apods.isEmpty {
+                guard !apods.isEmpty else {
                     self.state = .error
-                } else {
-                    self.dataSource.append(apods.sorted(by: >).map({ ApodViewModel(apod: $0) }))
-                    self.collectionView.reloadData()
-                    self.state = .displayCollection
-                    self.paginationOffset = offset + self.pageSize
+                    break
                 }
+                self.dataSource.append(apods.sorted(by: >).map({ ApodViewModel(apod: $0) }))
+                self.collectionView.reloadData()
+                self.state = .displayCollection
+                self.paginationOffset = offset + self.pageSize
             }
             completion?()
         }

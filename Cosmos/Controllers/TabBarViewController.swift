@@ -19,7 +19,7 @@ class TabBarViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.delegate = self
+        delegate = self
         previousSelectedViewController = selectedViewController
     }
 }

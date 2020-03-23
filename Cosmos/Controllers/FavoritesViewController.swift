@@ -42,15 +42,18 @@ class FavoritesViewController: UIViewController {
             messageView.refreshButton.titleLabel?.text = MessageViewStrings.refreshButton.localized
             messageView.refreshButtonHandler = { [unowned self] in
                 self.state = .loading
-                UserDefaultsFavoritesManager.shared.getFavoriteDates { [unowned self] dates in
+                self.favoritesManager.getFavoriteDates { [unowned self] dates in
                     self.fetch(favorites: dates)
                 }
             }
         }
     }
     
-    /// API Client
+    /// API client
     lazy var client = CosmosClient()
+    
+    /// Favorites manager
+    let favoritesManager = FileSystemFavoritesManager.shared
     
     /// Data source
     lazy var dataSource = tableViewDataSource()
@@ -97,8 +100,8 @@ class FavoritesViewController: UIViewController {
         super.viewDidAppear(animated)
         
         // Update view only when required
-        if UserDefaultsFavoritesManager.shared.isRefreshRequired {
-            UserDefaultsFavoritesManager.shared.getFavoriteDates { [weak self] dates in
+        if favoritesManager.isRefreshRequired {
+            favoritesManager.getFavoriteDates { [weak self] dates in
                 self?.fetch(favorites: dates)
             }
         }
@@ -107,7 +110,7 @@ class FavoritesViewController: UIViewController {
     // MARK: Table View
     
     @objc private func handleRefreshControl() {
-        UserDefaultsFavoritesManager.shared.getFavoriteDates { [weak self] dates in
+        favoritesManager.getFavoriteDates { [weak self] dates in
             self?.fetch(favorites: dates) {
                 self?.tableView.refreshControl?.endRefreshing()
             }
@@ -123,13 +126,13 @@ class FavoritesViewController: UIViewController {
             case .failure:
                 self.state = .error
             case .success(let apods):
-                if apods.isEmpty {
+                guard !apods.isEmpty else {
                     self.state = .emptyFavorites
-                } else {
-                    self.viewModels = OrderedSet(fromCollection: apods.sorted(by: >).map({ ApodViewModel(apod: $0) }))
-                    self.updateDataSource(with: self.viewModels.elements)
-                    self.state = .displayCollection
+                    break
                 }
+                self.viewModels = OrderedSet(fromCollection: apods.sorted(by: >).map({ ApodViewModel(apod: $0) }))
+                self.updateDataSource(with: self.viewModels.elements)
+                self.state = .displayCollection
             }
             completion?()
         }
@@ -183,7 +186,7 @@ extension FavoritesViewController: UITableViewDelegate {
                 completionHandler(false)
                 return
             }
-            UserDefaultsFavoritesManager.shared.removeFromFavorites(viewModel.apod)
+            self.favoritesManager.removeFromFavorites(viewModel.apod)
             self.removeFromDataSource([viewModel])
             
             // Check the table view still contains identifiers
@@ -200,7 +203,7 @@ extension FavoritesViewController: UITableViewDelegate {
 
 extension FavoritesViewController: ScrollableViewController {
     func scrollToTop() {
-        self.tableView.setContentOffset(CGPoint(x: 0, y: -120), animated: true)
+        tableView.setContentOffset(CGPoint(x: 0, y: -120), animated: true)
     }
 }
 
