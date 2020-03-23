@@ -86,9 +86,3 @@ extension ApodViewModel: Hashable {
         apod.hash(into: &hasher)
     }
 }
-
-extension ApodViewModel: Identifiable {
-    var id: Date {
-        apod.id
-    }
-}

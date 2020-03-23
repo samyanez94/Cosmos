@@ -79,9 +79,7 @@
 		22CE292023447BD900170FEE /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AA95AF21055E47001B755F /* Endpoint.swift */; };
 		22D47127211C0E5A0006EAD6 /* DiscoverDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D47126211C0E5A0006EAD6 /* DiscoverDataSource.swift */; };
 		22DABE4221BC617F004D6EBF /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DABE4121BC617F004D6EBF /* TabBarViewController.swift */; };
-		22E2715624285DEF00046D0C /* FavoritesManaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E2715524285DEF00046D0C /* FavoritesManaging.swift */; };
-		22E2715824285E1700046D0C /* UserDefaultsFavoritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E2715724285E1700046D0C /* UserDefaultsFavoritesManager.swift */; };
-		22E2715A24285E5200046D0C /* FileSystemFavoritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E2715924285E5200046D0C /* FileSystemFavoritesManager.swift */; };
+		22E2715A24285E5200046D0C /* FavoritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E2715924285E5200046D0C /* FavoritesManager.swift */; };
 		22E2715C2429419000046D0C /* FileSystemBacked.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E2715B2429419000046D0C /* FileSystemBacked.swift */; };
 		22E2715E242941D000046D0C /* FileManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E2715D242941D000046D0C /* FileManager+Extensions.swift */; };
 		22E315C323726CC7008EDF34 /* DateFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E315C223726CC7008EDF34 /* DateFormatter+Extensions.swift */; };
@@ -154,9 +152,7 @@
 		22CE2918234479BC00170FEE /* CosmosClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmosClientTests.swift; sourceTree = "<group>"; };
 		22D47126211C0E5A0006EAD6 /* DiscoverDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverDataSource.swift; sourceTree = "<group>"; };
 		22DABE4121BC617F004D6EBF /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
-		22E2715524285DEF00046D0C /* FavoritesManaging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesManaging.swift; sourceTree = "<group>"; };
-		22E2715724285E1700046D0C /* UserDefaultsFavoritesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsFavoritesManager.swift; sourceTree = "<group>"; };
-		22E2715924285E5200046D0C /* FileSystemFavoritesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSystemFavoritesManager.swift; sourceTree = "<group>"; };
+		22E2715924285E5200046D0C /* FavoritesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesManager.swift; sourceTree = "<group>"; };
 		22E2715B2429419000046D0C /* FileSystemBacked.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSystemBacked.swift; sourceTree = "<group>"; };
 		22E2715D242941D000046D0C /* FileManager+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extensions.swift"; sourceTree = "<group>"; };
 		22E315C223726CC7008EDF34 /* DateFormatter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extensions.swift"; sourceTree = "<group>"; };
@@ -357,6 +353,7 @@
 		225A539123D5751C00677896 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				22E2715924285E5200046D0C /* FavoritesManager.swift */,
 				22E2715424285DCC00046D0C /* Favorites */,
 				223A2BF1233B0FFA00005DFA /* EnvironmentManager.swift */,
 				2281F29223879701001D52D3 /* ShareManager.swift */,
@@ -485,9 +482,6 @@
 		22E2715424285DCC00046D0C /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
-				22E2715524285DEF00046D0C /* FavoritesManaging.swift */,
-				22E2715924285E5200046D0C /* FileSystemFavoritesManager.swift */,
-				22E2715724285E1700046D0C /* UserDefaultsFavoritesManager.swift */,
 			);
 			path = Favorites;
 			sourceTree = "<group>";
@@ -670,7 +664,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				22C5485823568A7A002A52B4 /* ApodViewModel.swift in Sources */,
-				22E2715624285DEF00046D0C /* FavoritesManaging.swift in Sources */,
 				22E315D12372777F008EDF34 /* UICollectionViewCell+Extensions.swift in Sources */,
 				22E315CD23726D71008EDF34 /* UIFont+Extensions.swift in Sources */,
 				226E25B723245E9800908A39 /* OrderedSet.swift in Sources */,
@@ -684,7 +677,6 @@
 				2281F29B2387CA0A001D52D3 /* LightboxController+Extensions.swift in Sources */,
 				225220362104391100221D29 /* DiscoverViewController.swift in Sources */,
 				22E315CB23726D5F008EDF34 /* UITableViewCell+Extensions.swift in Sources */,
-				22E2715824285E1700046D0C /* UserDefaultsFavoritesManager.swift in Sources */,
 				22AA95B021055E47001B755F /* Endpoint.swift in Sources */,
 				22E2715E242941D000046D0C /* FileManager+Extensions.swift in Sources */,
 				22BC0A0D21056A580086BB19 /* CosmosClient.swift in Sources */,
@@ -698,7 +690,7 @@
 				222120D8236013DB009D24AB /* FavoritesCell.swift in Sources */,
 				22D47127211C0E5A0006EAD6 /* DiscoverDataSource.swift in Sources */,
 				22E315C923726D40008EDF34 /* NSMutableAttributedString+Extensions.swift in Sources */,
-				22E2715A24285E5200046D0C /* FileSystemFavoritesManager.swift in Sources */,
+				22E2715A24285E5200046D0C /* FavoritesManager.swift in Sources */,
 				2200E52E23960F3500897286 /* Localizable.swift in Sources */,
 				225220342104391100221D29 /* AppDelegate.swift in Sources */,
 				222120D623601163009D24AB /* FavoritesViewController.swift in Sources */,

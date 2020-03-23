@@ -115,7 +115,7 @@ class DetailViewController: UIViewController {
     private var feedbackGenerator = UISelectionFeedbackGenerator()
     
     /// Favorites manager
-    let favoritesManager = FileSystemFavoritesManager.shared
+    let favoritesManager = FavoritesManager.shared
     
     /// Share manager
     private let shareManager = ShareManager()

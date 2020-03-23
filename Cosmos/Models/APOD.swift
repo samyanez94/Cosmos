@@ -50,9 +50,3 @@ extension Apod: Hashable {
         hasher.combine(date.hashValue)
     }
 }
-
-extension Apod: Identifiable {
-    var id: Date {
-        return date
-    }
-}

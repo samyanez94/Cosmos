@@ -20,7 +20,7 @@ class CosmosClient: APIClient {
     }
     
     convenience init() {
-        self.init(session: URLSession(configuration: .default))
+        self.init(session: URLSession.shared)
     }
     
     /**
@@ -87,19 +87,5 @@ class CosmosClient: APIClient {
         } else {
             completion?(.failure(.incorrectParameters))
         }
-    }
-    
-    /**
-     Fetches list of of astronomy pictures of the day. This method creates multiple requests based on the number of dates passed.
-
-     - Parameters:
-        - dates: List of dates from the APODs to fetch.
-        - completion: Completion hanlder for response. The response may contain a list of APODs or an error.
-     */
-    func fetch(dates: [Date], completion: ((Swift.Result<[Apod], APIError>) -> Void)? = nil) {
-        let requests = dates.map { CosmosEndpoint.dated(date: $0, thumbnails: true).request }
-        fetch(with: requests, parse: { data -> Apod? in
-            return try? self.decoder.decode(Apod.self, from: data)
-        }, completion: completion)
     }
 }

@@ -103,7 +103,7 @@ class DiscoverViewController: UIViewController {
             case .failure:
                 self.state = .error
             case .success(let apods):
-                guard !apods.isEmpty else {
+                if apods.isEmpty {
                     self.state = .error
                     break
                 }

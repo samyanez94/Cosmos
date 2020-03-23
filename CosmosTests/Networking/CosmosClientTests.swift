@@ -132,29 +132,6 @@ class CosmosClientTests: XCTestCase {
         // Then
         XCTAssertNotNil(apods, "Response should not be nil")
     }
-    
-    func testSuccessfulListedRequest() {
-        // Given
-        session = MockSession(data: ResourceType.single.data, response: response, error: nil)
-        client = CosmosClient(session: session)
-
-        let promise = expectation(description: "Fetch completed. 🚀")
-
-        // When
-        client.fetch(dates: [Date()]) { result in
-            switch result {
-            case .failure(let errorFromResponse):
-                self.error = errorFromResponse
-            case .success(let apodsFromResponse):
-                self.apods = apodsFromResponse
-            }
-            promise.fulfill()
-        }
-        wait(for: [promise], timeout: 5)
-
-        // Then
-        XCTAssertNotNil(apods, "Response should not be nil")
-    }
 
     func testFailedRequestWithError() {
         // Given
@@ -223,29 +200,6 @@ class CosmosClientTests: XCTestCase {
 
         // Then
         XCTAssertEqual(error, APIError.requestFailed, "Errors should be equal.")
-    }
-    
-    func testFailedListedRequest() {
-        // Given
-        session = MockSession(data: ResourceType.invalid.data, response: response, error: nil)
-        client = CosmosClient(session: session)
-
-        let promise = expectation(description: "Fetch completed. 🚀")
-
-        // When
-        client.fetch(dates: [Date()]) { result in
-            switch result {
-            case .failure(let errorFromResponse):
-                self.error = errorFromResponse
-            case .success(let apodsFromResponse):
-                self.apods = apodsFromResponse
-            }
-            promise.fulfill()
-        }
-        wait(for: [promise], timeout: 5)
-
-        // Then
-        XCTAssertEqual(error, APIError.invalidData, "Errors should be equal.")
     }
 
     func testUnsuccessfulResponse() throws {

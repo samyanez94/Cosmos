@@ -42,25 +42,33 @@ class FavoritesViewController: UIViewController {
             messageView.refreshButton.titleLabel?.text = MessageViewStrings.refreshButton.localized
             messageView.refreshButtonHandler = { [unowned self] in
                 self.state = .loading
-                self.favoritesManager.getFavoriteDates { [unowned self] dates in
-                    self.fetch(favorites: dates)
-                }
+                self.favoritesManager.getFavorites(completion: self.getFavoritesCompletion)
             }
         }
     }
     
-    /// API client
-    lazy var client = CosmosClient()
-    
     /// Favorites manager
-    let favoritesManager = FileSystemFavoritesManager.shared
+    let favoritesManager = FavoritesManager.shared
+    
+    /// Favorite manager completion handler
+    lazy var getFavoritesCompletion: ([Apod]) -> Void = { [unowned self] favorites in
+        if favorites.isEmpty {
+            self.state = .emptyFavorites
+            return
+        }
+        let viewModels = favorites.map { ApodViewModel(apod: $0) }
+        self.viewModels = OrderedSet(fromCollection: viewModels.sorted(by: >))
+        self.updateDataSource(with: self.viewModels.elements)
+        self.state = .displayCollection
+        self.tableView.refreshControl?.endRefreshing()
+    }
     
     /// Data source
     lazy var dataSource = tableViewDataSource()
     
     /// Astronomy pictures of the day
     private var viewModels = OrderedSet<ApodViewModel>()
-    
+        
     /// View state
     var state: State = .loading {
         didSet {
@@ -101,42 +109,15 @@ class FavoritesViewController: UIViewController {
         
         // Update view only when required
         if favoritesManager.isRefreshRequired {
-            favoritesManager.getFavoriteDates { [weak self] dates in
-                self?.fetch(favorites: dates)
-            }
+            self.favoritesManager.getFavorites(completion: getFavoritesCompletion)
         }
     }
     
     // MARK: Table View
     
     @objc private func handleRefreshControl() {
-        favoritesManager.getFavoriteDates { [weak self] dates in
-            self?.fetch(favorites: dates) {
-                self?.tableView.refreshControl?.endRefreshing()
-            }
-        }
+        self.favoritesManager.getFavorites(completion: getFavoritesCompletion)
      }
-    
-    // MARK: Networking
-    
-    private func fetch(favorites: [Date], completion: (() -> Void)? = nil) {
-        client.fetch(dates: favorites) { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .failure:
-                self.state = .error
-            case .success(let apods):
-                guard !apods.isEmpty else {
-                    self.state = .emptyFavorites
-                    break
-                }
-                self.viewModels = OrderedSet(fromCollection: apods.sorted(by: >).map({ ApodViewModel(apod: $0) }))
-                self.updateDataSource(with: self.viewModels.elements)
-                self.state = .displayCollection
-            }
-            completion?()
-        }
-    }
 }
 
 // MARK: Table View Data Source
