@@ -74,7 +74,6 @@
 		22CE291D23447BA000170FEE /* Apod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2252204821043C0E00221D29 /* Apod.swift */; };
 		22CE291E23447BCF00170FEE /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA5F08229B4EC000E27EC4 /* APIClient.swift */; };
 		22CE292023447BD900170FEE /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AA95AF21055E47001B755F /* Endpoint.swift */; };
-		22D47127211C0E5A0006EAD6 /* DiscoverDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D47126211C0E5A0006EAD6 /* DiscoverDataSource.swift */; };
 		22DABE4221BC617F004D6EBF /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DABE4121BC617F004D6EBF /* TabBarViewController.swift */; };
 		22E2715A24285E5200046D0C /* FavoritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E2715924285E5200046D0C /* FavoritesManager.swift */; };
 		22E2715C2429419000046D0C /* FileSystemBacked.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E2715B2429419000046D0C /* FileSystemBacked.swift */; };
@@ -145,7 +144,6 @@
 		22CE290F23446BF400170FEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22CE29162344700D00170FEE /* MockSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSession.swift; sourceTree = "<group>"; };
 		22CE2918234479BC00170FEE /* CosmosClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmosClientTests.swift; sourceTree = "<group>"; };
-		22D47126211C0E5A0006EAD6 /* DiscoverDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverDataSource.swift; sourceTree = "<group>"; };
 		22DABE4121BC617F004D6EBF /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		22E2715924285E5200046D0C /* FavoritesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesManager.swift; sourceTree = "<group>"; };
 		22E2715B2429419000046D0C /* FileSystemBacked.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSystemBacked.swift; sourceTree = "<group>"; };
@@ -310,7 +308,6 @@
 			children = (
 				220B1F22234D7E90008BAAF6 /* Accessibility */,
 				221AC07521059C60006006B7 /* Controllers */,
-				22A7D3E62117F7690011B097 /* Data Sources */,
 				2200E54C23963F7400897286 /* Dynamic Typing */,
 				225810A2213674E900ECBCC3 /* Extensions */,
 				2200E52C23960EFD00897286 /* Localization */,
@@ -349,19 +346,10 @@
 			isa = PBXGroup;
 			children = (
 				22E2715924285E5200046D0C /* FavoritesManager.swift */,
-				22E2715424285DCC00046D0C /* Favorites */,
 				223A2BF1233B0FFA00005DFA /* EnvironmentManager.swift */,
 				2281F29223879701001D52D3 /* ShareManager.swift */,
 			);
 			path = Managers;
-			sourceTree = "<group>";
-		};
-		22A7D3E62117F7690011B097 /* Data Sources */ = {
-			isa = PBXGroup;
-			children = (
-				22D47126211C0E5A0006EAD6 /* DiscoverDataSource.swift */,
-			);
-			path = "Data Sources";
 			sourceTree = "<group>";
 		};
 		22AA2654241F009600761B4D /* View Model */ = {
@@ -462,13 +450,6 @@
 				22AD236423D52E2400AF5992 /* APIErrorTests.swift */,
 			);
 			path = Networking;
-			sourceTree = "<group>";
-		};
-		22E2715424285DCC00046D0C /* Favorites */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Favorites;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -672,7 +653,6 @@
 				2281F2972387C22C001D52D3 /* Date+Extensions.swift in Sources */,
 				22B381122104583800DCDC24 /* DiscoverCell.swift in Sources */,
 				222120D8236013DB009D24AB /* FavoritesCell.swift in Sources */,
-				22D47127211C0E5A0006EAD6 /* DiscoverDataSource.swift in Sources */,
 				22E315C923726D40008EDF34 /* NSMutableAttributedString+Extensions.swift in Sources */,
 				22E2715A24285E5200046D0C /* FavoritesManager.swift in Sources */,
 				2200E52E23960F3500897286 /* Localizable.swift in Sources */,

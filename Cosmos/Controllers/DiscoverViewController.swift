@@ -11,14 +11,19 @@ import UIKit
 class DiscoverViewController: UIViewController {
     
     /// Different view states
-    enum State {
+    private enum State {
         case loading
         case displayCollection
         case error
     }
     
+    /// Collection view sections
+    private enum Section: CaseIterable {
+        case main
+    }
+    
     /// Collection view
-    @IBOutlet var collectionView: UICollectionView! {
+    @IBOutlet private var collectionView: UICollectionView! {
         didSet {
             collectionView.delegate = self
             collectionView.dataSource = dataSource
@@ -29,10 +34,10 @@ class DiscoverViewController: UIViewController {
     }
     
     /// Ativity indicator
-    @IBOutlet var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet private var activityIndicator: UIActivityIndicatorView!
     
     /// Message view
-    @IBOutlet var messageView: MessageView! {
+    @IBOutlet private var messageView: MessageView! {
         didSet {
             messageView.imageView.image = UIImage(named: "Error Illustration")
             messageView.label.text = MessageViewStrings.errorMessage.localized
@@ -46,21 +51,22 @@ class DiscoverViewController: UIViewController {
     }
     
     /// API Client
-    lazy var client = CosmosClient()
+    private lazy var client = CosmosClient()
     
     /// Data Source
-    lazy var dataSource: DiscoverDataSource = {
-        return DiscoverDataSource(collectionView: collectionView)
-    }()
+    private lazy var dataSource = collectionViewDataSource()
+    
+    /// Astronomy pictures of the day
+    private var viewModels = [ApodViewModel]()
     
     /// Pagination offset
-    var paginationOffset = 0
+    private var paginationOffset = 0
     
     /// Pagination page size
-    var pageSize = 10
+    private var pageSize = 10
     
     /// View state
-    var state: State = .loading {
+    private var state: State = .loading {
         didSet {
             switch state {
             case .loading:
@@ -79,10 +85,12 @@ class DiscoverViewController: UIViewController {
         }
     }
     
+    /// The identifier for the footer cell
+    private static let footerCellIdentifier = "com.samuelyanez.CosmosCellFooter"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = DiscoverViewStrings.title.localized
-        
         fetch(count: pageSize, offset: paginationOffset)
     }
     
@@ -107,8 +115,13 @@ class DiscoverViewController: UIViewController {
                     self.state = .error
                     break
                 }
-                self.dataSource.append(apods.reversed().map({ ApodViewModel(apod: $0) }))
-                self.collectionView.reloadData()
+                apods.reversed().forEach { apod in
+                    let viewModel = ApodViewModel(apod: apod)
+                    if !self.viewModels.contains(viewModel) {
+                        self.viewModels.append(viewModel)
+                    }
+                }
+                self.updateDataSource(with: self.viewModels)
                 self.state = .displayCollection
                 self.paginationOffset = offset + self.pageSize
             }
@@ -117,19 +130,42 @@ class DiscoverViewController: UIViewController {
     }
 }
 
+// MARK: Collection Data Source
+
+extension DiscoverViewController {
+    private func collectionViewDataSource() -> UICollectionViewDiffableDataSource<Section, ApodViewModel> {
+        let dataSource =  UICollectionViewDiffableDataSource<Section, ApodViewModel>(collectionView: collectionView) { collectionView, indexPath, viewModel in
+            let cell: DiscoverCell = DiscoverCell.dequeue(from: collectionView, for: indexPath)
+            cell.viewModel = viewModel
+            return cell
+        }
+        dataSource.supplementaryViewProvider = { (collectionView, kind, indexPath) in
+            collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: DiscoverViewController.footerCellIdentifier, for: indexPath)
+        }
+        return dataSource
+    }
+    
+    private func updateDataSource(with viewModels: [ApodViewModel], animate: Bool = true) {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, ApodViewModel>()
+        snapshot.appendSections(Section.allCases)
+        snapshot.appendItems(viewModels)
+        dataSource.apply(snapshot, animatingDifferences: animate)
+    }
+}
+
 // MARK: UICollectionView Delegate
 
 extension DiscoverViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let detailViewController = storyboard?.instantiateViewController(identifier: DetailViewController.identifier, creator: { coder in
-            DetailViewController(coder: coder, viewModel: self.dataSource.element(at: indexPath))
+        if let viewModel = dataSource.itemIdentifier(for: indexPath), let detailViewController = storyboard?.instantiateViewController(identifier: DetailViewController.identifier, creator: { coder in
+            DetailViewController(coder: coder, viewModel: viewModel)
         }) {
             show(detailViewController, sender: collectionView.cellForItem(at: indexPath))
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if dataSource.viewModels.count == indexPath.row + 1 {
+        if viewModels.count == indexPath.row + 1 {
             fetch(count: pageSize, offset: paginationOffset)
         }
     }

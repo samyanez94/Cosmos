@@ -18,7 +18,7 @@ class FavoritesViewController: UIViewController {
         case error
     }
     
-    /// Different view sections
+    /// Table view sections
     enum Section: CaseIterable {
         case main
     }
@@ -50,9 +50,11 @@ class FavoritesViewController: UIViewController {
     /// Favorites manager
     let favoritesManager = FavoritesManager.shared
     
-    /// Favorite manager completion handler
-    lazy var getFavoritesCompletion: ([Apod]) -> Void = { [unowned self] favorites in
-        if favorites.isEmpty {
+    /// Favorites manager completion handler
+    lazy var getFavoritesCompletion: ([Apod]) -> Void = { [weak self] favorites in
+        guard let self = self else { return }
+        
+        guard !favorites.isEmpty else {
             self.state = .emptyFavorites
             return
         }
