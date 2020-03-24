@@ -78,6 +78,7 @@
 		22E2715A24285E5200046D0C /* FavoritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E2715924285E5200046D0C /* FavoritesManager.swift */; };
 		22E2715C2429419000046D0C /* FileSystemBacked.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E2715B2429419000046D0C /* FileSystemBacked.swift */; };
 		22E2715E242941D000046D0C /* FileManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E2715D242941D000046D0C /* FileManager+Extensions.swift */; };
+		22E271602429A55700046D0C /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E2715F2429A55700046D0C /* Array+Extension.swift */; };
 		22E315C323726CC7008EDF34 /* DateFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E315C223726CC7008EDF34 /* DateFormatter+Extensions.swift */; };
 		22E315C923726D40008EDF34 /* NSMutableAttributedString+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E315C823726D40008EDF34 /* NSMutableAttributedString+Extensions.swift */; };
 		22E315CB23726D5F008EDF34 /* UITableViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E315CA23726D5F008EDF34 /* UITableViewCell+Extensions.swift */; };
@@ -148,6 +149,7 @@
 		22E2715924285E5200046D0C /* FavoritesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesManager.swift; sourceTree = "<group>"; };
 		22E2715B2429419000046D0C /* FileSystemBacked.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSystemBacked.swift; sourceTree = "<group>"; };
 		22E2715D242941D000046D0C /* FileManager+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extensions.swift"; sourceTree = "<group>"; };
+		22E2715F2429A55700046D0C /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		22E315C223726CC7008EDF34 /* DateFormatter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extensions.swift"; sourceTree = "<group>"; };
 		22E315C823726D40008EDF34 /* NSMutableAttributedString+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+Extensions.swift"; sourceTree = "<group>"; };
 		22E315CA23726D5F008EDF34 /* UITableViewCell+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extensions.swift"; sourceTree = "<group>"; };
@@ -328,6 +330,7 @@
 		225810A2213674E900ECBCC3 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				22E2715F2429A55700046D0C /* Array+Extension.swift */,
 				2281F2962387C22C001D52D3 /* Date+Extensions.swift */,
 				22E315C223726CC7008EDF34 /* DateFormatter+Extensions.swift */,
 				22E2715D242941D000046D0C /* FileManager+Extensions.swift */,
@@ -632,6 +635,7 @@
 				22C5485823568A7A002A52B4 /* ApodViewModel.swift in Sources */,
 				22E315D12372777F008EDF34 /* UICollectionViewCell+Extensions.swift in Sources */,
 				22E315CD23726D71008EDF34 /* UIFont+Extensions.swift in Sources */,
+				22E271602429A55700046D0C /* Array+Extension.swift in Sources */,
 				22B43D6223416B2800DD2A30 /* DynamicFont.swift in Sources */,
 				2202F50D211ECE4700DEFDE1 /* DetailViewController.swift in Sources */,
 				2203F0BC2411C75E00D01C99 /* MessageView.swift in Sources */,

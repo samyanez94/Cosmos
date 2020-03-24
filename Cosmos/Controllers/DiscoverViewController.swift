@@ -111,19 +111,20 @@ class DiscoverViewController: UIViewController {
             case .failure:
                 self.state = .error
             case .success(let apods):
-                if apods.isEmpty {
+                switch apods.isEmpty {
+                case true:
                     self.state = .error
-                    break
-                }
-                apods.reversed().forEach { apod in
-                    let viewModel = ApodViewModel(apod: apod)
-                    if !self.viewModels.contains(viewModel) {
-                        self.viewModels.append(viewModel)
+                case false:
+                    apods.reversed().forEach { apod in
+                        let viewModel = ApodViewModel(apod: apod)
+                        if !self.viewModels.contains(viewModel) {
+                            self.viewModels.append(viewModel)
+                        }
                     }
+                    self.updateDataSource(with: self.viewModels)
+                    self.state = .displayCollection
+                    self.paginationOffset = offset + self.pageSize
                 }
-                self.updateDataSource(with: self.viewModels)
-                self.state = .displayCollection
-                self.paginationOffset = offset + self.pageSize
             }
             completion?()
         }

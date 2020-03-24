@@ -42,7 +42,8 @@ class FavoritesManager: FavoritesManaging {
     
     func addToFavorites(_ apod: Apod) {
         isRefreshRequired = true
-        favorites.append(apod)
+        let index = favorites.insertionIndex(for: apod)
+        favorites.insert(apod, at: index)
     }
     
     func removeFromFavorites(_ apod: Apod) {

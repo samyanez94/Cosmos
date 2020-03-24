@@ -53,15 +53,15 @@ class FavoritesViewController: UIViewController {
     /// Favorites manager completion handler
     lazy var getFavoritesCompletion: ([Apod]) -> Void = { [weak self] favorites in
         guard let self = self else { return }
-        
-        guard !favorites.isEmpty else {
+        switch favorites.isEmpty {
+        case true:
             self.state = .emptyFavorites
-            return
+        case false:
+            self.viewModels = favorites.reversed().map { ApodViewModel(apod: $0) }
+            self.updateDataSource(with: self.viewModels)
+            self.state = .displayCollection
+            self.tableView.refreshControl?.endRefreshing()
         }
-        self.viewModels = favorites.sorted(by: >).map { ApodViewModel(apod: $0) }
-        self.updateDataSource(with: self.viewModels)
-        self.state = .displayCollection
-        self.tableView.refreshControl?.endRefreshing()
     }
     
     /// Data source
