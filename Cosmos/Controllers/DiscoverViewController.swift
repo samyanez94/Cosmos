@@ -107,7 +107,7 @@ class DiscoverViewController: UIViewController {
                     self.state = .error
                     break
                 }
-                self.dataSource.append(apods.sorted(by: >).map({ ApodViewModel(apod: $0) }))
+                self.dataSource.append(apods.reversed().map({ ApodViewModel(apod: $0) }))
                 self.collectionView.reloadData()
                 self.state = .displayCollection
                 self.paginationOffset = offset + self.pageSize

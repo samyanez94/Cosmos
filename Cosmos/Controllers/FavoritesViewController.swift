@@ -56,9 +56,8 @@ class FavoritesViewController: UIViewController {
             self.state = .emptyFavorites
             return
         }
-        let viewModels = favorites.map { ApodViewModel(apod: $0) }
-        self.viewModels = OrderedSet(fromCollection: viewModels.sorted(by: >))
-        self.updateDataSource(with: self.viewModels.elements)
+        self.viewModels = favorites.sorted(by: >).map { ApodViewModel(apod: $0) }
+        self.updateDataSource(with: self.viewModels)
         self.state = .displayCollection
         self.tableView.refreshControl?.endRefreshing()
     }
@@ -67,7 +66,7 @@ class FavoritesViewController: UIViewController {
     lazy var dataSource = tableViewDataSource()
     
     /// Astronomy pictures of the day
-    private var viewModels = OrderedSet<ApodViewModel>()
+    private var viewModels = [ApodViewModel]()
         
     /// View state
     var state: State = .loading {
@@ -163,10 +162,7 @@ extension FavoritesViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let removeAction = UIContextualAction(style: .destructive, title: FavoritesViewStrings.removeButton.localized, handler: { _, _, completionHandler  in
-            guard let viewModel = self.viewModels.removeAt(indexPath.row) else {
-                completionHandler(false)
-                return
-            }
+            let viewModel = self.viewModels.remove(at: indexPath.row)
             self.favoritesManager.removeFromFavorites(viewModel.apod)
             self.removeFromDataSource([viewModel])
             

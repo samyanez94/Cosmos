@@ -16,7 +16,7 @@ class DiscoverDataSource: NSObject, UICollectionViewDataSource {
     weak private var collectionView: UICollectionView?
     
     /// Astronomy pictures of the day
-    private(set) var viewModels = OrderedSet<ApodViewModel>()
+    private(set) var viewModels = [ApodViewModel]()
     
     /// The identifier for the footer cell
     private let footerCellIdentifier = "com.samuelyanez.CosmosCellFooter"
@@ -26,11 +26,11 @@ class DiscoverDataSource: NSObject, UICollectionViewDataSource {
     }
     
     func element(at indexPath: IndexPath) -> ApodViewModel {
-        viewModels.element(at: indexPath.row)
+        viewModels[indexPath.row]
     }
     
-    func append(_ viewModels: [ApodViewModel]) {
-        self.viewModels.append(viewModels)
+    func append(_ collection: [ApodViewModel]) {
+        viewModels.append(contentsOf: collection)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -43,7 +43,7 @@ class DiscoverDataSource: NSObject, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: DiscoverCell = DiscoverCell.dequeue(from: collectionView, for: indexPath)
-        cell.viewModel = viewModels.element(at: indexPath.row)
+        cell.viewModel = viewModels[indexPath.row]
         return cell
     }
 }
