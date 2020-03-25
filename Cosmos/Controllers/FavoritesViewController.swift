@@ -58,7 +58,6 @@ class FavoritesViewController: UIViewController {
             self.state = .emptyFavorites
         case false:
             self.viewModels = favorites.reversed().map { ApodViewModel(apod: $0) }
-            self.updateDataSource(with: self.viewModels)
             self.state = .displayCollection
             self.tableView.refreshControl?.endRefreshing()
         }
@@ -80,6 +79,7 @@ class FavoritesViewController: UIViewController {
                 messageView.isHidden = true
             case .displayCollection:
                 activityIndicator.stopAnimating()
+                updateDataSource(with: viewModels)
                 tableView.isHidden = false
                 messageView.isHidden = true
             case .emptyFavorites:

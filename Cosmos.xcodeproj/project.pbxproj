@@ -23,6 +23,9 @@
 		222120D623601163009D24AB /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222120D523601163009D24AB /* FavoritesViewController.swift */; };
 		222120D8236013DB009D24AB /* FavoritesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222120D7236013DB009D24AB /* FavoritesCell.swift */; };
 		22288FCF231CB60100EE082E /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22288FCE231CB60100EE082E /* AboutViewController.swift */; };
+		223351DF242AEA30001A29A7 /* OrderedSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223351DE242AEA30001A29A7 /* OrderedSet.swift */; };
+		223351E0242AEA30001A29A7 /* OrderedSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223351DE242AEA30001A29A7 /* OrderedSet.swift */; };
+		223351E4242AEC9F001A29A7 /* OrderedSetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223351E2242AEC9F001A29A7 /* OrderedSetTests.swift */; };
 		223A2BF2233B0FFA00005DFA /* EnvironmentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223A2BF1233B0FFA00005DFA /* EnvironmentManager.swift */; };
 		2244523B212D08A100889244 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2244523A212D08A100889244 /* Assets.xcassets */; };
 		225220342104391100221D29 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225220332104391100221D29 /* AppDelegate.swift */; };
@@ -114,6 +117,8 @@
 		222120D7236013DB009D24AB /* FavoritesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCell.swift; sourceTree = "<group>"; };
 		22288FCE231CB60100EE082E /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		222DDF6422D2869E00BE3645 /* ranged_response_success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ranged_response_success.json; sourceTree = "<group>"; };
+		223351DE242AEA30001A29A7 /* OrderedSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderedSet.swift; sourceTree = "<group>"; };
+		223351E2242AEC9F001A29A7 /* OrderedSetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderedSetTests.swift; sourceTree = "<group>"; };
 		223A2BF1233B0FFA00005DFA /* EnvironmentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentManager.swift; sourceTree = "<group>"; };
 		2244523A212D08A100889244 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		225220302104391100221D29 /* Cosmos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cosmos.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -285,6 +290,14 @@
 			path = Responses;
 			sourceTree = "<group>";
 		};
+		223351E1242AEC8D001A29A7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				223351E2242AEC9F001A29A7 /* OrderedSetTests.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		225220272104391100221D29 = {
 			isa = PBXGroup;
 			children = (
@@ -404,6 +417,7 @@
 			isa = PBXGroup;
 			children = (
 				2252204821043C0E00221D29 /* Apod.swift */,
+				223351DE242AEA30001A29A7 /* OrderedSet.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -437,6 +451,7 @@
 			children = (
 				22CE290F23446BF400170FEE /* Info.plist */,
 				22AA2657241F012200761B4D /* Managers */,
+				223351E1242AEC8D001A29A7 /* Models */,
 				22CE291523446EEC00170FEE /* Networking */,
 				22AA2654241F009600761B4D /* View Model */,
 			);
@@ -658,6 +673,7 @@
 				22B381122104583800DCDC24 /* DiscoverCell.swift in Sources */,
 				222120D8236013DB009D24AB /* FavoritesCell.swift in Sources */,
 				22E315C923726D40008EDF34 /* NSMutableAttributedString+Extensions.swift in Sources */,
+				223351DF242AEA30001A29A7 /* OrderedSet.swift in Sources */,
 				22E2715A24285E5200046D0C /* FavoritesManager.swift in Sources */,
 				2200E52E23960F3500897286 /* Localizable.swift in Sources */,
 				225220342104391100221D29 /* AppDelegate.swift in Sources */,
@@ -681,6 +697,7 @@
 				22C5485D2356E824002A52B4 /* EnvironmentManagerTest.swift in Sources */,
 				22AA2656241F00C200761B4D /* ApodViewModelTests.swift in Sources */,
 				22AD236323D51A5100AF5992 /* HTTPURLResponse+Dummy.swift in Sources */,
+				223351E0242AEA30001A29A7 /* OrderedSet.swift in Sources */,
 				22AA265F241F06CC00761B4D /* Apod+Dummy.swift in Sources */,
 				22CE291E23447BCF00170FEE /* APIClient.swift in Sources */,
 				2281F27F2387724A001D52D3 /* UIFont+Extensions.swift in Sources */,
@@ -691,6 +708,7 @@
 				22AA265C241F04EA00761B4D /* DynamicFont.swift in Sources */,
 				2281F27C23877242001D52D3 /* NSMutableAttributedString+Extensions.swift in Sources */,
 				22CE291A234479E100170FEE /* MockSession.swift in Sources */,
+				223351E4242AEC9F001A29A7 /* OrderedSetTests.swift in Sources */,
 				22AA2658241F018200761B4D /* ApodViewModel.swift in Sources */,
 				2200E5492396271600897286 /* Localizable.swift in Sources */,
 				225A539423D579DD00677896 /* EnvironmentManager.swift in Sources */,

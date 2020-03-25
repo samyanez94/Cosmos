@@ -57,7 +57,7 @@ class DiscoverViewController: UIViewController {
     private lazy var dataSource = collectionViewDataSource()
     
     /// Astronomy pictures of the day
-    private var viewModels = [ApodViewModel]()
+    private var viewModels = OrderedSet<ApodViewModel>()
     
     /// Pagination offset
     private var paginationOffset = 0
@@ -75,6 +75,7 @@ class DiscoverViewController: UIViewController {
                 collectionView.isHidden = true
             case .displayCollection:
                 activityIndicator.stopAnimating()
+                updateDataSource(with: viewModels)
                 messageView.isHidden = true
                 collectionView.isHidden = false
             case .error:
@@ -115,13 +116,8 @@ class DiscoverViewController: UIViewController {
                 case true:
                     self.state = .error
                 case false:
-                    apods.reversed().forEach { apod in
-                        let viewModel = ApodViewModel(apod: apod)
-                        if !self.viewModels.contains(viewModel) {
-                            self.viewModels.append(viewModel)
-                        }
-                    }
-                    self.updateDataSource(with: self.viewModels)
+                    let viewModels = apods.reversed().map({ ApodViewModel(apod: $0) })
+                    self.viewModels.append(contentsOf: viewModels)
                     self.state = .displayCollection
                     self.paginationOffset = offset + self.pageSize
                 }
@@ -146,10 +142,10 @@ extension DiscoverViewController {
         return dataSource
     }
     
-    private func updateDataSource(with viewModels: [ApodViewModel], animate: Bool = true) {
+    private func updateDataSource(with viewModels: OrderedSet<ApodViewModel>, animate: Bool = true) {
         var snapshot = NSDiffableDataSourceSnapshot<Section, ApodViewModel>()
         snapshot.appendSections(Section.allCases)
-        snapshot.appendItems(viewModels)
+        snapshot.appendItems(viewModels.elements)
         dataSource.apply(snapshot, animatingDifferences: animate)
     }
 }

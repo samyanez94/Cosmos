@@ -27,10 +27,6 @@ class CosmosClientTests: XCTestCase {
     
     /// Error
     var error: APIError?
-        
-    override func setUp() {
-        super.setUp()
-    }
 
     override func tearDown() {
         client = nil
