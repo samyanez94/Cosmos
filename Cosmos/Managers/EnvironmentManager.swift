@@ -9,40 +9,42 @@
 import Foundation
 
 protocol EnvironmentManaging {
-    var description: String { get }
-    var baseUrl: String { get }
+    var environment: Environment { get }
 }
 
 final class EnvironmentManager: EnvironmentManaging {
     
-    private enum Keys: String {
-        case buildConfiguration = "Build configuration"
-        case baseUrl = "Cosmos base URL"
-    }
-    
-    private enum Environments: String {
-        case debug = "Debug"
-        case stage = "Stage"
-        case production = "Production"
-    }
-    
     static let shared: EnvironmentManaging = EnvironmentManager()
-        
-    var description: String {
-        if let infoDictionary = Bundle.main.infoDictionary, let buildConfiguration = infoDictionary[Keys.buildConfiguration.rawValue] as? String {
-            if buildConfiguration == Environments.debug.rawValue {
-                return Environments.stage.rawValue
-            } else {
-                return Environments.production.rawValue
-            }
+    
+    private let buildConfigurationKey = "Build configuration"
+    
+    var environment: Environment {
+        guard let infoDictionary = Bundle.main.infoDictionary, let buildConfiguration = infoDictionary[buildConfigurationKey] as? String else {
+            fatalError("Unable to get build configuration from info dictionary")
         }
-        return ""
+        if buildConfiguration == Environment.debug.name {
+            return Environment.debug
+        } else {
+            return Environment.production
+        }
+    }
+}
+
+enum Environment {
+    case debug
+    case production
+    
+    var name: String {
+        switch self {
+        case .debug: return "Debug"
+        case .production: return "Production"
+        }
     }
     
-    var baseUrl: String {
-        if let infoDictionary = Bundle.main.infoDictionary, let baseUrl = infoDictionary[Keys.baseUrl.rawValue] as? String {
-            return baseUrl
+    var url: String {
+        switch self {
+        case .debug: return "https://cosmos-app-staging.herokuapp.com"
+        case .production: return "https://cosmos-app-production.herokuapp.com"
         }
-        return ""
     }
 }

@@ -15,6 +15,6 @@ class APIErrorTests: XCTestCase {
         XCTAssertEqual(APIError.requestFailed.errorDescription, "Request failed")
         XCTAssertEqual(APIError.invalidData.errorDescription, "Invalid data")
         XCTAssertEqual(APIError.responseUnsuccessful.errorDescription, "Response unsuccessful")
-        XCTAssertEqual(APIError.jsonParsingFailure.errorDescription, "JSON parsing failure")
+        XCTAssertEqual(APIError.jsonParsingFailed.errorDescription, "JSON parsing failed")
     }
 }

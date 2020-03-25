@@ -11,7 +11,7 @@ import Foundation
 extension FileManager {
     static var documentDirectoryUrl: URL {
         guard let documentsDirectoryUrl = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true) else {
-            fatalError("Error unable to find documents directory")
+            fatalError("Error unable to locate or create documents directory")
         }
         return documentsDirectoryUrl
     }

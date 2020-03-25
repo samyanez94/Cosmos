@@ -115,7 +115,7 @@ class DetailViewController: UIViewController {
     private var feedbackGenerator = UISelectionFeedbackGenerator()
     
     /// Favorites manager
-    let favoritesManager = FavoritesManager.shared
+    private let favoritesManager = FavoritesManager.shared
     
     /// Share manager
     private let shareManager = ShareManager()
@@ -123,7 +123,7 @@ class DetailViewController: UIViewController {
     /// View model
     var viewModel: ApodViewModel
     
-    var resourceType: Apod.MediaType = .image {
+    private var resourceType: Apod.MediaType = .image {
         didSet {
             switch resourceType {
             case .image:
@@ -277,6 +277,7 @@ class DetailViewController: UIViewController {
     
     // MARK: Alert
     
+    // TODO: Localize these strings
     private func presentAlertForDeniedAccessToPhotos() {
         let alertController = UIAlertController (title: "Allow Cosmos access to your photos", message: "To save images please allow Cosmos access from Settings.", preferredStyle: .alert)
         let settingsAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in

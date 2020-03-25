@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         LightboxConfig.PageIndicator.enabled = false
     }
     
-    // TODO: Consider removing pod by implementing own toast
+    // TODO: Consider removing pod by implementing our own toast
     
     private func configureToasts() {
         var style = ToastStyle()

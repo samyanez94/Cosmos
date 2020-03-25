@@ -14,11 +14,14 @@ class EnvironmentManagerTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        
         enviromentManager = EnvironmentManager()
     }
 
-    func testDescription() {
-        XCTAssertEqual(enviromentManager.description, "Stage")
+    func testEnvironmentName() {
+        XCTAssertEqual(enviromentManager.environment.name, "Debug")
+    }
+    
+    func testEnvironmentUrl() {
+        XCTAssertEqual(enviromentManager.environment.url, "https://cosmos-app-staging.herokuapp.com")
     }
 }

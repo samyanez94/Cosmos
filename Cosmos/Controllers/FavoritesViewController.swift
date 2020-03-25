@@ -48,10 +48,10 @@ class FavoritesViewController: UIViewController {
     }
     
     /// Favorites manager
-    let favoritesManager = FavoritesManager.shared
+    private let favoritesManager = FavoritesManager.shared
     
     /// Favorites manager completion handler
-    lazy var getFavoritesCompletion: ([Apod]) -> Void = { [weak self] favorites in
+    private lazy var getFavoritesCompletion: ([Apod]) -> Void = { [weak self] favorites in
         guard let self = self else { return }
         switch favorites.isEmpty {
         case true:
@@ -65,13 +65,13 @@ class FavoritesViewController: UIViewController {
     }
     
     /// Data source
-    lazy var dataSource = tableViewDataSource()
+    private lazy var dataSource = tableViewDataSource()
     
     /// Astronomy pictures of the day
     private var viewModels = [ApodViewModel]()
         
     /// View state
-    var state: State = .loading {
+    private var state: State = .loading {
         didSet {
             switch state {
             case .loading:
@@ -110,14 +110,14 @@ class FavoritesViewController: UIViewController {
         
         // Update view only when required
         if favoritesManager.isRefreshRequired {
-            self.favoritesManager.getFavorites(completion: getFavoritesCompletion)
+            favoritesManager.getFavorites(completion: getFavoritesCompletion)
         }
     }
     
     // MARK: Table View
     
     @objc private func handleRefreshControl() {
-        self.favoritesManager.getFavorites(completion: getFavoritesCompletion)
+        favoritesManager.getFavorites(completion: getFavoritesCompletion)
      }
 }
 
@@ -163,7 +163,7 @@ extension FavoritesViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let removeAction = UIContextualAction(style: .destructive, title: FavoritesViewStrings.removeButton.localized, handler: { _, _, completionHandler  in
+        let removeAction = UIContextualAction(style: .destructive, title: FavoritesViewStrings.removeButton.localized, handler: { _, _, completion  in
             let viewModel = self.viewModels.remove(at: indexPath.row)
             self.favoritesManager.removeFromFavorites(viewModel.apod)
             self.removeFromDataSource([viewModel])
@@ -172,7 +172,7 @@ extension FavoritesViewController: UITableViewDelegate {
             if self.dataSource.snapshot().itemIdentifiers.isEmpty {
                 self.state = .emptyFavorites
             }
-            completionHandler(true)
+            completion(true)
         })
         return UISwipeActionsConfiguration(actions: [removeAction])
     }
@@ -188,6 +188,6 @@ extension FavoritesViewController: ScrollableViewController {
 
 class SwipeableDiffableDataSource: UITableViewDiffableDataSource<FavoritesViewController.Section, ApodViewModel> {
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
+        true
     }
 }

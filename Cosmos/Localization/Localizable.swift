@@ -14,15 +14,15 @@ protocol Localizable {
 }
 
 extension Localizable {
-    var resource: String {
+    private var resource: String {
         String(describing: type(of: self))
     }
     
-    var localizableDictionary: NSDictionary! {
+    private var localizableDictionary: NSDictionary! {
         if let path = Bundle.main.path(forResource: resource, ofType: "plist") {
             return NSDictionary(contentsOfFile: path)
         }
-        fatalError("Localizable file missing.")
+        fatalError("Localizable file missing")
     }
     
     var localized: String {

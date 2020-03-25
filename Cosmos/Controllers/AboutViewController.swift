@@ -47,6 +47,7 @@ class AboutViewController: UIViewController {
         }
     }
     
+    /// Acknowledgements body
     @IBOutlet private var acknowledgementsBodyTextView: UITextView! {
         didSet {
             acknowledgementsBodyTextView.accessibilityIdentifier = AboutViewAccessibilityIdentifier.TextView.acknowledgementsBodyLabel

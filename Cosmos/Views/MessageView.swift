@@ -11,17 +11,17 @@ import UIKit
 @IBDesignable
 class MessageView: UIView {
     
-    // Content view
+    /// Content view
     @IBOutlet var contentView: UIView!
     
-    // Image view
+    /// Image view
     @IBOutlet var imageView: UIImageView! {
         didSet {
             imageView.accessibilityIdentifier = MessageViewAccessibilityIdentifier.Image.imageView
         }
     }
     
-    // Label view
+    /// Label view
     @IBOutlet var label: UILabel! {
         didSet {
             label.accessibilityIdentifier = MessageViewAccessibilityIdentifier.Label.label
@@ -30,7 +30,7 @@ class MessageView: UIView {
         }
     }
     
-    // Refresh button
+    /// Refresh button
     @IBOutlet var refreshButton: UIButton! {
         didSet {
             refreshButton.accessibilityIdentifier = MessageViewAccessibilityIdentifier.Button.refreshButton
@@ -41,6 +41,7 @@ class MessageView: UIView {
         }
     }
     
+    /// Refresh button completion handler
     var refreshButtonHandler: (() -> Void)?
         
     required init?(coder: NSCoder) {

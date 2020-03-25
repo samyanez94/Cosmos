@@ -26,10 +26,10 @@ class FavoritesManager: FavoritesManaging {
     
     var isRefreshRequired: Bool = true
         
-    static let url = FileManager.documentDirectoryUrl.appendingPathComponent("favorites.plist")
+    private static let url = FileManager.documentDirectoryUrl.appendingPathComponent("favorites.plist")
     
     @FileSystemBacked(url: url, defaultValue: [])
-    var favorites: [Apod]
+    private var favorites: [Apod]
     
     func getFavorites(completion: (([Apod]) -> Void)) {
         isRefreshRequired = false

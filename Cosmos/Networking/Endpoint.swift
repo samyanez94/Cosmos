@@ -38,14 +38,14 @@ enum CosmosEndpoint {
 
 extension CosmosEndpoint: Endpoint {
     var base: String {
-        return EnvironmentManager.shared.baseUrl
+        return EnvironmentManager.shared.environment.url
     }
     
     var path: String {
         return "/v1/cosmos"
     }
     
-    var formatter: DateFormatter {
+    static var dateFormatter: DateFormatter {
         return DateFormatter(locale: Locale(identifier: "en_US_POSIX"), format: "yyyy-MM-dd")
     }
 
@@ -57,13 +57,13 @@ extension CosmosEndpoint: Endpoint {
             ]
         case .dated(let date, let thumbnails):
             return [
-                URLQueryItem(name: "date", value: formatter.string(from: date)),
+                URLQueryItem(name: "date", value: CosmosEndpoint.dateFormatter.string(from: date)),
                 URLQueryItem(name: "thumbnails", value: String(thumbnails))
             ]
         case .ranged(let from, let to, let thumbnails):
             return [
-                URLQueryItem(name: "start_date", value: formatter.string(from: from)),
-                URLQueryItem(name: "end_date", value: formatter.string(from: to)),
+                URLQueryItem(name: "start_date", value: CosmosEndpoint.dateFormatter.string(from: from)),
+                URLQueryItem(name: "end_date", value: CosmosEndpoint.dateFormatter.string(from: to)),
                 URLQueryItem(name: "thumbnails", value: String(thumbnails))
             ]
         case .randomized(let count, let thumbnails):

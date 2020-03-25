@@ -14,7 +14,7 @@ class ApodViewModelTests: XCTestCase {
     
     var apod: Apod = .dummy()
     
-    let formatter = DateFormatter(locale: .current, format: "yyyy-MM-dd")
+    let dateFormatter = CosmosEndpoint.dateFormatter
     
     override func setUp() {
         super.setUp()
@@ -39,7 +39,7 @@ class ApodViewModelTests: XCTestCase {
     
     func testDate() throws {
         // Given
-        apod = .dummy(date: try XCTUnwrap(formatter.date(from: "2019-10-03")))
+        apod = .dummy(date: try XCTUnwrap(dateFormatter.date(from: "2019-10-03")))
         
         // When
         viewModel = ApodViewModel(apod: apod)
@@ -83,7 +83,7 @@ class ApodViewModelTests: XCTestCase {
     
     func testPreferredNilDate() throws {
         // Given
-        apod = .dummy(date: try XCTUnwrap(formatter.date(from: "2019-10-03")))
+        apod = .dummy(date: try XCTUnwrap(dateFormatter.date(from: "2019-10-03")))
         
         // When
         viewModel = ApodViewModel(apod: apod)

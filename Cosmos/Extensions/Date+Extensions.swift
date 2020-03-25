@@ -14,9 +14,9 @@ extension Date {
     }
     
     var isYesterday: Bool {
-        if let date = Calendar.current.date(byAdding: .day, value: -1, to: Date()) {
-            return Calendar.current.compare(self, to: date, toGranularity: .day) == .orderedSame
+        guard let date = Calendar.current.date(byAdding: .day, value: -1, to: Date()) else {
+            fatalError("Unable to calculate date by substracting 1 day to current date")
         }
-        return false
+        return Calendar.current.compare(self, to: date, toGranularity: .day) == .orderedSame
     }
 }

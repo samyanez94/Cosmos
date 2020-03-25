@@ -270,7 +270,7 @@ class CosmosClientTests: XCTestCase {
         wait(for: [promise], timeout: 5)
 
         // Then
-        XCTAssertEqual(error, APIError.jsonParsingFailure, "Errors should be equal.")
+        XCTAssertEqual(error, APIError.jsonParsingFailed, "Errors should be equal.")
     }
 
     func testRangedJsonParsingError() throws {
@@ -294,7 +294,7 @@ class CosmosClientTests: XCTestCase {
         wait(for: [promise], timeout: 5)
 
         // Then
-        XCTAssertEqual(error, APIError.jsonParsingFailure, "Errors should be equal.")
+        XCTAssertEqual(error, APIError.jsonParsingFailed, "Errors should be equal.")
     }
 }
 

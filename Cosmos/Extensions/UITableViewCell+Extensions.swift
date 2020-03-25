@@ -53,9 +53,3 @@ extension UITableViewCell {
         return cell
     }
 }
-
-extension UITableView {
-    func reloadFirstSection(with animation: UITableView.RowAnimation = .fade) {
-        reloadSections(IndexSet(integer: 0), with: animation)
-    }
-}

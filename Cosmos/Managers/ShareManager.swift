@@ -14,7 +14,7 @@ protocol ShareManaging {
 }
 
 class ShareManager: ShareManaging {
-        
+    
     enum ShareMedia {
         case image(UIImage)
         case video(String)

@@ -22,7 +22,7 @@ extension URLSession: APISession {
     }
 }
 
-extension URLSessionDataTask: APISessionDataTask { }
+extension URLSessionDataTask: APISessionDataTask {}
 
 protocol APIClient {
     var session: APISession { get }
@@ -63,7 +63,7 @@ extension APIClient {
                     completion?(.failure(error))
                 case .success(let data):
                     guard let value = parse(data) else {
-                        completion?(.failure(.jsonParsingFailure))
+                        completion?(.failure(.jsonParsingFailed))
                         return
                     }
                     completion?(.success(value))
@@ -80,7 +80,7 @@ extension APIClient {
                     completion?(.failure(error))
                 case .success(let data):
                     guard let values = parse(data) else {
-                        completion?(.failure(.jsonParsingFailure))
+                        completion?(.failure(.jsonParsingFailed))
                         return
                     }
                     completion?(.success(values))
@@ -96,7 +96,7 @@ enum APIError: LocalizedError {
     case requestFailed
     case invalidData
     case responseUnsuccessful
-    case jsonParsingFailure
+    case jsonParsingFailed
     
     var errorDescription: String {
         switch self {
@@ -105,7 +105,7 @@ enum APIError: LocalizedError {
         case .requestFailed: return "Request failed"
         case .invalidData: return "Invalid data"
         case .responseUnsuccessful: return "Response unsuccessful"
-        case .jsonParsingFailure: return "JSON parsing failure"
+        case .jsonParsingFailed: return "JSON parsing failed"
         }
     }
 }
@@ -118,7 +118,7 @@ extension APIError: Equatable {
         case(.requestFailed, .requestFailed): return true
         case(.invalidData, .invalidData): return true
         case(.responseUnsuccessful, .responseUnsuccessful): return true
-        case(.jsonParsingFailure, .jsonParsingFailure): return true
+        case(.jsonParsingFailed, .jsonParsingFailed): return true
         default: return false
         }
     }

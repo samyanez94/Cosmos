@@ -12,11 +12,11 @@ class CosmosClient: APIClient {
 
     var session: APISession
     
-    let decoder = JSONDecoder()
+    private let decoder = JSONDecoder()
     
     init(session: APISession) {
         self.session = session
-        decoder.dateDecodingStrategy = .formatted(DateFormatter(locale: .current, format: "yyyy-MM-dd"))
+        decoder.dateDecodingStrategy = .formatted(CosmosEndpoint.dateFormatter)
     }
     
     convenience init() {
