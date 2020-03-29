@@ -13,24 +13,29 @@ class MoreTableViewController: UITableViewController {
     
     @IBOutlet var aboutTableViewCell: UITableViewCell! {
         didSet {
+            aboutTableViewCell.accessibilityIdentifier = MoreViewAccessibilityIdentifier.Cell.cell
             aboutTableViewCell.textLabel?.text = MoreViewStrings.aboutCell.localized
         }
     }
     
     @IBOutlet var recommendTableViewCell: UITableViewCell! {
         didSet {
+            recommendTableViewCell.accessibilityIdentifier = MoreViewAccessibilityIdentifier.Cell.cell
+            
             recommendTableViewCell.textLabel?.text = MoreViewStrings.recommendCell.localized
         }
     }
     
     @IBOutlet var reviewTableViewCell: UITableViewCell! {
         didSet {
+            reviewTableViewCell.accessibilityIdentifier = MoreViewAccessibilityIdentifier.Cell.cell
             reviewTableViewCell.textLabel?.text = MoreViewStrings.reviewCell.localized
         }
     }
     
     @IBOutlet var feedbackTableViewCell: UITableViewCell! {
         didSet {
+            feedbackTableViewCell.accessibilityIdentifier = MoreViewAccessibilityIdentifier.Cell.cell
             feedbackTableViewCell.textLabel?.text = MoreViewStrings.feedbackCell.localized
         }
     }
@@ -45,12 +50,9 @@ class MoreTableViewController: UITableViewController {
         case 1: didTapOnRecommend()
         case 2: didTapOnWriteReview()
         case 3: didTapOnSendFeedback()
-        default:
-            print("User did tap on a cell that's not handled by view controller")
+        default: break
         }
-        if let cell = tableView.cellForRow(at: indexPath) {
-            cell.isSelected = false
-        }
+        tableView.cellForRow(at: indexPath)?.isSelected = false
     }
     
     func didTapOnRecommend() {

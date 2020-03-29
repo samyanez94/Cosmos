@@ -90,7 +90,7 @@ enum AppStoreEndpoint: Endpoint {
     }
     
     var path: String {
-        "/app/id/\(appStoreId)"
+        "/app/app/cosmos-discover-our-universe/id\(appStoreId)"
     }
     
     var queryItems: [URLQueryItem]? {

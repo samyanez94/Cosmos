@@ -76,3 +76,9 @@ enum MessageViewAccessibilityIdentifier {
         static let refreshButton = "MessageRefreshButtonIdentifier"
     }
 }
+
+enum MoreViewAccessibilityIdentifier {
+    enum Cell {
+        static let cell = "MoreTableViewCellIdentifier"
+    }
+}
