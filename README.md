@@ -24,7 +24,7 @@ Building this app has been a rewarding experience. Please, feel free to contribu
 
 ## Releases
 
-Cosmos: Discover Our Universe is on the [App Store](https://apps.apple.com/us/app/cosmos-discover-our-universe/id1481310548?ls=1)! Download it and share your thoughts.
+Cosmos: Discover Our Universe is on the [App Store](https://apps.apple.com/us/app/cosmos-discover-our-universe/id1481310548?ls=1)!
 
 ## Author
 * Samuel Yanez ~ [samyanez94](https://github.com/samyanez94)
