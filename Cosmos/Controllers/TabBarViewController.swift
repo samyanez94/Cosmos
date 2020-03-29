@@ -27,10 +27,11 @@ class TabBarViewController: UITabBarController {
 // MARK: UITabBarControllerDelegate
 
 extension TabBarViewController: UITabBarControllerDelegate {
-    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         if viewController == previousSelectedViewController, let navigationController = viewController as? UINavigationController, let viewController = navigationController.topViewController as? ScrollableViewController {
                 viewController.scrollToTop()
             }
         previousSelectedViewController = viewController
+        return true
     }
 }
