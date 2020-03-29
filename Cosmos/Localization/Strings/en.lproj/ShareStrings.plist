@@ -20,5 +20,12 @@ The Cosmos app is available on the App Store. %@</string>
 		<key>comment</key>
 		<string></string>
 	</dict>
+	<key>App Share Message</key>
+	<dict>
+		<key>value</key>
+		<string>Cosmos reveals the mysteries and wonders of our universe one picture or video at the time. Check it out on the App Store: %@ </string>
+		<key>comment</key>
+		<string></string>
+	</dict>
 </dict>
 </plist>

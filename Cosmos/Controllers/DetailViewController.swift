@@ -248,11 +248,11 @@ class DetailViewController: UIViewController {
         switch viewModel.mediaType {
         case .image:
             if let image = imageView.image {
-                let activityViewController = shareManager.activityViewController(with: .image(image))
+                let activityViewController = shareManager.activityViewController(for: .image(image))
                 present(activityViewController, animated: true)
             }
         case .video:
-            let activityViewController = shareManager.activityViewController(with: .video(viewModel.apod.urlString))
+            let activityViewController = shareManager.activityViewController(for: .video(viewModel.apod.urlString))
             present(activityViewController, animated: true)
         }
     }

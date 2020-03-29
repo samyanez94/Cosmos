@@ -11,21 +11,23 @@ import Foundation
 protocol Endpoint {
     var base: String { get }
     var path: String { get }
-    var queryItems: [URLQueryItem] { get }
+    var queryItems: [URLQueryItem]? { get }
 }
 
 extension Endpoint {
-    var urlComponents: URLComponents {
-        
+    var components: URLComponents {
         var components = URLComponents(string: base)!
         components.path = path
         components.queryItems = queryItems
-        
         return components
     }
     
+    var url: URL {
+        components.url!
+    }
+    
     var request: URLRequest {
-        return URLRequest(url: urlComponents.url!)
+        return URLRequest(url: url)
     }
 }
 
@@ -49,7 +51,7 @@ extension CosmosEndpoint: Endpoint {
         return DateFormatter(locale: Locale(identifier: "en_US_POSIX"), format: "yyyy-MM-dd")
     }
 
-    var queryItems: [URLQueryItem] {
+    var queryItems: [URLQueryItem]? {
         switch self {
         case .today(let thumbnails):
             return [
@@ -70,6 +72,34 @@ extension CosmosEndpoint: Endpoint {
             return [
                 URLQueryItem(name: "count", value: String(count)),
                 URLQueryItem(name: "thumbnails", value: String(thumbnails))
+            ]
+        }
+    }
+}
+
+enum AppStoreEndpoint: Endpoint {
+    case share
+    case review
+    
+    var appStoreId: String {
+        "1481310548"
+    }
+    
+    var base: String {
+        "https://apps.apple.com"
+    }
+    
+    var path: String {
+        "/app/id/\(appStoreId)"
+    }
+    
+    var queryItems: [URLQueryItem]? {
+        switch self {
+        case .share:
+            return nil
+        case .review:
+            return [
+                URLQueryItem(name: "action", value: "write-review")
             ]
         }
     }

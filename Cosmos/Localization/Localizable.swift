@@ -114,14 +114,34 @@ enum MessageViewStrings: Localizable {
     }
 }
 
+enum MoreViewStrings: Localizable {
+    case title
+    case aboutCell
+    case recommendCell
+    case reviewCell
+    case feedbackCell
+    
+    var key: String {
+        switch self {
+        case .title: return "Title"
+        case .aboutCell: return "About Cell"
+        case .recommendCell: return "Recommend Cell"
+        case .reviewCell: return "Review Cell"
+        case .feedbackCell: return "Feedback Cell"
+        }
+    }
+}
+
 enum ShareStrings: Localizable {
     case imageShareMessage
     case videoShareMessage
+    case appShareMessage
     
     var key: String {
         switch self {
         case .imageShareMessage: return "Image Share Message"
         case .videoShareMessage: return "Video Share Message"
+        case .appShareMessage: return "App Share Message"
         }
     }
 }

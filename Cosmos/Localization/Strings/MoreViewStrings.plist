@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Title</key>
+	<dict>
+		<key>value</key>
+		<string>More</string>
+		<key>comment</key>
+		<string></string>
+	</dict>
+	<key>About Cell</key>
+	<dict>
+		<key>value</key>
+		<string>About</string>
+		<key>comment</key>
+		<string></string>
+	</dict>
+	<key>Recommend Cell</key>
+	<dict>
+		<key>value</key>
+		<string>Recommend Cosmos</string>
+		<key>comment</key>
+		<string></string>
+	</dict>
+	<key>Review Cell</key>
+	<dict>
+		<key>value</key>
+		<string>Write a review</string>
+		<key>comment</key>
+		<string></string>
+	</dict>
+	<key>Feedback Cell</key>
+	<dict>
+		<key>value</key>
+		<string>Send us feedback</string>
+		<key>comment</key>
+		<string></string>
+	</dict>
+</dict>
+</plist>

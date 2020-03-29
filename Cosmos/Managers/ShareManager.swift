@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 protocol ShareManaging {
-    func activityViewController(with media: ShareManager.ShareMedia) -> UIActivityViewController
+    func activityViewController(for media: ShareManager.ShareMedia) -> UIActivityViewController
 }
 
 class ShareManager: ShareManaging {
@@ -19,27 +19,19 @@ class ShareManager: ShareManaging {
         case image(UIImage)
         case video(String)
     }
-    
-    private struct Constants {
-        static let appStoreUrl = "https://apps.apple.com/app/id1481310548"
-    }
-    
-    private let excludedTypes: [UIActivity.ActivityType] = [
-        .postToFacebook
-    ]
             
-    func activityViewController(with media: ShareMedia) -> UIActivityViewController {
+    func activityViewController(for media: ShareMedia) -> UIActivityViewController {
         let activityViewController: UIActivityViewController = {
             switch media {
             case .image(let image):
-                let message = String(format: ShareStrings.imageShareMessage.localized, Constants.appStoreUrl)
+                let message = String(format: ShareStrings.imageShareMessage.localized, AppStoreEndpoint.share.url.absoluteString)
                 return UIActivityViewController(activityItems: [image, message], applicationActivities: nil)
             case .video(let url):
-                let message = String(format: ShareStrings.videoShareMessage.localized, url, Constants.appStoreUrl)
+                let message = String(format: ShareStrings.videoShareMessage.localized, url, AppStoreEndpoint.share.url.absoluteString)
                 return UIActivityViewController(activityItems: [message], applicationActivities: nil)
             }
         }()
-        activityViewController.excludedActivityTypes = excludedTypes
+        activityViewController.excludedActivityTypes = [.postToFacebook]
         return activityViewController
     }
 }

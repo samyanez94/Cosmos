@@ -34,6 +34,9 @@
 		225220412104391200221D29 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2252203F2104391200221D29 /* LaunchScreen.storyboard */; };
 		2252204921043C0E00221D29 /* Apod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2252204821043C0E00221D29 /* Apod.swift */; };
 		225A539423D579DD00677896 /* EnvironmentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223A2BF1233B0FFA00005DFA /* EnvironmentManager.swift */; };
+		225E274D242FF47A00BE03AD /* MoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225E274C242FF47A00BE03AD /* MoreTableViewController.swift */; };
+		225E274F243007DF00BE03AD /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225E274E243007DF00BE03AD /* Bundle+Extensions.swift */; };
+		225E275124312C7400BE03AD /* MoreViewStrings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 225E275024312C7400BE03AD /* MoreViewStrings.plist */; };
 		227846B62346CDCE009F01B8 /* single_response_success.json in Resources */ = {isa = PBXBuildFile; fileRef = 227846B42346CDCE009F01B8 /* single_response_success.json */; };
 		2281F27C23877242001D52D3 /* NSMutableAttributedString+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E315C823726D40008EDF34 /* NSMutableAttributedString+Extensions.swift */; };
 		2281F27E23877248001D52D3 /* UICollectionViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E315D02372777F008EDF34 /* UICollectionViewCell+Extensions.swift */; };
@@ -81,7 +84,7 @@
 		22E2715A24285E5200046D0C /* FavoritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E2715924285E5200046D0C /* FavoritesManager.swift */; };
 		22E2715C2429419000046D0C /* FileSystemBacked.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E2715B2429419000046D0C /* FileSystemBacked.swift */; };
 		22E2715E242941D000046D0C /* FileManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E2715D242941D000046D0C /* FileManager+Extensions.swift */; };
-		22E271602429A55700046D0C /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E2715F2429A55700046D0C /* Array+Extension.swift */; };
+		22E271602429A55700046D0C /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E2715F2429A55700046D0C /* Array+Extensions.swift */; };
 		22E315C323726CC7008EDF34 /* DateFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E315C223726CC7008EDF34 /* DateFormatter+Extensions.swift */; };
 		22E315C923726D40008EDF34 /* NSMutableAttributedString+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E315C823726D40008EDF34 /* NSMutableAttributedString+Extensions.swift */; };
 		22E315CB23726D5F008EDF34 /* UITableViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E315CA23726D5F008EDF34 /* UITableViewCell+Extensions.swift */; };
@@ -128,6 +131,9 @@
 		225220402104391200221D29 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		225220422104391200221D29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2252204821043C0E00221D29 /* Apod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apod.swift; sourceTree = "<group>"; };
+		225E274C242FF47A00BE03AD /* MoreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreTableViewController.swift; sourceTree = "<group>"; };
+		225E274E243007DF00BE03AD /* Bundle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extensions.swift"; sourceTree = "<group>"; };
+		225E275024312C7400BE03AD /* MoreViewStrings.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = MoreViewStrings.plist; sourceTree = "<group>"; };
 		227846B42346CDCE009F01B8 /* single_response_success.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = single_response_success.json; sourceTree = "<group>"; };
 		2281F28D238791EB001D52D3 /* Optional+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Extensions.swift"; sourceTree = "<group>"; };
 		2281F29223879701001D52D3 /* ShareManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareManager.swift; sourceTree = "<group>"; };
@@ -154,7 +160,7 @@
 		22E2715924285E5200046D0C /* FavoritesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesManager.swift; sourceTree = "<group>"; };
 		22E2715B2429419000046D0C /* FileSystemBacked.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSystemBacked.swift; sourceTree = "<group>"; };
 		22E2715D242941D000046D0C /* FileManager+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extensions.swift"; sourceTree = "<group>"; };
-		22E2715F2429A55700046D0C /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
+		22E2715F2429A55700046D0C /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		22E315C223726CC7008EDF34 /* DateFormatter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extensions.swift"; sourceTree = "<group>"; };
 		22E315C823726D40008EDF34 /* NSMutableAttributedString+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+Extensions.swift"; sourceTree = "<group>"; };
 		22E315CA23726D5F008EDF34 /* UITableViewCell+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extensions.swift"; sourceTree = "<group>"; };
@@ -211,6 +217,7 @@
 				2200E5412396220500897286 /* DiscoverViewStrings.plist */,
 				2200E5452396220D00897286 /* FavoritesViewStrings.plist */,
 				22AA2669241F095300761B4D /* MessageViewStrings.plist */,
+				225E275024312C7400BE03AD /* MoreViewStrings.plist */,
 				22AA266D241F095A00761B4D /* ShareStrings.plist */,
 			);
 			path = Strings;
@@ -267,6 +274,7 @@
 				2202F50C211ECE4700DEFDE1 /* DetailViewController.swift */,
 				225220352104391100221D29 /* DiscoverViewController.swift */,
 				222120D523601163009D24AB /* FavoritesViewController.swift */,
+				225E274C242FF47A00BE03AD /* MoreTableViewController.swift */,
 				22DABE4121BC617F004D6EBF /* TabBarViewController.swift */,
 			);
 			path = Controllers;
@@ -343,7 +351,8 @@
 		225810A2213674E900ECBCC3 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				22E2715F2429A55700046D0C /* Array+Extension.swift */,
+				22E2715F2429A55700046D0C /* Array+Extensions.swift */,
+				225E274E243007DF00BE03AD /* Bundle+Extensions.swift */,
 				2281F2962387C22C001D52D3 /* Date+Extensions.swift */,
 				22E315C223726CC7008EDF34 /* DateFormatter+Extensions.swift */,
 				22E2715D242941D000046D0C /* FileManager+Extensions.swift */,
@@ -558,6 +567,7 @@
 				2200E53123961C6200897286 /* AboutViewStrings.plist in Resources */,
 				225220412104391200221D29 /* LaunchScreen.storyboard in Resources */,
 				2203F0BA2411C68C00D01C99 /* MessageView.xib in Resources */,
+				225E275124312C7400BE03AD /* MoreViewStrings.plist in Resources */,
 				2200E53F2396220500897286 /* DiscoverViewStrings.plist in Resources */,
 				22AA2666241F095300761B4D /* MessageViewStrings.plist in Resources */,
 				22AA266A241F095A00761B4D /* ShareStrings.plist in Resources */,
@@ -650,7 +660,8 @@
 				22C5485823568A7A002A52B4 /* ApodViewModel.swift in Sources */,
 				22E315D12372777F008EDF34 /* UICollectionViewCell+Extensions.swift in Sources */,
 				22E315CD23726D71008EDF34 /* UIFont+Extensions.swift in Sources */,
-				22E271602429A55700046D0C /* Array+Extension.swift in Sources */,
+				225E274F243007DF00BE03AD /* Bundle+Extensions.swift in Sources */,
+				22E271602429A55700046D0C /* Array+Extensions.swift in Sources */,
 				22B43D6223416B2800DD2A30 /* DynamicFont.swift in Sources */,
 				2202F50D211ECE4700DEFDE1 /* DetailViewController.swift in Sources */,
 				2203F0BC2411C75E00D01C99 /* MessageView.swift in Sources */,
@@ -671,6 +682,7 @@
 				22E315C323726CC7008EDF34 /* DateFormatter+Extensions.swift in Sources */,
 				2281F2972387C22C001D52D3 /* Date+Extensions.swift in Sources */,
 				22B381122104583800DCDC24 /* DiscoverCell.swift in Sources */,
+				225E274D242FF47A00BE03AD /* MoreTableViewController.swift in Sources */,
 				222120D8236013DB009D24AB /* FavoritesCell.swift in Sources */,
 				22E315C923726D40008EDF34 /* NSMutableAttributedString+Extensions.swift in Sources */,
 				223351DF242AEA30001A29A7 /* OrderedSet.swift in Sources */,

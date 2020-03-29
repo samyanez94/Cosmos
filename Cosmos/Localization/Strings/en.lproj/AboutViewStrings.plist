@@ -42,7 +42,7 @@ Illustrations by Tori Duong.</string>
 	<key>Version</key>
 	<dict>
 		<key>value</key>
-		<string>Version %@</string>
+		<string>Version %@ (%@)</string>
 		<key>comment</key>
 		<string></string>
 	</dict>

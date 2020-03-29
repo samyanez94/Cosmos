@@ -65,11 +65,11 @@ class AboutViewController: UIViewController {
     /// Version label
     @IBOutlet private var versionLabel: UILabel! {
         didSet {
-            if let versionNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String {
+            if let versionNumber = Bundle.main.releaseVersionNumber, let buildNumber = Bundle.main.buildVersionNumber {
                 versionLabel.accessibilityIdentifier = AboutViewAccessibilityIdentifier.Label.versionLabel
                 versionLabel.font = DynamicFont.shared.font(forTextStyle: .body)
                 versionLabel.adjustsFontForContentSizeCategory = false
-                versionLabel.text = String(format: AboutViewStrings.version.localized, versionNumber)
+                versionLabel.text = String(format: AboutViewStrings.version.localized, versionNumber, buildNumber)
             }
         }
     }
