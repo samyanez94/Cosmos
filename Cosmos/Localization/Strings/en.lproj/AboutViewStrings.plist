@@ -39,6 +39,20 @@ Illustrations by Tori Duong.</string>
 		<key>comment</key>
 		<string></string>
 	</dict>
+	<key>Acknowledgements Body Attributed Text 1</key>
+	<dict>
+		<key>value</key>
+		<string>NASA’s APOD API</string>
+		<key>comment</key>
+		<string></string>
+	</dict>
+	<key>Acknowledgements Body Attributed Text 2</key>
+	<dict>
+		<key>value</key>
+		<string>Tori Duong</string>
+		<key>comment</key>
+		<string></string>
+	</dict>
 	<key>Version</key>
 	<dict>
 		<key>value</key>

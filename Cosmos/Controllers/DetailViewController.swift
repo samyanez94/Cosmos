@@ -8,8 +8,6 @@
 
 import Photos
 import UIKit
-import WebKit
-import AlamofireImage
 import Lightbox
 import Toast_Swift
 
@@ -23,7 +21,11 @@ class DetailViewController: UIViewController {
     }
     
     /// Media view
-    @IBOutlet private var mediaContainerView: UIView!
+    @IBOutlet private var mediaView: MediaView! {
+        didSet {
+            mediaView.delegate = self
+        }
+    }
     
     /// Favorites button
     @IBOutlet private var favoritesButton: UIImageView! {
@@ -50,9 +52,6 @@ class DetailViewController: UIViewController {
             saveButton.accessibilityHint = "Double tap save to Photos."
         }
     }
-    
-    /// Save button gesture recognizer
-    @IBOutlet private var saveButtonGestureRecognizer: UITapGestureRecognizer!
     
     /// Date label
     @IBOutlet private var dateLabel: UILabel! {
@@ -95,6 +94,9 @@ class DetailViewController: UIViewController {
         }
     }
     
+    /// Save button gesture recognizer
+    @IBOutlet private var saveButtonGestureRecognizer: UITapGestureRecognizer!
+    
     /// Date label gesture recognizer
     @IBOutlet private var dateLabelGestureRecognizer: UITapGestureRecognizer! {
         didSet {
@@ -104,12 +106,6 @@ class DetailViewController: UIViewController {
     
     // View controller identifier
     static let identifier = String(describing: DetailViewController.self)
-    
-    /// Image view
-    private lazy var imageView = UIImageView()
-    
-    /// Web view
-    private lazy var webView = WKWebView()
         
     /// Feedback generator
     private var feedbackGenerator = UISelectionFeedbackGenerator()
@@ -125,12 +121,13 @@ class DetailViewController: UIViewController {
     
     private var resourceType: Apod.MediaType = .image {
         didSet {
+            guard let url = viewModel.url else { return }
             switch resourceType {
             case .image:
-                setupImageView()
+                mediaView.setup(for: .image(url: url, label: viewModel.title))
                 saveButton.isHidden = false
             case .video:
-                setupWebView()
+                mediaView.setup(for: .video(url: url, label: viewModel.title))
                 saveButton.isHidden = true
             }
         }
@@ -167,107 +164,71 @@ class DetailViewController: UIViewController {
     // MARK: View Updates
     
     private func updateFavoritesButton() {
-        favoritesManager.isFavorite(viewModel.apod) { isFavorite in
-            animateFavoritesButtonTransition(isFavorite: isFavorite)
-            updateAccesibilityValueForFavoritesButton(isFavorite: isFavorite)
+        favoritesManager.isFavorite(viewModel.apod) { [unowned self] isFavorite in
+            self.animateFavoritesButtonTransition(isFavorite: isFavorite)
+            self.updateAccesibilityAttributesForFavoritesButton(isFavorite: isFavorite)
         }
     }
     
     private func animateFavoritesButtonTransition(isFavorite: Bool) {
-        let animation: (() -> Void) = { [unowned self] in
+        let animations: (() -> Void) = { [unowned self] in
             self.favoritesButton.image = isFavorite ? UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
         }
         UIView.transition(with: favoritesButton,
                           duration: 0.25,
                           options: .transitionCrossDissolve,
-                          animations: animation,
+                          animations: animations,
                           completion: nil)
     }
     
-    // MARK: Media Updates
-        
-    private func setupImageView() {
-        guard let url = viewModel.url else { return }
-        imageView.isUserInteractionEnabled = true
-        imageView.contentMode = .scaleAspectFill
-        mediaContainerView.pinSubView(imageView)
-        imageView.af_setImage(withURL: url, imageTransition: .crossDissolve(0.2))
-        applyAccessibilityAttributesforImageView(imageView)
-        
-        // Cannot add accessibility attributes to Lightbox. Therefore, we disable the feature when using VoiceOver
-        if !UIAccessibility.isVoiceOverRunning {
-            imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapOnImage(_:))))
-        }
-    }
-    
-    private func setupWebView() {
-        guard let url = viewModel.url else { return }
-        mediaContainerView.pinSubView(webView)
-        webView.load(URLRequest(url: url))
-        applyAccesibilityAttributesforWebView(webView)
-    }
-    
     // MARK: User Interaction
-    
-    @objc private func didTapOnImage(_ sender: UITapGestureRecognizer? = nil) {
-        if let sender = sender, let imageView = sender.view as? UIImageView, let image = imageView.image {
-            let lightboxController = LightboxController(image: image)
-            present(lightboxController, animated: true)
-        }
-    }
     
     @IBAction private func didTapOnDateLabel(_ sender: Any) {
         guard let preferredDate = viewModel.preferredDate else {
             return
         }
-        let animation: (() -> Void) = { [unowned self] in
-            if self.dateLabel.text == preferredDate {
-                self.dateLabel.text = self.viewModel.date
-            } else {
-                self.dateLabel.text = preferredDate
-            }
+        let animations: (() -> Void) = { [unowned self] in
+            self.dateLabel.text = self.dateLabel.text == preferredDate ? self.viewModel.date : preferredDate
         }
         UIView.transition(with: dateLabel,
                           duration: 0.25,
                           options: .transitionCrossDissolve,
-                          animations: animation,
+                          animations: animations,
                           completion: nil)
     }
     
     @IBAction private func didTapOnFavorites(_ sender: Any) {
-        favoritesManager.isFavorite(viewModel.apod) { [weak self] isFavorite in
-            guard let self = self else { return }
+        favoritesManager.isFavorite(viewModel.apod) { [unowned self] isFavorite in
             isFavorite ? self.favoritesManager.removeFromFavorites(viewModel.apod) : self.favoritesManager.addToFavorites(viewModel.apod)
             feedbackGenerator.selectionChanged()
             self.animateFavoritesButtonTransition(isFavorite: !isFavorite)
-            self.updateAccesibilityValueForFavoritesButton(isFavorite: !isFavorite)
+            self.updateAccesibilityAttributesForFavoritesButton(isFavorite: !isFavorite)
         }
     }
         
     @IBAction private func didTapOnShare(_ sender: Any) {
         switch viewModel.mediaType {
         case .image:
-            if let image = imageView.image {
-                let activityViewController = shareManager.activityViewController(for: .image(image))
-                present(activityViewController, animated: true)
-            }
+            guard let image = mediaView.image else { return }
+            let activityViewController = shareManager.activityViewController(for: .image(image))
+            present(activityViewController, animated: true)
         case .video:
             let activityViewController = shareManager.activityViewController(for: .video(viewModel.apod.urlString))
             present(activityViewController, animated: true)
         }
     }
     
-    @IBAction private func didTapOnSave(_ sender: Any) {
-        guard let image = imageView.image else { return }
+    @IBAction private func didTapOnSaveToPhotos(_ sender: Any) {
+        guard let image = mediaView.image else { return }
         saveButtonGestureRecognizer.isEnabled = false
-        UIImageWriteToSavedPhotosAlbum(image, self, #selector(saveCompletionHandler), nil)
+        UIImageWriteToSavedPhotosAlbum(image, self, #selector(saveToPhotosHandler), nil)
         feedbackGenerator.selectionChanged()
     }
     
-    @objc func saveCompletionHandler(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+    @objc func saveToPhotosHandler(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
         guard error == nil else {
             presentAlertForDeniedAccessToPhotos()
-            self.saveButtonGestureRecognizer.isEnabled = true
+            saveButtonGestureRecognizer.isEnabled = true
             return
         }
         view.makeToast(DetailViewStrings.saveToPhotosSucceededMessage.localized, duration: 2.0, position: .bottom) { _ in
@@ -277,40 +238,36 @@ class DetailViewController: UIViewController {
     
     // MARK: Alert
     
-    // TODO: Localize these strings
     private func presentAlertForDeniedAccessToPhotos() {
-        let alertController = UIAlertController (title: "Allow Cosmos access to your photos", message: "To save images please allow Cosmos access from Settings.", preferredStyle: .alert)
-        let settingsAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
+        let alertController = UIAlertController (title: DetailViewStrings.deniedAccessToPhotosTitle.localized, message: DetailViewStrings.deniedAccessToPhotosMessage.localized, preferredStyle: .alert)
+        let settingsActionHandler: ((UIAlertAction) -> Void)? = { (_) in
             if let url = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(url) {
                 UIApplication.shared.open(url)
             }
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+        let settingsAction = UIAlertAction(title: DetailViewStrings.settingsAction.localized, style: .default, handler: settingsActionHandler)
+        let cancelAction = UIAlertAction(title: DetailViewStrings.cancelAction.localized, style: .default, handler: nil)
         alertController.addAction(settingsAction)
         alertController.addAction(cancelAction)
         present(alertController, animated: true, completion: nil)
     }
 }
 
+// MARK: MediaViewDelegate
+
+extension DetailViewController: MediaViewDelegate {
+    func mediaView(_ mediaView: MediaView, didTapImage image: UIImage) {
+        if !UIAccessibility.isVoiceOverRunning {
+            let lightboxController = LightboxController(image: image)
+            present(lightboxController, animated: true)
+        }
+    }
+}
+
 // MARK: Accessibility
 
 extension DetailViewController {
-    private func applyAccessibilityAttributesforImageView(_ imageView: UIImageView) {
-        imageView.isAccessibilityElement = true
-        imageView.accessibilityLabel = viewModel.title
-        imageView.accessibilityTraits = .image
-        imageView.accessibilityIdentifier = DetailViewAccessibilityIdentifier.Image.imageView
-    }
-    
-    private func applyAccesibilityAttributesforWebView(_ webView: WKWebView) {
-        webView.isAccessibilityElement = true
-        webView.accessibilityLabel = viewModel.title
-        webView.accessibilityTraits = .startsMediaSession
-        webView.accessibilityHint = "Double tap to play media."
-        webView.accessibilityIdentifier = DetailViewAccessibilityIdentifier.WebView.webView
-    }
-    
-    private func updateAccesibilityValueForFavoritesButton(isFavorite: Bool) {
+    private func updateAccesibilityAttributesForFavoritesButton(isFavorite: Bool) {
         if isFavorite {
             favoritesButton.accessibilityValue = "Added"
             favoritesButton.accessibilityHint = "Double tap to remove from favorites."

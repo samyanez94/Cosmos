@@ -11,6 +11,7 @@ import UIKit
 
 class MoreTableViewController: UITableViewController {
     
+    /// About table view cell
     @IBOutlet var aboutTableViewCell: UITableViewCell! {
         didSet {
             aboutTableViewCell.accessibilityIdentifier = MoreViewAccessibilityIdentifier.Cell.cell
@@ -18,14 +19,15 @@ class MoreTableViewController: UITableViewController {
         }
     }
     
+    /// Recommend table view cell
     @IBOutlet var recommendTableViewCell: UITableViewCell! {
         didSet {
             recommendTableViewCell.accessibilityIdentifier = MoreViewAccessibilityIdentifier.Cell.cell
-            
             recommendTableViewCell.textLabel?.text = MoreViewStrings.recommendCell.localized
         }
     }
     
+    /// Review table view cell
     @IBOutlet var reviewTableViewCell: UITableViewCell! {
         didSet {
             reviewTableViewCell.accessibilityIdentifier = MoreViewAccessibilityIdentifier.Cell.cell
@@ -33,6 +35,7 @@ class MoreTableViewController: UITableViewController {
         }
     }
     
+    /// Feedback table view cell
     @IBOutlet var feedbackTableViewCell: UITableViewCell! {
         didSet {
             feedbackTableViewCell.accessibilityIdentifier = MoreViewAccessibilityIdentifier.Cell.cell

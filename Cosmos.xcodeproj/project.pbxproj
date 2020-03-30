@@ -81,6 +81,8 @@
 		22CE291E23447BCF00170FEE /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA5F08229B4EC000E27EC4 /* APIClient.swift */; };
 		22CE292023447BD900170FEE /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AA95AF21055E47001B755F /* Endpoint.swift */; };
 		22DABE4221BC617F004D6EBF /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DABE4121BC617F004D6EBF /* TabBarViewController.swift */; };
+		22DB4E44243271A700CEEE90 /* MediaView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22DB4E43243271A700CEEE90 /* MediaView.xib */; };
+		22DB4E46243271B900CEEE90 /* MediaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DB4E45243271B900CEEE90 /* MediaView.swift */; };
 		22E2715A24285E5200046D0C /* FavoritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E2715924285E5200046D0C /* FavoritesManager.swift */; };
 		22E2715C2429419000046D0C /* FileSystemBacked.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E2715B2429419000046D0C /* FileSystemBacked.swift */; };
 		22E2715E242941D000046D0C /* FileManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E2715D242941D000046D0C /* FileManager+Extensions.swift */; };
@@ -157,6 +159,8 @@
 		22CE29162344700D00170FEE /* MockSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSession.swift; sourceTree = "<group>"; };
 		22CE2918234479BC00170FEE /* CosmosClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmosClientTests.swift; sourceTree = "<group>"; };
 		22DABE4121BC617F004D6EBF /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		22DB4E43243271A700CEEE90 /* MediaView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MediaView.xib; sourceTree = "<group>"; };
+		22DB4E45243271B900CEEE90 /* MediaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaView.swift; sourceTree = "<group>"; };
 		22E2715924285E5200046D0C /* FavoritesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesManager.swift; sourceTree = "<group>"; };
 		22E2715B2429419000046D0C /* FileSystemBacked.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSystemBacked.swift; sourceTree = "<group>"; };
 		22E2715D242941D000046D0C /* FileManager+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extensions.swift"; sourceTree = "<group>"; };
@@ -408,6 +412,8 @@
 				2203F0B82411C62400D01C99 /* Cells */,
 				2203F0BB2411C75E00D01C99 /* MessageView.swift */,
 				2203F0B92411C68C00D01C99 /* MessageView.xib */,
+				22DB4E45243271B900CEEE90 /* MediaView.swift */,
+				22DB4E43243271A700CEEE90 /* MediaView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -569,6 +575,7 @@
 				2203F0BA2411C68C00D01C99 /* MessageView.xib in Resources */,
 				225E275124312C7400BE03AD /* MoreViewStrings.plist in Resources */,
 				2200E53F2396220500897286 /* DiscoverViewStrings.plist in Resources */,
+				22DB4E44243271A700CEEE90 /* MediaView.xib in Resources */,
 				22AA2666241F095300761B4D /* MessageViewStrings.plist in Resources */,
 				22AA266A241F095A00761B4D /* ShareStrings.plist in Resources */,
 				225220392104391100221D29 /* Main.storyboard in Resources */,
@@ -679,6 +686,7 @@
 				2281F28E238791EB001D52D3 /* Optional+Extensions.swift in Sources */,
 				2252204921043C0E00221D29 /* Apod.swift in Sources */,
 				22E2715C2429419000046D0C /* FileSystemBacked.swift in Sources */,
+				22DB4E46243271B900CEEE90 /* MediaView.swift in Sources */,
 				22E315C323726CC7008EDF34 /* DateFormatter+Extensions.swift in Sources */,
 				2281F2972387C22C001D52D3 /* Date+Extensions.swift in Sources */,
 				22B381122104583800DCDC24 /* DiscoverCell.swift in Sources */,
@@ -941,7 +949,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.3;
+				MARKETING_VERSION = 1.3.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.samuelyanez.Cosmos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -963,7 +971,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.3;
+				MARKETING_VERSION = 1.3.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.samuelyanez.Cosmos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

@@ -46,10 +46,4 @@ extension UIView {
         layer.shadowRadius = radius
         layer.masksToBounds = false
     }
-    
-    func pinSubView(_ view: UIView) {
-        view.frame = frame
-        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        addSubview(view)
-    }
 }

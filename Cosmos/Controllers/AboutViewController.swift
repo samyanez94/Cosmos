@@ -52,8 +52,8 @@ class AboutViewController: UIViewController {
         didSet {
             acknowledgementsBodyTextView.accessibilityIdentifier = AboutViewAccessibilityIdentifier.TextView.acknowledgementsBodyLabel
             let attributedText = NSMutableAttributedString(string: AboutViewStrings.acknowledgementsBody.localized)
-            attributedText.addLinkAttribute(toSubString: "NASA’s APOD API", link: "https://apod.nasa.gov/apod/")
-            attributedText.addLinkAttribute(toSubString: "Tori Duong", link: "https://toriduong.com")
+            attributedText.addLinkAttribute(toSubString: AboutViewStrings.acknowledgementsBodyAttributedText1.localized, link: "https://apod.nasa.gov/apod/")
+            attributedText.addLinkAttribute(toSubString: AboutViewStrings.acknowledgementsBodyAttributedText2.localized, link: "https://toriduong.com")
             acknowledgementsBodyTextView.attributedText = attributedText
             acknowledgementsBodyTextView.font = DynamicFont.shared.font(forTextStyle: .body)
             acknowledgementsBodyTextView.textColor = .secondaryLabel

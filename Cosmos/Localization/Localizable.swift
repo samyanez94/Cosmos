@@ -42,6 +42,8 @@ enum AboutViewStrings: Localizable {
     case aboutBody
     case acknowledgementsTitle
     case acknowledgementsBody
+    case acknowledgementsBodyAttributedText1
+    case acknowledgementsBodyAttributedText2
     case version
     
     var key: String {
@@ -51,6 +53,8 @@ enum AboutViewStrings: Localizable {
         case .aboutBody: return "About Body"
         case .acknowledgementsTitle: return "Acknowledgements Title"
         case .acknowledgementsBody: return "Acknowledgements Body"
+        case .acknowledgementsBodyAttributedText1: return "Acknowledgements Body Attributed Text 1"
+        case .acknowledgementsBodyAttributedText2: return "Acknowledgements Body Attributed Text 2"
         case .version: return "Version"
         }
     }
@@ -64,6 +68,10 @@ enum DetailViewStrings: Localizable {
     case copyright
     case saveToPhotosSucceededMessage
     case saveToPhotosFailedMessage
+    case deniedAccessToPhotosTitle
+    case deniedAccessToPhotosMessage
+    case settingsAction
+    case cancelAction
     
     var key: String {
         switch self {
@@ -74,6 +82,10 @@ enum DetailViewStrings: Localizable {
         case .copyright: return "Copyright"
         case .saveToPhotosSucceededMessage: return "Save to Photos Succeeded"
         case .saveToPhotosFailedMessage: return "Save to Photos Failed"
+        case .deniedAccessToPhotosTitle: return "Denied Access to Photos Title"
+        case .deniedAccessToPhotosMessage: return "Denied Access to Photos Message"
+        case .settingsAction: return "Settings Action"
+        case .cancelAction: return "Cancel Action"
         }
     }
 }

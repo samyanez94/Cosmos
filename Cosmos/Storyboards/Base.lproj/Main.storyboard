@@ -176,7 +176,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uqx-Xx-oTA" userLabel="Container View">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
                                                 <subviews>
-                                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rMg-do-b2Y" userLabel="Media Container View">
+                                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rMg-do-b2Y" userLabel="Media View" customClass="MediaView" customModule="Cosmos" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
                                                     </view>
                                                 </subviews>
@@ -322,7 +322,7 @@
                         <outlet property="dateLabelGestureRecognizer" destination="1rd-EG-4ha" id="4Lr-rx-RJr"/>
                         <outlet property="explanationLabel" destination="7Uo-UD-hUs" id="FyH-Sb-AdV"/>
                         <outlet property="favoritesButton" destination="sFP-RP-ymO" id="2pU-Vn-y2A"/>
-                        <outlet property="mediaContainerView" destination="rMg-do-b2Y" id="qNI-he-MUZ"/>
+                        <outlet property="mediaView" destination="rMg-do-b2Y" id="p03-qf-k07"/>
                         <outlet property="saveButton" destination="wnd-0P-ZAr" id="CaP-6M-LoI"/>
                         <outlet property="saveButtonGestureRecognizer" destination="059-Q4-43j" id="Ret-yx-Pu1"/>
                         <outlet property="scrollView" destination="owF-5j-ToJ" id="IeF-nJ-IgQ"/>
@@ -348,7 +348,7 @@
                 </tapGestureRecognizer>
                 <tapGestureRecognizer id="059-Q4-43j" userLabel="Save Button Gesture Recognizer">
                     <connections>
-                        <action selector="didTapOnSave:" destination="6xP-7z-rQ6" id="pWz-Oh-DRK"/>
+                        <action selector="didTapOnSaveToPhotos:" destination="6xP-7z-rQ6" id="x6f-w3-I3W"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
