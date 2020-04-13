@@ -22,7 +22,7 @@ class AboutViewController: UIViewController {
         didSet {
             aboutQuoteLabel.accessibilityIdentifier = AboutViewAccessibilityIdentifier.Label.aboutQuoteLabel
             aboutQuoteLabel.font = DynamicFont.shared.font(forTextStyle: .body)
-            aboutQuoteLabel.adjustsFontForContentSizeCategory = false
+            aboutQuoteLabel.adjustsFontForContentSizeCategory = true
             aboutQuoteLabel.text = AboutViewStrings.aboutQuote.localized
         }
     }
@@ -32,7 +32,7 @@ class AboutViewController: UIViewController {
         didSet {
             aboutBodyLabel.accessibilityIdentifier = AboutViewAccessibilityIdentifier.Label.aboutBodyLabel
             aboutBodyLabel.font = DynamicFont.shared.font(forTextStyle: .body)
-            aboutBodyLabel.adjustsFontForContentSizeCategory = false
+            aboutBodyLabel.adjustsFontForContentSizeCategory = true
             aboutBodyLabel.text = AboutViewStrings.aboutBody.localized
         }
     }
@@ -42,7 +42,7 @@ class AboutViewController: UIViewController {
         didSet {
             acknowledgementsTitleLabel.accessibilityIdentifier = AboutViewAccessibilityIdentifier.Label.acknowledgementsTitleLabel
             acknowledgementsTitleLabel.font = DynamicFont.shared.font(forTextStyle: .headline)
-            acknowledgementsTitleLabel.adjustsFontForContentSizeCategory = false
+            acknowledgementsTitleLabel.adjustsFontForContentSizeCategory = true
             acknowledgementsTitleLabel.text = AboutViewStrings.acknowledgementsTitle.localized
         }
     }
@@ -56,6 +56,7 @@ class AboutViewController: UIViewController {
             attributedText.addLinkAttribute(toSubString: AboutViewStrings.acknowledgementsBodyAttributedText2.localized, link: "https://toriduong.com")
             acknowledgementsBodyTextView.attributedText = attributedText
             acknowledgementsBodyTextView.font = DynamicFont.shared.font(forTextStyle: .body)
+            acknowledgementsBodyTextView.adjustsFontForContentSizeCategory = true
             acknowledgementsBodyTextView.textColor = .secondaryLabel
             acknowledgementsBodyTextView.textContainerInset = .zero
             acknowledgementsBodyTextView.textContainer.lineFragmentPadding = 0.0
@@ -68,7 +69,7 @@ class AboutViewController: UIViewController {
             if let versionNumber = Bundle.main.releaseVersionNumber, let buildNumber = Bundle.main.buildVersionNumber {
                 versionLabel.accessibilityIdentifier = AboutViewAccessibilityIdentifier.Label.versionLabel
                 versionLabel.font = DynamicFont.shared.font(forTextStyle: .body)
-                versionLabel.adjustsFontForContentSizeCategory = false
+                versionLabel.adjustsFontForContentSizeCategory = true
                 versionLabel.text = String(format: AboutViewStrings.version.localized, versionNumber, buildNumber)
             }
         }

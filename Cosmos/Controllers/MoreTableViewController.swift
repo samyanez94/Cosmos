@@ -15,6 +15,8 @@ class MoreTableViewController: UITableViewController {
     @IBOutlet var aboutTableViewCell: UITableViewCell! {
         didSet {
             aboutTableViewCell.accessibilityIdentifier = MoreViewAccessibilityIdentifier.Cell.cell
+            aboutTableViewCell.textLabel?.font = DynamicFont.shared.font(forTextStyle: .body)
+            aboutTableViewCell.textLabel?.adjustsFontForContentSizeCategory = true
             aboutTableViewCell.textLabel?.text = MoreViewStrings.aboutCell.localized
         }
     }
@@ -23,6 +25,8 @@ class MoreTableViewController: UITableViewController {
     @IBOutlet var recommendTableViewCell: UITableViewCell! {
         didSet {
             recommendTableViewCell.accessibilityIdentifier = MoreViewAccessibilityIdentifier.Cell.cell
+            recommendTableViewCell.textLabel?.font = DynamicFont.shared.font(forTextStyle: .body)
+            recommendTableViewCell.textLabel?.adjustsFontForContentSizeCategory = true
             recommendTableViewCell.textLabel?.text = MoreViewStrings.recommendCell.localized
         }
     }
@@ -31,6 +35,8 @@ class MoreTableViewController: UITableViewController {
     @IBOutlet var reviewTableViewCell: UITableViewCell! {
         didSet {
             reviewTableViewCell.accessibilityIdentifier = MoreViewAccessibilityIdentifier.Cell.cell
+            reviewTableViewCell.textLabel?.font = DynamicFont.shared.font(forTextStyle: .body)
+            reviewTableViewCell.textLabel?.adjustsFontForContentSizeCategory = true
             reviewTableViewCell.textLabel?.text = MoreViewStrings.reviewCell.localized
         }
     }
@@ -39,6 +45,8 @@ class MoreTableViewController: UITableViewController {
     @IBOutlet var feedbackTableViewCell: UITableViewCell! {
         didSet {
             feedbackTableViewCell.accessibilityIdentifier = MoreViewAccessibilityIdentifier.Cell.cell
+            feedbackTableViewCell.textLabel?.font = DynamicFont.shared.font(forTextStyle: .body)
+            feedbackTableViewCell.textLabel?.adjustsFontForContentSizeCategory = true
             feedbackTableViewCell.textLabel?.text = MoreViewStrings.feedbackCell.localized
         }
     }

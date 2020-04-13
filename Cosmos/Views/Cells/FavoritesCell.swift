@@ -22,7 +22,7 @@ class FavoritesCell: UITableViewCell {
         didSet {
             dateLabel.accessibilityIdentifier = FavoritesCellAccessibilityIdentifier.Label.dateLabel
             dateLabel.font = DynamicFont.shared.font(forTextStyle: .footnote)
-            dateLabel.adjustsFontForContentSizeCategory = false
+            dateLabel.adjustsFontForContentSizeCategory = true
         }
     }
     
@@ -31,7 +31,7 @@ class FavoritesCell: UITableViewCell {
         didSet {
             titleLabel.accessibilityIdentifier = FavoritesCellAccessibilityIdentifier.Label.titleLabel
             titleLabel.font = DynamicFont.shared.font(forTextStyle: .title3)
-            titleLabel.adjustsFontForContentSizeCategory = false
+            titleLabel.adjustsFontForContentSizeCategory = true
         }
     }
     
@@ -40,7 +40,7 @@ class FavoritesCell: UITableViewCell {
         didSet {
             explanationLabel.accessibilityIdentifier = FavoritesCellAccessibilityIdentifier.Label.explanationLabel
             explanationLabel.font = DynamicFont.shared.font(forTextStyle: .caption1)
-            explanationLabel.adjustsFontForContentSizeCategory = false
+            explanationLabel.adjustsFontForContentSizeCategory = true
             explanationLabel.isAccessibilityElement = false
         }
     }

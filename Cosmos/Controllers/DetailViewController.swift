@@ -58,7 +58,7 @@ class DetailViewController: UIViewController {
         didSet {
             dateLabel.accessibilityIdentifier = DetailViewAccessibilityIdentifier.Label.dateLabel
             dateLabel.font = DynamicFont.shared.font(forTextStyle: .subheadline)
-            dateLabel.adjustsFontForContentSizeCategory = false
+            dateLabel.adjustsFontForContentSizeCategory = true
             dateLabel.text = viewModel.preferredDate ?? viewModel.date
         }
     }
@@ -68,7 +68,7 @@ class DetailViewController: UIViewController {
         didSet {
             titleLabel.accessibilityIdentifier = DetailViewAccessibilityIdentifier.Label.titleLabel
             titleLabel.font = DynamicFont.shared.font(forTextStyle: .headline)
-            titleLabel.adjustsFontForContentSizeCategory = false
+            titleLabel.adjustsFontForContentSizeCategory = true
             titleLabel.text = viewModel.title
         }
     }
@@ -78,7 +78,7 @@ class DetailViewController: UIViewController {
         didSet {
             explanationLabel.accessibilityIdentifier = DetailViewAccessibilityIdentifier.Label.explanationLabel
             explanationLabel.font = DynamicFont.shared.font(forTextStyle: .body)
-            explanationLabel.adjustsFontForContentSizeCategory = false
+            explanationLabel.adjustsFontForContentSizeCategory = true
             explanationLabel.text = viewModel.explanation
         }
     }
@@ -88,7 +88,7 @@ class DetailViewController: UIViewController {
         didSet {
             copyrightLabel.accessibilityIdentifier = DetailViewAccessibilityIdentifier.Label.copyrightLabel
             copyrightLabel.font = DynamicFont.shared.font(forTextStyle: .body)
-            copyrightLabel.adjustsFontForContentSizeCategory = false
+            copyrightLabel.adjustsFontForContentSizeCategory = true
             copyrightLabel.attributedText = viewModel.copyright
             copyrightLabel.isHidden = viewModel.copyright.isNil
         }

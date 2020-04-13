@@ -22,7 +22,7 @@ class DiscoverCell: UICollectionViewCell {
         didSet {
             dateLabel.accessibilityIdentifier = DiscoverCellAccessibilityIdentifier.Label.dateLabel
             dateLabel.font = DynamicFont.shared.font(forTextStyle: .subheadline)
-            dateLabel.adjustsFontForContentSizeCategory = false
+            dateLabel.adjustsFontForContentSizeCategory = true
         }
     }
     
@@ -31,7 +31,7 @@ class DiscoverCell: UICollectionViewCell {
         didSet {
             titleLabel.accessibilityIdentifier = DiscoverCellAccessibilityIdentifier.Label.titleLabel
             titleLabel.font = DynamicFont.shared.font(forTextStyle: .headline)
-            titleLabel.adjustsFontForContentSizeCategory = false
+            titleLabel.adjustsFontForContentSizeCategory = true
         }
     }
     

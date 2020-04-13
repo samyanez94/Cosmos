@@ -26,7 +26,7 @@ class MessageView: UIView {
         didSet {
             label.accessibilityIdentifier = MessageViewAccessibilityIdentifier.Label.label
             label.font = DynamicFont.shared.font(forTextStyle: .body)
-            label.adjustsFontForContentSizeCategory = false
+            label.adjustsFontForContentSizeCategory = true
         }
     }
     
@@ -36,7 +36,7 @@ class MessageView: UIView {
             refreshButton.accessibilityIdentifier = MessageViewAccessibilityIdentifier.Button.refreshButton
             refreshButton.isHidden = true
             refreshButton.titleLabel?.font = DynamicFont.shared.font(forTextStyle: .subheadline)
-            refreshButton.titleLabel?.adjustsFontForContentSizeCategory = false
+            refreshButton.titleLabel?.adjustsFontForContentSizeCategory = true
             refreshButton.accessibilityHint = "Double tap to try again."
         }
     }

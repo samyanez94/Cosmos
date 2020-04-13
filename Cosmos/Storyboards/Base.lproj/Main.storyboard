@@ -188,7 +188,7 @@
                                                     <constraint firstAttribute="bottom" secondItem="rMg-do-b2Y" secondAttribute="bottom" id="oeB-HD-xsG"/>
                                                 </constraints>
                                             </view>
-                                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="sFP-RP-ymO" userLabel="Favorites Button">
+                                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart" catalog="system" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sFP-RP-ymO" userLabel="Favorites Button">
                                                 <rect key="frame" x="16" y="317.5" width="30" height="27.5"/>
                                                 <color key="tintColor" name="Accent Color"/>
                                                 <accessibility key="accessibilityConfiguration">
@@ -197,14 +197,17 @@
                                                 </accessibility>
                                                 <gestureRecognizers/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="30" id="41H-Q4-Y5p"/>
-                                                    <constraint firstAttribute="width" constant="30" id="7cp-YP-XV1"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="41H-Q4-Y5p"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="7cp-YP-XV1"/>
                                                 </constraints>
+                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font">
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                </preferredSymbolConfiguration>
                                                 <connections>
                                                     <outletCollection property="gestureRecognizers" destination="2ib-T3-GmV" appends="YES" id="BZc-QN-hpp"/>
                                                 </connections>
                                             </imageView>
-                                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.arrow.up" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="uyW-YK-7wG" userLabel="Share Button">
+                                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.arrow.up" catalog="system" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uyW-YK-7wG" userLabel="Share Button">
                                                 <rect key="frame" x="62" y="315" width="30" height="31"/>
                                                 <color key="tintColor" name="Accent Color"/>
                                                 <accessibility key="accessibilityConfiguration">
@@ -213,14 +216,17 @@
                                                 </accessibility>
                                                 <gestureRecognizers/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="30" id="Ofl-Xf-h1Q"/>
-                                                    <constraint firstAttribute="height" constant="30" id="mWT-il-wop"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="Ofl-Xf-h1Q"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="mWT-il-wop"/>
                                                 </constraints>
+                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font">
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                </preferredSymbolConfiguration>
                                                 <connections>
                                                     <outletCollection property="gestureRecognizers" destination="FgA-bb-U8i" appends="YES" id="imr-6e-BBo"/>
                                                 </connections>
                                             </imageView>
-                                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.arrow.down" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="wnd-0P-ZAr" userLabel="Save Button">
+                                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.arrow.down" catalog="system" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wnd-0P-ZAr" userLabel="Save Button">
                                                 <rect key="frame" x="108" y="316" width="30" height="30"/>
                                                 <color key="tintColor" name="Accent Color"/>
                                                 <accessibility key="accessibilityConfiguration">
@@ -229,9 +235,12 @@
                                                 </accessibility>
                                                 <gestureRecognizers/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="30" id="BR5-L4-qG0"/>
-                                                    <constraint firstAttribute="width" constant="30" id="kyZ-wa-jL6"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="BR5-L4-qG0"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="kyZ-wa-jL6"/>
                                                 </constraints>
+                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font">
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                </preferredSymbolConfiguration>
                                                 <connections>
                                                     <outletCollection property="gestureRecognizers" destination="059-Q4-43j" appends="YES" id="XkD-is-otY"/>
                                                 </connections>
@@ -493,9 +502,12 @@ Illustrations by Tori Duong.</string>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="info.circle" catalog="system" id="yTJ-em-BiE">
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="info.circle" catalog="system" adjustsImageSizeForAccessibilityContentSizeCategory="YES" id="yTJ-em-BiE">
                                                     <rect key="frame" x="22" y="14.5" width="20" height="19"/>
                                                     <autoresizingMask key="autoresizingMask"/>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font">
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    </preferredSymbolConfiguration>
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -521,9 +533,12 @@ Illustrations by Tori Duong.</string>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="square.and.arrow.up" catalog="system" id="Rtt-DH-mOI">
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="square.and.arrow.up" catalog="system" adjustsImageSizeForAccessibilityContentSizeCategory="YES" id="Rtt-DH-mOI">
                                                     <rect key="frame" x="22.5" y="13" width="19" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font">
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    </preferredSymbolConfiguration>
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -546,9 +561,12 @@ Illustrations by Tori Duong.</string>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="text.bubble" catalog="system" id="uaG-ox-OWC">
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="text.bubble" catalog="system" adjustsImageSizeForAccessibilityContentSizeCategory="YES" id="uaG-ox-OWC">
                                                     <rect key="frame" x="20.75" y="14.5" width="22.5" height="19.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font">
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    </preferredSymbolConfiguration>
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -571,9 +589,12 @@ Illustrations by Tori Duong.</string>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="envelope" catalog="system" id="MmJ-th-7kn">
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="envelope" catalog="system" adjustsImageSizeForAccessibilityContentSizeCategory="YES" id="MmJ-th-7kn">
                                                     <rect key="frame" x="20.75" y="15.5" width="22.5" height="16.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font">
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    </preferredSymbolConfiguration>
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -682,9 +703,6 @@ Illustrations by Tori Duong.</string>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FRIDAY, NOV 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i38-cf-OZs" userLabel="Date Label">
                                                             <rect key="frame" x="0.0" y="0.0" width="266" height="17"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="17" id="rKx-VX-15Q"/>
-                                                            </constraints>
                                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                                             <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -704,9 +722,7 @@ Illustrations by Tori Duong.</string>
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstItem="i38-cf-OZs" firstAttribute="top" secondItem="wUf-YC-58T" secondAttribute="top" id="CzU-Rh-Acl"/>
-                                                        <constraint firstItem="Dhq-ae-Xld" firstAttribute="top" secondItem="LSH-s9-B6u" secondAttribute="bottom" constant="5" id="Nnl-dK-PDN"/>
                                                         <constraint firstItem="i38-cf-OZs" firstAttribute="leading" secondItem="wUf-YC-58T" secondAttribute="leading" id="dAJ-dc-l6i"/>
-                                                        <constraint firstItem="LSH-s9-B6u" firstAttribute="top" secondItem="i38-cf-OZs" secondAttribute="bottom" constant="5" id="j4Q-cl-OpW"/>
                                                         <constraint firstItem="Dhq-ae-Xld" firstAttribute="leading" secondItem="wUf-YC-58T" secondAttribute="leading" id="pGC-xS-Ua1"/>
                                                         <constraint firstItem="LSH-s9-B6u" firstAttribute="leading" secondItem="wUf-YC-58T" secondAttribute="leading" id="v4E-np-33H"/>
                                                     </constraints>
