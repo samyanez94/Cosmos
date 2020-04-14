@@ -28,6 +28,8 @@ class FavoritesViewController: UIViewController {
         didSet {
             tableView.dataSource = dataSource
             tableView.delegate = self
+            tableView.rowHeight = UITableView.automaticDimension
+            tableView.estimatedRowHeight = FavoritesCell.estimatedHeight
             tableView.refreshControl = UIRefreshControl()
             tableView.refreshControl?.addTarget(self, action: #selector(handleRefreshControl), for: .valueChanged)
         }
@@ -156,10 +158,6 @@ extension FavoritesViewController: UITableViewDelegate {
             show(detailViewController, sender: tableView.cellForRow(at: indexPath))
         }
         tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        FavoritesCell.height
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {

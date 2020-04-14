@@ -25,8 +25,7 @@ class MessageView: UIView {
     @IBOutlet var label: UILabel! {
         didSet {
             label.accessibilityIdentifier = MessageViewAccessibilityIdentifier.Label.label
-            label.font = DynamicFont.shared.font(forTextStyle: .body)
-            label.adjustsFontForContentSizeCategory = true
+            label.font = UIFont.systemFont(ofSize: 20)
         }
     }
     
@@ -49,6 +48,11 @@ class MessageView: UIView {
         loadViewFromNib()
     }
     
+    override func prepareForInterfaceBuilder() {
+        super.prepareForInterfaceBuilder()
+        loadViewFromNib()
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         refreshButton.roundCorners(radius: 20.0)
@@ -64,5 +68,4 @@ class MessageView: UIView {
     @IBAction func didTapOnRefreshButton(_ sender: UIButton) {
         refreshButtonHandler?()
     }
-    
 }

@@ -49,7 +49,7 @@ class FavoritesCell: UITableViewCell {
     static let placeholderImage = UIImage(named: "Missing Image Placeholder")
     
     /// Cell height
-    static let height: CGFloat = 140
+    static let estimatedHeight: CGFloat = 140
     
     /// View model
     var viewModel: ApodViewModel? {

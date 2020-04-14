@@ -36,11 +36,16 @@ class MediaView: UIView {
         loadViewFromNib()
     }
     
+    override func prepareForInterfaceBuilder() {
+        super.prepareForInterfaceBuilder()
+        loadViewFromNib()
+    }
+    
     private func loadViewFromNib() {
-          Bundle(for: MediaView.self).loadNibNamed(String(describing: MediaView.self), owner: self, options: nil)
-          addSubview(contentView)
-          contentView.frame = self.bounds
-          contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        Bundle(for: MediaView.self).loadNibNamed(String(describing: MediaView.self), owner: self, options: nil)
+        addSubview(contentView)
+        contentView.frame = self.bounds
+        contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
     
     func setup(for mediaType: MediaType) {
