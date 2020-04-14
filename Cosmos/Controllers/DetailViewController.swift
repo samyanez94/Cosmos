@@ -31,7 +31,10 @@ class DetailViewController: UIViewController {
     @IBOutlet private var favoritesButton: UIImageView! {
         didSet {
             favoritesButton.accessibilityIdentifier = DetailViewAccessibilityIdentifier.Button.favoritesButton
-            favoritesButton.accessibilityLabel = "Add to favorites"
+            favoritesButton.accessibilityLabel = "Favorites"
+            favoritesButton.showsLargeContentViewer = true
+            favoritesButton.largeContentTitle = "Favorites"
+            favoritesButton.addInteraction(UILargeContentViewerInteraction())
         }
     }
     
@@ -41,6 +44,9 @@ class DetailViewController: UIViewController {
             shareButton.accessibilityIdentifier = DetailViewAccessibilityIdentifier.Button.shareButton
             shareButton.accessibilityLabel = "Share"
             shareButton.accessibilityHint = "Double tap to share."
+            shareButton.showsLargeContentViewer = true
+            shareButton.largeContentTitle = "Share"
+            shareButton.addInteraction(UILargeContentViewerInteraction())
         }
     }
     
@@ -50,6 +56,9 @@ class DetailViewController: UIViewController {
             saveButton.accessibilityIdentifier = DetailViewAccessibilityIdentifier.Button.saveToPhotosButton
             saveButton.accessibilityLabel = "Save to Photos"
             saveButton.accessibilityHint = "Double tap save to Photos."
+            saveButton.showsLargeContentViewer = true
+            saveButton.largeContentTitle = "Save to Photos"
+            saveButton.addInteraction(UILargeContentViewerInteraction())
         }
     }
     

@@ -34,8 +34,7 @@ class MessageView: UIView {
         didSet {
             refreshButton.accessibilityIdentifier = MessageViewAccessibilityIdentifier.Button.refreshButton
             refreshButton.isHidden = true
-            refreshButton.titleLabel?.font = DynamicFont.shared.font(forTextStyle: .subheadline)
-            refreshButton.titleLabel?.adjustsFontForContentSizeCategory = true
+            refreshButton.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .medium)
             refreshButton.accessibilityHint = "Double tap to try again."
         }
     }
@@ -45,6 +44,11 @@ class MessageView: UIView {
         
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+        loadViewFromNib()
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         loadViewFromNib()
     }
     
