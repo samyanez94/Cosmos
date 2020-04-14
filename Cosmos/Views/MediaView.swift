@@ -36,6 +36,11 @@ class MediaView: UIView {
         loadViewFromNib()
     }
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        loadViewFromNib()
+    }
+    
     override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
         loadViewFromNib()
