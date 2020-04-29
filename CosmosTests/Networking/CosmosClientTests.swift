@@ -131,7 +131,7 @@ class CosmosClientTests: XCTestCase {
 
     func testFailedRequestWithError() {
         // Given
-        session = MockSession(data: ResourceType.single.data, response: response, error: ClientError.error)
+        session = MockSession(data: ResourceType.single.data, response: response, error: APIError.requestError)
         client = CosmosClient(session: session)
         
         let promise = expectation(description: "Fetch completed. 🚀")
@@ -149,7 +149,7 @@ class CosmosClientTests: XCTestCase {
          wait(for: [promise], timeout: 5)
 
         // Then
-        XCTAssertEqual(error, APIError.requestFailedWithError("Response unsuccessful"), "Errors should be equal.")
+        XCTAssertEqual(error, APIError.requestError, "Errors should be equal.")
     }
 
     func testFailedRequest() {
@@ -172,7 +172,7 @@ class CosmosClientTests: XCTestCase {
          wait(for: [promise], timeout: 5)
 
         // Then
-        XCTAssertEqual(error, APIError.requestFailed, "Errors should be equal.")
+        XCTAssertEqual(error, APIError.invalidResponse, "Errors should be equal.")
     }
 
     func testFailedRangedRequest() {
@@ -195,7 +195,7 @@ class CosmosClientTests: XCTestCase {
          wait(for: [promise], timeout: 5)
 
         // Then
-        XCTAssertEqual(error, APIError.requestFailed, "Errors should be equal.")
+        XCTAssertEqual(error, APIError.invalidResponse, "Errors should be equal.")
     }
 
     func testUnsuccessfulResponse() throws {
@@ -249,7 +249,7 @@ class CosmosClientTests: XCTestCase {
         // Given
         let data = "This is not the expected data.".data(using: .utf32)
         session = MockSession(data: data, response: response, error: nil)
-         client = CosmosClient(session: session)
+        client = CosmosClient(session: session)
 
         let promise = expectation(description: "Fetch completed. 🚀")
 
@@ -266,7 +266,7 @@ class CosmosClientTests: XCTestCase {
         wait(for: [promise], timeout: 5)
 
         // Then
-        XCTAssertEqual(error, APIError.jsonParsingFailed, "Errors should be equal.")
+        XCTAssertEqual(error, APIError.jsonParsingError, "Errors should be equal.")
     }
 
     func testRangedJsonParsingError() throws {
@@ -290,16 +290,11 @@ class CosmosClientTests: XCTestCase {
         wait(for: [promise], timeout: 5)
 
         // Then
-        XCTAssertEqual(error, APIError.jsonParsingFailed, "Errors should be equal.")
+        XCTAssertEqual(error, APIError.jsonParsingError, "Errors should be equal.")
     }
 }
 
 extension CosmosClientTests {
-    
-    /// Generic error used for testing
-    enum ClientError: Error {
-        case error
-    }
     
     /// Resource type used for testing
     enum ResourceType {

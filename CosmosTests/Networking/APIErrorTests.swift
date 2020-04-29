@@ -11,10 +11,10 @@ import XCTest
 class APIErrorTests: XCTestCase {
     func testErrorDescription() {
         XCTAssertEqual(APIError.incorrectParameters.errorDescription, "Incorrect parameters for request")
-        XCTAssertEqual(APIError.requestFailedWithError("🎃").errorDescription, "Request failed with error: 🎃")
-        XCTAssertEqual(APIError.requestFailed.errorDescription, "Request failed")
+        XCTAssertEqual(APIError.requestError.errorDescription, "Request error")
+        XCTAssertEqual(APIError.invalidResponse.errorDescription, "Invalid response")
         XCTAssertEqual(APIError.invalidData.errorDescription, "Invalid data")
         XCTAssertEqual(APIError.responseUnsuccessful.errorDescription, "Response unsuccessful")
-        XCTAssertEqual(APIError.jsonParsingFailed.errorDescription, "JSON parsing failed")
+        XCTAssertEqual(APIError.jsonParsingError.errorDescription, "JSON parsing error")
     }
 }

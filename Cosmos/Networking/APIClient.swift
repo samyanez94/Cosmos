@@ -35,35 +35,35 @@ protocol APIClient {
 extension APIClient {
     func task(with request: URLRequest, completionHandler completion: @escaping (Swift.Result<Data, APIError>) -> Void) -> APISessionDataTask {
         return session.loadData(with: request) { data, response, error in
-            if let error = error {
-                completion(.failure(.requestFailedWithError(error.localizedDescription)))
+            guard error == nil else {
+                completion(.failure(.requestError))
                 return
             }
             guard let httpResponse = response as? HTTPURLResponse else {
-                completion(.failure(.requestFailed))
+                completion(.failure(.invalidResponse))
                 return
             }
             guard httpResponse.statusCode == 200 else {
                 completion(.failure(.responseUnsuccessful))
                 return
             }
-            if let data = data {
-                completion(.success(data))
-            } else {
+            guard let data = data else {
                 completion(.failure(.invalidData))
+                return
             }
+            completion(.success(data))
         }
     }
     
     func fetch<T: Decodable>(with request: URLRequest, parse: @escaping (Data) -> T?, queue: DispatchQueue = .main, completion: ((Result<T, APIError>) -> Void)?) {
         task(with: request) { result in
-            queue.async(flags: .barrier) {
+            queue.async {
                 switch result {
                 case .failure(let error):
                     completion?(.failure(error))
                 case .success(let data):
                     guard let value = parse(data) else {
-                        completion?(.failure(.jsonParsingFailed))
+                        completion?(.failure(.jsonParsingError))
                         return
                     }
                     completion?(.success(value))
@@ -74,52 +74,18 @@ extension APIClient {
     
     func fetch<T: Decodable>(with request: URLRequest, parse: @escaping (Data) -> [T]?, queue: DispatchQueue = .main, completion: ((Result<[T], APIError>) -> Void)?) {
         task(with: request) { result in
-            queue.async(flags: .barrier) {
+            queue.async {
                 switch result {
                 case .failure(let error):
                     completion?(.failure(error))
                 case .success(let data):
                     guard let values = parse(data) else {
-                        completion?(.failure(.jsonParsingFailed))
+                        completion?(.failure(.jsonParsingError))
                         return
                     }
                     completion?(.success(values))
                 }
             }
         }.resume()
-    }
-}
-
-enum APIError: LocalizedError {
-    case incorrectParameters
-    case requestFailedWithError(String)
-    case requestFailed
-    case invalidData
-    case responseUnsuccessful
-    case jsonParsingFailed
-    
-    var errorDescription: String {
-        switch self {
-        case .incorrectParameters: return "Incorrect parameters for request"
-        case .requestFailedWithError(let error): return "Request failed with error: \(error)"
-        case .requestFailed: return "Request failed"
-        case .invalidData: return "Invalid data"
-        case .responseUnsuccessful: return "Response unsuccessful"
-        case .jsonParsingFailed: return "JSON parsing failed"
-        }
-    }
-}
-
-extension APIError: Equatable {
-    public static func == (lhs: APIError, rhs: APIError) -> Bool {
-        switch (lhs, rhs) {
-        case(.incorrectParameters, .incorrectParameters): return true
-        case(.requestFailedWithError, .requestFailedWithError): return true
-        case(.requestFailed, .requestFailed): return true
-        case(.invalidData, .invalidData): return true
-        case(.responseUnsuccessful, .responseUnsuccessful): return true
-        case(.jsonParsingFailed, .jsonParsingFailed): return true
-        default: return false
-        }
     }
 }

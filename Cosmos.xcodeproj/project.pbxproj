@@ -93,6 +93,8 @@
 		22E315CD23726D71008EDF34 /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E315CC23726D71008EDF34 /* UIFont+Extensions.swift */; };
 		22E315CF23726F84008EDF34 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E315CE23726F84008EDF34 /* UIView+Extensions.swift */; };
 		22E315D12372777F008EDF34 /* UICollectionViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E315D02372777F008EDF34 /* UICollectionViewCell+Extensions.swift */; };
+		22EBF9C12458FABE00679319 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EBF9C02458FABE00679319 /* APIError.swift */; };
+		22EBF9C22458FABE00679319 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EBF9C02458FABE00679319 /* APIError.swift */; };
 		22F711B722A8EC5200F71646 /* Pods_Cosmos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 523698EF916740C4BFD9F99D /* Pods_Cosmos.framework */; };
 		22FA5F09229B4EC000E27EC4 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA5F08229B4EC000E27EC4 /* APIClient.swift */; };
 /* End PBXBuildFile section */
@@ -171,6 +173,7 @@
 		22E315CC23726D71008EDF34 /* UIFont+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
 		22E315CE23726F84008EDF34 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		22E315D02372777F008EDF34 /* UICollectionViewCell+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extensions.swift"; sourceTree = "<group>"; };
+		22EBF9C02458FABE00679319 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		22FA5F08229B4EC000E27EC4 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		523698EF916740C4BFD9F99D /* Pods_Cosmos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cosmos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD9248921FA49AA81E6ADEF2 /* Pods-Cosmos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cosmos.release.xcconfig"; path = "Pods/Target Support Files/Pods-Cosmos/Pods-Cosmos.release.xcconfig"; sourceTree = "<group>"; };
@@ -422,6 +425,7 @@
 			isa = PBXGroup;
 			children = (
 				22FA5F08229B4EC000E27EC4 /* APIClient.swift */,
+				22EBF9C02458FABE00679319 /* APIError.swift */,
 				22BC0A0C21056A580086BB19 /* CosmosClient.swift */,
 				22AA95AF21055E47001B755F /* Endpoint.swift */,
 			);
@@ -691,6 +695,7 @@
 				2281F2972387C22C001D52D3 /* Date+Extensions.swift in Sources */,
 				22B381122104583800DCDC24 /* DiscoverCell.swift in Sources */,
 				225E274D242FF47A00BE03AD /* MoreTableViewController.swift in Sources */,
+				22EBF9C12458FABE00679319 /* APIError.swift in Sources */,
 				222120D8236013DB009D24AB /* FavoritesCell.swift in Sources */,
 				22E315C923726D40008EDF34 /* NSMutableAttributedString+Extensions.swift in Sources */,
 				223351DF242AEA30001A29A7 /* OrderedSet.swift in Sources */,
@@ -733,6 +738,7 @@
 				2200E5492396271600897286 /* Localizable.swift in Sources */,
 				225A539423D579DD00677896 /* EnvironmentManager.swift in Sources */,
 				22CE2919234479BC00170FEE /* CosmosClientTests.swift in Sources */,
+				22EBF9C22458FABE00679319 /* APIError.swift in Sources */,
 				2281F2802387724C001D52D3 /* UITableViewCell+Extensions.swift in Sources */,
 				22CE291C23447B0C00170FEE /* CosmosClient.swift in Sources */,
 				2281F29423879701001D52D3 /* ShareManager.swift in Sources */,
