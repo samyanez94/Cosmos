@@ -130,13 +130,12 @@ class DetailViewController: UIViewController {
     
     private var resourceType: Apod.MediaType = .image {
         didSet {
-            guard let url = viewModel.url else { return }
             switch resourceType {
             case .image:
-                mediaView.setup(for: .image(url: url, label: viewModel.title))
+                mediaView.setup(for: .image(url: viewModel.mediaURL, label: viewModel.title))
                 saveButton.isHidden = false
             case .video:
-                mediaView.setup(for: .video(url: url, label: viewModel.title))
+                mediaView.setup(for: .video(url: viewModel.mediaURL, label: viewModel.title))
                 saveButton.isHidden = true
             }
         }
@@ -222,7 +221,7 @@ class DetailViewController: UIViewController {
             let activityViewController = shareManager.activityViewController(for: .image(image))
             present(activityViewController, animated: true)
         case .video:
-            let activityViewController = shareManager.activityViewController(for: .video(viewModel.apod.urlString))
+            let activityViewController = shareManager.activityViewController(for: .video(viewModel.apod.mediaURL.absoluteString))
             present(activityViewController, animated: true)
         }
     }

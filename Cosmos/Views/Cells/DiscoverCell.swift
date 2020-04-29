@@ -45,7 +45,7 @@ class DiscoverCell: UICollectionViewCell {
             guard let viewModel = viewModel else { return }
             titleLabel.text = viewModel.title
             dateLabel.text = viewModel.preferredDate ?? viewModel.date
-            updateImageView(with: viewModel.thumbnailUrl)
+            updateImageView(with: viewModel.thumbnailURL)
             updateAccessibilityAttributes(with: viewModel)
         }
     }

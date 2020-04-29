@@ -55,18 +55,15 @@ struct ApodViewModel {
     }
     
     /// Media URL
-    var url: URL? {
-        URL(string: apod.urlString)
+    var mediaURL: URL {
+        apod.mediaURL
     }
     
     /// Thumbnail URL
-    var thumbnailUrl: URL? {
+    var thumbnailURL: URL? {
         switch apod.mediaType {
-        case .image:
-            return URL(string: apod.urlString)
-        case .video:
-            guard let thumbnailUrlString = apod.thumbnailUrlString else { return nil }
-            return URL(string: thumbnailUrlString)
+        case .image: return apod.mediaURL
+        case .video: return apod.thumbnailURL ?? nil
         }
     }
     

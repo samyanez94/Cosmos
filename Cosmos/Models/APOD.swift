@@ -13,18 +13,18 @@ struct Apod: Codable {
     let date: Date
     let explanation: String
     let mediaType: MediaType
-    let urlString: String
+    let mediaURL: URL
     let copyright: String?
-    let thumbnailUrlString: String?
+    let thumbnailURL: URL?
     
     enum CodingKeys: String, CodingKey {
         case title
         case date
         case explanation
         case mediaType = "media_type"
-        case urlString = "url"
+        case mediaURL = "url"
         case copyright
-        case thumbnailUrlString = "thumbnail_url"
+        case thumbnailURL = "thumbnail_url"
     }
     
     enum MediaType: String, Codable {

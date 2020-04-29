@@ -9,7 +9,8 @@
 import Foundation
 
 extension Apod {
-    static func dummy(title: String = "title", date: Date = Date(), explanation: String = "explanation", mediaType: MediaType = .image, urlString: String = "url_string", copyright: String? = nil, thumbnailUrlString: String? = nil) -> Apod {
-        Apod(title: title, date: date, explanation: explanation, mediaType: mediaType, urlString: urlString, copyright: copyright, thumbnailUrlString: thumbnailUrlString)
+    static func dummy(title: String = "title", date: Date = Date(), explanation: String = "explanation", mediaType: MediaType = .image, mediaURL: URL? = nil, copyright: String? = nil, thumbnailURL: URL? = nil) -> Apod {
+        let mediaURL = mediaURL ?? URL(string: "https://apod.nasa.gov/apod")!
+        return Apod(title: title, date: date, explanation: explanation, mediaType: mediaType, mediaURL: mediaURL, copyright: copyright, thumbnailURL: thumbnailURL)
     }
 }

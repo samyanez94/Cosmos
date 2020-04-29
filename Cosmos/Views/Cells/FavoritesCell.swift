@@ -58,7 +58,7 @@ class FavoritesCell: UITableViewCell {
             dateLabel.text = viewModel.date
             titleLabel.text = viewModel.title
             explanationLabel.text = viewModel.explanation
-            updateImageView(with: viewModel.thumbnailUrl)
+            updateImageView(with: viewModel.thumbnailURL)
             updateAccessibilityAttributes(with: viewModel)
         }
     }

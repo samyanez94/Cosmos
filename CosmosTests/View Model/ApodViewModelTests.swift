@@ -109,35 +109,35 @@ class ApodViewModelTests: XCTestCase {
     
     func testUrl() {
         // Given
-        apod = .dummy(urlString: "https://apod.nasa.gov/apod/image/1910/M33-Subaru-Gendler-1024.jpg")
+        apod = .dummy(mediaURL: URL(string: "https://apod.nasa.gov/apod/image/1910/M33-Subaru-Gendler-1024.jpg")!)
         
         // When
         viewModel = ApodViewModel(apod: apod)
 
         // Then
-        XCTAssertEqual(viewModel.url?.absoluteString, "https://apod.nasa.gov/apod/image/1910/M33-Subaru-Gendler-1024.jpg")
+        XCTAssertEqual(viewModel.mediaURL.absoluteString, "https://apod.nasa.gov/apod/image/1910/M33-Subaru-Gendler-1024.jpg")
     }
     
     func testImageThumbnailUrl() {
         // Given
-        apod = .dummy(urlString: "https://apod.nasa.gov/apod/image/1910/M33-Subaru-Gendler-1024.jpg")
+        apod = .dummy(mediaURL: URL(string: "https://apod.nasa.gov/apod/image/1910/M33-Subaru-Gendler-1024.jpg")!)
          
         // When
         viewModel = ApodViewModel(apod: apod)
 
         // Then
-        XCTAssertEqual(viewModel.thumbnailUrl?.absoluteString, "https://apod.nasa.gov/apod/image/1910/M33-Subaru-Gendler-1024.jpg")
+        XCTAssertEqual(viewModel.thumbnailURL?.absoluteString, "https://apod.nasa.gov/apod/image/1910/M33-Subaru-Gendler-1024.jpg")
     }
     
     func testVideoThumbnailUrl() {
         // Given
-        apod = .dummy(mediaType: .video, thumbnailUrlString: "https://img.youtube.com/vi/aMTwtb3TVIk/maxresdefault.jpg")
+        apod = .dummy(mediaType: .video, thumbnailURL: URL(string: "https://img.youtube.com/vi/aMTwtb3TVIk/maxresdefault.jpg")!)
          
         // When
         viewModel = ApodViewModel(apod: apod)
 
         // Then
-        XCTAssertEqual(viewModel.thumbnailUrl?.absoluteString, "https://img.youtube.com/vi/aMTwtb3TVIk/maxresdefault.jpg")
+        XCTAssertEqual(viewModel.thumbnailURL?.absoluteString, "https://img.youtube.com/vi/aMTwtb3TVIk/maxresdefault.jpg")
     }
     
     func testNilVideoThumbnailUrl() {
@@ -148,6 +148,6 @@ class ApodViewModelTests: XCTestCase {
         viewModel = ApodViewModel(apod: apod)
 
         // Then
-        XCTAssertNil(viewModel.thumbnailUrl)
+        XCTAssertNil(viewModel.thumbnailURL)
     }
 }
