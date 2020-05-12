@@ -11,7 +11,7 @@ import UIKit
 import Lightbox
 import Toast_Swift
 
-class DetailViewController: UIViewController {
+final class DetailViewController: UIViewController {
         
     /// Scroll view
     @IBOutlet private var scrollView: UIScrollView! {

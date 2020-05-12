@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AboutViewController: UIViewController {
+final class AboutViewController: UIViewController {
     
     /// Image view
     @IBOutlet private var imageView: UIImageView! {

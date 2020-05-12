@@ -9,7 +9,7 @@
 import MessageUI
 import UIKit
 
-class MoreTableViewController: UITableViewController {
+final class MoreTableViewController: UITableViewController {
     
     /// About table view cell
     @IBOutlet var aboutTableViewCell: UITableViewCell! {

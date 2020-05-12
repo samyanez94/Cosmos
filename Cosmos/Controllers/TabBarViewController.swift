@@ -12,7 +12,7 @@ protocol ScrollableViewController: UIViewController {
     func scrollToTop()
 }
 
-class TabBarViewController: UITabBarController {
+final class TabBarViewController: UITabBarController {
     
     /// Previous selected view controller
     private var previousSelectedViewController: UIViewController?

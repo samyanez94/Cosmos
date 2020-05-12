@@ -8,14 +8,14 @@
 
 import UIKit
 
-class FavoritesViewController: UIViewController {
+final class FavoritesViewController: UIViewController {
     
     /// Different view states
     enum State {
         case loading
-        case displayCollection
-        case emptyFavorites
         case error
+        case empty
+        case loaded(data: [ApodViewModel])
     }
     
     /// Table view sections
@@ -42,7 +42,8 @@ class FavoritesViewController: UIViewController {
     @IBOutlet private var messageView: MessageView! {
         didSet {
             messageView.refreshButton.titleLabel?.text = MessageViewStrings.refreshButton.localized
-            messageView.refreshButtonHandler = { [unowned self] in
+            messageView.refreshButtonHandler = { [weak self] in
+                guard let self = self else { return }
                 self.state = .loading
                 self.favoritesManager.getFavorites(completion: self.getFavoritesCompletion)
             }
@@ -57,19 +58,15 @@ class FavoritesViewController: UIViewController {
         guard let self = self else { return }
         switch favorites.isEmpty {
         case true:
-            self.state = .emptyFavorites
+            self.state = .empty
         case false:
-            self.viewModels = favorites.reversed().map { ApodViewModel(apod: $0) }
-            self.state = .displayCollection
+            self.state = .loaded(data: favorites.reversed().map { ApodViewModel(apod: $0) })
             self.tableView.refreshControl?.endRefreshing()
         }
     }
     
     /// Data source
     private lazy var dataSource = tableViewDataSource()
-    
-    /// Astronomy pictures of the day
-    private var viewModels = [ApodViewModel]()
         
     /// View state
     private var state: State = .loading {
@@ -79,18 +76,6 @@ class FavoritesViewController: UIViewController {
                 activityIndicator.startAnimating()
                 tableView.isHidden = true
                 messageView.isHidden = true
-            case .displayCollection:
-                activityIndicator.stopAnimating()
-                updateDataSource(with: viewModels)
-                tableView.isHidden = false
-                messageView.isHidden = true
-            case .emptyFavorites:
-                activityIndicator.stopAnimating()
-                tableView.isHidden = true
-                messageView.isHidden = false
-                messageView.imageView.image = UIImage(named: "Favorites Illustration")
-                messageView.label.text = MessageViewStrings.emptyFavoritesMessage.localized
-                messageView.refreshButton.isHidden = true
             case .error:
                 activityIndicator.stopAnimating()
                 tableView.isHidden = true
@@ -98,6 +83,18 @@ class FavoritesViewController: UIViewController {
                 messageView.imageView.image = UIImage(named: "Error Illustration")
                 messageView.label.text = MessageViewStrings.errorMessage.localized
                 messageView.refreshButton.isHidden = false
+            case .empty:
+                activityIndicator.stopAnimating()
+                tableView.isHidden = true
+                messageView.isHidden = false
+                messageView.imageView.image = UIImage(named: "Favorites Illustration")
+                messageView.label.text = MessageViewStrings.emptyFavoritesMessage.localized
+                messageView.refreshButton.isHidden = true
+            case .loaded(let data):
+                activityIndicator.stopAnimating()
+                tableView.isHidden = false
+                messageView.isHidden = true
+                update(with: data)
             }
         }
     }
@@ -134,10 +131,10 @@ extension FavoritesViewController {
         }
     }
     
-    private func updateDataSource(with viewModels: [ApodViewModel], animate: Bool = true) {
+    private func update(with identifiers: [ApodViewModel], animate: Bool = true) {
         var snapshot = NSDiffableDataSourceSnapshot<Section, ApodViewModel>()
         snapshot.appendSections(Section.allCases)
-        snapshot.appendItems(viewModels)
+        snapshot.appendItems(identifiers)
         dataSource.apply(snapshot, animatingDifferences: animate)
     }
     
@@ -162,15 +159,18 @@ extension FavoritesViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let removeAction = UIContextualAction(style: .destructive, title: FavoritesViewStrings.removeButton.localized, handler: { _, _, completion  in
-            let viewModel = self.viewModels.remove(at: indexPath.row)
-            self.favoritesManager.removeFromFavorites(viewModel.apod)
-            self.removeFromDataSource([viewModel])
+            if let viewModel = self.dataSource.itemIdentifier(for: indexPath) {
+                self.favoritesManager.removeFromFavorites(viewModel.apod)
+                self.removeFromDataSource([viewModel])
             
-            // Check the table view still contains identifiers
-            if self.dataSource.snapshot().itemIdentifiers.isEmpty {
-                self.state = .emptyFavorites
+                // Ensure the table view still contains identifiers
+                if self.dataSource.snapshot().itemIdentifiers.isEmpty {
+                    self.state = .empty
+                }
+                completion(true)
+            } else {
+                completion(false)
             }
-            completion(true)
         })
         return UISwipeActionsConfiguration(actions: [removeAction])
     }

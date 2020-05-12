@@ -8,13 +8,13 @@
 
 import UIKit
 
-class DiscoverViewController: UIViewController {
+final class DiscoverViewController: UIViewController {
     
     /// Different view states
     private enum State {
         case loading
-        case displayCollection
         case error
+        case loaded(data: [ApodViewModel])
     }
     
     /// Collection view sections
@@ -28,8 +28,6 @@ class DiscoverViewController: UIViewController {
             collectionView.delegate = self
             collectionView.dataSource = dataSource
             collectionView.isHidden = true
-            collectionView.refreshControl = UIRefreshControl()
-            collectionView.refreshControl?.addTarget(self, action: #selector(handleRefreshControl), for: .valueChanged)
         }
     }
     
@@ -43,7 +41,8 @@ class DiscoverViewController: UIViewController {
             messageView.label.text = MessageViewStrings.errorMessage.localized
             messageView.refreshButton.isHidden = false
             messageView.refreshButton.titleLabel?.text = MessageViewStrings.refreshButton.localized
-            messageView.refreshButtonHandler = { [unowned self] in
+            messageView.refreshButtonHandler = { [weak self] in
+                guard let self = self else { return }
                 self.state = .loading
                 self.fetch(count: self.pageSize, offset: self.paginationOffset)
             }
@@ -55,9 +54,6 @@ class DiscoverViewController: UIViewController {
     
     /// Data Source
     private lazy var dataSource = collectionViewDataSource()
-    
-    /// Astronomy pictures of the day
-    private var viewModels = OrderedSet<ApodViewModel>()
     
     /// Pagination offset
     private var paginationOffset = 0
@@ -73,15 +69,16 @@ class DiscoverViewController: UIViewController {
                 activityIndicator.startAnimating()
                 messageView.isHidden = true
                 collectionView.isHidden = true
-            case .displayCollection:
-                activityIndicator.stopAnimating()
-                updateDataSource(with: viewModels)
-                messageView.isHidden = true
-                collectionView.isHidden = false
             case .error:
                 activityIndicator.stopAnimating()
                 messageView.isHidden = false
                 collectionView.isHidden = true
+            case .loaded(let data):
+                activityIndicator.stopAnimating()
+                messageView.isHidden = true
+                collectionView.isHidden = false
+                let animate = collectionView.numberOfItems(inSection: 0) != 0
+                insert(data, animate: animate)
             }
         }
     }
@@ -92,14 +89,9 @@ class DiscoverViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = DiscoverViewStrings.title.localized
-        fetch(count: pageSize, offset: paginationOffset)
-    }
-    
-    // MARK: Collection View
-    
-    @objc func handleRefreshControl() {
-        fetch(count: pageSize) {
-            self.collectionView.refreshControl?.endRefreshing()
+        fetch(count: pageSize, offset: paginationOffset) { [weak self] in
+            guard let self = self else { return }
+            self.paginationOffset += self.pageSize
         }
     }
         
@@ -112,15 +104,7 @@ class DiscoverViewController: UIViewController {
             case .failure:
                 self.state = .error
             case .success(let apods):
-                switch apods.isEmpty {
-                case true:
-                    self.state = .error
-                case false:
-                    let viewModels = apods.reversed().map({ ApodViewModel(apod: $0) })
-                    self.viewModels.append(contentsOf: viewModels)
-                    self.state = .displayCollection
-                    self.paginationOffset = offset + self.pageSize
-                }
+                self.state = .loaded(data: apods.reversed().map({ ApodViewModel(apod: $0) }))
             }
             completion?()
         }
@@ -139,13 +123,16 @@ extension DiscoverViewController {
         dataSource.supplementaryViewProvider = { (collectionView, kind, indexPath) in
             collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: DiscoverViewController.footerCellIdentifier, for: indexPath)
         }
+        // Apply initial snapshot
+        var snapshot = NSDiffableDataSourceSnapshot<Section, ApodViewModel>()
+        snapshot.appendSections(Section.allCases)
+        dataSource.apply(snapshot, animatingDifferences: false)
         return dataSource
     }
     
-    private func updateDataSource(with viewModels: OrderedSet<ApodViewModel>, animate: Bool = true) {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, ApodViewModel>()
-        snapshot.appendSections(Section.allCases)
-        snapshot.appendItems(viewModels.elements)
+    private func insert(_ identifiers: [ApodViewModel], animate: Bool = true) {
+        var snapshot = dataSource.snapshot()
+        snapshot.appendItems(identifiers)
         dataSource.apply(snapshot, animatingDifferences: animate)
     }
 }
@@ -162,8 +149,11 @@ extension DiscoverViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if viewModels.count == indexPath.row + 1 {
-            fetch(count: pageSize, offset: paginationOffset)
+        if collectionView.numberOfItems(inSection: indexPath.section) == indexPath.row + 1 {
+            fetch(count: pageSize, offset: paginationOffset) { [weak self] in
+                guard let self = self else { return }
+                self.paginationOffset += self.pageSize
+            }
         }
     }
     
