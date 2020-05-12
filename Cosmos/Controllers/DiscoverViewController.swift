@@ -89,10 +89,7 @@ final class DiscoverViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = DiscoverViewStrings.title.localized
-        fetch(count: pageSize, offset: paginationOffset) { [weak self] in
-            guard let self = self else { return }
-            self.paginationOffset += self.pageSize
-        }
+        fetch(count: pageSize, offset: paginationOffset)
     }
         
     // MARK: Networking
@@ -105,6 +102,7 @@ final class DiscoverViewController: UIViewController {
                 self.state = .error
             case .success(let apods):
                 self.state = .loaded(data: apods.reversed().map({ ApodViewModel(apod: $0) }))
+                self.paginationOffset += self.pageSize
             }
             completion?()
         }
@@ -150,10 +148,7 @@ extension DiscoverViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if collectionView.numberOfItems(inSection: indexPath.section) == indexPath.row + 1 {
-            fetch(count: pageSize, offset: paginationOffset) { [weak self] in
-                guard let self = self else { return }
-                self.paginationOffset += self.pageSize
-            }
+            fetch(count: pageSize, offset: paginationOffset)
         }
     }
     
