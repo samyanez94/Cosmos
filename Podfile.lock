@@ -1,18 +1,18 @@
 PODS:
-  - Alamofire (4.8.2)
-  - AlamofireImage (3.5.2):
-    - Alamofire (~> 4.8)
-  - Cache (5.2.0)
-  - Imaginary (4.2.0):
-    - Cache (~> 5.0)
-  - Lightbox (2.3.0):
-    - Imaginary (~> 4.0)
-  - SwiftLint (0.33.0)
+  - Alamofire (5.2.2)
+  - AlamofireImage (4.1.0):
+    - Alamofire (~> 5.1)
+  - Cache (5.3.0)
+  - Imaginary (4.3.1):
+    - Cache (~> 5.3.0)
+  - Lightbox (2.4.2):
+    - Imaginary (~> 4.3.1)
+  - SwiftLint (0.40.2)
   - Toast-Swift (5.0.1)
 
 DEPENDENCIES:
-  - AlamofireImage (~> 3.5)
-  - Lightbox (~> 2.3)
+  - AlamofireImage (~> 4.1)
+  - Lightbox (~> 2.4.2)
   - SwiftLint
   - Toast-Swift (~> 5.0.1)
 
@@ -27,14 +27,14 @@ SPEC REPOS:
     - Toast-Swift
 
 SPEC CHECKSUMS:
-  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
-  AlamofireImage: 63cfe3baf1370be6c498149687cf6db3e3b00999
-  Cache: 807c5d86d01a177f06ede9865add3aea269bbfd4
-  Imaginary: dae33d06dbc2ada22f98afef5eb45cc061311a2c
-  Lightbox: d317750e4132bfb871a5307cfe0a2c7d6a583c65
-  SwiftLint: fed9c66336e41fc74dc48a73678380718f0c8b0e
+  Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
+  AlamofireImage: c4a2ba349885fb3064feb74d2e547bd42ce9be10
+  Cache: 48762993ec44e1d93483c4d4a13edd18452326f4
+  Imaginary: 18c5bba364229eef383b925199db442e71d175e1
+  Lightbox: 8837c35c1150fa0410d94296e369b432d37f18c7
+  SwiftLint: 1216c910d27c2633ade33b4f071bb6b930982e62
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: cf9bcfc171fe8e5795010132435f88edbf6b9601
+PODFILE CHECKSUM: b8ff5a04c632f2e62d8c8846b485b71b56ff587c
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.9.3

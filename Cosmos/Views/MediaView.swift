@@ -69,7 +69,7 @@ class MediaView: UIView {
         imageView.contentMode = .scaleAspectFill
         imageView.frame = frame
         imageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        imageView.af_setImage(withURL: url, imageTransition: .crossDissolve(0.2)) { [weak self] (response) in
+        imageView.af.setImage(withURL: url, imageTransition: .crossDissolve(0.2)) { [weak self] (response) in
             if case .success(let image) = response.result {
                 self?.image = image
             }

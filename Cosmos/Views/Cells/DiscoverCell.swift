@@ -63,7 +63,7 @@ class DiscoverCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         imageView.image = nil
-        imageView.af_cancelImageRequest()
+        imageView.af.cancelImageRequest()
     }
 }
 
@@ -74,7 +74,7 @@ extension DiscoverCell {
             return
         }
         activityIndicator.startAnimating()
-        imageView.af_setImage(withURL: url, imageTransition: .crossDissolve(0.2)) { [weak self] data in
+        imageView.af.setImage(withURL: url, imageTransition: .crossDissolve(0.2)) { [weak self] data in
             guard data.response?.statusCode != 404 else {
                 self?.imageView.image = DiscoverCell.placeholderImage
                 self?.activityIndicator.stopAnimating()

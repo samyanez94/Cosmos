@@ -71,7 +71,7 @@ class FavoritesCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         thumbnailImageView.image = nil
-        thumbnailImageView.af_cancelImageRequest()
+        thumbnailImageView.af.cancelImageRequest()
     }
 }
 
@@ -81,7 +81,7 @@ extension FavoritesCell {
             thumbnailImageView.image = FavoritesCell.placeholderImage
             return
         }
-        thumbnailImageView.af_setImage(withURL: url, imageTransition: .crossDissolve(0.2)) { [weak self] data in
+        thumbnailImageView.af.setImage(withURL: url, imageTransition: .crossDissolve(0.2)) { [weak self] data in
             guard data.response?.statusCode != 404 else {
                 self?.thumbnailImageView.image = FavoritesCell.placeholderImage
                 return

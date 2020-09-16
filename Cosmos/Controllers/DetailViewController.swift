@@ -247,7 +247,7 @@ final class DetailViewController: UIViewController {
     // MARK: Alert
     
     private func presentAlertForDeniedAccessToPhotos() {
-        let alertController = UIAlertController (title: DetailViewStrings.deniedAccessToPhotosTitle.localized, message: DetailViewStrings.deniedAccessToPhotosMessage.localized, preferredStyle: .alert)
+        let alertController = UIAlertController(title: DetailViewStrings.deniedAccessToPhotosTitle.localized, message: DetailViewStrings.deniedAccessToPhotosMessage.localized, preferredStyle: .alert)
         let settingsActionHandler: ((UIAlertAction) -> Void)? = { (_) in
             if let url = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(url) {
                 UIApplication.shared.open(url)
