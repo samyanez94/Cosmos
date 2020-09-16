@@ -113,7 +113,7 @@ final class DetailViewController: UIViewController {
         }
     }
     
-    // View controller identifier
+    /// View controller identifier
     static let identifier = String(describing: DetailViewController.self)
         
     /// Feedback generator

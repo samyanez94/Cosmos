@@ -75,6 +75,13 @@ final class AboutViewController: UIViewController {
         }
     }
     
+    /// View controller identifier
+    static let identifier = String(describing: AboutViewController.self)
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = AboutViewStrings.title.localized

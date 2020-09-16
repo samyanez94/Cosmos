@@ -11,74 +11,124 @@ import UIKit
 
 final class MoreTableViewController: UITableViewController {
     
-    /// About table view cell
-    @IBOutlet var aboutTableViewCell: UITableViewCell! {
-        didSet {
-            aboutTableViewCell.accessibilityIdentifier = MoreViewAccessibilityIdentifier.Cell.cell
-            aboutTableViewCell.textLabel?.font = DynamicFont.shared.font(forTextStyle: .body)
-            aboutTableViewCell.textLabel?.adjustsFontForContentSizeCategory = true
-            aboutTableViewCell.textLabel?.text = MoreViewStrings.aboutCell.localized
-        }
-    }
-    
-    /// Recommend table view cell
-    @IBOutlet var recommendTableViewCell: UITableViewCell! {
-        didSet {
-            recommendTableViewCell.accessibilityIdentifier = MoreViewAccessibilityIdentifier.Cell.cell
-            recommendTableViewCell.textLabel?.font = DynamicFont.shared.font(forTextStyle: .body)
-            recommendTableViewCell.textLabel?.adjustsFontForContentSizeCategory = true
-            recommendTableViewCell.textLabel?.text = MoreViewStrings.recommendCell.localized
-        }
-    }
-    
-    /// Review table view cell
-    @IBOutlet var reviewTableViewCell: UITableViewCell! {
-        didSet {
-            reviewTableViewCell.accessibilityIdentifier = MoreViewAccessibilityIdentifier.Cell.cell
-            reviewTableViewCell.textLabel?.font = DynamicFont.shared.font(forTextStyle: .body)
-            reviewTableViewCell.textLabel?.adjustsFontForContentSizeCategory = true
-            reviewTableViewCell.textLabel?.text = MoreViewStrings.reviewCell.localized
-        }
-    }
-    
-    /// Feedback table view cell
-    @IBOutlet var feedbackTableViewCell: UITableViewCell! {
-        didSet {
-            feedbackTableViewCell.accessibilityIdentifier = MoreViewAccessibilityIdentifier.Cell.cell
-            feedbackTableViewCell.textLabel?.font = DynamicFont.shared.font(forTextStyle: .body)
-            feedbackTableViewCell.textLabel?.adjustsFontForContentSizeCategory = true
-            feedbackTableViewCell.textLabel?.text = MoreViewStrings.feedbackCell.localized
-        }
-    }
+    /// Table view items
+    private lazy var items = [
+        MoreItem(
+            text: MoreViewStrings.aboutCell.localized,
+            imageSystemName: "info.circle",
+            accessoryType: .disclosureIndicator,
+            tapHandler: { [unowned self] in
+                self.aboutTapHandler()
+            }
+        ),
+        MoreItem(
+            text: MoreViewStrings.recommendCell.localized,
+            imageSystemName: "square.and.arrow.up",
+            tapHandler: { [unowned self] in
+                self.recommendTapHandler()
+            }
+        ),
+        MoreItem(
+            text: MoreViewStrings.reviewCell.localized,
+            imageSystemName: "text.bubble",
+            tapHandler: { [unowned self] in
+                self.reviewTapHandler()
+            }
+        ),
+        MoreItem(
+            text: MoreViewStrings.feedbackCell.localized,
+            imageSystemName: "envelope",
+            tapHandler: { [unowned self] in
+                self.sendFeedbackTapHandler()
+            }
+        )
+    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Set title
         title = MoreViewStrings.title.localized
+        
+        // Register table view cell
+        tableView.register(
+            UITableViewCell.self,
+            forCellReuseIdentifier: "DefaultCell"
+        )
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath.row {
-        case 1: didTapOnRecommend()
-        case 2: didTapOnWriteReview()
-        case 3: didTapOnSendFeedback()
-        default: break
+    // MARK: - UITableViewDataSource
+    
+    override func tableView(_ tableView: UITableView,
+                            numberOfRowsInSection section: Int) -> Int {
+        items.count
+    }
+    
+    override func tableView(_ tableView: UITableView,
+                            cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "DefaultCell") else {
+            fatalError("Unable to deque cell with identifier")
         }
-        tableView.cellForRow(at: indexPath)?.isSelected = false
+        updateCell(cell, with: items[indexPath.row])
+        return cell
     }
     
-    func didTapOnRecommend() {
-        let message = String(format: ShareStrings.appShareMessage.localized, AppStoreEndpoint.share.url.absoluteString)
-        let activityViewController = UIActivityViewController(activityItems: [message], applicationActivities: nil)
-        present(activityViewController, animated: true)
+    // MARK: - UITableViewDelegate
+    
+    override func tableView(_ tableView: UITableView,
+                            didSelectRowAt indexPath: IndexPath) {
+        items[indexPath.row].tapHandler?()
+        tableView.deselectRow(at: indexPath, animated: false)
     }
     
-    func didTapOnWriteReview() {
+    // MARK: - Helpers
+    
+    private func updateCell(_ cell: UITableViewCell, with item: MoreItem) {
+        cell.textLabel?.text = item.text
+        cell.textLabel?.font = DynamicFont.shared.font(forTextStyle: .body)
+        cell.textLabel?.adjustsFontForContentSizeCategory = true
+        cell.imageView?.image = UIImage(systemName: item.imageSystemName)
+        cell.imageView?.tintColor = UIColor(named: "Accent Color")
+        cell.accessoryType = item.accessoryType
+        cell.accessibilityIdentifier = item.accessibilityIdentifier
+    }
+    
+    // MARK: - Tap Handlers
+    
+    private func aboutTapHandler() {
+        if let aboutViewController = storyboard?.instantiateViewController(identifier: AboutViewController.identifier, creator: { coder in
+            AboutViewController(coder: coder)
+        }) {
+            show(aboutViewController, sender: nil)
+        }
+    }
+    
+    private func recommendTapHandler() {
+        let message = String(
+            format: ShareStrings.appShareMessage.localized,
+            AppStoreEndpoint.share.url.absoluteString
+        )
+        let activityViewController = UIActivityViewController(
+            activityItems: [message],
+            applicationActivities: nil
+        )
+        present(
+            activityViewController,
+            animated: true
+        )
+    }
+    
+    private func reviewTapHandler() {
         if UIApplication.shared.canOpenURL(AppStoreEndpoint.review.url) {
-            UIApplication.shared.open(AppStoreEndpoint.review.url, options: [:], completionHandler: nil)
+            UIApplication.shared.open(
+                AppStoreEndpoint.review.url,
+                options: [:],
+                completionHandler: nil
+            )
         }
     }
     
-    func didTapOnSendFeedback() {
+    private func sendFeedbackTapHandler() {
         if MFMailComposeViewController.canSendMail() {
             let versionNumber = Bundle.main.releaseVersionNumber ?? ""
             let buildNumber = Bundle.main.buildVersionNumber ?? ""
@@ -93,10 +143,34 @@ final class MoreTableViewController: UITableViewController {
     }
 }
 
+extension MoreTableViewController {
+    
+    /// Helper struct to model the table view items
+    private struct MoreItem {
+        let text: String
+        let imageSystemName: String
+        let accessoryType: UITableViewCell.AccessoryType
+        let tapHandler: (() -> Void)?
+        let accessibilityIdentifier: String = MoreViewAccessibilityIdentifier.Cell.cell
+        
+        fileprivate init(text: String,
+                         imageSystemName: String,
+                         accessoryType: UITableViewCell.AccessoryType = .none,
+                         tapHandler: (() -> Void)?) {
+            self.text = text
+            self.imageSystemName = imageSystemName
+            self.accessoryType = accessoryType
+            self.tapHandler = tapHandler
+        }
+    }
+}
+
 // MARK: MFMailComposeViewControllerDelegate
 
 extension MoreTableViewController: MFMailComposeViewControllerDelegate {
-    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+    func mailComposeController(_ controller: MFMailComposeViewController,
+                               didFinishWith result: MFMailComposeResult,
+                               error: Error?) {
         controller.dismiss(animated: true)
     }
 }
