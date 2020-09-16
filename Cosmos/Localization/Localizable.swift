@@ -36,6 +36,8 @@ extension Localizable {
     }
 }
 
+// MARK: About View
+
 enum AboutViewStrings: Localizable {
     case title
     case aboutQuote
@@ -59,6 +61,8 @@ enum AboutViewStrings: Localizable {
         }
     }
 }
+
+// MARK: Detail View
 
 enum DetailViewStrings: Localizable {
     case title
@@ -90,6 +94,8 @@ enum DetailViewStrings: Localizable {
     }
 }
 
+// MARK: Discover View
+
 enum DiscoverViewStrings: Localizable {
     case title
     
@@ -99,6 +105,8 @@ enum DiscoverViewStrings: Localizable {
         }
     }
 }
+
+// MARK: Favorites View
 
 enum FavoritesViewStrings: Localizable {
     case title
@@ -111,6 +119,8 @@ enum FavoritesViewStrings: Localizable {
         }
     }
 }
+
+// MARK: Message View
 
 enum MessageViewStrings: Localizable {
     case errorMessage
@@ -125,6 +135,8 @@ enum MessageViewStrings: Localizable {
         }
     }
 }
+
+// MARK: More View
 
 enum MoreViewStrings: Localizable {
     case title
@@ -143,6 +155,8 @@ enum MoreViewStrings: Localizable {
         }
     }
 }
+
+// MARK: Share
 
 enum ShareStrings: Localizable {
     case imageShareMessage
