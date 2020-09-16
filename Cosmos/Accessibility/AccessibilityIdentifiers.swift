@@ -8,6 +8,8 @@
 
 import Foundation
 
+// MARK: - About View Accessibility Identifiers
+
 enum AboutViewAccessibilityIdentifier {
     enum Image {
         static let imageView = "AboutImageViewIdentifier"
@@ -23,6 +25,8 @@ enum AboutViewAccessibilityIdentifier {
         static let acknowledgementsBodyLabel = "AcknowledgementsBodyTextViewIdentifier"
     }
 }
+
+// MARK: - Detail View Accessibility Identifiers
 
 enum DetailViewAccessibilityIdentifier {
     enum Image {
@@ -44,6 +48,8 @@ enum DetailViewAccessibilityIdentifier {
     }
 }
 
+// MARK: - Discover View Accessibility Identifiers
+
 enum DiscoverCellAccessibilityIdentifier {
     enum Image {
         static let imageView = "DiscoverImageViewIdentifier"
@@ -53,6 +59,8 @@ enum DiscoverCellAccessibilityIdentifier {
         static let titleLabel = "DiscoverTitleLabelIdentifier"
     }
 }
+
+// MARK: - Favorites View Accessibility Identifiers
 
 enum FavoritesCellAccessibilityIdentifier {
     enum Image {
@@ -65,6 +73,8 @@ enum FavoritesCellAccessibilityIdentifier {
     }
 }
 
+// MARK: - Message View Accessibility Identifiers
+
 enum MessageViewAccessibilityIdentifier {
     enum Image {
         static let imageView = "MessageImageViewIdentifier"
@@ -76,6 +86,8 @@ enum MessageViewAccessibilityIdentifier {
         static let refreshButton = "MessageRefreshButtonIdentifier"
     }
 }
+
+// MARK: - More View Accessibility Identifiers
 
 enum MoreViewAccessibilityIdentifier {
     enum Cell {

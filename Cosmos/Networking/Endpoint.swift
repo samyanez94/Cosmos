@@ -31,6 +31,8 @@ extension Endpoint {
     }
 }
 
+// MARK: - Cosmos Endpoint
+
 enum CosmosEndpoint {
     case today(thumbnails: Bool)
     case dated(date: Date, thumbnails: Bool)
@@ -76,6 +78,8 @@ extension CosmosEndpoint: Endpoint {
         }
     }
 }
+
+// MARK: - App Store Endpoint
 
 enum AppStoreEndpoint: Endpoint {
     case share
