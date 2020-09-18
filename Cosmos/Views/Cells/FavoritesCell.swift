@@ -6,6 +6,7 @@
 //  Copyright © 2019 Samuel Yanez. All rights reserved.
 //
 
+import Nuke
 import UIKit
 
 class FavoritesCell: UITableViewCell {
@@ -71,7 +72,7 @@ class FavoritesCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         thumbnailImageView.image = nil
-        thumbnailImageView.af.cancelImageRequest()
+        Nuke.cancelRequest(for: thumbnailImageView)
     }
 }
 
@@ -81,12 +82,11 @@ extension FavoritesCell {
             thumbnailImageView.image = FavoritesCell.placeholderImage
             return
         }
-        thumbnailImageView.af.setImage(withURL: url, imageTransition: .crossDissolve(0.2)) { [weak self] data in
-            guard data.response?.statusCode != 404 else {
-                self?.thumbnailImageView.image = FavoritesCell.placeholderImage
-                return
-            }
-        }
+        let imageLoadingOptions = ImageLoadingOptions(
+            transition: .fadeIn(duration: 0.25),
+            failureImage: FavoritesCell.placeholderImage
+        )
+        Nuke.loadImage(with: url, options: imageLoadingOptions, into: thumbnailImageView)
     }
 }
 

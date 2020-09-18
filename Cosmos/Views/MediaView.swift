@@ -6,7 +6,7 @@
 //  Copyright © 2020 Samuel Yanez. All rights reserved.
 //
 
-import AlamofireImage
+import Nuke
 import UIKit
 import WebKit
 
@@ -69,11 +69,14 @@ class MediaView: UIView {
         imageView.contentMode = .scaleAspectFill
         imageView.frame = frame
         imageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        imageView.af.setImage(withURL: url, imageTransition: .crossDissolve(0.2)) { [weak self] (response) in
-            if case .success(let image) = response.result {
-                self?.image = image
+        let imageLoadingOptions = ImageLoadingOptions(
+            transition: .fadeIn(duration: 0.25)
+        )
+        Nuke.loadImage(with: url, options: imageLoadingOptions, into: imageView, completion: { [weak self] result in
+            if case .success(let imageResponse) = result {
+                self?.image = imageResponse.image
             }
-        }
+        })
         imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapOnImage(_:))))
         applyAccessibilityAttributesforImageView(imageView, andLabel: label)
     }

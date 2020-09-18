@@ -6,6 +6,7 @@
 //  Copyright © 2018 Samuel Yanez. All rights reserved.
 //
 
+import Nuke
 import UIKit
 
 class DiscoverCell: UICollectionViewCell {
@@ -63,7 +64,7 @@ class DiscoverCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         imageView.image = nil
-        imageView.af.cancelImageRequest()
+        Nuke.cancelRequest(for: imageView)
     }
 }
 
@@ -74,14 +75,13 @@ extension DiscoverCell {
             return
         }
         activityIndicator.startAnimating()
-        imageView.af.setImage(withURL: url, imageTransition: .crossDissolve(0.2)) { [weak self] data in
-            guard data.response?.statusCode != 404 else {
-                self?.imageView.image = DiscoverCell.placeholderImage
-                self?.activityIndicator.stopAnimating()
-                return
-            }
+        let imageLoadingOptions = ImageLoadingOptions(
+            transition: .fadeIn(duration: 0.25),
+            failureImage: DiscoverCell.placeholderImage
+        )
+        Nuke.loadImage(with: url, options: imageLoadingOptions, into: imageView, completion: { [weak self] _ in
             self?.activityIndicator.stopAnimating()
-        }
+        })
     }
 }
 
