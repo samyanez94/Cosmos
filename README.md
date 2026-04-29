@@ -1,6 +1,4 @@
-![Actions Status](https://github.com/samyanez94/Cosmos/workflows/Build%20&%20Test/badge.svg)
-
-# Cosmos 🚀
+# Cosmos
 
 > "The cosmos is all that is, or ever was, or ever will be." - Carl Sagan
 
